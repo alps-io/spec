@@ -1,0 +1,50 @@
+<alps version="1.0">
+    <link rel="self" href="http://alps.io/profiles/contacts" />
+    <link rel="help" href="http://alps.io/profiles/contacts-help.html" />
+    <doc format="text">
+        A list of contacts
+    </doc>
+
+    <!-- a hypermedia control for returning contacts -->
+    <descriptor id="collection"
+        type="safe"
+        appears="MUST"
+        rt="contact">
+        <doc>
+            simple link/form for getting a list of contacts
+        </doc>
+        <descriptor id="nameSearch"
+            type="semantic"
+            appears="SHOULD" 
+            cardinality="single">
+            <doc>
+                input for search form
+            </doc>
+        </descriptor>
+    </descriptor>
+
+    <!--  a contact: one or more of these may be returned -->
+    <descriptor id="contact" 
+        type="semantic"
+        appears="MAY"
+        cardinality="many">
+        <descriptor id="item"
+            type="safe"
+            appears="MUST">
+            <doc>
+                link to individual contact
+            </doc>
+        </descriptor>
+        <descriptor id="fullName" 
+            type="semantic" 
+            appears="MUST" />
+        <descriptor id="email"
+            type="semantic"
+            appears="SHOULD" />
+        <descriptor id="phone"
+            type="semantic"
+            appears="MAY" />
+    </descriptor>
+
+</alps>
+ 

@@ -1,0 +1,1467 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type='text/xsl' href='rfc2629.xslt'?>
+
+<!-- external references as entities -->
+<!DOCTYPE rfc SYSTEM "http://xml.resource.org/authoring/rfc2629.dtd" [
+    <!ENTITY rfc2119 PUBLIC ""
+        "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
+    <!ENTITY rfc3023 PUBLIC ""
+        "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3023.xml">
+    <!ENTITY rfc4627 PUBLIC ""
+        "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4627.xml">
+    <!ENTITY rfc5988 PUBLIC ""
+        "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5988.xml">
+]>
+
+<!-- ref commands -->
+<?rfc comments="yes"?>
+<?rfc inline="yes"?>
+<?rfc rfcedstyle="yes"?>
+<?rfc toc="yes"?>
+<?rfc symrefs="yes"?>
+<?rfc compact="yes"?>
+<?rfc subcompact="no"?>
+
+<!-- the actual document! -->
+<rfc docName="draft-amundsen-richardson-alps-00" ipr="trust200902">
+    <!-- front matter -->
+    <front>
+        <title abbrev="Application-Level Profile Semantics">
+            Application-Level Profile Semantics (ALPS)
+        </title>
+        <author fullname="Mike Amundsen" surname="Amundsen" initials="M.">
+            <organization>Layer 7 Technologies</organization>
+            <address>
+                <email>mca@amundsen.com</email>
+                <uri>http://amundsen.com</uri>
+            </address>
+        </author>
+        <author fullname="Leonard Richardson" surname="Richardson" initials="L.">
+            <address>
+                <email>leonardr@segfault.org</email>
+                <uri>http://crummy.com</uri>
+            </address>
+        </author>
+        <date/>
+        <abstract>
+            <t>
+                This document describes ALPS, a data format for
+                defining simple descriptions of application-level
+                semantics, similar in complexity to HTML
+                microformats. An ALPS document can be used as a
+                profile to explain the application semantics of a
+                document with an application-agnostic media type (such
+                as HTML, HAL, Collection+JSON, or Siren). This
+                increases the reusability of profile documents across
+                media types.
+            </t>
+        </abstract>
+        <note title="Editorial Note (To be removed by RFC Editor)">
+            <t>
+            Distribution of this document is unlimited. Comments should be sent to the 
+            IETF Media-Types mailing list (see 
+            <eref target="https://www.ietf.org/mailman/listinfo/media-types"/>).
+            </t> 
+        </note>
+    </front>
+
+    <!-- main body -->
+    <middle>
+        <section title="Introduction">
+            <t>
+              This document describes ALPS, a media type for defining
+              simple descriptions of application-level semantics,
+              similar in complexity to HTML microformats. These
+              descriptions contain both human-readable and
+              machine-readable explanations of the semantics.
+            </t>
+
+            <t>
+              An ALPS document can be used as a profile to explain the
+              application semantics of a document with an
+              application-agnostic media type (such as HTML, HAL,
+              Collection+JSON, or Siren).
+            </t>
+
+            <t>
+              This document identifies a registry for ALPS documents,
+              and sets a standard for creating and registering ALPS
+              document identifiers with that registry.
+            </t>
+
+            <t>
+              This document also identifies a registry for normative
+              human-readable instructions on applying an ALPS document
+              as a profile to a document with a given media type. It
+              sets a standard for registering media types with that
+              registry. It gives some non-normative examples in which
+              a single ALPS document is applied as a profile to
+              documents with different media types.
+            </t>
+
+            <t>
+              This document registers two media-type identifiers with
+              the IANA: 'application/alps+xml' ("ALPS+XML") and
+              'application/alps+json' ("ALPS+JSON").
+            </t>
+
+            <section title="Notational Conventions">
+                <t>
+                The key words "MUST", "MUST NOT", "REQUIRED", "SHALL",
+                "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",
+                "MAY", and "OPTIONAL" in this document are to be
+                interpreted as described in <xref target="RFC2119"/>.
+                </t>
+            </section>
+
+            <section title="Motivation">
+                <t>
+                    When implementing a hypermedia client/server
+                    application using a general media type (HTML,
+                    Atom, Collection+JSON, etc.), client and server
+                    instances need to share an understanding of
+                    domain-specific information such as data element
+                    names, link relation values, and state transfer
+                    parameters. This information is directly related
+                    to the application being implemented
+                    (e.g. accounting, contact management, etc.) rather
+                    than the media type used in the representations.
+                </t>
+
+                <section title="Describing Domain-Specific Semantics">
+                    <t>
+                        Instead of creating and registering an
+                        entirely new media type
+                        (i.e. 'application/accounting'),
+                        representation authors can create an ALPS
+                        document that describes a "profile" of the
+                        target domain; one that explains the vital
+                        domain-specific semantic descriptors and state
+                        transitions. This profile can then be
+                        consistently applied to a wide range of media
+                        types by server implementors and successfully
+                        consumed by client applications. The focus on
+                        defining application-level semantics,
+                        independent of transfer protocol or media type,
+                        makes it possible to serve
+                        application-specific representations using an
+                        application-agnostic media type.
+                    </t>
+                </section>
+
+                <section title="ALPS-based Server Implementations">
+                   <t>
+                        Server implementors can use ALPS documents as
+                        a basis for building domain-specific solutions
+                        without having to create their own custom
+                        media type or re-invent the vocabulary and
+                        transition set for a common domain (e.g.
+                        accounting, microblogging, etc.). Using a
+                        preexisting ALPS profile as a guide, servers
+                        can map internal data to commonly-understood
+                        semantic descriptors and state transitions,
+                        increasing the likelihood that existing client
+                        applications (those who share the same
+                        understanding of the ALPS document) will be
+                        able to successfully interact with that
+                        server.
+                    </t>
+                </section>
+
+                <section title="ALPS-based Client Implementations">
+                    <t>
+                        Armed with a document's ALPS profile, client
+                        applications can identify the link relations
+                        and semantic descriptors within the document.
+                        Client applications can "code for the profile"
+                        and better adjust to detailed changes to the
+                        response layout, or even the wholesale
+                        replacement of one media type with another.
+                    </t>
+                </section>
+           </section>
+
+            <section title="A Simple ALPS Example" anchor="example">
+                <t>
+                    Below is an ALPS document that describes elements
+                    of a simple request/response interaction in a
+                    contact management application. The profile
+                    defines a semantic descriptor called "contact",
+                    and three subordinate descriptors ("fullName",
+                    "email", and "phone").
+                </t>
+
+                <t>
+                    The ALPS document also defines a single, safe
+                    state transition, to be represented by a
+                    hypermedia control (e.g. HTML.GET form) with the
+                    'id' value of "collection." This hypermedia
+                    control has one input value ("nameSearch"). When
+                    executed, the response will contain one or more
+                    "contact" type items. [TK Does rt mean one or
+                    more? I thought it meant one. -LR]
+                </t>
+              <figure title="ALPS Contact Profile document">
+                  <artwork><![CDATA[
+ <alps version="1.0">
+    <doc format="text">
+        A list of contacts
+    </doc>
+
+    <!-- a hypermedia control for returning contacts -->
+    <descriptor id="collection"
+        type="safe"
+        rt="contact">
+        <doc>
+            simple link/form for getting a list of contacts
+        </doc>
+        <descriptor id="nameSearch"
+            type="semantic"
+            <doc>
+                input for search form
+            </doc>
+        </descriptor>
+    </descriptor>
+
+    <!--  a contact: one or more of these may be returned -->
+    <descriptor id="contact" 
+        type="semantic">
+        <descriptor id="item"
+            type="safe"
+            appears="MUST">
+            <doc>
+                link to individual contact
+            </doc>
+        </descriptor>
+        <descriptor id="fullName" 
+            type="semantic"" />
+        <descriptor id="email"
+            type="semantic" />
+        <descriptor id="phone"
+            type="semantic"/>
+    </descriptor>
+
+</alps>
+               ]]></artwork>
+        </figure>
+
+        <t>
+          Implementing the ALPS profile above requires implementing
+          the descriptors defined by the ALPS document. In this case,
+          there are two "top level" descriptors: the safe state
+          transition ("collection") and the semantic descriptor
+          "contact". Below is a single HTML document that shows both
+          these elements in a representation.
+        </t>
+
+        <figure title="HTML ALPS Contact Representation">
+            <artwork><![CDATA[
+<html>
+    <head>
+        <link rel="profile" href="http://alsp.io/profiles/contact" />
+        <link rel="type" href="http://alps.io/profiles/contact#contact" />
+    </head>
+    <body>
+        <form class="collection"
+            method="get" 
+            action="http://example.org/contacts/">
+            <label>Name:</label>
+            <input name="nameSearch" value="" />
+            <input type="submit" value="Search" />
+        </form>
+
+        <table class="contact">
+            <tr>
+                <td>
+                    <a href="http://example.org/contacts/1" rel="item">
+                        <span class="fullName">Ann Arbuckle</span>
+                    </a>
+                </td>
+                <td>
+                    <span class="email">aa@example.org</span>
+                </td>
+                <td>
+                    <span class="phone">123.456.7890</span>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <a href="http://example.org/contacts/100" rel="item">
+                        <span class="fullName">Zelda Zackney</span>
+                    </a>
+                </td>
+                <td>
+                    <span class="email">zz@example.org</span>
+                </td>
+                <td>
+                    <span class="phone">098.765.4321</span>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
+              ]]></artwork>
+        </figure>
+
+        <t>
+          HTML representations implement most ALPS elements using
+          HTML's "class" attribute. The "collection" ID has become the
+          CSS class of an HTML form's submit button. [TK needs to go
+          on the submit button, not the form. -leonardr] The "contact"
+          ID has become the CSS class of an HTML table. [TK again
+          there seems to be a confusion between singular and
+          plural. The "contact" table contains all the contacts,
+          implying that this is one person with multiple names and
+          emails. -leonardr] The subordinate descriptors "fullname",
+          "email", and "phone"
+        </t>
+
+
+        <t>This HAL document uses the same profile to epress the same
+        application-level semantics as the HTML document.</t>
+
+        <figure title="HAL XML Contacts Representation">
+                <artwork><![CDATA[
+<resource href="http://example.org/contacts/">
+    <link rel="type" href="http://alps.io/profiles/contacts#contact" />
+    <link rel="collection" 
+        href="http://example.org/contacts/{?nameSearch}"
+        templated="true" />
+    <resource rel="item" href="http://example.org/contacts/1">
+        <link rel="type" href="http://alps.io/profiles/contacts#contact" />
+        <fullName>Ann Arbuckle</fullName>
+        <email>aa@example.org</email>
+        <phone>123.456.7890</phone>
+    </resource>
+    <resource rel="item" href="http://example.org/contacts/100">
+        <link rel="type" href="http://alps.io/profiles/contacts#contact" />
+        <fullName>Zelda Zackney</fullName>
+        <email>zz@example.org</email>
+        <phone>987.664.3210</phone>
+    </resource>
+</resource>
+                    ]]></artwork>
+            </figure>
+
+            <t>In a HAL representation, all state transitions
+            ("collection" and "item", in this case) are represented as
+            link relations. All data descriptors ("fullName", "email",
+            and "phone") are represented as XML tags named after the
+            descriptors.</t>
+
+            <t>This Collection+JSON document uses the ALPS profile to
+            express the same application-level semantics as the HTML
+            and HAL documents.</t>
+
+              <figure title="Collection+JSON Contacts Representation">
+                <artwork><![CDATA[
+{
+    "collection" : {
+        "version" : "1.0",
+        "href" : "http://example.org/contacts/",
+
+        "links" : [
+            {
+                "rel" : "profile", 
+                "href" : "http://alps.io/profiles/contacts"
+            },
+            {
+                "rel" : "type", 
+                "href" : "http://alps.io/profiles/contacts#contact"
+            }
+        ],
+
+        "queries" : [
+            {
+                "rel" : "collection", 
+                "rt" : "contact", 
+                "href" : "http://example.org/contacts/",
+                "data" : [
+                    {
+                        "name" : "nameSearch", 
+                        "value" : "", 
+                        "prompt" :  "Search Name"
+                    }
+                ]
+            }
+        ],
+
+        "items" : [
+            {
+                "href" : "http://example.org/contacts/1",
+                "rel" : "item",
+                "rt" : "contact",
+                "data" : [
+                    {"name" : "fullName", "value" : "Ann Arbuckle" },
+                    {"name" : "email", "value" : "aa@example.org" },
+                    {"name" : "phone", "value" : "123.456.7890" }
+                ],
+                "links" : [
+                    {
+                        "rel" : "type", 
+                        "href" : "http://alps.io/profiles/contacts#contact"
+                    }
+                ]
+            },
+            {
+                "href" : "http://example.org/contacts/100",
+                "rel" : "item",
+                "rt" : "contact",
+                "data" : [
+                    {"name" : "fullName", "value" : "Zelda Zackney" },
+                    {"name" : "email", "value" : "zz@example.org" },
+                    {"name" : "phone", "value" : "987.654.3210" }
+                ],
+                 "links" : [
+                    {
+                        "rel" : "type", 
+                        "href" : "http://alps.io/profiles/contacts#contact"
+                    }
+                ]
+            }
+        ]
+    }
+}
+                
+               ]]></artwork>
+              </figure>
+
+              <t>The descriptor "collection" has become the link
+              relation associated with a Collection+JSON query. The
+              descriptors "fullName", "email", and "phone" have become
+              the names of key-value pairs in the items in a
+              Collection+JSON collection.</t>
+
+            </section>
+
+            <section title="Identifying an ALPS Document">
+                <t>
+                  An ALPS vocabulary is identified by a unique URL.
+                  The URL MUST resolve to a valid ALPS document. The
+                  server MAY use HTTP content negotiation to serve a
+                  human-readable description of the ALPS vocabulary to
+                  clients that request an HTML representation.  [TK
+                  how's that? or should we stick to [link rel="help"]?
+                  -leonardr :: Maybe we should be silent on the matter
+                  here? -mca :: I'm OK with that. I just don't want to
+                  imply that you get the ALPS doc no matter what HTTP
+                  request you make to the URL. -leonardr]
+                </t>
+                <t>
+                  A client SHOULD NOT automatically resolve an ALPS
+                  vocabulary URL, to avoid overburdening its server.
+                </t>
+                <t>
+                  All ALPS URLs MUST be unique and all ALPS documents
+                  intended for public consumption SHOULD be registered
+                  with the ALPS Registry located at [TK].
+                </t>
+            </section>
+        </section>
+
+       <section title="ALPS Documents">
+            <t>
+              An ALPS document contains a machine-readable collection
+              of identifying strings and their human-readable
+              explanations. An ALPS document can be represented in
+              either XML or JSON format. This section identifies the
+              general elements and properties of an ALPS document,
+              their meaning, and their use, independent of how the
+              document is represented. <xref
+              target="representations"/> provides specific details on
+              constructing a valid ALPS document in XML and in JSON
+              format.
+            </t>
+
+            <section title="Compliance">
+              <t>
+                An implementation is not compliant if it fails to
+                satisfy one or more of the MUST or REQUIRED level
+                requirements.  An implementation that satisfies all
+                the MUST or REQUIRED level and all the SHOULD level
+                requirements is said to be "unconditionally
+                compliant"; one that satisfies all the MUST level
+                requirements but not all the SHOULD level requirements
+                is said to be "conditionally compliant."
+              </t>
+            </section>
+
+            <section title="ALPS Document Properties">
+              <t>
+                The ALPS media type defines a small set of
+                properties. These properties appear in both the XML
+                and JSON formats. Below is a list of the properties
+                that can appear in an ALPS document.
+              </t>
+
+              <section anchor="prop-alps" title="'alps'">
+                <t>
+                  Indicates the root of the ALPS document. This
+                  property is REQUIRED, and it SHOULD have one or more
+                  <xref target="prop-descriptor">'descriptor'</xref> child properties.
+                </t>
+                <t>
+                  Examples:
+                  <list style="hanging">
+                    <t hangText="XML:">
+                      &lt;alps&gt;...&lt;/alps&gt;
+                    </t>
+                    <t hangText="JSON:">
+                      {"alps" : ... }
+                    </t>
+                  </list>
+                </t>
+              </section>
+
+              <section anchor="prop-doc" title="'doc'">
+                <t>
+                  A text field that contains free-form, usually
+                  human-readable, text.  
+                    The 'doc' element MAY have two properties:
+                    <xref target="prop-href">'href'</xref> and
+                    <xref target="prop-format">'format'</xref>.
+                    If the 'href' property appears it SHOULD contain
+                    a dereferencable URL that points to human-readable
+                    text. If the 'format' property appears it SHOULD
+                    contain one of two possible values:
+                  <list style="numbers">
+                    <t>"text"</t>
+                    <t>"html"</t>
+                    <t>ascidoc</t>
+                  </list>
+                  Any program processing "doc" elements SHOULD honor the
+                  "format" directive and parse/render the content
+                  appropriately. If the value in the "format" property is
+                  not recognized and/or supported, the processing program
+                  MUST treat the content as plain text. If no 'format' property is
+                  present, the content SHOULD be treated as plain
+                  text.
+                  <list style="hanging">
+                    <t hangText="XML:"><![CDATA[
+<description format="html">
+   <h1>Date of Birth</h1>
+   <p>...</p>
+</description>
+                        ]]></t>
+                    <t hangText="JSON:"><![CDATA[
+{"description" : 
+    {"format" : "text" : "value" : "Date of Birth ..."}
+}
+                        ]]></t>
+                  </list>
+                </t>
+                <t>
+                  A 'doc' element SHOULD appear as a child of
+                  <xref target="prop-descriptor">'descriptor'</xref>.  When
+                  present, it describes the meaning and use of the
+                  related 'descriptor'.
+                    <list style="hanging">
+                        <t hangText="XML:"><![CDATA[
+<element ... >
+    <description>...</description>
+</element>
+                        ]]></t>
+                        <t hangText="JSON:"><![CDATA[
+{"element" : {...}
+    {"description" : {"value" : "..."}
+}
+                        ]]></t>
+                    </list>
+                </t>
+                <t>
+                  The 'doc' element MAY appear as a child of <xref
+                  target="prop-alps">'alps'</xref>.  When present, it
+                  describes the purpose of the ALPS document as a
+                  whole.
+                  <list style="hanging">
+                    <t hangText="XML:"><![CDATA[
+<alps>
+    <description>...</description>
+    ...
+</apls>
+                        ]]></t>
+                    <t hangText="JSON:"><![CDATA[
+{"alps :
+   "description" : { "value" : "..."},
+   ...
+}
+                        ]]></t>
+                  </list>
+                </t>
+           </section>
+           
+           <section anchor="prop-descriptor" title="'descriptor'">
+                <t>
+                  Identifies a semantic descriptor. One or more 'descriptor' elements
+                  SHOULD appear as children of <xref
+                  target="prop-alps">'alps'</xref>. It may also appear
+                  as a child of itself; that is, the 'descriptor'
+                  property may be nested.
+                </t>
+
+                <t>
+                  The 'descriptor' property MAY have either an <xref
+                  target="prop-id">'id'</xref> or <xref
+                  target="prop-href">'href'</xref> attribute. It MAY
+                  have both. Additionally, the 'descriptor' MAY have any
+                  of the following attributes:
+                  <list style="numbers">
+                    <t><xref target="prop-doc">'doc'</xref></t>
+                    <t><xref target="prop-ext">'ext'</xref></t>
+                    <t><xref target="prop-name">'name'</xref></t>
+                    <t><xref target="prop-type">'type'</xref></t>
+                  </list>
+                </t>
+                <t>
+                  If present, the 'href' property MUST be a
+                  dereferenceable URL, that
+                  points to another 'descriptor' either within the
+                  current ALPS document or in another ALPS document.
+                </t>
+
+                <t>
+                  If 'descriptor' has an 'href' attribute, then
+                  'descriptor' is inheriting all the attributes and
+                  sub-properties of the descriptor pointed to by
+                  'href'. When 'descriptor' has a property defined
+                  locally, that property value takes precedence over
+                  any inherited property value. Since there is no
+                  limit to the nesting of elements -- even ones linked
+                  remotely -- it is important to process 'all
+                  descriptor' chains starting from the bottom to make
+                  sure you have collected all the available properties
+                  and have established the correct value for each of
+                  them.
+                </t>
+            </section>
+
+            <section anchor="prop-ext" title="'ext'">
+               <t>
+                 The 'ext' element can be used to extend the ALPS
+                 document with author-specific information. It
+                 provides a way to customize ALPS documents with
+                 additional properties not covered in this
+                 specification. This is an OPTIONAL element.
+                </t>
+
+                <t>
+                  The 'ext' element has two properties. The <xref
+                  target="prop-href">'href'</xref> property MUST
+                  appear for the 'ext' element. Its value MUST be a
+                  URI and the URI SHOULD be resolveable. The <xref
+                  target="prop-value">'value'</xref> property MAY
+                  appear for the 'ext' element.  The meaning and use
+                  of the value property is described in the document
+                  found by dereferencing the 'href' property of the
+                  'ext' element. [TK what if it's not resolvable?
+                  Also, the definition of 'href' says it must be
+                  resolvable.  -leonardr]
+                </t>
+
+                <t>
+                  Examples:
+                  <list style="hanging">
+                    <t hangText="XML:">
+                      &lt;ext href="http://alps.io/ext/directions"
+                      value="north south east west" &gt;
+                    </t>
+                    <t hangText="JSON:">
+                      {"ext" : {"href"
+                      : "http://alps.io/ext/directions",
+                      value="north south east west"}}
+                    </t>
+                  </list>
+                </t>
+                <t>
+                  The 'ext' element MAY appear as a child of the following
+                  elements:
+                  <list style="numbers">
+                    <t><xref target="prop-alps">'alps'</xref></t>
+                    <t><xref target="prop-descriptor">'descriptor'</xref></t>
+                  </list>
+                </t>
+                <t>
+                  Since the 'ext' element has no specific meaning
+                  within this specification, it MUST be ignored by any
+                  application that does not understand its meaning.
+                </t>
+                <t>
+                  Authors who define 'ext' elements SHOULD register these
+                  extensions with the ALPS Registry (see <xref
+                  target="alps-registry"/>) and use the URI provided by
+                  the registry in the 'name' property of their extension.
+                </t>
+            </section>
+
+            <section anchor="prop-format" title="'format'">
+                <t>
+                    Indicates how the text content should be parsed and/or
+                    rendered. This version of the spec identifies three
+                    possible values for "format": "text", "html", and
+                    "asciidoc." Any other calues for this attribute are 
+                    undefined and SHOULD be treated as plain text. If the
+                    program does not recognize the value of the "format"
+                    property and/or the "format" property is missing, the
+                    content SHOULD be treated as plain text.
+                    Thisc property MAY appear as an attribute of the <xref
+                  target="prop-doc">'doc'</xref>
+                  element.
+                </t>
+            </section>
+
+            <section anchor="prop-href" title="'href'">
+                <t>
+                  Contains a resolvable URL.
+                </t>
+                <t>
+                  When it appears as an attribute of <xref
+                  target="prop-descriptor">'descriptor'</xref>, 'href'
+                  points to another 'descriptor' either within the
+                  existing ALPS document or in another ALPS document.
+                </t>
+                <t>
+                  When it appears as an attribute of <xref
+                  target="prop-ext">'ext'</xref>, 'href' points to an
+                  external document which provides the defintion of
+                  the extension.
+                </t>
+                <t>
+                  When it appears as an attribute of <xref
+                  target="prop-link">'link'</xref> 'href' points to an
+                  external document whose relationship to the current
+                  document or 'descriptor' is described by
+                  the associated <xref target="prop-rel">'rel'</xref>
+                  property.
+              </t> 
+              <t>
+                  When it appears as an attribute of 
+                  <xref target="prop-doc">'doc'</xref>, 'href' points to a
+                  document that contains human-readable text that describes
+                  the associated 'descriptor' or ALPS document.
+              </t>
+            </section>
+            
+            <section anchor="prop-id" title="'id'">
+              <t>
+                A document-wide unique identifier for the related
+                element. This MAY appear as an attribute of an <xref
+                target="prop-descriptor">'descriptor'</xref>.
+              </t>
+
+              <t>
+                The value of this attribute will appear within generic
+                representations as the name of a semantic descriptor
+                or hypermedia control [TK do you want to update this
+                terminology? -LR] (see <xref target="instructions" />
+                for details). The exception is when a 'descriptor'
+                defines <xref target="prop-name">'name'</xref> as well
+                as <xref target="prop-id">'id'</xref>. In that case,
+                the value of 'name' contains the name of the semantic
+                descriptor or hypermedia control, and the value of
+                'id' is just a unique identifier internal to the ALPS
+                document.
+              </t>
+
+              <t>
+                When applied to an ALPS document, a URI fragment
+                identifier points to the 'descriptor' with the
+                appropriate 'id'. For example, the fragment
+                identifier "customer" in the URI
+                http://example.com/#customer refers to an ALPS
+                'descriptor' with 'id' set to "customer".
+              </t>
+
+              <t>
+                A relative URL with a fragment identifier
+                (e.g. "#customer") refers to an 'descriptor' within the
+                ALPS document containing the reference.
+              </t>
+
+              <t>
+                The complete URI to an ALPS 'descriptor' (including the
+                fragement) forms an "abstract semantic type"
+                identifier. This is a resolvable URI (URL) that can
+                be used to indicate the type of a resource; for
+                instance, it can be used as the value of the
+                IANA-registered link relation "type".
+              </t>
+
+              <t>
+                A 'descriptor' that defines a state transition
+                establishes an extension link relation whose name is
+                the unqualified URI of the
+                descriptor. (e.g. rel="http://example.com/#purchased-by")
+                However, within representations that include the
+                defining ALPS document as a profile, the descriptor's
+                'id' may be used on its own as a registered link
+                relation. (e.g. rel="purchased-by")
+              </t>
+
+              <t>
+                For this reason, when selecting 'id' values and
+                defining 'descriptor' semantics, it is important to
+                avoid creating conflicts with existing
+                IANA-registered values. If it is unclear whether a
+                registered link relation in a representation
+                document refers to a relation registered with IANA
+                or a relation registered in an ALPS profile, the
+                semantics of that link are undefined.
+              </t>
+            </section>
+
+            <section anchor="prop-link" title="'link'">
+              <t>
+                Identifies a link between the current ALPS element and some
+                other (possibly external) resource. Can be applied to the 
+                <xref target="prop-alps">'alps'</xref> and the 
+                <xref target="prop-descriptor">'descriptor'</xref> elements.
+              </t>
+              <t>
+                The 'link' property MUST define the two attributes
+                <xref target="prop-href">'href'</xref>  and 
+                <xref target="prop-rel">'rel'</xref>.
+              </t>
+            </section>
+
+            <section anchor="prop-name" title="'name'">
+                <t>
+                  Indicates the name of the <xref
+                  target="prop-descriptor">'descriptor'</xref> as
+                  found in generic representations. It MAY appear as a
+                  property of 'descriptor'.
+                </t>
+                <t>
+                  This is used when the name of the 'descriptor'
+                  is used as an <xref
+                  target="prop-id">'id'</xref> value elsewhere in the
+                  ALPS document. For instance, if a single ALPS
+                  document defines a semantic descriptor called
+                  "customer" and a safe-idempotent control called
+                  "customer", they can't both have 'id="customer"' in
+                  the ALPS document. One of them needs to have some
+                  other 'id', and to set 'name="customer"'.
+                </t>
+                <t>
+                  The use of the 'name' property usually indicates an
+                  ambiguity in the application semantics. Thus, it
+                  SHOULD only be used when creating an ALPS profile
+                  that describes an existing design.
+                </t>
+            </section>
+
+            <section anchor="prop-rel" title="'rel'">
+                <t>
+                  Contains a <xref target="RFC5988"/> approved
+                  value: either an extension link relation (a URI)
+                  or a registered link relation (a short string).
+                </t>
+                <t>
+                  Appears as a property of <xref
+                  target="prop-link">link</xref>.
+                </t>
+                <t>
+                  A link relation defined within an ALPS document MAY
+                  NOT be used as a registered link relation within the
+                  same ALPS document. [TK MAY NOT or SHOULD NOT? -mca
+                  :: I think MAY NOT. I don't want an ALPS document to
+                  be used to describe itself. But I had to think for a
+                  while to remember the rationale for this. -leonardr]
+                </t>
+            </section>
+
+            <section anchor="prop-rt" title="'rt'">
+              <t>
+                [TK I noticed you added rt to the example but it
+                wasn't defined here. I'm also not convinced we need to
+                add rt to ALPS itself, as opposed to saying it's OK to
+                use ALPS URIs as rt in other formats. -leonardr] :: [ok, let's
+                talk about this one. i figured using this to "point to"
+                existing semantic descriptors with the current ALPS doc (or
+                some other doc (e.g. schem.org) would be helpful. no? -mca]
+              </t>
+            </section>
+
+            <section anchor="prop-type" title="'type'">
+              <t>
+                Indicates the type of representation control to which
+                the element is applied. This MUST appear for each
+                element.  Four valid values are defined:
+                
+                <list style="hanging">
+                  <t hangText="&quot;descriptor&quot;">
+                    A state element (e.g.  HTML.SPAN, HTML.INPUT,
+                    etc.) OR a hypermedia control that triggers a
+                    safe, idempotent transition (e.g. HTTP.GET or
+                    HTTP.HEAD).
+                  </t>
+
+                  <t hangText="&quot;safe&quot;">
+                    A hypermedia control that triggers a safe,
+                    idempotent state transition (e.g. HTTP.GET or
+                    HTTP.HEAD).
+                  </t>
+
+                  <t hangText="&quot;idempotent&quot;">
+                    A hypermedia control that triggers an unsafe,
+                    idempotent state transition (e.g. HTTP.PUT or
+                    HTTP.DELETE).
+                  </t>
+
+                  <t hangText="&quot;unsafe&quot;">
+                    A hypermedia control that triggers an unsafe,
+                    non-idempotent state transition (e.g. HTTP.POST).
+                  </t>
+                </list>
+                    
+                If no 'type' attribute is associated with the element
+                then the 'type="descriptor"' is implied.
+              </t>
+            </section>
+
+            <section anchor="prop-value" title="'value'">
+              <t>
+                Contains a string value. It MAY appear as an attribute
+                of the <xref
+                target="prop-doc">'doc'</xref> and the
+                <xref target="prop-ext">'ext'</xref> elements.
+              </t>
+            </section>
+
+            <section anchor="prop-version" title="'version'">
+              <t>
+                Indicates the version of the ALPS specification used
+                in the document. This SHOULD appear as a property of
+                the <xref target="prop-alps">'alps'</xref>
+                property. [TK property of the property? -LR] Currently
+                the only valid value is "1.0".  If no value appears,
+                then 'version="1.0"' is implied.
+              </t>
+            </section>
+        </section>
+
+        <section anchor="representations" title="ALPS Representations">
+          <t>
+            An ALPS document may be represented in either XML or JSON
+            format. This section contains notes on how the ALPS
+            elements and attributes appear in each format, along with
+            examples to guide ALPS document authors.
+          </t>
+
+          <section anchor="html-representation" title="Sample HTML">
+            <t>
+              Below is a simple HTML document that contains a handful
+              of semantic descriptors and transition instructions.
+              This document was genrated from the XML and JSON ALPS
+              documents that follow. Use this HTML document as a guide
+              when evaluating the XML and JSON examples.
+
+              <figure title="HTML Sample">
+                        <artwork><![CDATA[
+<!-- sample HTML document -->                    
+<html>
+    <head>
+        <link rel="profile" href="http://alps.io/documents/search" />
+    </head>
+    <body>
+        <form class="search" action="..." method="get">
+            <input type="text" name="search" value="..." />
+            <select name="resultType">
+                <option value="summary" />
+                <option value="detailed" />
+            </select>
+            <input type="submit" />
+        </form>
+    </body>
+</html>                           
+                        ]]></artwork>
+                    </figure>
+                </t>
+          </section>
+
+          <section anchor="xml-representation" title="XML Representation">
+            <section title="XML Representation Notes">
+              <t>
+                In the XML version of an ALPS document, the following
+                ALPS properties always appear as XML elements: <xref
+                target="prop-alps">'alps'</xref>, <xref
+                target="prop-doc">'doc'</xref>, <xref
+                target="prop-descriptor">'descriptor'</xref>, and <xref
+                target="prop-ext">'ext'</xref>.  All other ALPS
+                properties appear as XML attributes.
+              </t>
+            </section>
+            <section title="Complete XML Representation">
+              <t>
+                Below is an example of an applcation/alps+xml
+                representation.
+                <figure title="Complete XML Representation">
+                            <artwork><![CDATA[
+<?xml version="1.0"?>
+<alps version="1.0">
+    <doc href="http://example.org/samples/full/doc.html" />
+
+    <descriptor id="search" 
+        type="safe">
+        <doc format="text">
+            A search form with two inputs.
+        </doc>
+        <descriptor href="#resultType" />
+        <descriptor id="value"
+            name="search" 
+            type="semantic">
+            <doc>input for search</doc>
+        </descriptor>
+    </descriptor>
+
+    <descriptor id="resultType"
+        type="semantic">
+        <doc>results format</doc>
+        <ext 
+            href="http://alps.io/ext/range" 
+            value="summary,detail" />
+    </element>
+</alps>
+                            ]]></artwork>
+                </figure>
+              </t>
+            </section>
+          </section>
+
+          <section anchor="json-representation" title="JSON Representation">
+            <section title="JSON Representation Notes">
+              <t>
+                When representing ALPS documents in JSON format,
+                the <xref target="prop-descriptor">'descriptor'</xref> and
+                <xref target="prop-ext">'ext'</xref> properties are
+                always expressed as arrays of anonymous objects - even
+                when there is only one member in the array.
+
+                <figure title="Arrays in ALPS+JSON">
+                  <preamble>For example:</preamble>
+                  <artwork>
+"descriptor" : [
+    {
+        "id" : "search",
+        "type" : "safe"
+        "descriptor" : [
+            {"href" : "#value"},
+            {
+                "id" : "resultType",
+                "type" : "semantic",
+                "ext" : [
+                    {
+                        "href" : "http://alps.io/ext/range",
+                        "value" : "summary,detail"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id" : "#value",
+        "type" : "semantic"
+    }
+]
+                  </artwork>
+                </figure>
+              </t>
+              <t>
+                The <xref target="prop-doc">'doc'</xref>
+                property is always expressed as a named object.
+              </t>
+              <t>
+                <figure title="Descriptions in ALPS+JSON">
+                  <preamble>For example:</preamble>
+                  <artwork>
+{
+    "doc" : {
+        "format" : "text", 
+        "value" : "Rules are imporant"
+    }
+}
+                  </artwork>
+                </figure>
+              </t>
+            </section>
+            <section title="Complete Representation">
+              <t>
+                Below is a example of the application/alps+json
+                representation of an ALPS document.
+                <figure title="Complete ALPS+JSON Representation">
+                  <artwork><![CDATA[
+// http://alps.io/documents/search
+{ 
+    "alps" : {
+        "version" : "1.0",
+        "doc" : {
+            "href" : "http://example.org/samples/full/doc.html"
+        },
+        "descriptor" : [
+            {
+                "id" : "search", 
+                "type" : "safe",
+                "doc" : {"value" : 
+                    "A search form with a two inputs"
+                },
+                "descriptor" : [
+                    {
+                        "id" : "value",
+                        "name" : "search",
+                        "type" : "descriptor",
+                        "doc" : {"value" : "input for search"}
+                    },
+                    {"href" : "#resultType"}
+                ]
+            },
+           {
+                "id" : "resultType",
+                "type" : "descriptor",
+                "description" : {"value" : "results format"},
+                "ext" : [
+                    {
+                        "href" : "http://alps.io/ext/range", 
+                        "value" : "summary,detail"
+                    }
+                ]
+            }
+        ]  
+    }
+}
+                            ]]></artwork>
+                </figure>
+              </t>
+            </section>
+          </section>
+        </section>
+    </section>
+
+    <section anchor="instructions" 
+             title="Applying ALPS documents to Existing Media Types">
+      <t>
+        An ALPS document can be applied to many existing hypermedia
+        types. <xref target="example" /> gave some informative
+        examples of this. Normative, up-to-date guidance on applying
+        ALPS documents to existing media types are available at the
+        official ALPS Web site (http://alps.io). [I implied earlier
+        there would be a formal registry. -leonardr]
+      </t>
+
+      <t>
+        [TK just brainstorming here, not formatted. -LR]
+        Defining how an ALPS document is to be applied to a media type
+        requires defining the following:
+
+        * How to mark up a state element in the representation with
+        the name of a ALPS element that sets
+        type="descriptor". (Informative example: in an HTML
+        representation, any HTML tag that supports the "class"
+        attribute may use the name [or URI? -leonardr] of any such
+        ALPS element as one value for the "class" attribute. In an
+        HTML 5 representation with microdata, any HTML tag may use the
+        name or URI of any such ALPS element as one value for the
+        "itemprop" attribute.)
+
+        * How to mark up a hypermedia control in the representation
+        with the name of an ALPS element that sets type="descriptor"
+        or type="safe". (Informative example: in an HTML
+        representation, any HTML tag that supports the "rel"
+        attribute" ("a", "link", etc.) may use the name or URI of any
+        such ALPS element as the value for the "rel" attribute. A
+        "form" tag that sets method="GET" may use the name or URI of
+        any such ALPS element as one value for the "class" attribute
+        of any of its "submit" tags.)
+
+        * How to mark up a hypermedia control with the name of an ALPS
+        element that sets type="idempotent". (Informative example: in
+        an HTML representation, a "form" tag that sets method="POST"
+        may use the name or URI of any such ALPS element as one value
+        for the "class" attribute of any of its "submit" tags.)
+
+        * How to mark up a hypermedia control with the name of an ALPS
+        element that sets type="unsafe". (Informative example: in
+        an HTML representation, an HTML "submit" tag may use the name
+        or URI of any such ALPS element as one value for the "class"
+        attribute.)
+
+        * How to represent the relationship between an enclosing ALPS
+        descriptor and the descriptor it encloses. (Informative
+        example: in an HTML representation, a tag marked up as an ALPS
+        descriptor may contain a child tag marked up as one of the
+        children of that ALPS descriptor.)
+      </t>
+
+      <t>
+        Not all media types can faithfully represent all ALPS
+        descriptors. For instance, the 'application/json' media type
+        has no standard way of representing hyperlinks. The [details?] of how to
+        apply ALPS to such a media type will necesarily be incomplete,
+        and it will not be possible to represent some aspects of an
+        ALPS profile in documents in that media type. [TK could we
+        say that such a media type is not in complete compliance with
+        the ALPS document?  -leonardr] :: [we might want to add a compliance
+        section in this spec. IOW, what parts of ALPS a media type 
+        MUST/SHOULD/MAY support in order to be "fully compliant" (all MUSTs
+        and SHOULDs, "conditionally compliant" (all MUSTs), and "non-compliant"
+        (not all MUSTs) -mca] 
+      </t>
+
+      <section anchor="linking-to-alps-documents" title="Linking to ALPS Documents">
+        <t>
+          To indicate that an ALPS profile describes the semantics of
+          some representation document, the representation document
+          SHOULD be linked to the ALPS document using the "profile"
+          link relation (found in the IANA registry of link
+          relations). [TK I changed should to must. -leonardr :: Which
+          means no one can EVER use Link header or media-type
+          "profile" methods. is that what we want? -mca :: I see your
+          point. I meant that no other link relation is
+          acceptable. -LR] If the media type of the representation
+          document has no native ability to link to other resources,
+          or no ability to express link relations, the HTTP header
+          'Link' <xref target="RFC5988" /> MAY be used to connect the
+          representation document and the ALPS profile. If the media
+          type of the representation document defines a parameter for
+          linking the document to a profile, that parameter MAY be
+          used to connect the representation document and the ALPS
+          profile.
+        </t>
+
+        <t>
+          A single representation document may be described by more
+          than one ALPS profile. If two ALPS profiles give conflicting
+          semantics for the same element, the document linked to
+          earlier in the representation SHOULD take precedence. A
+          profile linked to using the 'Link' header takes precedence
+          over a profile linked to within the representation document
+          itself. A profile linked to using a media type parameter
+          takes precedence over a profile linked to using the 'Link'
+          header and a profile linked to within the representation
+          document itself. [TK I added that, it seems
+          right. -leonardr]
+        </t>
+      </section>
+    </section>
+
+    <section anchor="alps-registry" title="The ALPS Registry">
+      <section anchor="what-is-the-alps-registry" 
+               title="What is the ALPS Registry">
+        <t>[TK]</t>
+      </section>
+      <section anchor="searching-the-registry" 
+               title="Searching the Registry">
+        <t>[TK]</t>
+      </section>
+      <section anchor="contributing-to-the-registry" 
+               title="Contributing to the Registry">
+        <t>[TK]</t>
+      </section>
+    </section>
+
+    <section anchor="iana-considerations" title="IANA Considerations">
+      <t>
+        This specification establishes two media types:
+        'application/alps+xml' and 'application/alps+json' 
+      </t>
+      <section anchor="iana-alps-xml" title="application/alps+xml">
+        <t>
+          <list style="hanging">
+            <t hangText="Type name:">
+              application
+            </t>
+            <t hangText="Subtype name:">
+              alps+xml
+            </t>
+            <t hangText="Required parameters:">
+              None
+            </t>
+            <t hangText="Optional parameters:">
+              <list style="hanging">
+                <t hangText="charset">
+                  This parameter has identical semantics to the
+                  charset parameter of the 'application/xml'
+                  media type as specified in <xref target="RFC3023" />.
+              </t>
+              <t hangText="profile">
+                A whitespace-separated list of IRIs identifying specific
+                constraints or conventions that apply to an ALPS document.
+                A profile must not change the semantics of the resource
+                representation when processed without profile knowledge, so
+                that clients both with and without knowledge of a profiled
+                resource can safely use the same representation. The profile
+                parameter may also be used by clients to express their
+                preferences in the content negotiation process. It is
+                recommended that profile IRIs are dereferenceable and provide
+                useful documentation at that IRI. 
+              </t>
+              </list>
+            </t>
+            <t hangText="Encoding considerations:">
+              <list style="hanging">
+                <t hangText="binary">
+                  Same as encoding considerations of
+                  application/xml as specified in <xref
+                  target="RFC3023" />.
+                </t>
+              </list>
+            </t>
+            <t hangText="Security considerations:">
+              This format shares security issues common to all XML
+              content types. It does not provide executable content. 
+              Information contained in ALPS documents do not 
+              require privacy or integrity services.
+            </t>
+            <t hangText="Interoperability considerations:">
+              ALPS is not described by a DTD and applies only
+              the well-formedness rules of XML. It should only 
+              be parsed by a non-validating parser.
+            </t>
+            <t hangText="Published specification:">
+              This Document
+            </t>
+            <t hangText="Applications that use this media type:">
+              Various
+            </t>
+            <t hangText="Additional information:">
+              <list style="hanging">
+                <t hangText="magic number(s):">
+                  none
+                </t>
+                <t hangText="file extensions:">
+                  .xml
+                </t>
+                <t hangText="macintosh type file code:">
+                  TEXT
+                </t>
+                <t hangText="object idenfiers:">
+                  none
+                </t>
+              </list>
+            </t>
+            <t hangText="person to contact for further information:">
+              <list style="hanging">
+                <t hangText="Name:">
+                  Mike Amundsen
+                </t>
+                <t hangText="Email:">
+                  mca@amundsen.com
+                </t>
+              </list>
+            </t>
+            <t hangText="Intended usage:">
+              Common
+            </t>
+            <t hangText="Author/change controller:">
+              Mike Amundsen
+            </t>
+          </list>
+        </t>
+      </section>
+      <section anchor="iana-alps-json" title="application/alps+json">
+        <t>
+          <list style="hanging">
+            <t hangText="Type name:">
+              application
+            </t>
+            <t hangText="Subtype name:">
+              alps+json
+            </t>
+            <t hangText="Required parameters:">
+              None
+            </t>
+            <t hangText="Optional parameters:">
+                <list style="hanging">
+                    <t hangText="profile">
+                A whitespace-separated list of IRIs identifying specific
+                constraints or conventions that apply to an ALPS document.
+                A profile must not change the semantics of the resource
+                representation when processed without profile knowledge, so
+                that clients both with and without knowledge of a profiled
+                resource can safely use the same representation. The profile
+                parameter may also be used by clients to express their
+                preferences in the content negotiation process. It is
+                recommended that profile IRIs are dereferenceable and provide
+                useful documentation at that IRI. 
+                    </t>
+                </list>
+            </t>
+            <t hangText="Encoding considerations:">
+              binary
+            </t>
+            <t hangText="Security considerations:">
+              This media type shares security issues common to all
+              JSON content types. See <xref target="RFC4627"/> Section
+              #6 for additional information. ALPS+JSON does not
+              provide executable content.  Information contained in
+              ALPS+JSON documents do not require privacy or integrity
+              services.
+            </t>
+            <t hangText="Interoperability considerations:">
+              None
+            </t>
+            <t hangText="Published specification:">
+              This Document
+            </t>
+            <t hangText="Applications that use this media type:">
+              Various
+            </t>
+            <t hangText="Additional information:">
+              <list style="hanging">
+                <t hangText="magic number(s):">
+                  none
+                </t>
+                <t hangText="file extensions:">
+                  .json
+                </t>
+                <t hangText="macintosh type file code:">
+                  TEXT
+                </t>
+                <t hangText="object idenfiers:">
+                  none
+                </t>
+              </list>
+            </t>
+            <t hangText="person to contact for further information:">
+              <list style="hanging">
+                <t hangText="Name:">
+                  Mike Amundsen
+                </t>
+                <t hangText="Email:">
+                  mca@amundsen.com
+                </t>
+              </list>
+            </t>
+            <t hangText="Intended usage:">
+              Common
+            </t>
+            <t hangText="Author/change controller:">
+              Mike Amundsen
+            </t>
+          </list>
+        </t>
+      </section>
+    </section>
+    <section anchor="internationalization" 
+             title="Internationalization Considerations">
+      <t>[TK]</t>
+      <t>
+        <cref>insert text (consider rfc 5987)</cref>
+      </t>
+    </section>
+    <section title="Acknowledgements">
+      <t>[TK]</t>
+    </section>
+  </middle>
+
+  <!-- back matter -->
+  <back>
+    <references title="Normative References">
+      &rfc2119;
+      &rfc3023;
+      &rfc4627;
+      &rfc5988;
+    </references>
+    <references title="Informative References">
+    </references>
+  </back>
+</rfc>

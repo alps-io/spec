@@ -1,0 +1,18 @@
+<resource href="http://example.org/contacts/">
+    <link rel="type" href="http://alps.io/profiles/contacts#contact" />
+    <link rel="collection" 
+        href="http://example.org/contacts/{?nameSearch}"
+        templated="true" />
+    <resource rel="item" href="http://example.org/contacts/1">
+        <link rel="type" href="http://alps.io/profiles/contacts#contact" />
+        <fullName>Ann Arbuckle</fullName>
+        <email>aa@example.org</email>
+        <phone>123.456.7890</phone>
+    </resource>
+    <resource rel="item" href="http://example.org/contacts/100">
+        <link rel="type" href="http://alps.io/profiles/contacts#contact" />
+        <fullName>Zelda Zackney</fullName>
+        <email>zz@example.org</email>
+        <phone>987.664.3210</phone>
+    </resource>
+</resource>

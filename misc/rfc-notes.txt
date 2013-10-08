@@ -1,0 +1,10 @@
+Some notes on producing RFC docs.
+
+HOWTO: http://xml.resource.org/authoring/draft-mrose-writing-rfcs.html
+README: http://xml.resource.org/authoring/README.html
+FAQ: http://xml.resource.org/xml2rfcFAQ.html
+
+xml2rfc app: http://xml.resource.org/
+
+Good slide deck: http://www.rfc-editor.org/rfc-editor/intro_xml2rfc.pdf
+
