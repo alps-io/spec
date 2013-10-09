@@ -1,0 +1,1876 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head><title>Application-Level Profile Semantics (ALPS)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="Application-Level Profile Semantics (ALPS)">
+<meta name="generator" content="xml2rfc v1.36 (http://xml.resource.org/)">
+<style type='text/css'><!--
+        body {
+                font-family: verdana, charcoal, helvetica, arial, sans-serif;
+                font-size: small; color: #000; background-color: #FFF;
+                margin: 2em;
+        }
+        h1, h2, h3, h4, h5, h6 {
+                font-family: helvetica, monaco, "MS Sans Serif", arial, sans-serif;
+                font-weight: bold; font-style: normal;
+        }
+        h1 { color: #900; background-color: transparent; text-align: right; }
+        h3 { color: #333; background-color: transparent; }
+
+        td.RFCbug {
+                font-size: x-small; text-decoration: none;
+                width: 30px; height: 30px; padding-top: 2px;
+                text-align: justify; vertical-align: middle;
+                background-color: #000;
+        }
+        td.RFCbug span.RFC {
+                font-family: monaco, charcoal, geneva, "MS Sans Serif", helvetica, verdana, sans-serif;
+                font-weight: bold; color: #666;
+        }
+        td.RFCbug span.hotText {
+                font-family: charcoal, monaco, geneva, "MS Sans Serif", helvetica, verdana, sans-serif;
+                font-weight: normal; text-align: center; color: #FFF;
+        }
+
+        table.TOCbug { width: 30px; height: 15px; }
+        td.TOCbug {
+                text-align: center; width: 30px; height: 15px;
+                color: #FFF; background-color: #900;
+        }
+        td.TOCbug a {
+                font-family: monaco, charcoal, geneva, "MS Sans Serif", helvetica, sans-serif;
+                font-weight: bold; font-size: x-small; text-decoration: none;
+                color: #FFF; background-color: transparent;
+        }
+
+        td.header {
+                font-family: arial, helvetica, sans-serif; font-size: x-small;
+                vertical-align: top; width: 33%;
+                color: #FFF; background-color: #666;
+        }
+        td.author { font-weight: bold; font-size: x-small; margin-left: 4em; }
+        td.author-text { font-size: x-small; }
+
+        /* info code from SantaKlauss at http://www.madaboutstyle.com/tooltip2.html */
+        a.info {
+                /* This is the key. */
+                position: relative;
+                z-index: 24;
+                text-decoration: none;
+        }
+        a.info:hover {
+                z-index: 25;
+                color: #FFF; background-color: #900;
+        }
+        a.info span { display: none; }
+        a.info:hover span.info {
+                /* The span will display just on :hover state. */
+                display: block;
+                position: absolute;
+                font-size: smaller;
+                top: 2em; left: -5em; width: 15em;
+                padding: 2px; border: 1px solid #333;
+                color: #900; background-color: #EEE;
+                text-align: left;
+        }
+
+        a { font-weight: bold; }
+        a:link    { color: #900; background-color: transparent; }
+        a:visited { color: #633; background-color: transparent; }
+        a:active  { color: #633; background-color: transparent; }
+
+        p { margin-left: 2em; margin-right: 2em; }
+        p.copyright { font-size: x-small; }
+        p.toc { font-size: small; font-weight: bold; margin-left: 3em; }
+        table.toc { margin: 0 0 0 3em; padding: 0; border: 0; vertical-align: text-top; }
+        td.toc { font-size: small; font-weight: bold; vertical-align: text-top; }
+
+        ol.text { margin-left: 2em; margin-right: 2em; }
+        ul.text { margin-left: 2em; margin-right: 2em; }
+        li      { margin-left: 3em; }
+
+        /* RFC-2629 <spanx>s and <artwork>s. */
+        em     { font-style: italic; }
+        strong { font-weight: bold; }
+        dfn    { font-weight: bold; font-style: normal; }
+        cite   { font-weight: normal; font-style: normal; }
+        tt     { color: #036; }
+        tt, pre, pre dfn, pre em, pre cite, pre span {
+                font-family: "Courier New", Courier, monospace; font-size: small;
+        }
+        pre {
+                text-align: left; padding: 4px;
+                color: #000; background-color: #CCC;
+        }
+        pre dfn  { color: #900; }
+        pre em   { color: #66F; background-color: #FFC; font-weight: normal; }
+        pre .key { color: #33C; font-weight: bold; }
+        pre .id  { color: #900; }
+        pre .str { color: #000; background-color: #CFF; }
+        pre .val { color: #066; }
+        pre .rep { color: #909; }
+        pre .oth { color: #000; background-color: #FCF; }
+        pre .err { background-color: #FCC; }
+
+        /* RFC-2629 <texttable>s. */
+        table.all, table.full, table.headers, table.none {
+                font-size: small; text-align: center; border-width: 2px;
+                vertical-align: top; border-collapse: collapse;
+        }
+        table.all, table.full { border-style: solid; border-color: black; }
+        table.headers, table.none { border-style: none; }
+        th {
+                font-weight: bold; border-color: black;
+                border-width: 2px 2px 3px 2px;
+        }
+        table.all th, table.full th { border-style: solid; }
+        table.headers th { border-style: none none solid none; }
+        table.none th { border-style: none; }
+        table.all td {
+                border-style: solid; border-color: #333;
+                border-width: 1px 2px;
+        }
+        table.full td, table.headers td, table.none td { border-style: none; }
+
+        hr { height: 1px; }
+        hr.insert {
+                width: 80%; border-style: none; border-width: 0;
+                color: #CCC; background-color: #CCC;
+        }
+--></style>
+</head>
+<body>
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<table summary="layout" width="66%" border="0" cellpadding="0" cellspacing="0"><tr><td><table summary="layout" width="100%" border="0" cellpadding="2" cellspacing="1">
+<tr><td class="header">Network Working Group</td><td class="header">M. Amundsen</td></tr>
+<tr><td class="header">Internet-Draft</td><td class="header">Layer 7 Technologies</td></tr>
+<tr><td class="header">Expires: September 2, 2013</td><td class="header">L. Richardson</td></tr>
+<tr><td class="header">&nbsp;</td><td class="header">March 1, 2013</td></tr>
+</table></td></tr></table>
+<h1><br />Application-Level Profile Semantics (ALPS)<br />draft-amundsen-richardson-alps-00</h1>
+
+<h3>Abstract</h3>
+
+<p>
+                This document describes ALPS, a data format for
+                defining simple descriptions of application-level
+                semantics, similar in complexity to HTML
+                microformats. An ALPS document can be used as a
+                profile to explain the application semantics of a
+                document with an application-agnostic media type (such
+                as HTML, HAL, Collection+JSON, or Siren). This
+                increases the reusability of profile documents across
+                media types.
+            
+</p>
+<h3>Editorial Note (To be removed by RFC Editor)</h3>
+
+<p>
+            Distribution of this document is unlimited. Comments should be sent to the 
+            IETF Media-Types mailing list (see 
+            <a href='https://www.ietf.org/mailman/listinfo/media-types'>https://www.ietf.org/mailman/listinfo/media-types</a>).
+            
+</p>
+<h3>Status of This Memo</h3>
+<p>
+This Internet-Draft is submitted  in full
+conformance with the provisions of BCP&nbsp;78 and BCP&nbsp;79.</p>
+<p>
+Internet-Drafts are working documents of the Internet Engineering
+Task Force (IETF).  Note that other groups may also distribute
+working documents as Internet-Drafts.  The list of current
+Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
+<p>
+Internet-Drafts are draft documents valid for a maximum of six months
+and may be updated, replaced, or obsoleted by other documents at any time.
+It is inappropriate to use Internet-Drafts as reference material or to cite
+them other than as &ldquo;work in progress.&rdquo;</p>
+<p>
+This Internet-Draft will expire on September 2, 2013.</p>
+
+<h3>Copyright Notice</h3>
+<p>
+Copyright (c) 2013 IETF Trust and the persons identified as the
+document authors.  All rights reserved.</p>
+<p>
+This document is subject to BCP 78 and the IETF Trust's Legal
+Provisions Relating to IETF Documents
+(http://trustee.ietf.org/license-info) in effect on the date of
+publication of this document.  Please review these documents
+carefully, as they describe your rights and restrictions with respect
+to this document. Code Components extracted from this document must
+include Simplified BSD License text as described in Section 4.e of
+the Trust Legal Provisions and are provided without warranty as
+described in the Simplified BSD License.</p>
+<a name="toc"></a><br /><hr />
+<h3>Table of Contents</h3>
+<p class="toc">
+<a href="#anchor1">1.</a>&nbsp;
+Introduction<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor2">1.1.</a>&nbsp;
+Notational Conventions<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor3">1.2.</a>&nbsp;
+Motivation<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor4">1.2.1.</a>&nbsp;
+Describing Domain-Specific Semantics<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor5">1.2.2.</a>&nbsp;
+ALPS-based Server Implementations<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor6">1.2.3.</a>&nbsp;
+ALPS-based Client Implementations<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor7">1.3.</a>&nbsp;
+A Simple ALPS Example<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor8">1.4.</a>&nbsp;
+Identifying an ALPS Document<br />
+<a href="#anchor9">2.</a>&nbsp;
+ALPS Documents<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor10">2.1.</a>&nbsp;
+Compliance<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor11">2.2.</a>&nbsp;
+ALPS Document Properties<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#prop-alps">2.2.1.</a>&nbsp;
+'alps'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#prop-appears">2.2.2.</a>&nbsp;
+'appears'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#prop-cardinality">2.2.3.</a>&nbsp;
+'cardinality'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#prop-doc">2.2.4.</a>&nbsp;
+'doc'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#prop-descriptor">2.2.5.</a>&nbsp;
+'descriptor'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#prop-ext">2.2.6.</a>&nbsp;
+'ext'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#prop-format">2.2.7.</a>&nbsp;
+'format'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#prop-href">2.2.8.</a>&nbsp;
+'href'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#prop-id">2.2.9.</a>&nbsp;
+'id'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#prop-link">2.2.10.</a>&nbsp;
+'link'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#prop-name">2.2.11.</a>&nbsp;
+'name'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#prop-rel">2.2.12.</a>&nbsp;
+'rel'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#prop-type">2.2.13.</a>&nbsp;
+'type'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#prop-value">2.2.14.</a>&nbsp;
+'value'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#prop-version">2.2.15.</a>&nbsp;
+'version'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#representations">2.3.</a>&nbsp;
+ALPS Representations<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#html-representation">2.3.1.</a>&nbsp;
+Sample HTML<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#xml-representation">2.3.2.</a>&nbsp;
+XML Representation<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#json-representation">2.3.3.</a>&nbsp;
+JSON Representation<br />
+<a href="#instructions">3.</a>&nbsp;
+Instructions on Applying ALPS to Existing Media Types<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#a-simple-alps-document">3.1.</a>&nbsp;
+A Simple ALPS Document<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#html-example">3.2.</a>&nbsp;
+HTML Example<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#collection-json-example">3.3.</a>&nbsp;
+Collection+JSON Example<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#linking-to-alps-documents">3.4.</a>&nbsp;
+Linking to ALPS Documents<br />
+<a href="#alps-registry">4.</a>&nbsp;
+The ALPS Registry<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#what-is-the-alps-registry">4.1.</a>&nbsp;
+What is the ALPS Registry<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#searching-the-registry">4.2.</a>&nbsp;
+Searching the Registry<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#contributing-to-the-registry">4.3.</a>&nbsp;
+Contributing to the Registry<br />
+<a href="#iana-considerations">5.</a>&nbsp;
+IANA Considerations<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#iana-alps-xml">5.1.</a>&nbsp;
+application/alps+xml<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#iana-alps-json">5.2.</a>&nbsp;
+application/alps+json<br />
+<a href="#internationalization">6.</a>&nbsp;
+Internationalization Considerations<br />
+<a href="#anchor19">7.</a>&nbsp;
+Acknowledgements<br />
+<a href="#rfc.references1">8.</a>&nbsp;
+References<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#rfc.references1">8.1.</a>&nbsp;
+Normative References<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#rfc.references2">8.2.</a>&nbsp;
+Informative References<br />
+</p>
+<br clear="all" />
+
+<a name="anchor1"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.1"></a><h3>1.&nbsp;
+Introduction</h3>
+
+<p>
+              This document describes ALPS, a media type for defining
+              simple descriptions of application-level semantics,
+              similar in complexity to HTML microformats. These
+              descriptions contain both human-readable and
+              machine-readable explanations of the semantics.
+            
+</p>
+<p>
+              An ALPS document can be used as a profile to explain the
+              application semantics of a document with an
+              application-agnostic media type (such as HTML, HAL,
+              Collection+JSON, or Siren).
+            
+</p>
+<p>
+              This document identifies a registry for ALPS documents,
+              and sets a standard for creating and registering ALPS
+              document identifiers with that registry.
+            
+</p>
+<p>
+              This document also identifies a registry for normative
+              human-readable instructions on applying an ALPS document
+              as a profile to a document with a given media type. It
+              sets a standard for registering media types with that
+              registry. It gives some non-normative examples in which
+              a single ALPS document is applied as a profile to
+              documents with different media types.
+            
+</p>
+<p>
+              This document registers two media-type identifiers with
+              the IANA: 'application/alps+xml' ("ALPS+XML") and
+              'application/alps+json' ("ALPS+JSON").
+            
+</p>
+<a name="anchor2"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.1.1"></a><h3>1.1.&nbsp;
+Notational Conventions</h3>
+
+<p>
+                The key words "MUST", "MUST NOT", "REQUIRED", "SHALL",
+                "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",
+                "MAY", and "OPTIONAL" in this document are to be
+                interpreted as described in <a class='info' href='#RFC2119'>[RFC2119]<span> (</span><span class='info'>Bradner, S., &ldquo;Key words for use in RFCs to Indicate Requirement Levels,&rdquo; March&nbsp;1997.</span><span>)</span></a>.
+                
+</p>
+<a name="anchor3"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.1.2"></a><h3>1.2.&nbsp;
+Motivation</h3>
+
+<p>
+                    When implementing a hypermedia client/server
+                    application using a general media type (HTML,
+                    Atom, Collection+JSON, etc.), client and server
+                    instances need to share an understanding of
+                    domain-specific information such as data element
+                    names, link relation values, and state transfer
+                    parameters. This information is directly related
+                    to the application being implemented
+                    (i.e. accounting, contact management, etc.) rather
+                    than the media type used in the representations.
+                
+</p>
+<a name="anchor4"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.1.2.1"></a><h3>1.2.1.&nbsp;
+Describing Domain-Specific Semantics</h3>
+
+<p>
+                        Instead of creating and registering an
+                        entirely new media type
+                        (i.e. 'application/accounting'),
+                        representation authors can create an ALPS
+                        document that describes a "profile" of the
+                        target domain; one that explains the vital
+                        domain-specific semantic descriptors and state
+                        transitions. This profile can then be
+                        consistently applied to a wide range of media
+                        types by server implementors and successfully
+                        consumed by client applications. The focus on
+                        defining application-level semantics
+                        independent of transfer protocol or media type
+                        makes it possible to serve
+                        application-specific representations using an
+                        application-agnostic media type.
+                    
+</p>
+<a name="anchor5"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.1.2.2"></a><h3>1.2.2.&nbsp;
+ALPS-based Server Implementations</h3>
+
+<p>
+                        Server implementors can use ALPS documents as
+                        a basis for building domain-specific solutions
+                        without having to create their own custom
+                        media type or re-invent the vocabulary and
+                        transition set for a common domain (e.g.
+                        accounting, microblogging, etc.). Using a
+                        preexisting ALPS profile as a guide, servers
+                        can map internal data to commonly-understood
+                        semantic descriptors and state transitions,
+                        increasing the likelihood that existing client
+                        applications (those who share the same
+                        understanding of the ALPS document) will be
+                        able to successfully interact with that
+                        server.
+                    
+</p>
+<a name="anchor6"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.1.2.3"></a><h3>1.2.3.&nbsp;
+ALPS-based Client Implementations</h3>
+
+<p>
+                        Armed with an ALPS document as a "profile" for
+                        the received representation, client
+                        applications can identify the link relations
+                        and semantic descriptors within it.  Client
+                        applications can "code for the profile" and
+                        better adjust to detailed changes to the
+                        response layout, or even the wholesale
+                        replacement of one media type with another.
+                    
+</p>
+<a name="anchor7"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.1.3"></a><h3>1.3.&nbsp;
+A Simple ALPS Example</h3>
+
+<p>This ALPS document describes [TK.]
+</p>
+<p>[TK maybe put the YouTypeItWePostIt stuff here? -mca]
+</p>
+<p>[That's complicated since it involves an unsafe state
+              transition. We wouldn't be able to show a plain JSON
+              version. I think a contact-manager type application
+              would work better? -leonardr]
+</p>
+<p>This HTML document uses the ALPS profile to express a
+              set of application-level semantics on top of the semantics
+              defined by HTML.
+</p>
+<p>[TK]
+</p>
+<p>This HAL document uses the same profile to epress the
+              same application-level semantics.
+</p>
+<p>[TK]
+</p>
+<p>This JSON document uses the same profile to express
+              the same application-level semantics.
+</p>
+<p>[TK]
+</p>
+<p>Since the 'application/json' media type defines no
+              hypermedia controls, the ALPS profile must be brought in
+              using the 'Link' HTTP header:
+</p>
+<p>Link: http://example.com/profiles/TK.alps;rel="profile"
+</p>
+<p>But with the profile in place, additional hypermedia
+              controls become visible. An understanding of the ALPS
+              profile reveals that the '[TK]' property of the
+              top-level JSON object is intended to be a hypermedia
+              link.
+</p>
+<a name="anchor8"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.1.4"></a><h3>1.4.&nbsp;
+Identifying an ALPS Document</h3>
+
+<p>
+                  An ALPS vocabulary is identified by a unique URL.
+                  The URL MUST resolve to a valid ALPS document. The
+                  server MAY use HTTP content negotiation to serve a
+                  human-readable description of the ALPS vocabulary to
+                  clients that request an HTML representation.  [TK
+                  how's that? or should we stick to [link rel="help"]?
+                  -leonardr :: Maybe we should be silent on the matter
+                  here? -mca]
+                
+</p>
+<p>
+                  A client SHOULD NOT automatically resolve an ALPS
+                  vocabulary URL, to avoid overburdening its server.
+                
+</p>
+<p>
+                  All ALPS URLs MUST be unique and all ALPS documents
+                  intended for public consumption SHOULD be registered
+                  with the ALPS Registry located at [TK].
+                
+</p>
+<a name="anchor9"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2"></a><h3>2.&nbsp;
+ALPS Documents</h3>
+
+<p>
+              An ALPS document contains a machine-readable collection
+              of identifying strings and their human-readable
+              explanations. An ALPS document can be represented in
+              either XML or JSON format. This section identifies the
+              general elements and properties of an ALPS document,
+              their meaning, and their use, independent of how the
+              document is represented. <a class='info' href='#representations'>Section&nbsp;2.3<span> (</span><span class='info'>ALPS Representations</span><span>)</span></a> provides specific details on
+              constructing a valid ALPS document in XML and in JSON
+              format.
+            
+</p>
+<a name="anchor10"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.1"></a><h3>2.1.&nbsp;
+Compliance</h3>
+
+<p>
+                An implementation is not compliant if it fails to
+                satisfy one or more of the MUST or REQUIRED level
+                requirements.  An implementation that satisfies all
+                the MUST or REQUIRED level and all the SHOULD level
+                requirements is said to be "unconditionally
+                compliant"; one that satisfies all the MUST level
+                requirements but not all the SHOULD level requirements
+                is said to be "conditionally compliant."
+              
+</p>
+<a name="anchor11"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2"></a><h3>2.2.&nbsp;
+ALPS Document Properties</h3>
+
+<p>
+                The ALPS media type defines a small set of
+                properties. These properties appear in both the XML
+                and JSON formats. Below is a list of the properties
+                that can appear in an ALPS document.
+              
+</p>
+<a name="prop-alps"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2.1"></a><h3>2.2.1.&nbsp;
+'alps'</h3>
+
+<p>
+                  Indicates the root of the ALPS document. This
+                  property is REQUIRED, and it SHOULD have one or more
+                  <a class='info' href='#prop-descriptor'>'descriptor'<span> (</span><span class='info'>'descriptor'</span><span>)</span></a> child properties.
+                
+</p>
+<p>
+                  Examples:
+                  </p>
+<blockquote class="text"><dl>
+<dt>XML:</dt>
+<dd>
+                      &lt;alps&gt;...&lt;/alps&gt;
+                    
+</dd>
+<dt>JSON:</dt>
+<dd>
+                      {"alps" : ... }
+                    
+</dd>
+</dl></blockquote><p>
+                
+</p>
+<a name="prop-appears"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2.2"></a><h3>2.2.2.&nbsp;
+'appears'</h3>
+
+<p>
+                  Indicates the appearance rules for the related <a class='info' href='#prop-descriptor'>'descriptor'<span> (</span><span class='info'>'descriptor'</span><span>)</span></a> in a a
+                  representation. All valid values for this property
+                  are terms defined in <a class='info' href='#RFC2119'>[RFC2119]<span> (</span><span class='info'>Bradner, S., &ldquo;Key words for use in RFCs to Indicate Requirement Levels,&rdquo; March&nbsp;1997.</span><span>)</span></a>, and
+                  have the meaning given in that standard.
+                
+</p>
+<a name="anchor12"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2.2.1"></a><h3>2.2.2.1.&nbsp;
+Applied to a top-level 'descriptor'</h3>
+
+<p>
+                    The 'appears' property MAY appear as a property
+                    of a "top level" 'descriptor'. This controls
+                    whether the the 'descriptor' may appear at the "top
+                    level"; that is, not enclosed in any other
+                    element defined by this ALPS document. The
+                    formal meanings of "top level" and "enclosed in"
+                    vary by the media type of the representation
+                    document; see <a class='info' href='#instructions'>Section&nbsp;3<span> (</span><span class='info'>Instructions on Applying ALPS to Existing Media Types</span><span>)</span></a> for
+                    definitions.
+                  
+</p>
+<p>
+                    Examples:
+                    </p>
+<blockquote class="text"><dl>
+<dt>XML:</dt>
+<dd>
+                        &lt;element ... appears="MUST NOT"&gt;
+                      
+</dd>
+<dt>JSON:</dt>
+<dd>
+                        {"element" : "{..., "appears" : "MUST NOT"}}
+                      
+</dd>
+</dl></blockquote><p>
+                  
+</p>
+<p>
+                    Valid values for 'appears' in a top-level
+                    'descriptor' are: "MUST", "SHOULD", "MAY",
+                    and "MUST NOT". If this property does not
+                    appear, the value SHOULD be treated as "MUST
+                    NOT". [TK that comes from microformats. But for
+                    schema.org a better default value is "MAY". I
+                    don't know which is better. -LR :: I think MA
+                    is fine and that means no diff for top-level
+                    or enclosed descriptors! -mca]
+                  
+</p>
+<a name="anchor13"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2.2.2"></a><h3>2.2.2.2.&nbsp;
+Applied to an enclosing 'descriptor'</h3>
+
+<p>
+                    The 'appears' property MAY appear as a property of
+                    an enclosing 'descriptor. This controls
+                    the rules by which the referenced element may
+                    appear as a child of the enclosing 'descriptor'. The
+                    formal meaning of "enclosing 'descriptor'" varies by
+                    the media type of the representation document; see
+                    <a class='info' href='#instructions'>Section&nbsp;3<span> (</span><span class='info'>Instructions on Applying ALPS to Existing Media Types</span><span>)</span></a> for definitions.
+                  
+</p>
+<p>
+                    Examples:
+                    </p>
+<blockquote class="text"><dl>
+<dt>XML:</dt>
+<dd>
+                        &lt;element ... appears="MAY"&gt;
+                      
+</dd>
+<dt>JSON:</dt>
+<dd>
+                        {"element" : "{..., "appears" : "MAY"}}
+                      
+</dd>
+</dl></blockquote><p>
+                  
+</p>
+<p>
+                    Valid values for 'appears' in an enclosing
+                    'descriptor' are: "MUST", "SHOULD", and "MAY". If
+                    this property does not appear, the value SHOULD be
+                    treated as "MAY".
+                  
+</p>
+<a name="prop-cardinality"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2.3"></a><h3>2.2.3.&nbsp;
+'cardinality'</h3>
+
+<p>
+                  Indicates the number of times the related <a class='info' href='#prop-descriptor'>'descriptor'<span> (</span><span class='info'>'descriptor'</span><span>)</span></a> can
+                  appear. Valid values are "single" and "many".  If
+                  this property does not appear, the value SHOULD be
+                  treated as "many".
+                
+</p>
+<p>
+                  Examples:
+                  </p>
+<blockquote class="text"><dl>
+<dt>XML:</dt>
+<dd>
+                      &lt;element ... candinality="many"&gt;
+                    
+</dd>
+<dt>JSON:</dt>
+<dd>
+                      {"element" : "{..., "cardinaltiy" : "many"}}
+                    
+</dd>
+</dl></blockquote><p>
+                
+</p>
+<a name="prop-doc"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2.4"></a><h3>2.2.4.&nbsp;
+'doc'</h3>
+
+<p>
+                  A text field that contains free-form, usually
+                  human-readable, text.  
+                    The 'doc' element MAY have two properties:
+                    <a class='info' href='#prop-href'>'href'<span> (</span><span class='info'>'href'</span><span>)</span></a> and
+                    <a class='info' href='#prop-format'>'format'<span> (</span><span class='info'>'format'</span><span>)</span></a>.
+                    If the 'href' property appears it SHOULD contain
+                    a dereferencable URL that points to human-readable
+                    text. If the 'format' property appears it SHOULD
+                    contain one of two possible values:
+                  </p>
+<ol class="text">
+<li>"text"
+</li>
+<li>"html"
+</li>
+</ol><p>
+                  If the 'format' property is set to "html" the
+                  content within the 'description' block MUST be
+                  treated as HTML markup.  If no 'format' property is
+                  present, the content SHOULD be treated as plain
+                  text.
+                  </p>
+<blockquote class="text"><dl>
+<dt>XML:</dt>
+<dd>
+&lt;description format="html"&gt;
+   &lt;h1&gt;Date of Birth&lt;/h1&gt;
+   &lt;p&gt;...&lt;/p&gt;
+&lt;/description&gt;
+                        
+</dd>
+<dt>JSON:</dt>
+<dd>
+{"description" : 
+    {"format" : "text" : "value" : "Date of Birth ..."}
+}
+                        
+</dd>
+</dl></blockquote><p>
+                
+</p>
+<p>
+                  A 'doc' element SHOULD appear as a child of
+                  <a class='info' href='#prop-descriptor'>'descriptor'<span> (</span><span class='info'>'descriptor'</span><span>)</span></a>.  When
+                  present, it describes the meaning and use of the
+                  related 'descriptor'.
+                    </p>
+<blockquote class="text"><dl>
+<dt>XML:</dt>
+<dd>
+&lt;element ... &gt;
+    &lt;description&gt;...&lt;/description&gt;
+&lt;/element&gt;
+                        
+</dd>
+<dt>JSON:</dt>
+<dd>
+{"element" : {...}
+    {"description" : {"value" : "..."}
+}
+                        
+</dd>
+</dl></blockquote><p>
+                
+</p>
+<p>
+                  The 'doc' element MAY appear as a child of <a class='info' href='#prop-alps'>'alps'<span> (</span><span class='info'>'alps'</span><span>)</span></a>.  When present, it
+                  describes the purpose of the ALPS document as a
+                  whole.
+                  </p>
+<blockquote class="text"><dl>
+<dt>XML:</dt>
+<dd>
+&lt;alps&gt;
+    &lt;description&gt;...&lt;/description&gt;
+    ...
+&lt;/apls&gt;
+                        
+</dd>
+<dt>JSON:</dt>
+<dd>
+{"alps :
+   "description" : { "value" : "..."},
+   ...
+}
+                        
+</dd>
+</dl></blockquote><p>
+                
+</p>
+<a name="prop-descriptor"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2.5"></a><h3>2.2.5.&nbsp;
+'descriptor'</h3>
+
+<p>
+                  Identifies a semantic descriptor. [TK is this the
+                  right term to use here? Is a link relation a
+                  semantic descriptor? -leonardr :: I think we're OK here. A 
+                  link rel is a semantic identifier? -mca] One or more
+                  'descriptor' elements SHOULD appear as children of
+                  <a class='info' href='#prop-alps'>'alps'<span> (</span><span class='info'>'alps'</span><span>)</span></a>. It may
+                  also appear as a child of itself; that is, the
+                  'descriptor' property may be nested.
+                
+</p>
+<p>
+                  The 'descriptor' property MUST have either an <a class='info' href='#prop-id'>'id'<span> (</span><span class='info'>'id'</span><span>)</span></a> or <a class='info' href='#prop-href'>'href'<span> (</span><span class='info'>'href'</span><span>)</span></a> attribute. It MAY
+                  have both. Additionally, the 'descriptor' MAY have any
+                  of the following attributes:
+                  </p>
+<ol class="text">
+<li><a class='info' href='#prop-appears'>'appears'<span> (</span><span class='info'>'appears'</span><span>)</span></a>
+</li>
+<li><a class='info' href='#prop-cardinality'>'cardinality'<span> (</span><span class='info'>'cardinality'</span><span>)</span></a>
+</li>
+<li><a class='info' href='#prop-doc'>'doc'<span> (</span><span class='info'>'doc'</span><span>)</span></a>
+</li>
+<li><a class='info' href='#prop-ext'>'ext'<span> (</span><span class='info'>'ext'</span><span>)</span></a>
+</li>
+<li><a class='info' href='#prop-name'>'name'<span> (</span><span class='info'>'name'</span><span>)</span></a>
+</li>
+<li><a class='info' href='#prop-type'>'type'<span> (</span><span class='info'>'type'</span><span>)</span></a>
+</li>
+</ol><p>
+                
+</p>
+<p>
+                  If present, the 'href' property MUST be a
+                  dereferenceable URL that points to another 'descriptor'
+                  either within the current ALPS document or in
+                  another ALPS document.  [TK we were considering
+                  getting rid of href and seeing what happened. -LR
+                  :: I;m torn on this one. We could insist only frag-ids
+                  are allowed, but i don't think that helps much. -mca]
+                
+</p>
+<p>
+                  If 'descriptor' has an 'href' attribute, then 'descriptor'
+                  is inheriting all the attributes and sub-properties
+                  of the element pointed to by 'href'. When 'descriptor'
+                  has a property defined locally, that property value
+                  takes precedence over any inherited property
+                  value. Since there is no limit to the nesting of
+                  elements -- even ones linked remotely -- it is
+                  important to process 'all descriptor' chains starting
+                  from the bottom to make sure you have collected
+                  all the available properties and have established
+                  the correct value for each of them. [TK but this
+                  contradicts the rule that clients should not
+                  automatically fetch ALPS documents. -leonardr
+                  :: fetching to resolve the descriptor chain need not
+                  be done 'automatically', right? -mca]
+                
+</p>
+<a name="prop-ext"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2.6"></a><h3>2.2.6.&nbsp;
+'ext'</h3>
+
+<p>
+                 The 'ext' element can be used to extend the ALPS
+                 document with author-specific information. It
+                 provides a way to customize ALPS documents with
+                 additional properties not covered in this
+                 specification. This is an OPTIONAL element.
+                
+</p>
+<p>
+                  The 'ext' element has two properties. The <a class='info' href='#prop-href'>'href'<span> (</span><span class='info'>'href'</span><span>)</span></a> property MUST
+                  appear for the 'ext' element. It's value MUST be a
+                  value URI and it SHOULD be resolveable. The <a class='info' href='#prop-value'>'value'<span> (</span><span class='info'>'value'</span><span>)</span></a> property MAY
+                  appear for the 'ext' element.  The meaning and use
+                  of the value property is described in the document
+                  found by dereferencing the 'href' property of the
+                  'ext' element.
+                
+</p>
+<p>
+                  Examples:
+                  </p>
+<blockquote class="text"><dl>
+<dt>XML:</dt>
+<dd>
+                      &lt;ext href="http://alps.io/ext/directions"
+                      value="north south east west" &gt;
+                    
+</dd>
+<dt>JSON:</dt>
+<dd>
+                      {"ext" : {"href"
+                      : "http://alps.io/ext/directions",
+                      value="north south east west"}}
+                    
+</dd>
+</dl></blockquote><p>
+                
+</p>
+<p>
+                  The 'ext' element MAY appear as a child of the following
+                  elements:
+                  </p>
+<ol class="text">
+<li><a class='info' href='#prop-alps'>'alps'<span> (</span><span class='info'>'alps'</span><span>)</span></a>
+</li>
+<li><a class='info' href='#prop-descriptor'>'descriptor'<span> (</span><span class='info'>'descriptor'</span><span>)</span></a>
+</li>
+</ol><p>
+                
+</p>
+<p>
+                  Since the 'ext' element has no specific meaning
+                  within this specification, it MUST be ignored by any
+                  application that does not understand its meaning.
+                
+</p>
+<p>
+                  Authors who define 'ext' elements SHOULD register these
+                  extensions with the ALPS Registry (see <a class='info' href='#alps-registry'>Section&nbsp;4<span> (</span><span class='info'>The ALPS Registry</span><span>)</span></a>) and use the URI provided by
+                  the registry in the 'name' property of their extension.
+                
+</p>
+<a name="prop-format"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2.7"></a><h3>2.2.7.&nbsp;
+'format'</h3>
+
+<p>
+                  Indicates whether textual content associated with
+                  the element should be treated as plain text ('text')
+                  or HTML ('html'). Other values for this attribute
+                  are undefined. This
+                  attribute MAY appear as an attribute of the <a class='info' href='#prop-doc'>'doc'<span> (</span><span class='info'>'doc'</span><span>)</span></a>
+                  element.
+                
+</p>
+<a name="prop-href"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2.8"></a><h3>2.2.8.&nbsp;
+'href'</h3>
+
+<p>
+                  Contains a resolvable URL.
+                
+</p>
+<p>
+                  When it appears as an attribute of <a class='info' href='#prop-descriptor'>'descriptor'<span> (</span><span class='info'>'descriptor'</span><span>)</span></a>, 'href'
+                  points to another 'descriptor' either within the
+                  existing ALPS document or in another ALPS document.
+                
+</p>
+<p>
+                  When it appears as an attribute of <a class='info' href='#prop-ext'>'ext'<span> (</span><span class='info'>'ext'</span><span>)</span></a>, 'href' points to an
+                  external document which provides the defintion of
+                  the extension.
+                
+</p>
+<p>
+                  When it appears as an attribute of <a class='info' href='#prop-link'>'link'<span> (</span><span class='info'>'link'</span><span>)</span></a> 'href' points to an
+                  external document whose relationship to the current
+                  document or 'descriptor' is described by
+                  the associated <a class='info' href='#prop-rel'>'rel'<span> (</span><span class='info'>'rel'</span><span>)</span></a>
+                  property.
+              
+</p>
+<p>
+                  When it appears as an attribute of 
+                  <a class='info' href='#prop-doc'>'doc'<span> (</span><span class='info'>'doc'</span><span>)</span></a>, 'href' points to a
+                  document that contains human-readable text that describes
+                  the associated 'descriptor' or ALPS document.
+              
+</p>
+<a name="prop-id"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2.9"></a><h3>2.2.9.&nbsp;
+'id'</h3>
+
+<p>
+                A document-wide unique identifier for the related
+                element. This MAY appear as an attribute of an <a class='info' href='#prop-descriptor'>'descriptor'<span> (</span><span class='info'>'descriptor'</span><span>)</span></a>.
+              
+</p>
+<p>
+                The value of this attribute will appear within
+                generic representations as the name of a semantic
+                descriptor or hypermedia control (see <a class='info' href='#instructions'>Section&nbsp;3<span> (</span><span class='info'>Instructions on Applying ALPS to Existing Media Types</span><span>)</span></a> for details). The exception
+                is when a 'descriptor' defines <a class='info' href='#prop-name'>'name'<span> (</span><span class='info'>'name'</span><span>)</span></a> as well as <a class='info' href='#prop-id'>'id'<span> (</span><span class='info'>'id'</span><span>)</span></a>. In that case, the
+                value of 'name' contains the name of the semantic
+                descriptor or hypermedia control, and the value of
+                'id' is just a unique identifier internal to the
+                ALPS document.
+              
+</p>
+<p>
+                When applied to an ALPS document, a URI fragment
+                identifier points to the 'descriptor' with the
+                appropriate 'id'. For example, the fragment
+                identifier "customer" in the URI
+                http://example.com/#customer refers to an ALPS
+                'desdriptor' with 'id' set to "customer".
+              
+</p>
+<p>
+                A relative URL with a fragment identifier
+                (e.g. "#customer") refers to an 'descriptor' within the
+                ALPS document containing the reference.
+              
+</p>
+<p>
+                The complete URI to an ALPS 'descriptor' (including the
+                fragement) forms an "abstract semantic type"
+                identifier. This is a resolvable URI (URL) that can
+                be used to indicate the type of a resource; for
+                instance, it can be used as the value of the
+                IANA-registered link relation "type".
+              
+</p>
+<p>
+                A 'descrtiptor' that defines a state transition
+                establishes an extension link relation whose name is
+                the unqualified URI of the
+                element. (e.g. rel="http://example.com/#purchased-by")
+                However, within representations that include the
+                defining ALPS document as a profile, the descriptor's
+                'id' may be used on its own as a registered link
+                relation. (e.g. rel="purchased-by")
+              
+</p>
+<p>
+                For this reason, when selecting 'id' values and
+                defining 'descriptor' semantics, it is important to
+                avoid creating conflicts with existing
+                IANA-registered values. If it is unclear whether a
+                registered link relation in a representation
+                document refers to a relation registered with IANA
+                or a relation registered in an ALPS profile, the
+                semantics of that link are undefined.
+              
+</p>
+<a name="prop-link"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2.10"></a><h3>2.2.10.&nbsp;
+'link'</h3>
+
+<p>
+                Identifies a link between the current ALPS element and some
+                other (possibly external) resource. Can be applied to the 
+                <a class='info' href='#prop-alps'>'alps'<span> (</span><span class='info'>'alps'</span><span>)</span></a> and the 
+                <a class='info' href='#prop-descriptor'>'descriptor'<span> (</span><span class='info'>'descriptor'</span><span>)</span></a> elements.
+              
+</p>
+<p>
+                The 'link' property MUST define the two attributes
+                <a class='info' href='#prop-href'>'href'<span> (</span><span class='info'>'href'</span><span>)</span></a>  and 
+                <a class='info' href='#prop-rel'>'rel'<span> (</span><span class='info'>'rel'</span><span>)</span></a>.
+              
+</p>
+<a name="prop-name"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2.11"></a><h3>2.2.11.&nbsp;
+'name'</h3>
+
+<p>
+                  Indicates the name of the 
+                  <a class='info' href='#prop-descriptor'>'descriptor'<span> (</span><span class='info'>'descriptor'</span><span>)</span></a> as found in 
+                  generic representations. It MAY appear as a property of 
+                    'descriptor'.
+                
+</p>
+<p>
+                  This is used when the name of the 'descriptor'
+                  is used as an <a class='info' href='#prop-id'>'id'<span> (</span><span class='info'>'id'</span><span>)</span></a> value elsewhere in the
+                  ALPS document. For instance, if a single ALPS
+                  document defines a semantic descriptor called
+                  "customer" and a safe-idempotent control called
+                  "customer", they can't both have 'id="customer"' in
+                  the ALPS document. One of them needs to have some
+                  other 'id', and to set 'name="customer"'.  [TK now
+                  that we say that a semantic descriptor can also be a
+                  safe-idempotent control, i think this is either
+                  unnecessary, or we can say that the use of name is a
+                  design smell. -leonardr :: if we use ALPS to describe
+                  and existing design, this may be unavoidable. --mca]
+                
+</p>
+<a name="prop-rel"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2.12"></a><h3>2.2.12.&nbsp;
+'rel'</h3>
+
+<p>
+                  Contains a <a class='info' href='#RFC5988'>[RFC5988]<span> (</span><span class='info'>Nottingham, M., &ldquo;Web Linking,&rdquo; October&nbsp;2010.</span><span>)</span></a> approved
+                  value: either an extension link relation (a URI)
+                  or a registered link relation (a short string).
+                
+</p>
+<p>
+                  Appears as a property of <a class='info' href='#prop-link'>link<span> (</span><span class='info'>'link'</span><span>)</span></a>.
+                
+</p>
+<p>
+                  A link relation defined within an ALPS document MAY
+                  NOT be used as a registered link relation within the
+                  same document. [TK MAY NOT or SHOULD NOT? -mca]
+                
+</p>
+<a name="prop-type"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2.13"></a><h3>2.2.13.&nbsp;
+'type'</h3>
+
+<p>
+                Indicates the type of representation control to which
+                the element is applied. This MUST appear for each
+                element.  Four valid values are defined:
+                
+                </p>
+<blockquote class="text"><dl>
+<dt>&quot;descriptor&quot;</dt>
+<dd>
+                    A state element (e.g.  HTML.SPAN, HTML.INPUT,
+                    etc.) OR a hypermedia control that triggers a
+                    safe, idempotent transition (e.g. HTTP.GET or
+                    HTTP.HEAD).
+                  
+</dd>
+<dt>&quot;safe&quot;</dt>
+<dd>
+                    A hypermedia control that triggers a safe,
+                    idempotent state transition (e.g. HTTP.GET or
+                    HTTP.HEAD).
+                  
+</dd>
+<dt>&quot;idempotent&quot;</dt>
+<dd>
+                    A hypermedia control that triggers an unsafe,
+                    idempotent state transition (e.g. HTTP.PUT or
+                    HTTP.DELETE).
+                  
+</dd>
+<dt>&quot;unsafe&quot;</dt>
+<dd>
+                    A hypermedia control that triggers an unsafe,
+                    non-idempotent state transition (e.g. HTTP.POST).
+                  
+</dd>
+</dl></blockquote><p>
+                    
+                If no 'type' attribute is associated with the element
+                then the 'type="descriptor"' is implied.
+              
+</p>
+<a name="prop-value"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2.14"></a><h3>2.2.14.&nbsp;
+'value'</h3>
+
+<p>
+                Contains a string value. It MAY appear as an attribute
+                of the <a class='info' href='#prop-doc'>'doc'<span> (</span><span class='info'>'doc'</span><span>)</span></a> and the
+                <a class='info' href='#prop-ext'>'ext'<span> (</span><span class='info'>'ext'</span><span>)</span></a> elements.
+              
+</p>
+<a name="prop-version"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2.15"></a><h3>2.2.15.&nbsp;
+'version'</h3>
+
+<p>
+                Indicates the version of the ALPS specification used
+                in the document. This SHOULD appear as a property of
+                the <a class='info' href='#prop-alps'>'alps'<span> (</span><span class='info'>'alps'</span><span>)</span></a> property.
+                Currently the only valid value is "1.0".  If no value
+                appears, then 'version="1.0"' is implied.
+              
+</p>
+<a name="representations"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.3"></a><h3>2.3.&nbsp;
+ALPS Representations</h3>
+
+<p>
+            An ALPS document may be represented in either XML or JSON
+            format. This section contains notes on how the ALPS
+            elements and attributes appear in each format, along with
+            examples to guide ALPS document authors.
+          
+</p>
+<a name="html-representation"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.3.1"></a><h3>2.3.1.&nbsp;
+Sample HTML</h3>
+
+<p>
+              Below is a simple HTML document that contains a handful
+              of semantic descriptors and transition instructions.
+              This document was genrated from the XML and JSON ALPS
+              documents that follow. Use this HTML document as a guide
+              when evaluating the XML and JSON examples.
+
+              <br /><hr class="insert" />
+</p>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+&lt;!-- sample HTML document --&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;link rel="profile" href="http://alps.io/documents/search" /&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;form class="search" action="..." method="get"&gt;
+            &lt;input type="text" name="search" value="..." /&gt;
+            &lt;select name="resultType"&gt;
+                &lt;option value="summary" /&gt;
+                &lt;option value="detailed" /&gt;
+            &lt;/select&gt;
+            &lt;input type="submit" /&gt;
+        &lt;/form&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre></div><p>
+<table border="0" cellpadding="0" cellspacing="2" align="center"><tr><td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;HTML Sample&nbsp;</b></font><br /></td></tr></table><hr class="insert" />
+
+                
+</p>
+<a name="xml-representation"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.3.2"></a><h3>2.3.2.&nbsp;
+XML Representation</h3>
+
+<a name="anchor14"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.3.2.1"></a><h3>2.3.2.1.&nbsp;
+XML Representation Notes</h3>
+
+<p>
+                In the XML version of an ALPS document, the following
+                ALPS properties always appear as XML elements: <a class='info' href='#prop-alps'>'alps'<span> (</span><span class='info'>'alps'</span><span>)</span></a>, <a class='info' href='#prop-doc'>'doc'<span> (</span><span class='info'>'doc'</span><span>)</span></a>, <a class='info' href='#prop-descriptor'>'descriptor'<span> (</span><span class='info'>'descriptor'</span><span>)</span></a>, and <a class='info' href='#prop-ext'>'ext'<span> (</span><span class='info'>'ext'</span><span>)</span></a>.  All other ALPS
+                properties appear as XML attributes.
+              
+</p>
+<a name="anchor15"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.3.2.2"></a><h3>2.3.2.2.&nbsp;
+Complete XML Representation</h3>
+
+<p>
+                Below is an example of an applcation/alps+xml
+                representation.
+                <br /><hr class="insert" />
+</p>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+&lt;?xml version="1.0"?&gt;
+&lt;alps version="1.0"&gt;
+    &lt;doc href="http://example.org/samples/full/doc.html" /&gt;
+
+    &lt;descriptor id="search"
+        type="safe"
+        cardinality="single"
+        appears="MUST NOT"&gt;
+        &lt;doc format="text"&gt;
+            A search form with a two inputs.
+        &lt;/doc&gt;
+        &lt;descriptor href="#resultType" /&gt;
+        &lt;descriptor id="value"
+            name="search"
+            type="semantic"
+            cardinality="single"
+            appears="MAY"&gt;
+            &lt;ddoc&gt;input for search&lt;/doc&gt;
+        &lt;/descriptor&gt;
+    &lt;/descriptor&gt;
+
+    &lt;descriptor id="resultType"
+        type="semantic"
+        cardinality="single"
+        appears="MAY"
+        &lt;doc&gt;results format&lt;/doc&gt;
+        &lt;ext
+            href="http://alps.io/ext/range"
+            value="summary,detail" /&gt;
+    &lt;/element&gt;
+&lt;/alps&gt;
+</pre></div><p>
+<table border="0" cellpadding="0" cellspacing="2" align="center"><tr><td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;Complete XML Representation&nbsp;</b></font><br /></td></tr></table><hr class="insert" />
+
+              
+</p>
+<a name="json-representation"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.3.3"></a><h3>2.3.3.&nbsp;
+JSON Representation</h3>
+
+<a name="anchor16"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.3.3.1"></a><h3>2.3.3.1.&nbsp;
+JSON Representation Notes</h3>
+
+<p>
+                When representing ALPS documents in JSON format,
+                the <a class='info' href='#prop-descriptor'>'descriptor'<span> (</span><span class='info'>'descriptor'</span><span>)</span></a> and
+                <a class='info' href='#prop-ext'>'ext'<span> (</span><span class='info'>'ext'</span><span>)</span></a> properties are
+                always expressed as arrays of anonymous objects - even
+                when there is only one member in the array.
+
+                <br /><hr class="insert" />
+
+<p>For example:
+</p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+"descriptor" : [
+    {
+        "id" : "search",
+        "type" : "safe"
+        "descriptor" : [
+            {"href" : "#value"},
+            {
+                "id" : "resultType",
+                "type" : "semantic",
+                "ext" : [
+                    {
+                        "href" : "http://alps.io/ext/range",
+                        "value" : "summary,detail"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id" : "#value",
+        "type" : "semantic"
+    }
+]
+</pre></div><table border="0" cellpadding="0" cellspacing="2" align="center"><tr><td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;Arrays in ALPS+JSON&nbsp;</b></font><br /></td></tr></table><hr class="insert" />
+
+              
+
+<p>
+                The <a class='info' href='#prop-doc'>'doc'<span> (</span><span class='info'>'doc'</span><span>)</span></a>
+                property is always expressed as a named object.
+              
+</p>
+<p>
+                <br /><hr class="insert" />
+
+<p>For example:
+</p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+{
+    "doc" : {
+        "format" : "text",
+        "value" : "Rules are imporant"
+    }
+}
+</pre></div><table border="0" cellpadding="0" cellspacing="2" align="center"><tr><td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;Descriptions in ALPS+JSON&nbsp;</b></font><br /></td></tr></table><hr class="insert" />
+
+              
+
+<a name="anchor17"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.3.3.2"></a><h3>2.3.3.2.&nbsp;
+Complete Representation</h3>
+
+<p>
+                Below is a example of the application/alps+json
+                representation of an ALPS document.
+                <br /><hr class="insert" />
+</p>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+// http://alps.io/documents/search
+{
+    "alps" : {
+        "version" : "1.0",
+        "doc" : {
+            "href" : "http://example.org/samples/full/doc.html"
+        },
+        "descriptor" : [
+            {
+                "id" : "search",
+                "type" : "safe",
+                "cardinality" : "single",
+                "appears" : "MUST NOT",
+                "doc" : {"value" :
+                    "A search form with a two inputs"
+                },
+                "descriptor" : [
+                    {
+                        "id" : "value",
+                        "name" : "search",
+                        "type" : "descriptor",
+                        "cardinality" : "single",
+                        "appears" : "MAY",
+                        "doc" : {"value" : "input for search"}
+                    },
+                    {"href" : "#resultType"}
+                ]
+            },
+           {
+                "id" : "resultType",
+                "type" : "descriptor",
+                "cardinality" : "single",
+                "appears" : "MAY",
+                "description" : {"value" : "results format"},
+                "ext" : [
+                    {
+                        "href" : "http://alps.io/ext/range",
+                        "value" : "summary,detail"
+                    }
+                ]
+            }
+        ]
+    }
+}
+</pre></div><p>
+<table border="0" cellpadding="0" cellspacing="2" align="center"><tr><td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;Complete ALPS+JSON Representation&nbsp;</b></font><br /></td></tr></table><hr class="insert" />
+
+              
+</p>
+<a name="instructions"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3"></a><h3>3.&nbsp;
+Instructions on Applying ALPS to Existing Media Types</h3>
+
+<p>
+        An ALPS document can be applied to many existing hypermedia
+        types. Below are a set of instructional examples on how to
+        apply ALPS information to existing media types.  These
+        examples are informative. The most up-to-date guidance on
+        applying ALPS documents to existing media types are available
+        at the official ALPS Web site (http://alps.io). [I implied
+        earlier there would be a formal registry. -leonardr]
+      
+</p>
+<p>
+        [LR:say what it takes to explain how alps applies to a media
+        type you have to define "enclosing element", "link", etc]
+      
+</p>
+<p>[It looks like this section repeats the example at the
+      beginning. It should suffice at this point to simply spell out
+      the informative rules.]
+</p>
+<a name="a-simple-alps-document"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.1"></a><h3>3.1.&nbsp;
+A Simple ALPS Document</h3>
+
+<p>[TK]
+</p>
+<a name="html-example"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.2"></a><h3>3.2.&nbsp;
+HTML Example</h3>
+
+<p>[TK]
+</p>
+<a name="collection-json-example"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.3"></a><h3>3.3.&nbsp;
+Collection+JSON Example</h3>
+
+<a name="linking-to-alps-documents"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.4"></a><h3>3.4.&nbsp;
+Linking to ALPS Documents</h3>
+
+<p>
+          To indicate that an ALPS profile describes the semantics of
+          some representation document, the representation document
+          MUST be linked to the ALPS document using the "profile" link
+          relation (found in the IANA registry of link relations). [TK
+          I changed should to must. -leonardr :: Which means no one can EVER
+          use Link header or media-type "profile" methods. is that what we want? -mca] 
+          If the media type of
+          the representation document has no native ability to link to
+          other resources, or no ability to express link relations,
+          the HTTP header 'Link' <a class='info' href='#RFC5988'>[RFC5988]<span> (</span><span class='info'>Nottingham, M., &ldquo;Web Linking,&rdquo; October&nbsp;2010.</span><span>)</span></a> 
+          MAY be used to connect the  representation document and the 
+          ALPS profile.
+        
+</p>
+<p>
+          A single representation document may be described by more
+          than one ALPS profile. If two ALPS profiles give conflicting
+          semantics for the same element, the document linked to
+          earlier in the representation SHOULD take precedence. A
+          profile linked to using the 'Link' header takes precedence
+          over a profile linked to within the representation document
+          itself.
+        
+</p>
+<a name="alps-registry"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.4"></a><h3>4.&nbsp;
+The ALPS Registry</h3>
+
+<a name="what-is-the-alps-registry"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.4.1"></a><h3>4.1.&nbsp;
+What is the ALPS Registry</h3>
+
+<p>[TK]
+</p>
+<a name="searching-the-registry"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.4.2"></a><h3>4.2.&nbsp;
+Searching the Registry</h3>
+
+<p>[TK]
+</p>
+<a name="contributing-to-the-registry"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.4.3"></a><h3>4.3.&nbsp;
+Contributing to the Registry</h3>
+
+<p>[TK]
+</p>
+<a name="iana-considerations"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5"></a><h3>5.&nbsp;
+IANA Considerations</h3>
+
+<p>
+        This specification establishes two media types:
+        'application/alps+xml' and 'application/alps+json' 
+      
+</p>
+<a name="iana-alps-xml"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5.1"></a><h3>5.1.&nbsp;
+application/alps+xml</h3>
+
+<p>
+          </p>
+<blockquote class="text"><dl>
+<dt>Type name:</dt>
+<dd>
+              application
+            
+</dd>
+<dt>Subtype name:</dt>
+<dd>
+              alps+xml
+            
+</dd>
+<dt>Required parameters:</dt>
+<dd>
+              None
+            
+</dd>
+<dt>Optional parameters:</dt>
+<dd>
+              
+<blockquote class="text"><dl>
+<dt>charset</dt>
+<dd>
+                  This parameter has identical semantics to the
+                  charset parameter of the 'application/xml'
+                  media type as specified in <a class='info' href='#RFC3023'>[RFC3023]<span> (</span><span class='info'>Murata, M., St. Laurent, S., and D. Kohn, &ldquo;XML Media Types,&rdquo; January&nbsp;2001.</span><span>)</span></a>.
+              
+</dd>
+<dt>profile</dt>
+<dd>
+                A whitespace-separated list of IRIs identifying specific
+                constraints or conventions that apply to an ALPS document.
+                A profile must not change the semantics of the resource
+                representation when processed without profile knowledge, so
+                that clients both with and without knowledge of a profiled
+                resource can safely use the same representation. The profile
+                parameter may also be used by clients to express their
+                preferences in the content negotiation process. It is
+                recommended that profile IRIs are dereferenceable and provide
+                useful documentation at that IRI. 
+              
+</dd>
+</dl></blockquote>
+            
+</dd>
+<dt>Encoding considerations:</dt>
+<dd>
+              
+<blockquote class="text"><dl>
+<dt>binary</dt>
+<dd>
+                  Same as encoding considerations of
+                  application/xml as specified in <a class='info' href='#RFC3023'>[RFC3023]<span> (</span><span class='info'>Murata, M., St. Laurent, S., and D. Kohn, &ldquo;XML Media Types,&rdquo; January&nbsp;2001.</span><span>)</span></a>.
+                
+</dd>
+</dl></blockquote>
+            
+</dd>
+<dt>Security considerations:</dt>
+<dd>
+              This format shares security issues common to all XML
+              content types. It does not provide executable content. 
+              Information contained in ALPS documents do not 
+              require privacy or integrity services.
+            
+</dd>
+<dt>Interoperability considerations:</dt>
+<dd>
+              ALPS is not described by a DTD and applies only
+              the well-formedness rules of XML. It should only 
+              be parsed by a non-validating parser.
+            
+</dd>
+<dt>Published specification:</dt>
+<dd>
+              This Document
+            
+</dd>
+<dt>Applications that use this media type:</dt>
+<dd>
+              Various
+            
+</dd>
+<dt>Additional information:</dt>
+<dd>
+              
+<blockquote class="text"><dl>
+<dt>magic number(s):</dt>
+<dd>
+                  none
+                
+</dd>
+<dt>file extensions:</dt>
+<dd>
+                  .xml
+                
+</dd>
+<dt>macintosh type file code:</dt>
+<dd>
+                  TEXT
+                
+</dd>
+<dt>object idenfiers:</dt>
+<dd>
+                  none
+                
+</dd>
+</dl></blockquote>
+            
+</dd>
+<dt>person to contact for further information:</dt>
+<dd>
+              
+<blockquote class="text"><dl>
+<dt>Name:</dt>
+<dd>
+                  Mike Amundsen
+                
+</dd>
+<dt>Email:</dt>
+<dd>
+                  mca@amundsen.com
+                
+</dd>
+</dl></blockquote>
+            
+</dd>
+<dt>Intended usage:</dt>
+<dd>
+              Common
+            
+</dd>
+<dt>Author/change controller:</dt>
+<dd>
+              Mike Amundsen
+            
+</dd>
+</dl></blockquote><p>
+        
+</p>
+<a name="iana-alps-json"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5.2"></a><h3>5.2.&nbsp;
+application/alps+json</h3>
+
+<p>
+          </p>
+<blockquote class="text"><dl>
+<dt>Type name:</dt>
+<dd>
+              application
+            
+</dd>
+<dt>Subtype name:</dt>
+<dd>
+              alps+json
+            
+</dd>
+<dt>Required parameters:</dt>
+<dd>
+              None
+            
+</dd>
+<dt>Optional parameters:</dt>
+<dd>
+                
+<blockquote class="text"><dl>
+<dt>profile</dt>
+<dd>
+                A whitespace-separated list of IRIs identifying specific
+                constraints or conventions that apply to an ALPS document.
+                A profile must not change the semantics of the resource
+                representation when processed without profile knowledge, so
+                that clients both with and without knowledge of a profiled
+                resource can safely use the same representation. The profile
+                parameter may also be used by clients to express their
+                preferences in the content negotiation process. It is
+                recommended that profile IRIs are dereferenceable and provide
+                useful documentation at that IRI. 
+                    
+</dd>
+</dl></blockquote>
+            
+</dd>
+<dt>Encoding considerations:</dt>
+<dd>
+              binary
+            
+</dd>
+<dt>Security considerations:</dt>
+<dd>
+              This media type shares security issues common to all
+              JSON content types. See <a class='info' href='#RFC4627'>[RFC4627]<span> (</span><span class='info'>Crockford, D., &ldquo;The application/json Media Type for JavaScript Object Notation (JSON),&rdquo; July&nbsp;2006.</span><span>)</span></a> Section
+              #6 for additional information. ALPS+JSON does not
+              provide executable content.  Information contained in
+              ALPS+JSON documents do not require privacy or integrity
+              services.
+            
+</dd>
+<dt>Interoperability considerations:</dt>
+<dd>
+              None
+            
+</dd>
+<dt>Published specification:</dt>
+<dd>
+              This Document
+            
+</dd>
+<dt>Applications that use this media type:</dt>
+<dd>
+              Various
+            
+</dd>
+<dt>Additional information:</dt>
+<dd>
+              
+<blockquote class="text"><dl>
+<dt>magic number(s):</dt>
+<dd>
+                  none
+                
+</dd>
+<dt>file extensions:</dt>
+<dd>
+                  .json
+                
+</dd>
+<dt>macintosh type file code:</dt>
+<dd>
+                  TEXT
+                
+</dd>
+<dt>object idenfiers:</dt>
+<dd>
+                  none
+                
+</dd>
+</dl></blockquote>
+            
+</dd>
+<dt>person to contact for further information:</dt>
+<dd>
+              
+<blockquote class="text"><dl>
+<dt>Name:</dt>
+<dd>
+                  Mike Amundsen
+                
+</dd>
+<dt>Email:</dt>
+<dd>
+                  mca@amundsen.com
+                
+</dd>
+</dl></blockquote>
+            
+</dd>
+<dt>Intended usage:</dt>
+<dd>
+              Common
+            
+</dd>
+<dt>Author/change controller:</dt>
+<dd>
+              Mike Amundsen
+            
+</dd>
+</dl></blockquote><p>
+        
+</p>
+<a name="internationalization"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.6"></a><h3>6.&nbsp;
+Internationalization Considerations</h3>
+
+<p>[TK]
+</p>
+<p>
+        <a class='info' href='#comment.anchor18'>[anchor18]<span> (</span><span class='info'>insert text (consider rfc 5987)</span><span>)</span></a><a name='anchor18'></a>
+      
+</p>
+<a name="anchor19"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.7"></a><h3>7.&nbsp;
+Acknowledgements</h3>
+
+<p>[TK]
+</p>
+<a name="rfc.references"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.8"></a><h3>8.&nbsp;
+References</h3>
+
+<a name="rfc.references1"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<h3>8.1.&nbsp;Normative References</h3>
+<table width="99%" border="0">
+<tr><td class="author-text" valign="top"><a name="RFC2119">[RFC2119]</a></td>
+<td class="author-text"><a href="mailto:sob@harvard.edu">Bradner, S.</a>, &ldquo;<a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>,&rdquo; BCP&nbsp;14, RFC&nbsp;2119, March&nbsp;1997 (<a href="http://www.rfc-editor.org/rfc/rfc2119.txt">TXT</a>, <a href="http://xml.resource.org/public/rfc/html/rfc2119.html">HTML</a>, <a href="http://xml.resource.org/public/rfc/xml/rfc2119.xml">XML</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC3023">[RFC3023]</a></td>
+<td class="author-text">Murata, M., St. Laurent, S., and D. Kohn, &ldquo;<a href="http://tools.ietf.org/html/rfc3023">XML Media Types</a>,&rdquo; RFC&nbsp;3023, January&nbsp;2001 (<a href="http://www.rfc-editor.org/rfc/rfc3023.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC4627">[RFC4627]</a></td>
+<td class="author-text">Crockford, D., &ldquo;<a href="http://tools.ietf.org/html/rfc4627">The application/json Media Type for JavaScript Object Notation (JSON)</a>,&rdquo; RFC&nbsp;4627, July&nbsp;2006 (<a href="http://www.rfc-editor.org/rfc/rfc4627.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC5988">[RFC5988]</a></td>
+<td class="author-text">Nottingham, M., &ldquo;<a href="http://tools.ietf.org/html/rfc5988">Web Linking</a>,&rdquo; RFC&nbsp;5988, October&nbsp;2010 (<a href="http://www.rfc-editor.org/rfc/rfc5988.txt">TXT</a>).</td></tr>
+</table>
+
+<a name="rfc.references2"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<h3>8.2.&nbsp;Informative References</h3>
+<table width="99%" border="0">
+</table>
+
+<a name="rfc.authors"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<h3>Authors' Addresses</h3>
+<table width="99%" border="0" cellpadding="0" cellspacing="0">
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">Mike Amundsen</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">Layer 7 Technologies</td></tr>
+<tr><td class="author" align="right">EMail:&nbsp;</td>
+<td class="author-text"><a href="mailto:mca@amundsen.com">mca@amundsen.com</a></td></tr>
+<tr><td class="author" align="right">URI:&nbsp;</td>
+<td class="author-text"><a href="http://amundsen.com">http://amundsen.com</a></td></tr>
+<tr cellpadding="3"><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">Leonard Richardson</td></tr>
+<tr><td class="author" align="right">EMail:&nbsp;</td>
+<td class="author-text"><a href="mailto:leonardr@segfault.org">leonardr@segfault.org</a></td></tr>
+<tr><td class="author" align="right">URI:&nbsp;</td>
+<td class="author-text"><a href="http://crummy.com">http://crummy.com</a></td></tr>
+</table>
+</body></html>
