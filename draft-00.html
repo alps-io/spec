@@ -143,8 +143,8 @@
 <table summary="layout" width="66%" border="0" cellpadding="0" cellspacing="0"><tr><td><table summary="layout" width="100%" border="0" cellpadding="2" cellspacing="1">
 <tr><td class="header">Network Working Group</td><td class="header">M. Amundsen</td></tr>
 <tr><td class="header">Internet-Draft</td><td class="header">Layer 7 Technologies</td></tr>
-<tr><td class="header">Expires: April 11, 2014</td><td class="header">L. Richardson</td></tr>
-<tr><td class="header">&nbsp;</td><td class="header">October 8, 2013</td></tr>
+<tr><td class="header">Expires: May 7, 2014</td><td class="header">L. Richardson</td></tr>
+<tr><td class="header">&nbsp;</td><td class="header">November 3, 2013</td></tr>
 </table></td></tr></table>
 <h1><br />Application-Level Profile Semantics (ALPS)<br />draft-amundsen-richardson-alps-00</h1>
 
@@ -185,7 +185,7 @@ and may be updated, replaced, or obsoleted by other documents at any time.
 It is inappropriate to use Internet-Drafts as reference material or to cite
 them other than as &ldquo;work in progress.&rdquo;</p>
 <p>
-This Internet-Draft will expire on April 11, 2014.</p>
+This Internet-Draft will expire on May 7, 2014.</p>
 
 <h3>Copyright Notice</h3>
 <p>
@@ -476,8 +476,7 @@ A Simple ALPS Example</h3>
     &lt;descriptor id="contact"
         type="semantic"&gt;
         &lt;descriptor id="item"
-            type="safe"
-            appears="MUST"&gt;
+            type="safe"&gt;
             &lt;doc&gt;
                 link to individual contact
             &lt;/doc&gt;
@@ -563,7 +562,7 @@ A Simple ALPS Example</h3>
           "email", and "phone"
         
 </p>
-<p>This HAL document uses the same profile to epress the same
+<p>This HAL document uses the same profile to express the same
         application-level semantics as the HTML document.
 </p><br /><hr class="insert" />
 <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
@@ -790,14 +789,14 @@ ALPS Document Properties</h3>
                     If the 'href' property appears it SHOULD contain
                     a dereferencable URL that points to human-readable
                     text. If the 'format' property appears it SHOULD
-                    contain one of two possible values:
+                    contain one of the following values:
                   </p>
 <ol class="text">
 <li>"text"
 </li>
 <li>"html"
 </li>
-<li>ascidoc
+<li>"asciidoc"
 </li>
 </ol><p>
                   Any program processing "doc" elements SHOULD honor the
@@ -811,15 +810,15 @@ ALPS Document Properties</h3>
 <blockquote class="text"><dl>
 <dt>XML:</dt>
 <dd>
-&lt;description format="html"&gt;
+&lt;doc format="html"&gt;
    &lt;h1&gt;Date of Birth&lt;/h1&gt;
    &lt;p&gt;...&lt;/p&gt;
-&lt;/description&gt;
+&lt;/doc&gt;
                         
 </dd>
 <dt>JSON:</dt>
 <dd>
-{"description" : 
+{"doc" : 
     {"format" : "text" : "value" : "Date of Birth ..."}
 }
                         
@@ -836,15 +835,15 @@ ALPS Document Properties</h3>
 <blockquote class="text"><dl>
 <dt>XML:</dt>
 <dd>
-&lt;element ... &gt;
-    &lt;description&gt;...&lt;/description&gt;
-&lt;/element&gt;
+&lt;descriptor ... &gt;
+    &lt;doc&gt;...&lt;/doc&gt;
+&lt;/descriptor&gt;
                         
 </dd>
 <dt>JSON:</dt>
 <dd>
-{"element" : {...}
-    {"description" : {"value" : "..."}
+{"descriptor" : {...}
+    {"doc" : {"value" : "..."}
 }
                         
 </dd>
@@ -860,7 +859,7 @@ ALPS Document Properties</h3>
 <dt>XML:</dt>
 <dd>
 &lt;alps&gt;
-    &lt;description&gt;...&lt;/description&gt;
+    &lt;doc&gt;...&lt;/doc&gt;
     ...
 &lt;/apls&gt;
                         
@@ -868,7 +867,7 @@ ALPS Document Properties</h3>
 <dt>JSON:</dt>
 <dd>
 {"alps :
-   "description" : { "value" : "..."},
+   "doc" : { "value" : "..."},
    ...
 }
                         
@@ -882,7 +881,7 @@ ALPS Document Properties</h3>
 'descriptor'</h3>
 
 <p>
-                  Identifies a semantic descriptor. One or more 'descriptor' elements
+                  One or more 'descriptor' elements
                   SHOULD appear as children of <a class='info' href='#prop-alps'>'alps'<span> (</span><span class='info'>'alps'</span><span>)</span></a>. It may also appear
                   as a child of itself; that is, the 'descriptor'
                   property may be nested.
@@ -1010,7 +1009,7 @@ ALPS Document Properties</h3>
                     program does not recognize the value of the "format"
                     property and/or the "format" property is missing, the
                     content SHOULD be treated as plain text.
-                    Thisc property MAY appear as an attribute of the <a class='info' href='#prop-doc'>'doc'<span> (</span><span class='info'>'doc'</span><span>)</span></a>
+                    This property MAY appear as an attribute of the <a class='info' href='#prop-doc'>'doc'<span> (</span><span class='info'>'doc'</span><span>)</span></a>
                   element.
                 
 </p>
@@ -1079,13 +1078,13 @@ ALPS Document Properties</h3>
                 identifier points to the 'descriptor' with the
                 appropriate 'id'. For example, the fragment
                 identifier "customer" in the URI
-                http://example.com/#customer refers to an ALPS
+                http://example.com/my-alps-document#customer refers to an ALPS
                 'descriptor' with 'id' set to "customer".
               
 </p>
 <p>
                 A relative URL with a fragment identifier
-                (e.g. "#customer") refers to an 'descriptor' within the
+                (e.g. "#customer") refers to a 'descriptor' within the
                 ALPS document containing the reference.
               
 </p>
@@ -1153,8 +1152,8 @@ ALPS Document Properties</h3>
                   This is used when the name of the 'descriptor'
                   is used as an <a class='info' href='#prop-id'>'id'<span> (</span><span class='info'>'id'</span><span>)</span></a> value elsewhere in the
                   ALPS document. For instance, if a single ALPS
-                  document defines a semantic descriptor called
-                  "customer" and a safe-idempotent control called
+                  document defines a semantic descriptor (data element) called
+                  "customer" and a safe descriptor (transition element) also called
                   "customer", they can't both have 'id="customer"' in
                   the ALPS document. One of them needs to have some
                   other 'id', and to set 'name="customer"'.
@@ -1218,10 +1217,10 @@ ALPS Document Properties</h3>
                 
                 </p>
 <blockquote class="text"><dl>
-<dt>&quot;descriptor&quot;</dt>
+<dt>&quot;semantic&quot;</dt>
 <dd>
                     A state element (e.g.  HTML.SPAN, HTML.INPUT,
-                    etc.) OR a hypermedia control that triggers a
+                    etc.) or a hypermedia control that triggers a
                     safe, idempotent transition (e.g. HTTP.GET or
                     HTTP.HEAD).
                   
@@ -1249,7 +1248,7 @@ ALPS Document Properties</h3>
 </dl></blockquote><p>
                     
                 If no 'type' attribute is associated with the element
-                then the 'type="descriptor"' is implied.
+                then the 'type="semantic"' is implied.
               
 </p>
 <a name="prop-value"></a><br /><hr />
@@ -1297,7 +1296,12 @@ Sample HTML</h3>
 <p>
               Below is a simple HTML document that contains a handful
               of semantic descriptors and transition instructions.
-              This document was genrated from the XML and JSON ALPS
+              This document was generated from var response = {};
+response.status = 200;
+response.desc = 'OK';
+response.body = '';
+
+the XML and JSON ALPS
               documents that follow. Use this HTML document as a guide
               when evaluating the XML and JSON examples.
 
@@ -1375,7 +1379,7 @@ Complete XML Representation</h3>
         &lt;ext
             href="http://alps.io/ext/range"
             value="summary,detail" /&gt;
-    &lt;/element&gt;
+    &lt;/descriptor&gt;
 &lt;/alps&gt;
 </pre></div><p>
 <table border="0" cellpadding="0" cellspacing="2" align="center"><tr><td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;Complete XML Representation&nbsp;</b></font><br /></td></tr></table><hr class="insert" />
@@ -1436,7 +1440,7 @@ JSON Representation Notes</h3>
               
 </p>
 <p>
-                <br /><hr class="insert" />
+              <br /><hr class="insert" />
 
 <p>For example:
 </p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
@@ -1448,7 +1452,7 @@ JSON Representation Notes</h3>
 }
 </pre></div><table border="0" cellpadding="0" cellspacing="2" align="center"><tr><td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;Descriptions in ALPS+JSON&nbsp;</b></font><br /></td></tr></table><hr class="insert" />
 
-              
+            
 
 <a name="anchor14"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
@@ -1823,7 +1827,7 @@ application/alps+json</h3>
 </dd>
 <dt>Optional parameters:</dt>
 <dd>
-                
+              
 <blockquote class="text"><dl>
 <dt>profile</dt>
 <dd>
