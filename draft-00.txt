@@ -923,10 +923,8 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
    Below is a simple HTML document that contains a handful of semantic
    descriptors and transition instructions.  This document was generated
-   from var response = {}; response.status = 200; response.desc = 'OK';
-   response.body = ''; the XML and JSON ALPS documents that follow.  Use
-   this HTML document as a guide when evaluating the XML and JSON
-   examples.
+   from the XML and JSON ALPS documents that follow.  Use this HTML
+   document as a guide when evaluating the XML and JSON examples.
 
    <!-- sample HTML document -->
    <html>
@@ -945,6 +943,8 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
        </body>
    </html>
 
+                                HTML Sample
+
 
 
 
@@ -952,8 +952,6 @@ Amundsen & Richardson      Expires May 7, 2014                 [Page 17]
 
 Internet-Draft     Application-Level Profile Semantics     November 2013
 
-
-                                HTML Sample
 
 2.3.2.  XML Representation
 
@@ -998,9 +996,11 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
 2.3.3.  JSON Representation
 
+2.3.3.1.  JSON Representation Notes
 
-
-
+   When representing ALPS documents in JSON format, the 'descriptor'
+   (Section 2.2.3) and 'ext' (Section 2.2.4) properties are always
+   expressed as arrays of anonymous objects - even when there is only
 
 
 
@@ -1009,11 +1009,6 @@ Amundsen & Richardson      Expires May 7, 2014                 [Page 18]
 Internet-Draft     Application-Level Profile Semantics     November 2013
 
 
-2.3.3.1.  JSON Representation Notes
-
-   When representing ALPS documents in JSON format, the 'descriptor'
-   (Section 2.2.3) and 'ext' (Section 2.2.4) properties are always
-   expressed as arrays of anonymous objects - even when there is only
    one member in the array.
 
    For example:
@@ -1057,6 +1052,11 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
    }
 
                          Descriptions in ALPS+JSON
+
+
+
+
+
 
 
 

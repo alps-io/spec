@@ -839,12 +839,7 @@
           <t>
               Below is a simple HTML document that contains a handful
               of semantic descriptors and transition instructions.
-              This document was generated from var response = {};
-response.status = 200;
-response.desc = 'OK';
-response.body = '';
-
-the XML and JSON ALPS
+              This document was generated from the XML and JSON ALPS
               documents that follow. Use this HTML document as a guide
               when evaluating the XML and JSON examples.
 
