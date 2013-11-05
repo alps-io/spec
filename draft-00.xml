@@ -16,7 +16,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 <!-- the actual document! -->
-<rfc docName="draft-amundsen-richardson-alps-00" ipr="trust200902">
+<rfc docName="draft-amundsen-richardson-alps-00.A" ipr="trust200902">
   <!-- front matter -->
   <front>
     <title abbrev="Application-Level Profile Semantics">
@@ -1308,7 +1308,10 @@
       </t>
     </section>
     <section title="Acknowledgements">
-      <t>[TK]</t>
+        <t>
+            The following people made contributions to this specification: 
+            Mark Foster.
+        </t>
     </section>
   </middle>
   <!-- back matter -->
