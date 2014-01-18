@@ -3,12 +3,12 @@
 
 Network Working Group                                        M. Amundsen
 Internet-Draft                                      Layer 7 Technologies
-Expires: May 9, 2014                                       L. Richardson
-                                                        November 5, 2013
+Expires: July 21, 2014                                     L. Richardson
+                                                        January 17, 2014
 
 
                Application-Level Profile Semantics (ALPS)
-                  draft-amundsen-richardson-alps-00.A
+                  draft-amundsen-richardson-alps-00.B
 
 Abstract
 
@@ -41,20 +41,20 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 9, 2014.
+   This Internet-Draft will expire on July 21, 2014.
 
 Copyright Notice
 
-   Copyright (c) 2013 IETF Trust and the persons identified as the
+   Copyright (c) 2014 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
 
 
 
-Amundsen & Richardson      Expires May 9, 2014                  [Page 1]
+Amundsen & Richardson     Expires July 21, 2014                 [Page 1]
 
-Internet-Draft     Application-Level Profile Semantics     November 2013
+Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
    Provisions Relating to IETF Documents
@@ -108,9 +108,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
 
 
-Amundsen & Richardson      Expires May 9, 2014                  [Page 2]
+Amundsen & Richardson     Expires July 21, 2014                 [Page 2]
 
-Internet-Draft     Application-Level Profile Semantics     November 2013
+Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 Table of Contents
@@ -150,13 +150,13 @@ Table of Contents
      4.1.  What is the ALPS Registry  . . . . . . . . . . . . . . . . 22
      4.2.  Searching the Registry . . . . . . . . . . . . . . . . . . 22
      4.3.  Contributing to the Registry . . . . . . . . . . . . . . . 22
-   5.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 22
+   5.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 23
      5.1.  application/alps+xml . . . . . . . . . . . . . . . . . . . 23
      5.2.  application/alps+json  . . . . . . . . . . . . . . . . . . 24
    6.  Internationalization Considerations  . . . . . . . . . . . . . 25
    7.  Acknowledgements . . . . . . . . . . . . . . . . . . . . . . . 25
-   8.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 25
-     8.1.  Normative References . . . . . . . . . . . . . . . . . . . 25
+   8.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+     8.1.  Normative References . . . . . . . . . . . . . . . . . . . 26
      8.2.  Informative References . . . . . . . . . . . . . . . . . . 26
 
 
@@ -164,9 +164,9 @@ Table of Contents
 
 
 
-Amundsen & Richardson      Expires May 9, 2014                  [Page 3]
+Amundsen & Richardson     Expires July 21, 2014                 [Page 3]
 
-Internet-Draft     Application-Level Profile Semantics     November 2013
+Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 1.  Introduction
@@ -220,9 +220,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
 
 
-Amundsen & Richardson      Expires May 9, 2014                  [Page 4]
+Amundsen & Richardson     Expires July 21, 2014                 [Page 4]
 
-Internet-Draft     Application-Level Profile Semantics     November 2013
+Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
    explains the vital domain-specific semantic descriptors and state
@@ -276,9 +276,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
 
 
-Amundsen & Richardson      Expires May 9, 2014                  [Page 5]
+Amundsen & Richardson     Expires July 21, 2014                 [Page 5]
 
-Internet-Draft     Application-Level Profile Semantics     November 2013
+Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
     <alps version="1.0">
@@ -332,9 +332,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
 
 
-Amundsen & Richardson      Expires May 9, 2014                  [Page 6]
+Amundsen & Richardson     Expires July 21, 2014                 [Page 6]
 
-Internet-Draft     Application-Level Profile Semantics     November 2013
+Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 <html>
@@ -388,9 +388,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
 
 
-Amundsen & Richardson      Expires May 9, 2014                  [Page 7]
+Amundsen & Richardson     Expires July 21, 2014                 [Page 7]
 
-Internet-Draft     Application-Level Profile Semantics     November 2013
+Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
    HTML representations implement most ALPS elements using HTML's
@@ -444,9 +444,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
 
 
-Amundsen & Richardson      Expires May 9, 2014                  [Page 8]
+Amundsen & Richardson     Expires July 21, 2014                 [Page 8]
 
-Internet-Draft     Application-Level Profile Semantics     November 2013
+Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
             {
@@ -500,9 +500,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
 
 
-Amundsen & Richardson      Expires May 9, 2014                  [Page 9]
+Amundsen & Richardson     Expires July 21, 2014                 [Page 9]
 
-Internet-Draft     Application-Level Profile Semantics     November 2013
+Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
                     {"name" : "email", "value" : "zz@example.org" },
@@ -556,9 +556,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
 
 
-Amundsen & Richardson      Expires May 9, 2014                 [Page 10]
+Amundsen & Richardson     Expires July 21, 2014                [Page 10]
 
-Internet-Draft     Application-Level Profile Semantics     November 2013
+Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
    constructing a valid ALPS document in XML and in JSON format.
@@ -612,9 +612,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
 
 
-Amundsen & Richardson      Expires May 9, 2014                 [Page 11]
+Amundsen & Richardson     Expires July 21, 2014                [Page 11]
 
-Internet-Draft     Application-Level Profile Semantics     November 2013
+Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
    'format' property is present, the content SHOULD be treated as plain
@@ -668,9 +668,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
 
 
-Amundsen & Richardson      Expires May 9, 2014                 [Page 12]
+Amundsen & Richardson     Expires July 21, 2014                [Page 12]
 
-Internet-Draft     Application-Level Profile Semantics     November 2013
+Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
    locally, that property value takes precedence over any inherited
@@ -724,9 +724,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
 
 
-Amundsen & Richardson      Expires May 9, 2014                 [Page 13]
+Amundsen & Richardson     Expires July 21, 2014                [Page 13]
 
-Internet-Draft     Application-Level Profile Semantics     November 2013
+Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 2.2.5.  'format'
@@ -780,9 +780,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
 
 
-Amundsen & Richardson      Expires May 9, 2014                 [Page 14]
+Amundsen & Richardson     Expires July 21, 2014                [Page 14]
 
-Internet-Draft     Application-Level Profile Semantics     November 2013
+Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
    fragment identifier "customer" in the URI
@@ -836,9 +836,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
 
 
-Amundsen & Richardson      Expires May 9, 2014                 [Page 15]
+Amundsen & Richardson     Expires July 21, 2014                [Page 15]
 
-Internet-Draft     Application-Level Profile Semantics     November 2013
+Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
    'name="customer"'.
@@ -892,9 +892,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
 
 
-Amundsen & Richardson      Expires May 9, 2014                 [Page 16]
+Amundsen & Richardson     Expires July 21, 2014                [Page 16]
 
-Internet-Draft     Application-Level Profile Semantics     November 2013
+Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
    'type="semantic"' is implied.
@@ -948,9 +948,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
 
 
-Amundsen & Richardson      Expires May 9, 2014                 [Page 17]
+Amundsen & Richardson     Expires July 21, 2014                [Page 17]
 
-Internet-Draft     Application-Level Profile Semantics     November 2013
+Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 2.3.2.  XML Representation
@@ -1004,9 +1004,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
 
 
-Amundsen & Richardson      Expires May 9, 2014                 [Page 18]
+Amundsen & Richardson     Expires July 21, 2014                [Page 18]
 
-Internet-Draft     Application-Level Profile Semantics     November 2013
+Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
    one member in the array.
@@ -1060,9 +1060,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
 
 
-Amundsen & Richardson      Expires May 9, 2014                 [Page 19]
+Amundsen & Richardson     Expires July 21, 2014                [Page 19]
 
-Internet-Draft     Application-Level Profile Semantics     November 2013
+Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 2.3.3.2.  Complete Representation
@@ -1116,18 +1116,20 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
 
 
-Amundsen & Richardson      Expires May 9, 2014                 [Page 20]
+Amundsen & Richardson     Expires July 21, 2014                [Page 20]
 
-Internet-Draft     Application-Level Profile Semantics     November 2013
+Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 3.  Applying ALPS documents to Existing Media Types
 
-   An ALPS document can be applied to many existing hypermedia types.
-   Section 1.3 gave some informative examples of this.  Normative, up-
-   to-date guidance on applying ALPS documents to existing media types
-   are available at the official ALPS Web site (http://alps.io).  [I
-   implied earlier there would be a formal registry. -leonardr]
+   An ALPS document can be applied to many existing media types as long
+   as there exists an agreed mapping between ALPS and the target media
+   type [TK: point to future mapping documentation].  Section 1.3 gave
+   some informative examples of this.  Normative, up-to-date guidance on
+   applying ALPS documents to existing media types are available at the
+   official ALPS Web site (http://alps.io).  [I implied earlier there
+   would be a formal registry. -leonardr]
 
    [TK just brainstorming here, not formatted. -LR] Defining how an ALPS
    document is to be applied to a media type requires defining the
@@ -1167,16 +1169,16 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
    possible to represent some aspects of an ALPS profile in documents in
    that media type.  [TK could we say that such a media type is not in
    complete compliance with the ALPS document? -leonardr] :: [we might
+
+
+
+Amundsen & Richardson     Expires July 21, 2014                [Page 21]
+
+Internet-Draft     Application-Level Profile Semantics      January 2014
+
+
    want to add a compliance section in this spec.  IOW, what parts of
    ALPS a media type MUST/SHOULD/MAY support in order to be "fully
-
-
-
-Amundsen & Richardson      Expires May 9, 2014                 [Page 21]
-
-Internet-Draft     Application-Level Profile Semantics     November 2013
-
-
    compliant" (all MUSTs and SHOULDs, "conditionally compliant" (all
    MUSTs), and "non-compliant" (not all MUSTs) -mca]
 
@@ -1221,17 +1223,20 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
    [TK]
 
+
+
+
+
+
+Amundsen & Richardson     Expires July 21, 2014                [Page 22]
+
+Internet-Draft     Application-Level Profile Semantics      January 2014
+
+
 5.  IANA Considerations
 
    This specification establishes two media types: 'application/
    alps+xml' and 'application/alps+json'
-
-
-
-Amundsen & Richardson      Expires May 9, 2014                 [Page 22]
-
-Internet-Draft     Application-Level Profile Semantics     November 2013
-
 
 5.1.  application/alps+xml
 
@@ -1274,20 +1279,19 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
    Published specification:  This Document
 
+
+
+
+
+
+Amundsen & Richardson     Expires July 21, 2014                [Page 23]
+
+Internet-Draft     Application-Level Profile Semantics      January 2014
+
+
    Applications that use this media type:  Various
 
    Additional information:
-
-
-
-
-
-
-
-Amundsen & Richardson      Expires May 9, 2014                 [Page 23]
-
-Internet-Draft     Application-Level Profile Semantics     November 2013
-
 
       magic number(s):  none
 
@@ -1330,20 +1334,22 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
    Encoding considerations:  binary
 
+
+
+
+
+
+
+Amundsen & Richardson     Expires July 21, 2014                [Page 24]
+
+Internet-Draft     Application-Level Profile Semantics      January 2014
+
+
    Security considerations:  This media type shares security issues
       common to all JSON content types.  See [RFC4627] Section #6 for
       additional information.  ALPS+JSON does not provide executable
       content.  Information contained in ALPS+JSON documents do not
       require privacy or integrity services.
-
-
-
-
-
-Amundsen & Richardson      Expires May 9, 2014                 [Page 24]
-
-Internet-Draft     Application-Level Profile Semantics     November 2013
-
 
    Interoperability considerations:  None
 
@@ -1384,6 +1390,17 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
 
 8.  References
 
+
+
+
+
+
+
+Amundsen & Richardson     Expires July 21, 2014                [Page 25]
+
+Internet-Draft     Application-Level Profile Semantics      January 2014
+
+
 8.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
@@ -1393,14 +1410,6 @@ Internet-Draft     Application-Level Profile Semantics     November 2013
               Types", RFC 3023, January 2001.
 
    [RFC4627]  Crockford, D., "The application/json Media Type for
-
-
-
-Amundsen & Richardson      Expires May 9, 2014                 [Page 25]
-
-Internet-Draft     Application-Level Profile Semantics     November 2013
-
-
               JavaScript Object Notation (JSON)", RFC 4627, July 2006.
 
    [RFC5988]  Nottingham, M., "Web Linking", RFC 5988, October 2010.
@@ -1443,14 +1452,5 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-
-
-Amundsen & Richardson      Expires May 9, 2014                 [Page 26]
+Amundsen & Richardson     Expires July 21, 2014                [Page 26]
 

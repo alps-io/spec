@@ -16,7 +16,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 <!-- the actual document! -->
-<rfc docName="draft-amundsen-richardson-alps-00.A" ipr="trust200902">
+<rfc docName="draft-amundsen-richardson-alps-00.B" ipr="trust200902">
   <!-- front matter -->
   <front>
     <title abbrev="Application-Level Profile Semantics">
@@ -1009,8 +1009,10 @@
     </section>
     <section anchor="instructions" title="Applying ALPS documents to Existing Media Types">
       <t>
-        An ALPS document can be applied to many existing hypermedia
-        types. <xref target="example"/> gave some informative
+        An ALPS document can be applied to many existing media
+        types as long as there exists an agreed mapping between ALPS and the target
+        media type [TK: point to future mapping documentation]. 
+        <xref target="example"/> gave some informative
         examples of this. Normative, up-to-date guidance on applying
         ALPS documents to existing media types are available at the
         official ALPS Web site (http://alps.io). [I implied earlier
