@@ -16,7 +16,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 <!-- the actual document! -->
-<rfc docName="draft-amundsen-richardson-alps-00.B" ipr="trust200902">
+<rfc docName="draft-amundsen-richardson-alps-00.C" ipr="trust200902">
   <!-- front matter -->
   <front>
     <title abbrev="Application-Level Profile Semantics">
@@ -179,8 +179,8 @@
                     'id' value of "collection." This hypermedia
                     control has one input value ("nameSearch"). When
                     executed, the response will contain one or more
-                    "contact" type items. [TK Does rt mean one or
-                    more? I thought it meant one. -LR]
+                    "contact" type items. 
+<!--[TK Does rt mean one or more? I thought it meant one. -LR] -->
                 </t>
         <figure title="ALPS Contact Profile document">
           <artwork><![CDATA[
@@ -284,14 +284,15 @@
         <t>
           HTML representations implement most ALPS elements using
           HTML's "class" attribute. The "collection" ID has become the
-          CSS class of an HTML form's submit button. [TK needs to go
-          on the submit button, not the form. -leonardr] The "contact"
-          ID has become the CSS class of an HTML table. [TK again
-          there seems to be a confusion between singular and
+          CSS class of an HTML form's submit button. 
+<!-- [TK needs to go on the submit button, not the form. -leonardr]-->
+          The "contact"
+          ID has become the CSS class of an HTML table. 
+<!-- [TK again there seems to be a confusion between singular and
           plural. The "contact" table contains all the contacts,
           implying that this is one person with multiple names and
-          emails. -leonardr] The subordinate descriptors "fullname",
-          "email", and "phone"
+          emails. -leonardr] --> 
+          The subordinate descriptors "fullname","email", and "phone"
         </t>
         <t>This HAL document uses the same profile to express the same
         application-level semantics as the HTML document.</t>
@@ -409,12 +410,13 @@
                   The URL MUST resolve to a valid ALPS document. The
                   server MAY use HTTP content negotiation to serve a
                   human-readable description of the ALPS vocabulary to
-                  clients that request an HTML representation.  [TK
+                  clients that request an HTML representation.  
+                  <!-- [TK
                   how's that? or should we stick to [link rel="help"]?
                   -leonardr :: Maybe we should be silent on the matter
                   here? -mca :: I'm OK with that. I just don't want to
                   imply that you get the ALPS doc no matter what HTTP
-                  request you make to the URL. -leonardr]
+                  request you make to the URL. -leonardr] -->
                 </t>
         <t>
                   A client SHOULD NOT automatically resolve an ALPS
@@ -423,7 +425,7 @@
         <t>
                   All ALPS URLs MUST be unique and all ALPS documents
                   intended for public consumption SHOULD be registered
-                  with the ALPS Registry located at [TK].
+                  with the ALPS Registry located at (to be specified).
                 </t>
       </section>
     </section>
@@ -584,9 +586,9 @@
                   appear for the 'ext' element.  The meaning and use
                   of the value property is described in the document
                   found by dereferencing the 'href' property of the
-                  'ext' element. [TK what if it's not resolvable?
-                  Also, the definition of 'href' says it must be
-                  resolvable.  -leonardr]
+                  'ext' element. 
+<!-- [TK what if it's not resolvable? Also, the definition of 'href' 
+                  says it must be resolvable.  -leonardr] -->
                 </t>
           <t>
                   Examples:
@@ -665,8 +667,9 @@
           <t>
                 The value of this attribute will appear within generic
                 representations as the name of a semantic descriptor
-                or hypermedia control [TK do you want to update this
-                terminology? -LR] (see <xref target="instructions"/>
+                or hypermedia control 
+<!-- [TK do you want to update this terminology? -LR] -->
+                (see <xref target="instructions"/>
                 for details). The exception is when a 'descriptor'
                 defines <xref target="prop-name">'name'</xref> as well
                 as <xref target="prop-id">'id'</xref>. In that case,
@@ -765,21 +768,22 @@
           <t>
                   A link relation defined within an ALPS document MAY
                   NOT be used as a registered link relation within the
-                  same ALPS document. [TK MAY NOT or SHOULD NOT? -mca
-                  :: I think MAY NOT. I don't want an ALPS document to
+                  same ALPS document. 
+<!-- [TK MAY NOT or SHOULD NOT? -mca:: I think MAY NOT. I don't want an ALPS document to
                   be used to describe itself. But I had to think for a
-                  while to remember the rationale for this. -leonardr]
+                  while to remember the rationale for this. -leonardr] -->
                 </t>
         </section>
         <section anchor="prop-rt" title="'rt'">
           <t>
-                [TK I noticed you added rt to the example but it
+                (to be spcified)
+                <!-- [TK I noticed you added rt to the example but it
                 wasn't defined here. I'm also not convinced we need to
                 add rt to ALPS itself, as opposed to saying it's OK to
                 use ALPS URIs as rt in other formats. -leonardr] :: [ok, let's
                 talk about this one. i figured using this to "point to"
                 existing semantic descriptors with the current ALPS doc (or
-                some other doc (e.g. schem.org) would be helpful. no? -mca]
+                some other doc (e.g. schem.org) would be helpful. no? -mca] -->
               </t>
         </section>
         <section anchor="prop-type" title="'type'">
@@ -822,7 +826,9 @@
                 Indicates the version of the ALPS specification used
                 in the document. This SHOULD appear as a property of
                 the <xref target="prop-alps">'alps'</xref>
-                property. [TK property of the property? -LR] Currently
+                property. 
+<!-- [TK property of the property? -LR]-->
+                Currently
                 the only valid value is "1.0".  If no value appears,
                 then 'version="1.0"' is implied.
               </t>
@@ -1011,7 +1017,8 @@
       <t>
         An ALPS document can be applied to many existing media
         types as long as there exists an agreed mapping between ALPS and the target
-        media type [TK: point to future mapping documentation]. 
+        media type. 
+<!-- [TK: point to future mapping documentation] --> 
         <xref target="example"/> gave some informative
         examples of this. Normative, up-to-date guidance on applying
         ALPS documents to existing media types are available at the
@@ -1019,6 +1026,7 @@
         there would be a formal registry. -leonardr]
       </t>
       <t>
+<!--
         [TK just brainstorming here, not formatted. -LR]
         Defining how an ALPS document is to be applied to a media type
         requires defining the following:
@@ -1060,6 +1068,7 @@
         example: in an HTML representation, a tag marked up as an ALPS
         descriptor may contain a child tag marked up as one of the
         children of that ALPS descriptor.)
+-->
       </t>
       <t>
         Not all media types can faithfully represent all ALPS
@@ -1067,13 +1076,16 @@
         has no standard way of representing hyperlinks. The [details?] of how to
         apply ALPS to such a media type will necesarily be incomplete,
         and it will not be possible to represent some aspects of an
-        ALPS profile in documents in that media type. [TK could we
+        ALPS profile in documents in that media type. 
+<!-- 
+        [TK could we
         say that such a media type is not in complete compliance with
         the ALPS document?  -leonardr] :: [we might want to add a compliance
         section in this spec. IOW, what parts of ALPS a media type 
         MUST/SHOULD/MAY support in order to be "fully compliant" (all MUSTs
         and SHOULDs, "conditionally compliant" (all MUSTs), and "non-compliant"
-        (not all MUSTs) -mca] 
+        (not all MUSTs) -mca] -->
+
       </t>
       <section anchor="linking-to-alps-documents" title="Linking to ALPS Documents">
         <t>
@@ -1081,11 +1093,13 @@
           some representation document, the representation document
           SHOULD be linked to the ALPS document using the "profile"
           link relation (found in the IANA registry of link
-          relations). [TK I changed should to must. -leonardr :: Which
+          relations). 
+<!-- [TK I changed should to must. -leonardr :: Which
           means no one can EVER use Link header or media-type
           "profile" methods. is that what we want? -mca :: I see your
           point. I meant that no other link relation is
-          acceptable. -LR] If the media type of the representation
+          acceptable. -LR] -->
+          If the media type of the representation
           document has no native ability to link to other resources,
           or no ability to express link relations, the HTTP header
           'Link' <xref target="RFC5988"/> MAY be used to connect the
@@ -1105,8 +1119,8 @@
           itself. A profile linked to using a media type parameter
           takes precedence over a profile linked to using the 'Link'
           header and a profile linked to within the representation
-          document itself. [TK I added that, it seems
-          right. -leonardr]
+          document itself. 
+          <!-- [TK I added that, it seems right. -leonardr] -->
         </t>
       </section>
     </section>
@@ -1324,7 +1338,7 @@
       &rfc4627;
       &rfc5988;
     </references>
-    <references title="Informative References">
-    </references>
+    <!--<references title="Informative References">
+    </references>-->
   </back>
 </rfc>
