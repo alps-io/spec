@@ -16,7 +16,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 <!-- the actual document! -->
-<rfc docName="draft-amundsen-richardson-alps-00.C" ipr="trust200902">
+<rfc docName="draft-amundsen-richardson-alps-00.D" ipr="trust200902">
   <!-- front matter -->
   <front>
     <title abbrev="Application-Level Profile Semantics">
@@ -545,7 +545,7 @@
                   property may be nested.
                 </t>
           <t>
-                  The 'descriptor' property MAY have either an <xref target="prop-id">'id'</xref> or <xref target="prop-href">'href'</xref> attribute. It MAY
+                  The 'descriptor' property SHOULD have either an <xref target="prop-id">'id'</xref> or <xref target="prop-href">'href'</xref> attribute. It MAY
                   have both. Additionally, the 'descriptor' MAY have any
                   of the following attributes:
                   <list style="numbers"><t><xref target="prop-doc">'doc'</xref></t><t><xref target="prop-ext">'ext'</xref></t><t><xref target="prop-name">'name'</xref></t><t><xref target="prop-type">'type'</xref></t></list>
@@ -711,6 +711,7 @@
               </t>
           <t>
                 For this reason, when selecting 'id' values and
+
                 defining 'descriptor' semantics, it is important to
                 avoid creating conflicts with existing
                 IANA-registered values. If it is unclear whether a

@@ -4,10 +4,10 @@
 Network Working Group                                        M. Amundsen
 Internet-Draft                                      Layer 7 Technologies
 Expires: July 15, 2014                                     L. Richardson
-                                                        January 20, 2014
+                                                        January 22, 2014
 
                Application-Level Profile Semantics (ALPS)
-                  draft-amundsen-richardson-alps-00.C
+                  draft-amundsen-richardson-alps-00.D
 
 Abstract
 
@@ -618,8 +618,8 @@ Internet-Draft    Application-Level Profile Semantics       January 2014
    [prop-alps].  It may also appear as a child of itself; that is, the
    'descriptor' property may be nested.
 
-   The 'descriptor' property MAY have either an 'id' [prop-id] or 'href'
-   [prop-href] attribute.  It MAY have both.  Additionally, the
+   The 'descriptor' property SHOULD have either an 'id' [prop-id] or
+   'href' [prop-href] attribute.  It MAY have both.  Additionally, the
    'descriptor' MAY have any of the following attributes:
 
    1.  'doc' [prop-doc]
