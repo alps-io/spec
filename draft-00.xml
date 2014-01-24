@@ -16,7 +16,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 <!-- the actual document! -->
-<rfc docName="draft-amundsen-richardson-alps-00.D" ipr="trust200902">
+<rfc docName="draft-amundsen-richardson-alps-00.E" ipr="trust200902">
   <!-- front matter -->
   <front>
     <title abbrev="Application-Level Profile Semantics">
@@ -775,16 +775,18 @@
                   while to remember the rationale for this. -leonardr] -->
                 </t>
         </section>
-        <section anchor="prop-rt" title="'rt'">
-          <t>
-                (to be spcified)
-                <!-- [TK I noticed you added rt to the example but it
-                wasn't defined here. I'm also not convinced we need to
-                add rt to ALPS itself, as opposed to saying it's OK to
-                use ALPS URIs as rt in other formats. -leonardr] :: [ok, let's
-                talk about this one. i figured using this to "point to"
-                existing semantic descriptors with the current ALPS doc (or
-                some other doc (e.g. schem.org) would be helpful. no? -mca] -->
+        <section anchor="prop-rt" title="'rt'"> 
+            <t>
+                Indicates the resource type that will be returned when 
+                executing the specified network request. The 'rt' attribute
+                SHOULD appear only on a <xref target="prop-descriptor">descriptor</xref>
+                with a <xref target="prop-type">type</xref> value of
+                'safe', 'unsafe', or 'idempotent.'
+            </t>
+            <t>
+                The 'rt' attribute is OPTIONAL and is an opaque string and MAY match the
+                <xref target="prop-id">id</xref> of an
+                existing <xref target="prop-descriptor">descriptor</xref>.
               </t>
         </section>
         <section anchor="prop-type" title="'type'">
