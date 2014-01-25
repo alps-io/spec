@@ -545,10 +545,17 @@
                   property may be nested.
                 </t>
           <t>
-                  The 'descriptor' property SHOULD have either an <xref target="prop-id">'id'</xref> or <xref target="prop-href">'href'</xref> attribute. It MAY
+                  The 'descriptor' property SHOULD have either an 
+                  <xref target="prop-id">'id'</xref> or 
+                  <xref target="prop-href">'href'</xref> attribute. It MAY
                   have both. Additionally, the 'descriptor' MAY have any
                   of the following attributes:
-                  <list style="numbers"><t><xref target="prop-doc">'doc'</xref></t><t><xref target="prop-ext">'ext'</xref></t><t><xref target="prop-name">'name'</xref></t><t><xref target="prop-type">'type'</xref></t></list>
+                  <list style="numbers">
+                    <t><xref target="prop-doc">'doc'</xref></t>
+                    <t><xref target="prop-ext">'ext'</xref></t>
+                    <t><xref target="prop-name">'name'</xref></t>
+                    <t><xref target="prop-type">'type'</xref></t>
+                  </list>
                 </t>
           <t>
                   If present, the 'href' property MUST be a
@@ -662,22 +669,58 @@
         <section anchor="prop-id" title="'id'">
           <t>
                 A document-wide unique identifier for the related
-                element. This MAY appear as an attribute of an <xref target="prop-descriptor">'descriptor'</xref>.
+                element. This SHOULD appear as an attribute of an 
+                <xref target="prop-descriptor">'descriptor'</xref>.
               </t>
           <t>
-                The value of this attribute will appear within generic
-                representations as the name of a semantic descriptor
-                or hypermedia control 
-<!-- [TK do you want to update this terminology? -LR] -->
-                (see <xref target="instructions"/>
-                for details). The exception is when a 'descriptor'
-                defines <xref target="prop-name">'name'</xref> as well
-                as <xref target="prop-id">'id'</xref>. In that case,
-                the value of 'name' contains the name of the semantic
-                descriptor or hypermedia control, and the value of
-                'id' is just a unique identifier internal to the ALPS
-                document.
-              </t>
+                The value of this attribute MAY be used as an identifier
+                in the related runtime hypermedia representation. In the
+                example below the ALPS descriptor with an 'id' of "q" is
+                used to identify an HTML input element:
+          <list style="hanging"><t hangText="'id' in ALPS..."><![CDATA[
+<descriptor id="q" type="semantic" /> 
+                        ]]></t></list>
+                        
+          <list style="hanging"><t hangText="...becomes the 'class' in HTML"><![CDATA[
+<input name="q" type="text" value="" />
+                        ]]></t></list></t>
+          <t>
+              It should be noted that the exact mapping from ALPS elements (e.g. 'id')
+              to elements within a particular media type (HTML, Collection+JSON, etc.)
+              is covered in separate documents (to be speficied).
+          </t>
+          <section anchor="prop-id-name" title="ALPS 'id' and 'name' Properties">
+          <t>
+            In some cases, media types support non-unique identifiers (e.g. HTML's 'name'
+            property) or will allow the same identifier value for multiple elements in the same
+            representation (e.g. &lt;div id="search" ... /&gt; and &lt;input type="submit" class="search" .../&gt; and
+            &lt;input name="search" ... /&gt;). In those cases, translating that representation 
+            into ALPS documents could result in multiple 'id' properties with the same value.
+          </t>  
+          <t>
+            To avoid this, ALPS document designers can add the <xref target="prop-name">name</xref>
+            property to the descriptor to hold the common value ("search") while still using the
+            <xref target="prop-id">id</xref> property to hold a document-wide unqiue value. For example:
+          </t>
+          <figure title="HTML Representation of a Search Transition"><artwork><![CDATA[
+<!-- HTML -->
+<div id="search">
+  <form action="..." method="get">
+    <input name="search" value="..." type="text" />
+    <input type="submit" class="search" />
+  </form>
+</div>
+          ]]></artwork></figure>
+          <figure title="ALPS Description of the same Search Transition"><artwork><![CDATA[
+<!-- ALPS -->
+<descriptor id="search-block" type="semantic name="search">
+  <descriptor id="search-form" type="safe" name="search">
+    <descriptor id="search-data" type="semantic" name="search" />
+  </descriptor>
+</descriptor>
+          ]]></artwork></figure>
+          </section>
+          <section anchor="prop-id-frag" title="Fragment Identifiers and 'id'">
           <t>
                 When applied to an ALPS document, a URI fragment
                 identifier points to the 'descriptor' with the
@@ -699,6 +742,8 @@
                 instance, it can be used as the value of the
                 IANA-registered link relation "type".
               </t>
+          </section>
+          <section anchor="prop-id-rels" title="Link Relation Values and 'id'">
           <t>
                 A 'descriptor' that defines a state transition
                 establishes an extension link relation whose name is
@@ -711,7 +756,6 @@
               </t>
           <t>
                 For this reason, when selecting 'id' values and
-
                 defining 'descriptor' semantics, it is important to
                 avoid creating conflicts with existing
                 IANA-registered values. If it is unclear whether a
@@ -720,6 +764,7 @@
                 or a relation registered in an ALPS profile, the
                 semantics of that link are undefined.
               </t>
+            </section>
         </section>
         <section anchor="prop-link" title="'link'">
           <t>

@@ -1045,24 +1045,82 @@ ALPS Document Properties</h3>
 
 <p>
                 A document-wide unique identifier for the related
-                element. This MAY appear as an attribute of an <a class='info' href='#prop-descriptor'>'descriptor'<span> (</span><span class='info'>'descriptor'</span><span>)</span></a>.
+                element. This SHOULD appear as an attribute of an 
+                <a class='info' href='#prop-descriptor'>'descriptor'<span> (</span><span class='info'>'descriptor'</span><span>)</span></a>.
               
 </p>
 <p>
-                The value of this attribute will appear within generic
-                representations as the name of a semantic descriptor
-                or hypermedia control 
+                The value of this attribute MAY be used as an identifier
+                in the related runtime hypermedia representation. In the
+                example below the ALPS descriptor with an 'id' of "q" is
+                used to identify an HTML input element:
+          </p>
+<blockquote class="text"><dl>
+<dt>'id' in ALPS...</dt>
+<dd>
+&lt;descriptor id="q" type="semantic" /&gt; 
+                        
+</dd>
+</dl></blockquote><p>
+                        
+          </p>
+<blockquote class="text"><dl>
+<dt>...becomes the 'class' in HTML</dt>
+<dd>
+&lt;input name="q" type="text" value="" /&gt;
+                        
+</dd>
+</dl></blockquote>
 
-                (see <a class='info' href='#instructions'>Section&nbsp;3<span> (</span><span class='info'>Applying ALPS documents to Existing Media Types</span><span>)</span></a>
-                for details). The exception is when a 'descriptor'
-                defines <a class='info' href='#prop-name'>'name'<span> (</span><span class='info'>'name'</span><span>)</span></a> as well
-                as <a class='info' href='#prop-id'>'id'<span> (</span><span class='info'>'id'</span><span>)</span></a>. In that case,
-                the value of 'name' contains the name of the semantic
-                descriptor or hypermedia control, and the value of
-                'id' is just a unique identifier internal to the ALPS
-                document.
-              
+<p>
+              It should be noted that the exact mapping from ALPS elements (e.g. 'id')
+              to elements within a particular media type (HTML, Collection+JSON, etc.)
+              is covered in separate documents (to be speficied).
+          
 </p>
+<a name="prop-id-name"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2.7.1"></a><h3>2.2.7.1.&nbsp;
+ALPS 'id' and 'name' Properties</h3>
+
+<p>
+            In some cases, media types support non-unique identifiers (e.g. HTML's 'name'
+            property) or will allow the same identifier value for multiple elements in the same
+            representation (e.g. &lt;div id="search" ... /&gt; and &lt;input type="submit" class="search" .../&gt; and
+            &lt;input name="search" ... /&gt;). In those cases, translating that representation 
+            into ALPS documents could result in multiple 'id' properties with the same value.
+          
+</p>
+<p>
+            To avoid this, ALPS document designers can add the <a class='info' href='#prop-name'>name<span> (</span><span class='info'>'name'</span><span>)</span></a>
+            property to the descriptor to hold the common value ("search") while still using the
+            <a class='info' href='#prop-id'>id<span> (</span><span class='info'>'id'</span><span>)</span></a> property to hold a document-wide unqiue value. For example:
+          
+</p><br /><hr class="insert" />
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+&lt;!-- HTML --&gt;
+&lt;div id="search"&gt;
+  &lt;form action="..." method="get"&gt;
+    &lt;input name="search" value="..." type="text" /&gt;
+    &lt;input type="submit" class="search" /&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+</pre></div><table border="0" cellpadding="0" cellspacing="2" align="center"><tr><td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;HTML Representation of a Search Transition&nbsp;</b></font><br /></td></tr></table><hr class="insert" />
+<br /><hr class="insert" />
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+&lt;!-- ALPS --&gt;
+&lt;descriptor id="search-block" type="semantic name="search"&gt;
+  &lt;descriptor id="search-form" type="safe" name="search"&gt;
+    &lt;descriptor id="search-data" type="semantic" name="search" /&gt;
+  &lt;/descriptor&gt;
+&lt;/descriptor&gt;
+</pre></div><table border="0" cellpadding="0" cellspacing="2" align="center"><tr><td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;ALPS Description of the same Search Transition&nbsp;</b></font><br /></td></tr></table><hr class="insert" />
+
+<a name="prop-id-frag"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2.7.2"></a><h3>2.2.7.2.&nbsp;
+Fragment Identifiers and 'id'</h3>
+
 <p>
                 When applied to an ALPS document, a URI fragment
                 identifier points to the 'descriptor' with the
@@ -1087,6 +1145,11 @@ ALPS Document Properties</h3>
                 IANA-registered link relation "type".
               
 </p>
+<a name="prop-id-rels"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2.7.3"></a><h3>2.2.7.3.&nbsp;
+Link Relation Values and 'id'</h3>
+
 <p>
                 A 'descriptor' that defines a state transition
                 establishes an extension link relation whose name is
@@ -1100,7 +1163,6 @@ ALPS Document Properties</h3>
 </p>
 <p>
                 For this reason, when selecting 'id' values and
-
                 defining 'descriptor' semantics, it is important to
                 avoid creating conflicts with existing
                 IANA-registered values. If it is unclear whether a

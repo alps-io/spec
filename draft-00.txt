@@ -133,29 +133,29 @@ Table of Contents
        2.2.5.  'format' . . . . . . . . . . . . . . . . . . . . . . . 13
        2.2.6.  'href' . . . . . . . . . . . . . . . . . . . . . . . . 14
        2.2.7.  'id' . . . . . . . . . . . . . . . . . . . . . . . . . 14
-       2.2.8.  'link' . . . . . . . . . . . . . . . . . . . . . . . . 15
-       2.2.9.  'name' . . . . . . . . . . . . . . . . . . . . . . . . 15
-       2.2.10. 'rel'  . . . . . . . . . . . . . . . . . . . . . . . . 15
-       2.2.11. 'rt' . . . . . . . . . . . . . . . . . . . . . . . . . 16
-       2.2.12. 'type' . . . . . . . . . . . . . . . . . . . . . . . . 16
-       2.2.13. 'value'  . . . . . . . . . . . . . . . . . . . . . . . 16
-       2.2.14. 'version'  . . . . . . . . . . . . . . . . . . . . . . 16
-     2.3.  ALPS Representations . . . . . . . . . . . . . . . . . . . 17
-       2.3.1.  Sample HTML  . . . . . . . . . . . . . . . . . . . . . 17
-       2.3.2.  XML Representation . . . . . . . . . . . . . . . . . . 17
-       2.3.3.  JSON Representation  . . . . . . . . . . . . . . . . . 18
-   3.  Applying ALPS documents to Existing Media Types  . . . . . . . 20
-     3.1.  Linking to ALPS Documents  . . . . . . . . . . . . . . . . 21
-   4.  The ALPS Registry  . . . . . . . . . . . . . . . . . . . . . . 21
-     4.1.  What is the ALPS Registry  . . . . . . . . . . . . . . . . 21
-     4.2.  Searching the Registry . . . . . . . . . . . . . . . . . . 21
-     4.3.  Contributing to the Registry . . . . . . . . . . . . . . . 21
-   5.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 22
-     5.1.  application/alps+xml . . . . . . . . . . . . . . . . . . . 22
-     5.2.  application/alps+json  . . . . . . . . . . . . . . . . . . 23
-   6.  Internationalization Considerations  . . . . . . . . . . . . . 24
-   7.  Acknowledgements . . . . . . . . . . . . . . . . . . . . . . . 24
-   8.  Normative References . . . . . . . . . . . . . . . . . . . . . 24
+       2.2.8.  'link' . . . . . . . . . . . . . . . . . . . . . . . . 16
+       2.2.9.  'name' . . . . . . . . . . . . . . . . . . . . . . . . 16
+       2.2.10. 'rel'  . . . . . . . . . . . . . . . . . . . . . . . . 16
+       2.2.11. 'rt' . . . . . . . . . . . . . . . . . . . . . . . . . 17
+       2.2.12. 'type' . . . . . . . . . . . . . . . . . . . . . . . . 17
+       2.2.13. 'value'  . . . . . . . . . . . . . . . . . . . . . . . 17
+       2.2.14. 'version'  . . . . . . . . . . . . . . . . . . . . . . 17
+     2.3.  ALPS Representations . . . . . . . . . . . . . . . . . . . 18
+       2.3.1.  Sample HTML  . . . . . . . . . . . . . . . . . . . . . 18
+       2.3.2.  XML Representation . . . . . . . . . . . . . . . . . . 18
+       2.3.3.  JSON Representation  . . . . . . . . . . . . . . . . . 19
+   3.  Applying ALPS documents to Existing Media Types  . . . . . . . 21
+     3.1.  Linking to ALPS Documents  . . . . . . . . . . . . . . . . 22
+   4.  The ALPS Registry  . . . . . . . . . . . . . . . . . . . . . . 22
+     4.1.  What is the ALPS Registry  . . . . . . . . . . . . . . . . 22
+     4.2.  Searching the Registry . . . . . . . . . . . . . . . . . . 22
+     4.3.  Contributing to the Registry . . . . . . . . . . . . . . . 22
+   5.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 23
+     5.1.  application/alps+xml . . . . . . . . . . . . . . . . . . . 23
+     5.2.  application/alps+json  . . . . . . . . . . . . . . . . . . 24
+   6.  Internationalization Considerations  . . . . . . . . . . . . . 25
+   7.  Acknowledgements . . . . . . . . . . . . . . . . . . . . . . . 25
+   8.  Normative References . . . . . . . . . . . . . . . . . . . . . 25
 
 
 
@@ -754,16 +754,67 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 2.2.7.  'id'
 
-   A document-wide unique identifier for the related element.  This MAY
-   appear as an attribute of an 'descriptor' (Section 2.2.3).
+   A document-wide unique identifier for the related element.  This
+   SHOULD appear as an attribute of an 'descriptor' (Section 2.2.3).
 
-   The value of this attribute will appear within generic
-   representations as the name of a semantic descriptor or hypermedia
-   control (see Section 3 for details).  The exception is when a
-   'descriptor' defines 'name' (Section 2.2.9) as well as 'id'
-   (Section 2.2.7).  In that case, the value of 'name' contains the name
-   of the semantic descriptor or hypermedia control, and the value of
-   'id' is just a unique identifier internal to the ALPS document.
+   The value of this attribute MAY be used as an identifier in the
+   related runtime hypermedia representation.  In the example below the
+   ALPS descriptor with an 'id' of "q" is used to identify an HTML input
+   element:
+
+   'id' in ALPS...  <descriptor id="q" type="semantic" />
+
+   ...becomes the 'class' in HTML  <input name="q" type="text" value=""
+      />
+
+   It should be noted that the exact mapping from ALPS elements (e.g.
+   'id') to elements within a particular media type (HTML, Collection+
+   JSON, etc.) is covered in separate documents (to be speficied).
+
+2.2.7.1.  ALPS 'id' and 'name' Properties
+
+   In some cases, media types support non-unique identifiers (e.g.
+   HTML's 'name' property) or will allow the same identifier value for
+   multiple elements in the same representation (e.g. <div id="search"
+   ... /> and <input type="submit" class="search" .../> and <input
+
+
+
+Amundsen & Richardson     Expires July 28, 2014                [Page 14]
+
+Internet-Draft     Application-Level Profile Semantics      January 2014
+
+
+   name="search" ... />).  In those cases, translating that
+   representation into ALPS documents could result in multiple 'id'
+   properties with the same value.
+
+   To avoid this, ALPS document designers can add the name
+   (Section 2.2.9) property to the descriptor to hold the common value
+   ("search") while still using the id (Section 2.2.7) property to hold
+   a document-wide unqiue value.  For example:
+
+   <!-- HTML -->
+   <div id="search">
+     <form action="..." method="get">
+       <input name="search" value="..." type="text" />
+       <input type="submit" class="search" />
+     </form>
+   </div>
+
+                HTML Representation of a Search Transition
+
+
+   <!-- ALPS -->
+   <descriptor id="search-block" type="semantic name="search">
+     <descriptor id="search-form" type="safe" name="search">
+       <descriptor id="search-data" type="semantic" name="search" />
+     </descriptor>
+   </descriptor>
+
+              ALPS Description of the same Search Transition
+
+2.2.7.2.  Fragment Identifiers and 'id'
 
    When applied to an ALPS document, a URI fragment identifier points to
    the 'descriptor' with the appropriate 'id'.  For example, the
@@ -777,16 +828,20 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
    The complete URI to an ALPS 'descriptor' (including the fragement)
    forms an "abstract semantic type" identifier.  This is a resolvable
    URI (URL) that can be used to indicate the type of a resource; for
+   instance, it can be used as the value of the IANA-registered link
+   relation "type".
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 14]
+
+
+
+Amundsen & Richardson     Expires July 28, 2014                [Page 15]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
-   instance, it can be used as the value of the IANA-registered link
-   relation "type".
+2.2.7.3.  Link Relation Values and 'id'
 
    A 'descriptor' that defines a state transition establishes an
    extension link relation whose name is the unqualified URI of the
@@ -836,7 +891,8 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 15]
+
+Amundsen & Richardson     Expires July 28, 2014                [Page 16]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -892,7 +948,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 16]
+Amundsen & Richardson     Expires July 28, 2014                [Page 17]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -948,7 +1004,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 17]
+Amundsen & Richardson     Expires July 28, 2014                [Page 18]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -1004,7 +1060,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 18]
+Amundsen & Richardson     Expires July 28, 2014                [Page 19]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -1060,7 +1116,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 19]
+Amundsen & Richardson     Expires July 28, 2014                [Page 20]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -1116,7 +1172,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 20]
+Amundsen & Richardson     Expires July 28, 2014                [Page 21]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -1172,7 +1228,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 21]
+Amundsen & Richardson     Expires July 28, 2014                [Page 22]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -1228,7 +1284,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 22]
+Amundsen & Richardson     Expires July 28, 2014                [Page 23]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -1284,7 +1340,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 23]
+Amundsen & Richardson     Expires July 28, 2014                [Page 24]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -1340,7 +1396,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 24]
+Amundsen & Richardson     Expires July 28, 2014                [Page 25]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -1396,5 +1452,5 @@ Authors' Addresses
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 25]
+Amundsen & Richardson     Expires July 28, 2014                [Page 26]
 
