@@ -146,7 +146,7 @@
 <tr><td class="header">Expires: July 28, 2014</td><td class="header">L. Richardson</td></tr>
 <tr><td class="header">&nbsp;</td><td class="header">January 24, 2014</td></tr>
 </table></td></tr></table>
-<h1><br />Application-Level Profile Semantics (ALPS)<br />draft-amundsen-richardson-alps-00.F</h1>
+<h1><br />Application-Level Profile Semantics (ALPS)<br />draft-amundsen-richardson-alps-00.G</h1>
 
 <h3>Abstract</h3>
 
@@ -285,7 +285,17 @@ Internationalization Considerations<br />
 <a href="#anchor16">7.</a>&nbsp;
 Acknowledgements<br />
 <a href="#rfc.references1">8.</a>&nbsp;
+References<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#rfc.references1">8.1.</a>&nbsp;
 Normative References<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#rfc.references2">8.2.</a>&nbsp;
+Informative References<br />
+<a href="#anchor19">Appendix&nbsp;1.</a>&nbsp;
+Frequently Asked Questions<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor20">1.1.</a>&nbsp;
+Why are there no URLs in ALPS?<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor21">1.2.</a>&nbsp;
+Why is there no workflow component in the ALPS specification?<br />
 </p>
 <br clear="all" />
 
@@ -1965,9 +1975,14 @@ Acknowledgements</h3>
             Mark Foster.
         
 </p>
+<a name="rfc.references"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.8"></a><h3>8.&nbsp;
+References</h3>
+
 <a name="rfc.references1"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<h3>8.&nbsp;Normative References</h3>
+<h3>8.1.&nbsp;Normative References</h3>
 <table width="99%" border="0">
 <tr><td class="author-text" valign="top"><a name="RFC2119">[RFC2119]</a></td>
 <td class="author-text"><a href="mailto:sob@harvard.edu">Bradner, S.</a>, &ldquo;<a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>,&rdquo; BCP&nbsp;14, RFC&nbsp;2119, March&nbsp;1997 (<a href="http://www.rfc-editor.org/rfc/rfc2119.txt">TXT</a>, <a href="http://xml.resource.org/public/rfc/html/rfc2119.html">HTML</a>, <a href="http://xml.resource.org/public/rfc/xml/rfc2119.xml">XML</a>).</td></tr>
@@ -1979,6 +1994,57 @@ Acknowledgements</h3>
 <td class="author-text">Nottingham, M., &ldquo;<a href="http://tools.ietf.org/html/rfc5988">Web Linking</a>,&rdquo; RFC&nbsp;5988, October&nbsp;2010 (<a href="http://www.rfc-editor.org/rfc/rfc5988.txt">TXT</a>).</td></tr>
 </table>
 
+<a name="rfc.references2"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<h3>8.2.&nbsp;Informative References</h3>
+<table width="99%" border="0">
+<tr><td class="author-text" valign="top"><a name="draft-ietf-appsawg-uri-get-off-my-lawn-00">[draft-ietf-appsawg-uri-get-off-my-lawn-00]</a></td>
+<td class="author-text">Nottingham, M., &ldquo;<a href="http://tools.ietf.org/html/draft-ietf-appsawg-uri-get-off-my-lawn-00">Standardising Structure in URIs</a>,&rdquo; I-D&nbsp;draft-ietf-appsawg-uri-get-off-my-lawn-00, September&nbsp;2013.</td></tr>
+</table>
+
+<a name="anchor19"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.1"></a><h3>1.&nbsp;
+Frequently Asked Questions</h3>
+
+<a name="anchor20"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.1.1"></a><h3>1.1.&nbsp;
+Why are there no URLs in ALPS?</h3>
+
+<p>
+        ALPS is meant to describe a service in a universal way. The same ALPS description document
+        can be used by many ALPS-compliant servers. Since each service implementation is in charge 
+        of their own URL space, ALPS descriptions do not include URLs. 
+        See <a class='info' href='#draft-ietf-appsawg-uri-get-off-my-lawn-00'>Standardising Structure in URIs<span> (</span><span class='info'>Nottingham, M., &ldquo;Standardising Structure in URIs,&rdquo; September&nbsp;2013.</span><span>)</span></a> [draft&#8209;ietf&#8209;appsawg&#8209;uri&#8209;get&#8209;off&#8209;my&#8209;lawn&#8209;00]
+        for more on this principle.
+      
+</p>
+<p>
+        When implementing ALPS-compliant servers, implementors are free to use any URL design they wish.
+        All that is required is that implementors use the same ALPS profile descriptor 'id' and 'name'
+        properties in the representations. When implementing ALPS-compliant client applications, the 
+        URLs will be supplied at runtime by the server represetentations. Client apps only need to 
+        recognize the descriptor 'id' and 'name' values from the referenced ALP profile document.
+      
+</p>
+<a name="anchor21"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.1.2"></a><h3>1.2.&nbsp;
+Why is there no workflow component in the ALPS specification?</h3>
+
+<p>
+        ALPS is not designed to describe workflows or execution paths for a process. Instead, ALPS
+        is designed to describe a shared set of data and actions elements that server MAY implement
+        in order to create a service. Each action descriptor (where the descriptor's type property is set to
+        "safe", "unsafe", or "idemponent") SHOULD describe a stateless state transition that a
+        ALPS-compliant client application can invoke when it is available. Servers are free to 
+        implement on the transitions they find useful and to arrange them in any order they wish.
+        ALPS-compliant client applications SHOULD be able to recognize these descriptors when they appear
+        and are free to act upon them directly, render them for humans to invoke, or ignore/hide them
+        completely.
+      
+</p>
 <a name="rfc.authors"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <h3>Authors' Addresses</h3>

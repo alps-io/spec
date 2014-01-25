@@ -8,7 +8,7 @@ Expires: July 28, 2014                                     L. Richardson
 
 
                Application-Level Profile Semantics (ALPS)
-                  draft-amundsen-richardson-alps-00.F
+                  draft-amundsen-richardson-alps-00.G
 
 Abstract
 
@@ -66,53 +66,6 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Amundsen & Richardson     Expires July 28, 2014                 [Page 2]
-
-Internet-Draft     Application-Level Profile Semantics      January 2014
-
-
 Table of Contents
 
    1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  4
@@ -152,10 +105,57 @@ Table of Contents
      4.3.  Contributing to the Registry . . . . . . . . . . . . . . . 22
    5.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 23
      5.1.  application/alps+xml . . . . . . . . . . . . . . . . . . . 23
+
+
+
+Amundsen & Richardson     Expires July 28, 2014                 [Page 2]
+
+Internet-Draft     Application-Level Profile Semantics      January 2014
+
+
      5.2.  application/alps+json  . . . . . . . . . . . . . . . . . . 24
    6.  Internationalization Considerations  . . . . . . . . . . . . . 25
    7.  Acknowledgements . . . . . . . . . . . . . . . . . . . . . . . 25
-   8.  Normative References . . . . . . . . . . . . . . . . . . . . . 25
+   8.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+     8.1.  Normative References . . . . . . . . . . . . . . . . . . . 26
+     8.2.  Informative References . . . . . . . . . . . . . . . . . . 26
+   Appendix 1.  Frequently Asked Questions  . . . . . . . . . . . . . 26
+     1.1.  Why are there no URLs in ALPS? . . . . . . . . . . . . . . 26
+     1.2.  Why is there no workflow component in the ALPS
+           specification? . . . . . . . . . . . . . . . . . . . . . . 27
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1388,10 +1388,10 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
    The following people made contributions to this specification: Mark
    Foster.
 
-8.  Normative References
+8.  References
 
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119, March 1997.
+
+
 
 
 
@@ -1401,13 +1401,80 @@ Amundsen & Richardson     Expires July 28, 2014                [Page 25]
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
-   [RFC3023]  Murata, M., St. Laurent, S., and D. Kohn, "XML Media
-              Types", RFC 3023, January 2001.
+8.1.  Normative References
 
-   [RFC4627]  Crockford, D., "The application/json Media Type for
-              JavaScript Object Notation (JSON)", RFC 4627, July 2006.
+   [RFC2119]                                    Bradner, S., "Key words
+                                                for use in RFCs to
+                                                Indicate Requirement
+                                                Levels", BCP 14,
+                                                RFC 2119, March 1997.
 
-   [RFC5988]  Nottingham, M., "Web Linking", RFC 5988, October 2010.
+   [RFC3023]                                    Murata, M., St. Laurent,
+                                                S., and D. Kohn, "XML
+                                                Media Types", RFC 3023,
+                                                January 2001.
+
+   [RFC4627]                                    Crockford, D., "The
+                                                application/json Media
+                                                Type for JavaScript
+                                                Object Notation (JSON)",
+                                                RFC 4627, July 2006.
+
+   [RFC5988]                                    Nottingham, M., "Web
+                                                Linking", RFC 5988,
+                                                October 2010.
+
+8.2.  Informative References
+
+   [draft-ietf-appsawg-uri-get-off-my-lawn-00]  Nottingham, M.,
+                                                "Standardising Structure
+                                                in URIs", I-D draft-
+                                                ietf-appsawg-uri-get-
+                                                off-my-lawn-00,
+                                                September 2013.
+
+1.  Frequently Asked Questions
+
+1.1.  Why are there no URLs in ALPS?
+
+   ALPS is meant to describe a service in a universal way.  The same
+   ALPS description document can be used by many ALPS-compliant servers.
+   Since each service implementation is in charge of their own URL
+   space, ALPS descriptions do not include URLs.  See Standardising
+   Structure in URIs [draft-ietf-appsawg-uri-get-off-my-lawn-00] for
+   more on this principle.
+
+   When implementing ALPS-compliant servers, implementors are free to
+   use any URL design they wish.  All that is required is that
+   implementors use the same ALPS profile descriptor 'id' and 'name'
+   properties in the representations.  When implementing ALPS-compliant
+   client applications, the URLs will be supplied at runtime by the
+
+
+
+Amundsen & Richardson     Expires July 28, 2014                [Page 26]
+
+Internet-Draft     Application-Level Profile Semantics      January 2014
+
+
+   server represetentations.  Client apps only need to recognize the
+   descriptor 'id' and 'name' values from the referenced ALP profile
+   document.
+
+1.2.  Why is there no workflow component in the ALPS specification?
+
+   ALPS is not designed to describe workflows or execution paths for a
+   process.  Instead, ALPS is designed to describe a shared set of data
+   and actions elements that server MAY implement in order to create a
+   service.  Each action descriptor (where the descriptor's type
+   property is set to "safe", "unsafe", or "idemponent") SHOULD describe
+   a stateless state transition that a ALPS-compliant client application
+   can invoke when it is available.  Servers are free to implement on
+   the transitions they find useful and to arrange them in any order
+   they wish.  ALPS-compliant client applications SHOULD be able to
+   recognize these descriptors when they appear and are free to act upon
+   them directly, render them for humans to invoke, or ignore/hide them
+   completely.
 
 Authors' Addresses
 
@@ -1441,16 +1508,5 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-Amundsen & Richardson     Expires July 28, 2014                [Page 26]
+Amundsen & Richardson     Expires July 28, 2014                [Page 27]
 

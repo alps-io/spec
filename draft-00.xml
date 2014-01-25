@@ -16,7 +16,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 <!-- the actual document! -->
-<rfc docName="draft-amundsen-richardson-alps-00.F" ipr="trust200902">
+<rfc docName="draft-amundsen-richardson-alps-00.G" ipr="trust200902">
   <!-- front matter -->
   <front>
     <title abbrev="Application-Level Profile Semantics">
@@ -1385,7 +1385,51 @@
       &rfc4627;
       &rfc5988;
     </references>
-    <!--<references title="Informative References">
-    </references>-->
+    <references title="Informative References">
+      <reference anchor='draft-ietf-appsawg-uri-get-off-my-lawn-00'>
+        <front>
+            <title>Standardising Structure in URIs</title>
+            <author initials='M.' surname='Nottingham'
+                    fullname='Mark Nottingham Postel'>
+            </author>
+
+            <date month='September' year='2013' />
+        </front>
+        <seriesInfo name='I-D' value='draft-ietf-appsawg-uri-get-off-my-lawn-00' />
+        <format type='HTML' 
+                target='http://tools.ietf.org/html/draft-ietf-appsawg-uri-get-off-my-lawn-00' />
+    </reference>
+    </references>
   </back>
+  <section title="Frequently Asked Questions">
+    <section title="Why are there no URLs in ALPS?">
+      <t>
+        ALPS is meant to describe a service in a universal way. The same ALPS description document
+        can be used by many ALPS-compliant servers. Since each service implementation is in charge 
+        of their own URL space, ALPS descriptions do not include URLs. 
+        See <xref target="draft-ietf-appsawg-uri-get-off-my-lawn-00">Standardising Structure in URIs</xref>
+        for more on this principle.
+      </t>
+      <t>
+        When implementing ALPS-compliant servers, implementors are free to use any URL design they wish.
+        All that is required is that implementors use the same ALPS profile descriptor 'id' and 'name'
+        properties in the representations. When implementing ALPS-compliant client applications, the 
+        URLs will be supplied at runtime by the server represetentations. Client apps only need to 
+        recognize the descriptor 'id' and 'name' values from the referenced ALP profile document.
+      </t>
+    </section>
+    <section title="Why is there no workflow component in the ALPS specification?">
+      <t>
+        ALPS is not designed to describe workflows or execution paths for a process. Instead, ALPS
+        is designed to describe a shared set of data and actions elements that server MAY implement
+        in order to create a service. Each action descriptor (where the descriptor's type property is set to
+        "safe", "unsafe", or "idemponent") SHOULD describe a stateless state transition that a
+        ALPS-compliant client application can invoke when it is available. Servers are free to 
+        implement on the transitions they find useful and to arrange them in any order they wish.
+        ALPS-compliant client applications SHOULD be able to recognize these descriptors when they appear
+        and are free to act upon them directly, render them for humans to invoke, or ignore/hide them
+        completely.
+      </t>
+    </section>
+  </section>
 </rfc>
