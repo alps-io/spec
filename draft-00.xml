@@ -16,7 +16,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 <!-- the actual document! -->
-<rfc docName="draft-amundsen-richardson-alps-00.G" ipr="trust200902">
+<rfc docName="draft-amundsen-richardson-alps-00.H" ipr="trust200902">
   <!-- front matter -->
   <front>
     <title abbrev="Application-Level Profile Semantics">
@@ -582,23 +582,31 @@
                  specification. This is an OPTIONAL element.
                 </t>
           <t>
-                  The 'ext' element has two properties. The <xref target="prop-href">'href'</xref> property MUST
-                  appear for the 'ext' element. Its value MUST be a
-                  URI and the URI SHOULD be resolveable. The <xref target="prop-value">'value'</xref> property MAY
-                  appear for the 'ext' element.  The meaning and use
-                  of the value property is described in the document
-                  found by dereferencing the 'href' property of the
-                  'ext' element. 
-<!-- [TK what if it's not resolvable? Also, the definition of 'href' 
-                  says it must be resolvable.  -leonardr] -->
+                  The 'ext' element has the following properties.
+                  <list style="numbers">
+                    <t><xref target="prop-id">id</xref></t>
+                    <t><xref target="prop-href">href</xref></t>
+                    <t><xref target="prop-value">value</xref></t>
+                  </list>
+                </t>  
+                <t>
+                  The <xref target="prop-id">id</xref> property is REQUIRED.
+                  The <xref target="prop-href">href</xref> is RECOMMENDED. The 
+                  resolvable SHOULD point to documentation that explains the 
+                  use and meaning of this <xref target="prop-ext">ext</xref> element.
+                  The <xref target="prop-value">value</xref>
+                  property is OPTIONAL. The content is undetermined; its
+                  meaning and use SHOULD be explained by the document found
+                  by de-referencing the <xref target="prop-href">href</xref>
+                  property.
                 </t>
           <t>
                   Examples:
                   <list style="hanging"><t hangText="XML:">
-                      &lt;ext href="http://alps.io/ext/directions"
+                      &lt;ext id="directions" href="http://alps.io/ext/directions"
                       value="north south east west" &gt;
                     </t><t hangText="JSON:">
-                      {"ext" : {"href"
+                      {"ext" : {" id" : "directions", "href"
                       : "http://alps.io/ext/directions",
                       value="north south east west"}}
                     </t></list>
@@ -612,11 +620,6 @@
                   Since the 'ext' element has no specific meaning
                   within this specification, it MUST be ignored by any
                   application that does not understand its meaning.
-                </t>
-          <t>
-                  Authors who define 'ext' elements SHOULD register these
-                  extensions with the ALPS Registry (see <xref target="alps-registry"/>) and use the URI provided by
-                  the registry in the 'name' property of their extension.
                 </t>
         </section>
         <section anchor="prop-format" title="'format'">
