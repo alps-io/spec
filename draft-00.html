@@ -143,10 +143,10 @@
 <table summary="layout" width="66%" border="0" cellpadding="0" cellspacing="0"><tr><td><table summary="layout" width="100%" border="0" cellpadding="2" cellspacing="1">
 <tr><td class="header">Network Working Group</td><td class="header">M. Amundsen</td></tr>
 <tr><td class="header">Internet-Draft</td><td class="header">Layer 7 Technologies</td></tr>
-<tr><td class="header">Expires: July 28, 2014</td><td class="header">L. Richardson</td></tr>
-<tr><td class="header">&nbsp;</td><td class="header">January 24, 2014</td></tr>
+<tr><td class="header">Expires: August 1, 2014</td><td class="header">L. Richardson</td></tr>
+<tr><td class="header">&nbsp;</td><td class="header">January 28, 2014</td></tr>
 </table></td></tr></table>
-<h1><br />Application-Level Profile Semantics (ALPS)<br />draft-amundsen-richardson-alps-00.G</h1>
+<h1><br />Application-Level Profile Semantics (ALPS)<br />draft-amundsen-richardson-alps-00.H</h1>
 
 <h3>Abstract</h3>
 
@@ -185,7 +185,7 @@ and may be updated, replaced, or obsoleted by other documents at any time.
 It is inappropriate to use Internet-Drafts as reference material or to cite
 them other than as &ldquo;work in progress.&rdquo;</p>
 <p>
-This Internet-Draft will expire on July 28, 2014.</p>
+This Internet-Draft will expire on August 1, 2014.</p>
 
 <h3>Copyright Notice</h3>
 <p>
@@ -942,14 +942,28 @@ ALPS Document Properties</h3>
                 
 </p>
 <p>
-                  The 'ext' element has two properties. The <a class='info' href='#prop-href'>'href'<span> (</span><span class='info'>'href'</span><span>)</span></a> property MUST
-                  appear for the 'ext' element. Its value MUST be a
-                  URI and the URI SHOULD be resolveable. The <a class='info' href='#prop-value'>'value'<span> (</span><span class='info'>'value'</span><span>)</span></a> property MAY
-                  appear for the 'ext' element.  The meaning and use
-                  of the value property is described in the document
-                  found by dereferencing the 'href' property of the
-                  'ext' element. 
-
+                  The 'ext' element has the following properties.
+                  </p>
+<ol class="text">
+<li><a class='info' href='#prop-id'>id<span> (</span><span class='info'>'id'</span><span>)</span></a>
+</li>
+<li><a class='info' href='#prop-href'>href<span> (</span><span class='info'>'href'</span><span>)</span></a>
+</li>
+<li><a class='info' href='#prop-value'>value<span> (</span><span class='info'>'value'</span><span>)</span></a>
+</li>
+</ol><p>
+                
+</p>
+<p>
+                  The <a class='info' href='#prop-id'>id<span> (</span><span class='info'>'id'</span><span>)</span></a> property is REQUIRED.
+                  The <a class='info' href='#prop-href'>href<span> (</span><span class='info'>'href'</span><span>)</span></a> is RECOMMENDED. The 
+                  resolvable SHOULD point to documentation that explains the 
+                  use and meaning of this <a class='info' href='#prop-ext'>ext<span> (</span><span class='info'>'ext'</span><span>)</span></a> element.
+                  The <a class='info' href='#prop-value'>value<span> (</span><span class='info'>'value'</span><span>)</span></a>
+                  property is OPTIONAL. The content is undetermined; its
+                  meaning and use SHOULD be explained by the document found
+                  by de-referencing the <a class='info' href='#prop-href'>href<span> (</span><span class='info'>'href'</span><span>)</span></a>
+                  property.
                 
 </p>
 <p>
@@ -958,13 +972,13 @@ ALPS Document Properties</h3>
 <blockquote class="text"><dl>
 <dt>XML:</dt>
 <dd>
-                      &lt;ext href="http://alps.io/ext/directions"
+                      &lt;ext id="directions" href="http://alps.io/ext/directions"
                       value="north south east west" &gt;
                     
 </dd>
 <dt>JSON:</dt>
 <dd>
-                      {"ext" : {"href"
+                      {"ext" : {" id" : "directions", "href"
                       : "http://alps.io/ext/directions",
                       value="north south east west"}}
                     
@@ -988,12 +1002,6 @@ ALPS Document Properties</h3>
                   Since the 'ext' element has no specific meaning
                   within this specification, it MUST be ignored by any
                   application that does not understand its meaning.
-                
-</p>
-<p>
-                  Authors who define 'ext' elements SHOULD register these
-                  extensions with the ALPS Registry (see <a class='info' href='#alps-registry'>Section&nbsp;4<span> (</span><span class='info'>The ALPS Registry</span><span>)</span></a>) and use the URI provided by
-                  the registry in the 'name' property of their extension.
                 
 </p>
 <a name="prop-format"></a><br /><hr />

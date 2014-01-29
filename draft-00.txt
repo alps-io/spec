@@ -3,12 +3,12 @@
 
 Network Working Group                                        M. Amundsen
 Internet-Draft                                      Layer 7 Technologies
-Expires: July 28, 2014                                     L. Richardson
-                                                        January 24, 2014
+Expires: August 1, 2014                                    L. Richardson
+                                                        January 28, 2014
 
 
                Application-Level Profile Semantics (ALPS)
-                  draft-amundsen-richardson-alps-00.G
+                  draft-amundsen-richardson-alps-00.H
 
 Abstract
 
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on July 28, 2014.
+   This Internet-Draft will expire on August 1, 2014.
 
 Copyright Notice
 
@@ -52,7 +52,7 @@ Copyright Notice
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                 [Page 1]
+Amundsen & Richardson    Expires August 1, 2014                 [Page 1]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -88,11 +88,11 @@ Table of Contents
        2.2.7.  'id' . . . . . . . . . . . . . . . . . . . . . . . . . 14
        2.2.8.  'link' . . . . . . . . . . . . . . . . . . . . . . . . 16
        2.2.9.  'name' . . . . . . . . . . . . . . . . . . . . . . . . 16
-       2.2.10. 'rel'  . . . . . . . . . . . . . . . . . . . . . . . . 16
+       2.2.10. 'rel'  . . . . . . . . . . . . . . . . . . . . . . . . 17
        2.2.11. 'rt' . . . . . . . . . . . . . . . . . . . . . . . . . 17
        2.2.12. 'type' . . . . . . . . . . . . . . . . . . . . . . . . 17
        2.2.13. 'value'  . . . . . . . . . . . . . . . . . . . . . . . 17
-       2.2.14. 'version'  . . . . . . . . . . . . . . . . . . . . . . 17
+       2.2.14. 'version'  . . . . . . . . . . . . . . . . . . . . . . 18
      2.3.  ALPS Representations . . . . . . . . . . . . . . . . . . . 18
        2.3.1.  Sample HTML  . . . . . . . . . . . . . . . . . . . . . 18
        2.3.2.  XML Representation . . . . . . . . . . . . . . . . . . 18
@@ -108,7 +108,7 @@ Table of Contents
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                 [Page 2]
+Amundsen & Richardson    Expires August 1, 2014                 [Page 2]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -164,7 +164,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                 [Page 3]
+Amundsen & Richardson    Expires August 1, 2014                 [Page 3]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -220,7 +220,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                 [Page 4]
+Amundsen & Richardson    Expires August 1, 2014                 [Page 4]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -276,7 +276,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                 [Page 5]
+Amundsen & Richardson    Expires August 1, 2014                 [Page 5]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -332,7 +332,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                 [Page 6]
+Amundsen & Richardson    Expires August 1, 2014                 [Page 6]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -388,7 +388,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                 [Page 7]
+Amundsen & Richardson    Expires August 1, 2014                 [Page 7]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -444,7 +444,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                 [Page 8]
+Amundsen & Richardson    Expires August 1, 2014                 [Page 8]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -500,7 +500,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                 [Page 9]
+Amundsen & Richardson    Expires August 1, 2014                 [Page 9]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -556,7 +556,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 10]
+Amundsen & Richardson    Expires August 1, 2014                [Page 10]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -612,7 +612,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 11]
+Amundsen & Richardson    Expires August 1, 2014                [Page 11]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -668,7 +668,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 12]
+Amundsen & Richardson    Expires August 1, 2014                [Page 12]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -683,20 +683,29 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
    documents with additional properties not covered in this
    specification.  This is an OPTIONAL element.
 
-   The 'ext' element has two properties.  The 'href' (Section 2.2.6)
-   property MUST appear for the 'ext' element.  Its value MUST be a URI
-   and the URI SHOULD be resolveable.  The 'value' (Section 2.2.13)
-   property MAY appear for the 'ext' element.  The meaning and use of
-   the value property is described in the document found by
-   dereferencing the 'href' property of the 'ext' element.
+   The 'ext' element has the following properties.
+
+   1.  id (Section 2.2.7)
+
+   2.  href (Section 2.2.6)
+
+   3.  value (Section 2.2.13)
+
+   The id (Section 2.2.7) property is REQUIRED.  The href
+   (Section 2.2.6) is RECOMMENDED.  The resolvable SHOULD point to
+   documentation that explains the use and meaning of this ext
+   (Section 2.2.4) element.  The value (Section 2.2.13) property is
+   OPTIONAL.  The content is undetermined; its meaning and use SHOULD be
+   explained by the document found by de-referencing the href
+   (Section 2.2.6) property.
 
    Examples:
 
-   XML:  <ext href="http://alps.io/ext/directions" value="north south
-      east west" >
+   XML:  <ext id="directions" href="http://alps.io/ext/directions"
+      value="north south east west" >
 
-   JSON:  {"ext" : {"href" : "http://alps.io/ext/directions",
-      value="north south east west"}}
+   JSON:  {"ext" : {" id" : "directions", "href" :
+      "http://alps.io/ext/directions", value="north south east west"}}
 
    The 'ext' element MAY appear as a child of the following elements:
 
@@ -708,27 +717,23 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
    specification, it MUST be ignored by any application that does not
    understand its meaning.
 
-   Authors who define 'ext' elements SHOULD register these extensions
-   with the ALPS Registry (see Section 4) and use the URI provided by
-   the registry in the 'name' property of their extension.
-
 2.2.5.  'format'
 
    Indicates how the text content should be parsed and/or rendered.
    This version of the spec identifies three possible values for
+
+
+
+Amundsen & Richardson    Expires August 1, 2014                [Page 13]
+
+Internet-Draft     Application-Level Profile Semantics      January 2014
+
+
    "format": "text", "html", and "asciidoc."  Any other calues for this
    attribute are undefined and SHOULD be treated as plain text.  If the
    program does not recognize the value of the "format" property and/or
    the "format" property is missing, the content SHOULD be treated as
    plain text.  This property MAY appear as an attribute of the 'doc'
-
-
-
-Amundsen & Richardson     Expires July 28, 2014                [Page 13]
-
-Internet-Draft     Application-Level Profile Semantics      January 2014
-
-
    (Section 2.2.2) element.
 
 2.2.6.  'href'
@@ -771,20 +776,21 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
    'id') to elements within a particular media type (HTML, Collection+
    JSON, etc.) is covered in separate documents (to be speficied).
 
+
+
+
+
+Amundsen & Richardson    Expires August 1, 2014                [Page 14]
+
+Internet-Draft     Application-Level Profile Semantics      January 2014
+
+
 2.2.7.1.  ALPS 'id' and 'name' Properties
 
    In some cases, media types support non-unique identifiers (e.g.
    HTML's 'name' property) or will allow the same identifier value for
    multiple elements in the same representation (e.g. <div id="search"
    ... /> and <input type="submit" class="search" .../> and <input
-
-
-
-Amundsen & Richardson     Expires July 28, 2014                [Page 14]
-
-Internet-Draft     Application-Level Profile Semantics      January 2014
-
-
    name="search" ... />).  In those cases, translating that
    representation into ALPS documents could result in multiple 'id'
    properties with the same value.
@@ -827,19 +833,17 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
    The complete URI to an ALPS 'descriptor' (including the fragement)
    forms an "abstract semantic type" identifier.  This is a resolvable
-   URI (URL) that can be used to indicate the type of a resource; for
-   instance, it can be used as the value of the IANA-registered link
-   relation "type".
 
 
 
-
-
-
-Amundsen & Richardson     Expires July 28, 2014                [Page 15]
+Amundsen & Richardson    Expires August 1, 2014                [Page 15]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
+
+   URI (URL) that can be used to indicate the type of a resource; for
+   instance, it can be used as the value of the IANA-registered link
+   relation "type".
 
 2.2.7.3.  Link Relation Values and 'id'
 
@@ -884,18 +888,19 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
    application semantics.  Thus, it SHOULD only be used when creating an
    ALPS profile that describes an existing design.
 
+
+
+
+
+Amundsen & Richardson    Expires August 1, 2014                [Page 16]
+
+Internet-Draft     Application-Level Profile Semantics      January 2014
+
+
 2.2.10.  'rel'
 
    Contains a [RFC5988] approved value: either an extension link
    relation (a URI) or a registered link relation (a short string).
-
-
-
-
-Amundsen & Richardson     Expires July 28, 2014                [Page 16]
-
-Internet-Draft     Application-Level Profile Semantics      January 2014
-
 
    Appears as a property of link (Section 2.2.8).
 
@@ -939,19 +944,21 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
    Contains a string value.  It MAY appear as an attribute of the 'doc'
    (Section 2.2.2) and the 'ext' (Section 2.2.4) elements.
 
+
+
+
+
+Amundsen & Richardson    Expires August 1, 2014                [Page 17]
+
+Internet-Draft     Application-Level Profile Semantics      January 2014
+
+
 2.2.14.  'version'
 
    Indicates the version of the ALPS specification used in the document.
    This SHOULD appear as a property of the 'alps' (Section 2.2.1)
    property.  Currently the only valid value is "1.0".  If no value
    appears, then 'version="1.0"' is implied.
-
-
-
-Amundsen & Richardson     Expires July 28, 2014                [Page 17]
-
-Internet-Draft     Application-Level Profile Semantics      January 2014
-
 
 2.3.  ALPS Representations
 
@@ -995,19 +1002,16 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
    (Section 2.2.2), 'descriptor' (Section 2.2.3), and 'ext'
    (Section 2.2.4).  All other ALPS properties appear as XML attributes.
 
-2.3.2.2.  Complete XML Representation
-
-   Below is an example of an applcation/alps+xml representation.
 
 
-
-
-
-
-Amundsen & Richardson     Expires July 28, 2014                [Page 18]
+Amundsen & Richardson    Expires August 1, 2014                [Page 18]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
+
+2.3.2.2.  Complete XML Representation
+
+   Below is an example of an applcation/alps+xml representation.
 
    <?xml version="1.0"?>
    <alps version="1.0">
@@ -1056,11 +1060,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-
-
-
-
-Amundsen & Richardson     Expires July 28, 2014                [Page 19]
+Amundsen & Richardson    Expires August 1, 2014                [Page 19]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -1116,7 +1116,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 20]
+Amundsen & Richardson    Expires August 1, 2014                [Page 20]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -1172,7 +1172,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 21]
+Amundsen & Richardson    Expires August 1, 2014                [Page 21]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -1228,7 +1228,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 22]
+Amundsen & Richardson    Expires August 1, 2014                [Page 22]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -1284,7 +1284,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 23]
+Amundsen & Richardson    Expires August 1, 2014                [Page 23]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -1340,7 +1340,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 24]
+Amundsen & Richardson    Expires August 1, 2014                [Page 24]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -1396,7 +1396,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 25]
+Amundsen & Richardson    Expires August 1, 2014                [Page 25]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -1452,7 +1452,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 26]
+Amundsen & Richardson    Expires August 1, 2014                [Page 26]
 
 Internet-Draft     Application-Level Profile Semantics      January 2014
 
@@ -1508,5 +1508,5 @@ Authors' Addresses
 
 
 
-Amundsen & Richardson     Expires July 28, 2014                [Page 27]
+Amundsen & Richardson    Expires August 1, 2014                [Page 27]
 

@@ -583,13 +583,9 @@
                 </t>
           <t>
                   The 'ext' element has the following properties.
-                  <list style="numbers">
-                    <t><xref target="prop-id">id</xref></t>
-                    <t><xref target="prop-href">href</xref></t>
-                    <t><xref target="prop-value">value</xref></t>
-                  </list>
-                </t>  
-                <t>
+                  <list style="numbers"><t><xref target="prop-id">id</xref></t><t><xref target="prop-href">href</xref></t><t><xref target="prop-value">value</xref></t></list>
+                </t>
+          <t>
                   The <xref target="prop-id">id</xref> property is REQUIRED.
                   The <xref target="prop-href">href</xref> is RECOMMENDED. The 
                   resolvable SHOULD point to documentation that explains the 
@@ -1389,19 +1385,16 @@
       &rfc5988;
     </references>
     <references title="Informative References">
-      <reference anchor='draft-ietf-appsawg-uri-get-off-my-lawn-00'>
+      <reference anchor="draft-ietf-appsawg-uri-get-off-my-lawn-00">
         <front>
-            <title>Standardising Structure in URIs</title>
-            <author initials='M.' surname='Nottingham'
-                    fullname='Mark Nottingham Postel'>
+          <title>Standardising Structure in URIs</title>
+          <author initials="M." surname="Nottingham" fullname="Mark Nottingham Postel">
             </author>
-
-            <date month='September' year='2013' />
+          <date month="September" year="2013"/>
         </front>
-        <seriesInfo name='I-D' value='draft-ietf-appsawg-uri-get-off-my-lawn-00' />
-        <format type='HTML' 
-                target='http://tools.ietf.org/html/draft-ietf-appsawg-uri-get-off-my-lawn-00' />
-    </reference>
+        <seriesInfo name="I-D" value="draft-ietf-appsawg-uri-get-off-my-lawn-00"/>
+        <format type="HTML" target="http://tools.ietf.org/html/draft-ietf-appsawg-uri-get-off-my-lawn-00"/>
+      </reference>
     </references>
   </back>
   <section title="Frequently Asked Questions">
