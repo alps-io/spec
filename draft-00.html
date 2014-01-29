@@ -296,6 +296,8 @@ Frequently Asked Questions<br />
 Why are there no URLs in ALPS?<br />
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor21">1.2.</a>&nbsp;
 Why is there no workflow component in the ALPS specification?<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor22">1.3.</a>&nbsp;
+Why is there no way to indicate ranges for semantic descriptors?<br />
 </p>
 <br clear="all" />
 
@@ -956,8 +958,8 @@ ALPS Document Properties</h3>
 </p>
 <p>
                   The <a class='info' href='#prop-id'>id<span> (</span><span class='info'>'id'</span><span>)</span></a> property is REQUIRED.
-                  The <a class='info' href='#prop-href'>href<span> (</span><span class='info'>'href'</span><span>)</span></a> is RECOMMENDED. The 
-                  resolvable SHOULD point to documentation that explains the 
+                  The <a class='info' href='#prop-href'>href<span> (</span><span class='info'>'href'</span><span>)</span></a> is RECOMMENDED and 
+                  it SHOULD point to documentation that explains the 
                   use and meaning of this <a class='info' href='#prop-ext'>ext<span> (</span><span class='info'>'ext'</span><span>)</span></a> element.
                   The <a class='info' href='#prop-value'>value<span> (</span><span class='info'>'value'</span><span>)</span></a>
                   property is OPTIONAL. The content is undetermined; its
@@ -2051,6 +2053,27 @@ Why is there no workflow component in the ALPS specification?</h3>
         ALPS-compliant client applications SHOULD be able to recognize these descriptors when they appear
         and are free to act upon them directly, render them for humans to invoke, or ignore/hide them
         completely.
+      
+</p>
+<a name="anchor22"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.1.3"></a><h3>1.3.&nbsp;
+Why is there no way to indicate ranges for semantic descriptors?</h3>
+
+<p>
+        For most all service implementations, there are cases where it would be helpful to document
+        a range of possible values for a semantic element. For example, when implementing the descriptor 
+        {"id":"size", ...}, one service might want to indicate the list of supported values such as:
+        "small", "meduim", "large", etc. However, another service might have a very different list of 
+        possible values such as "standard", "oversized", "undersized", etc. And there may be a service
+        that only supports a single value here and will always supply it ("onesie").
+      
+</p>
+<p>
+        Since ALPS is meant to provide a single description that can be used by multiple services,
+        establishing ranges in the ALPS description is usually over-constraining existing (and future)
+        service implementations. Services are still free to supply this information within representations
+        at run time. But including them in the global ALPS profile is discouraged.
       
 </p>
 <a name="rfc.authors"></a><br /><hr />

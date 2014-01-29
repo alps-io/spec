@@ -587,8 +587,8 @@
                 </t>
           <t>
                   The <xref target="prop-id">id</xref> property is REQUIRED.
-                  The <xref target="prop-href">href</xref> is RECOMMENDED. The 
-                  resolvable SHOULD point to documentation that explains the 
+                  The <xref target="prop-href">href</xref> is RECOMMENDED and 
+                  it SHOULD point to documentation that explains the 
                   use and meaning of this <xref target="prop-ext">ext</xref> element.
                   The <xref target="prop-value">value</xref>
                   property is OPTIONAL. The content is undetermined; its
@@ -1425,6 +1425,22 @@
         ALPS-compliant client applications SHOULD be able to recognize these descriptors when they appear
         and are free to act upon them directly, render them for humans to invoke, or ignore/hide them
         completely.
+      </t>
+    </section>
+    <section title="Why is there no way to indicate ranges for semantic descriptors?">
+      <t>
+        For most all service implementations, there are cases where it would be helpful to document
+        a range of possible values for a semantic element. For example, when implementing the descriptor 
+        {"id":"size", ...}, one service might want to indicate the list of supported values such as:
+        "small", "meduim", "large", etc. However, another service might have a very different list of 
+        possible values such as "standard", "oversized", "undersized", etc. And there may be a service
+        that only supports a single value here and will always supply it ("onesie").
+      </t>
+      <t>
+        Since ALPS is meant to provide a single description that can be used by multiple services,
+        establishing ranges in the ALPS description is usually over-constraining existing (and future)
+        service implementations. Services are still free to supply this information within representations
+        at run time. But including them in the global ALPS profile is discouraged.
       </t>
     </section>
   </section>

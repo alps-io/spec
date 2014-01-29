@@ -123,8 +123,8 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
      1.1.  Why are there no URLs in ALPS? . . . . . . . . . . . . . . 26
      1.2.  Why is there no workflow component in the ALPS
            specification? . . . . . . . . . . . . . . . . . . . . . . 27
-
-
+     1.3.  Why is there no way to indicate ranges for semantic
+           descriptors? . . . . . . . . . . . . . . . . . . . . . . . 27
 
 
 
@@ -692,12 +692,12 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
    3.  value (Section 2.2.13)
 
    The id (Section 2.2.7) property is REQUIRED.  The href
-   (Section 2.2.6) is RECOMMENDED.  The resolvable SHOULD point to
-   documentation that explains the use and meaning of this ext
-   (Section 2.2.4) element.  The value (Section 2.2.13) property is
-   OPTIONAL.  The content is undetermined; its meaning and use SHOULD be
-   explained by the document found by de-referencing the href
-   (Section 2.2.6) property.
+   (Section 2.2.6) is RECOMMENDED and it SHOULD point to documentation
+   that explains the use and meaning of this ext (Section 2.2.4)
+   element.  The value (Section 2.2.13) property is OPTIONAL.  The
+   content is undetermined; its meaning and use SHOULD be explained by
+   the document found by de-referencing the href (Section 2.2.6)
+   property.
 
    Examples:
 
@@ -1476,6 +1476,25 @@ Internet-Draft     Application-Level Profile Semantics      January 2014
    them directly, render them for humans to invoke, or ignore/hide them
    completely.
 
+1.3.  Why is there no way to indicate ranges for semantic descriptors?
+
+   For most all service implementations, there are cases where it would
+   be helpful to document a range of possible values for a semantic
+   element.  For example, when implementing the descriptor {"id":"size",
+   ...}, one service might want to indicate the list of supported values
+   such as: "small", "meduim", "large", etc.  However, another service
+   might have a very different list of possible values such as
+   "standard", "oversized", "undersized", etc.  And there may be a
+   service that only supports a single value here and will always supply
+   it ("onesie").
+
+   Since ALPS is meant to provide a single description that can be used
+   by multiple services, establishing ranges in the ALPS description is
+   usually over-constraining existing (and future) service
+   implementations.  Services are still free to supply this information
+   within representations at run time.  But including them in the global
+   ALPS profile is discouraged.
+
 Authors' Addresses
 
    Mike Amundsen
@@ -1483,6 +1502,15 @@ Authors' Addresses
 
    EMail: mca@amundsen.com
    URI:   http://amundsen.com
+
+
+
+
+
+
+Amundsen & Richardson    Expires August 1, 2014                [Page 27]
+
+Internet-Draft     Application-Level Profile Semantics      January 2014
 
 
    Leonard Richardson
@@ -1508,5 +1536,33 @@ Authors' Addresses
 
 
 
-Amundsen & Richardson    Expires August 1, 2014                [Page 27]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Amundsen & Richardson    Expires August 1, 2014                [Page 28]
 
