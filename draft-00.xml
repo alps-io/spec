@@ -16,7 +16,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 <!-- the actual document! -->
-<rfc docName="draft-amundsen-richardson-alps-00.H" ipr="trust200902">
+<rfc docName="draft-amundsen-richardson-alps-00.I" ipr="trust200902">
   <!-- front matter -->
   <front>
     <title abbrev="Application-Level Profile Semantics">
@@ -407,26 +407,19 @@
       <section title="Identifying an ALPS Document">
         <t>
                   An ALPS vocabulary is identified by a unique URL.
-                  The URL MUST resolve to a valid ALPS document. The
-                  server MAY use HTTP content negotiation to serve a
-                  human-readable description of the ALPS vocabulary to
-                  clients that request an HTML representation.  
-                  <!-- [TK
-                  how's that? or should we stick to [link rel="help"]?
-                  -leonardr :: Maybe we should be silent on the matter
-                  here? -mca :: I'm OK with that. I just don't want to
-                  imply that you get the ALPS doc no matter what HTTP
-                  request you make to the URL. -leonardr] -->
-                </t>
-        <t>
-                  A client SHOULD NOT automatically resolve an ALPS
-                  vocabulary URL, to avoid overburdening its server.
-                </t>
-        <t>
+                  This URL SHOULD be assumed to be dereferencable. 
                   All ALPS URLs MUST be unique and all ALPS documents
                   intended for public consumption SHOULD be registered
                   with the ALPS Registry located at (to be specified).
-                </t>
+              </t>
+              <t>
+                  In order to reduce load on servers responding to 
+                  ALPS document requests, it is RECOMMENDED that servers 
+                  use cache control directives  that instruct client
+                  apps to locally cache the results. Clients making
+                  these ALPS document requests SHOULD honor the 
+                  server's caching directives.
+              </t>
       </section>
     </section>
     <section title="ALPS Documents">

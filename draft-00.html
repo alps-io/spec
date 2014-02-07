@@ -143,10 +143,10 @@
 <table summary="layout" width="66%" border="0" cellpadding="0" cellspacing="0"><tr><td><table summary="layout" width="100%" border="0" cellpadding="2" cellspacing="1">
 <tr><td class="header">Network Working Group</td><td class="header">M. Amundsen</td></tr>
 <tr><td class="header">Internet-Draft</td><td class="header">Layer 7 Technologies</td></tr>
-<tr><td class="header">Expires: August 1, 2014</td><td class="header">L. Richardson</td></tr>
-<tr><td class="header">&nbsp;</td><td class="header">January 28, 2014</td></tr>
+<tr><td class="header">Expires: August 10, 2014</td><td class="header">L. Richardson</td></tr>
+<tr><td class="header">&nbsp;</td><td class="header">February 6, 2014</td></tr>
 </table></td></tr></table>
-<h1><br />Application-Level Profile Semantics (ALPS)<br />draft-amundsen-richardson-alps-00.H</h1>
+<h1><br />Application-Level Profile Semantics (ALPS)<br />draft-amundsen-richardson-alps-00.I</h1>
 
 <h3>Abstract</h3>
 
@@ -185,7 +185,7 @@ and may be updated, replaced, or obsoleted by other documents at any time.
 It is inappropriate to use Internet-Drafts as reference material or to cite
 them other than as &ldquo;work in progress.&rdquo;</p>
 <p>
-This Internet-Draft will expire on August 1, 2014.</p>
+This Internet-Draft will expire on August 10, 2014.</p>
 
 <h3>Copyright Notice</h3>
 <p>
@@ -686,23 +686,20 @@ Identifying an ALPS Document</h3>
 
 <p>
                   An ALPS vocabulary is identified by a unique URL.
-                  The URL MUST resolve to a valid ALPS document. The
-                  server MAY use HTTP content negotiation to serve a
-                  human-readable description of the ALPS vocabulary to
-                  clients that request an HTML representation.  
-                  
-                
-</p>
-<p>
-                  A client SHOULD NOT automatically resolve an ALPS
-                  vocabulary URL, to avoid overburdening its server.
-                
-</p>
-<p>
+                  This URL SHOULD be assumed to be dereferencable. 
                   All ALPS URLs MUST be unique and all ALPS documents
                   intended for public consumption SHOULD be registered
                   with the ALPS Registry located at (to be specified).
-                
+              
+</p>
+<p>
+                  In order to reduce load on servers responding to 
+                  ALPS document requests, it is RECOMMENDED that servers 
+                  use cache control directives  that instruct client
+                  apps to locally cache the results. Clients making
+                  these ALPS document requests SHOULD honor the 
+                  server's caching directives.
+              
 </p>
 <a name="anchor8"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
