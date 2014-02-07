@@ -66,6 +66,53 @@ Internet-Draft     Application-Level Profile Semantics     February 2014
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Amundsen & Richardson    Expires August 10, 2014                [Page 2]
+
+Internet-Draft     Application-Level Profile Semantics     February 2014
+
+
 Table of Contents
 
    1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  4
@@ -99,67 +146,20 @@ Table of Contents
        2.3.3.  JSON Representation  . . . . . . . . . . . . . . . . . 19
    3.  Applying ALPS documents to Existing Media Types  . . . . . . . 21
      3.1.  Linking to ALPS Documents  . . . . . . . . . . . . . . . . 22
-   4.  The ALPS Registry  . . . . . . . . . . . . . . . . . . . . . . 22
-     4.1.  What is the ALPS Registry  . . . . . . . . . . . . . . . . 22
-     4.2.  Searching the Registry . . . . . . . . . . . . . . . . . . 22
-     4.3.  Contributing to the Registry . . . . . . . . . . . . . . . 22
-   5.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 23
-     5.1.  application/alps+xml . . . . . . . . . . . . . . . . . . . 23
-
-
-
-Amundsen & Richardson    Expires August 10, 2014                [Page 2]
-
-Internet-Draft     Application-Level Profile Semantics     February 2014
-
-
-     5.2.  application/alps+json  . . . . . . . . . . . . . . . . . . 24
-   6.  Internationalization Considerations  . . . . . . . . . . . . . 25
-   7.  Acknowledgements . . . . . . . . . . . . . . . . . . . . . . . 25
-   8.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 26
-     8.1.  Normative References . . . . . . . . . . . . . . . . . . . 26
-     8.2.  Informative References . . . . . . . . . . . . . . . . . . 26
+   4.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 22
+     4.1.  application/alps+xml . . . . . . . . . . . . . . . . . . . 22
+     4.2.  application/alps+json  . . . . . . . . . . . . . . . . . . 24
+   5.  Internationalization Considerations  . . . . . . . . . . . . . 25
+   6.  Acknowledgements . . . . . . . . . . . . . . . . . . . . . . . 25
+   7.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+     7.1.  Normative References . . . . . . . . . . . . . . . . . . . 25
+     7.2.  Informative References . . . . . . . . . . . . . . . . . . 26
    Appendix 1.  Frequently Asked Questions  . . . . . . . . . . . . . 26
      1.1.  Why are there no URLs in ALPS? . . . . . . . . . . . . . . 26
      1.2.  Why is there no workflow component in the ALPS
-           specification? . . . . . . . . . . . . . . . . . . . . . . 27
+           specification? . . . . . . . . . . . . . . . . . . . . . . 26
      1.3.  Why is there no way to indicate ranges for semantic
            descriptors? . . . . . . . . . . . . . . . . . . . . . . . 27
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -180,16 +180,15 @@ Internet-Draft     Application-Level Profile Semantics     February 2014
    semantics of a document with an application-agnostic media type (such
    as HTML, HAL, Collection+JSON, or Siren).
 
-   This document identifies a registry for ALPS documents, and sets a
-   standard for creating and registering ALPS document identifiers with
-   that registry.
+   This document identifies a registry for ALPS documents, (The ALPS
+   Profile Registry or APR).  The details of this registry, it's goals,
+   and operations are covered in a separate document (TBD).
 
-   This document also identifies a registry for normative human-readable
-   instructions on applying an ALPS document as a profile to a document
-   with a given media type.  It sets a standard for registering media
-   types with that registry.  It gives some non-normative examples in
-   which a single ALPS document is applied as a profile to documents
-   with different media types.
+   This document also identifies a process for authoring, publishing,
+   and sharing normative human-readable instructions on applying an ALPS
+   document as a profile to responses of a given media type.  For'
+   example, a document that describes how to apply the semantics of an
+   ALPS profile to an HTML document.
 
    This document registers two media-type identifiers with the IANA:
    'application/alps+xml' ("ALPS+XML") and 'application/alps+json'
@@ -217,6 +216,7 @@ Internet-Draft     Application-Level Profile Semantics     February 2014
    Instead of creating and registering an entirely new media type (i.e.
    'application/accounting'), representation authors can create an ALPS
    document that describes a "profile" of the target domain; one that
+   explains the vital domain-specific semantic descriptors and state
 
 
 
@@ -225,7 +225,6 @@ Amundsen & Richardson    Expires August 10, 2014                [Page 4]
 Internet-Draft     Application-Level Profile Semantics     February 2014
 
 
-   explains the vital domain-specific semantic descriptors and state
    transitions.  This profile can then be consistently applied to a wide
    range of media types by server implementors and successfully consumed
    by client applications.  The focus on defining application-level
@@ -265,6 +264,7 @@ Internet-Draft     Application-Level Profile Semantics     February 2014
    'id' value of "collection."  This hypermedia control has one input
    value ("nameSearch").  When executed, the response will contain one
    or more "contact" type items.
+
 
 
 
@@ -1211,19 +1211,19 @@ Internet-Draft     Application-Level Profile Semantics     February 2014
    'Link' header and a profile linked to within the representation
    document itself.
 
-4.  The ALPS Registry
+4.  IANA Considerations
 
-4.1.  What is the ALPS Registry
+   This specification establishes two media types: 'application/
+   alps+xml' and 'application/alps+json'
 
-   [TK]
+4.1.  application/alps+xml
 
-4.2.  Searching the Registry
+   Type name:  application
 
-   [TK]
+   Subtype name:  alps+xml
 
-4.3.  Contributing to the Registry
 
-   [TK]
+
 
 
 
@@ -1232,17 +1232,6 @@ Amundsen & Richardson    Expires August 10, 2014               [Page 22]
 
 Internet-Draft     Application-Level Profile Semantics     February 2014
 
-
-5.  IANA Considerations
-
-   This specification establishes two media types: 'application/
-   alps+xml' and 'application/alps+json'
-
-5.1.  application/alps+xml
-
-   Type name:  application
-
-   Subtype name:  alps+xml
 
    Required parameters:  None
 
@@ -1279,16 +1268,6 @@ Internet-Draft     Application-Level Profile Semantics     February 2014
 
    Published specification:  This Document
 
-
-
-
-
-
-Amundsen & Richardson    Expires August 10, 2014               [Page 23]
-
-Internet-Draft     Application-Level Profile Semantics     February 2014
-
-
    Applications that use this media type:  Various
 
    Additional information:
@@ -1298,6 +1277,17 @@ Internet-Draft     Application-Level Profile Semantics     February 2014
       file extensions:  .xml
 
       macintosh type file code:  TEXT
+
+
+
+
+
+
+
+Amundsen & Richardson    Expires August 10, 2014               [Page 23]
+
+Internet-Draft     Application-Level Profile Semantics     February 2014
+
 
       object idenfiers:  none
 
@@ -1311,7 +1301,7 @@ Internet-Draft     Application-Level Profile Semantics     February 2014
 
    Author/change controller:  Mike Amundsen
 
-5.2.  application/alps+json
+4.2.  application/alps+json
 
    Type name:  application
 
@@ -1334,6 +1324,16 @@ Internet-Draft     Application-Level Profile Semantics     February 2014
 
    Encoding considerations:  binary
 
+   Security considerations:  This media type shares security issues
+      common to all JSON content types.  See [RFC4627] Section #6 for
+      additional information.  ALPS+JSON does not provide executable
+      content.  Information contained in ALPS+JSON documents do not
+      require privacy or integrity services.
+
+   Interoperability considerations:  None
+
+   Published specification:  This Document
+
 
 
 
@@ -1344,16 +1344,6 @@ Amundsen & Richardson    Expires August 10, 2014               [Page 24]
 
 Internet-Draft     Application-Level Profile Semantics     February 2014
 
-
-   Security considerations:  This media type shares security issues
-      common to all JSON content types.  See [RFC4627] Section #6 for
-      additional information.  ALPS+JSON does not provide executable
-      content.  Information contained in ALPS+JSON documents do not
-      require privacy or integrity services.
-
-   Interoperability considerations:  None
-
-   Published specification:  This Document
 
    Applications that use this media type:  Various
 
@@ -1377,31 +1367,20 @@ Internet-Draft     Application-Level Profile Semantics     February 2014
 
    Author/change controller:  Mike Amundsen
 
-6.  Internationalization Considerations
+5.  Internationalization Considerations
 
    [TK]
 
    [[anchor15: insert text (consider rfc 5987)]]
 
-7.  Acknowledgements
+6.  Acknowledgements
 
    The following people made contributions to this specification: Mark
    Foster.
 
-8.  References
+7.  References
 
-
-
-
-
-
-
-Amundsen & Richardson    Expires August 10, 2014               [Page 25]
-
-Internet-Draft     Application-Level Profile Semantics     February 2014
-
-
-8.1.  Normative References
+7.1.  Normative References
 
    [RFC2119]                                    Bradner, S., "Key words
                                                 for use in RFCs to
@@ -1414,6 +1393,14 @@ Internet-Draft     Application-Level Profile Semantics     February 2014
                                                 Media Types", RFC 3023,
                                                 January 2001.
 
+
+
+
+Amundsen & Richardson    Expires August 10, 2014               [Page 25]
+
+Internet-Draft     Application-Level Profile Semantics     February 2014
+
+
    [RFC4627]                                    Crockford, D., "The
                                                 application/json Media
                                                 Type for JavaScript
@@ -1424,7 +1411,7 @@ Internet-Draft     Application-Level Profile Semantics     February 2014
                                                 Linking", RFC 5988,
                                                 October 2010.
 
-8.2.  Informative References
+7.2.  Informative References
 
    [draft-ietf-appsawg-uri-get-off-my-lawn-00]  Nottingham, M.,
                                                 "Standardising Structure
@@ -1449,14 +1436,6 @@ Internet-Draft     Application-Level Profile Semantics     February 2014
    implementors use the same ALPS profile descriptor 'id' and 'name'
    properties in the representations.  When implementing ALPS-compliant
    client applications, the URLs will be supplied at runtime by the
-
-
-
-Amundsen & Richardson    Expires August 10, 2014               [Page 26]
-
-Internet-Draft     Application-Level Profile Semantics     February 2014
-
-
    server represetentations.  Client apps only need to recognize the
    descriptor 'id' and 'name' values from the referenced ALP profile
    document.
@@ -1470,6 +1449,14 @@ Internet-Draft     Application-Level Profile Semantics     February 2014
    property is set to "safe", "unsafe", or "idemponent") SHOULD describe
    a stateless state transition that a ALPS-compliant client application
    can invoke when it is available.  Servers are free to implement on
+
+
+
+Amundsen & Richardson    Expires August 10, 2014               [Page 26]
+
+Internet-Draft     Application-Level Profile Semantics     February 2014
+
+
    the transitions they find useful and to arrange them in any order
    they wish.  ALPS-compliant client applications SHOULD be able to
    recognize these descriptors when they appear and are free to act upon
@@ -1504,15 +1491,6 @@ Authors' Addresses
    URI:   http://amundsen.com
 
 
-
-
-
-
-Amundsen & Richardson    Expires August 10, 2014               [Page 27]
-
-Internet-Draft     Application-Level Profile Semantics     February 2014
-
-
    Leonard Richardson
 
    EMail: leonardr@segfault.org
@@ -1530,39 +1508,5 @@ Internet-Draft     Application-Level Profile Semantics     February 2014
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Amundsen & Richardson    Expires August 10, 2014               [Page 28]
+Amundsen & Richardson    Expires August 10, 2014               [Page 27]
 

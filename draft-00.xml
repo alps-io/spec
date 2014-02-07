@@ -75,17 +75,17 @@
             </t>
       <t>
               This document identifies a registry for ALPS documents,
-              and sets a standard for creating and registering ALPS
-              document identifiers with that registry.
+              (The ALPS Profile Registry or APR). The details of
+              this registry, it's goals, and operations are covered 
+              in a separate document (TBD).
             </t>
       <t>
-              This document also identifies a registry for normative
+          This document also identifies a process for authoring,
+          publishing, and sharing normative
               human-readable instructions on applying an ALPS document
-              as a profile to a document with a given media type. It
-              sets a standard for registering media types with that
-              registry. It gives some non-normative examples in which
-              a single ALPS document is applied as a profile to
-              documents with different media types.
+              as a profile to responses of a given media type. For'
+              example, a document that describes how to apply the 
+              semantics of an ALPS profile to an HTML document.
             </t>
       <t>
               This document registers two media-type identifiers with
@@ -1161,17 +1161,6 @@
           document itself. 
           <!-- [TK I added that, it seems right. -leonardr] -->
         </t>
-      </section>
-    </section>
-    <section anchor="alps-registry" title="The ALPS Registry">
-      <section anchor="what-is-the-alps-registry" title="What is the ALPS Registry">
-        <t>[TK]</t>
-      </section>
-      <section anchor="searching-the-registry" title="Searching the Registry">
-        <t>[TK]</t>
-      </section>
-      <section anchor="contributing-to-the-registry" title="Contributing to the Registry">
-        <t>[TK]</t>
       </section>
     </section>
     <section anchor="iana-considerations" title="IANA Considerations">
