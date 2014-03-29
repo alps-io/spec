@@ -6,5 +6,6 @@ FAQ: http://xml.resource.org/xml2rfcFAQ.html
 
 xml2rfc app: http://xml.resource.org/
 
-Good slide deck: http://www.rfc-editor.org/rfc-editor/intro_xml2rfc.pdf
+https://pypi.python.org/pypi/xml2rfc/
 
+Good slide deck: http://www.rfc-editor.org/rfc-editor/intro_xml2rfc.pdf
