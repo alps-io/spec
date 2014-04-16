@@ -4,11 +4,11 @@
 
 Network Working Group                                        M. Amundsen
 Internet-Draft                                      Layer 7 Technologies
-Expires: September 29, 2014                                L. Richardson
+Expires: October 18, 2014                                  L. Richardson
 
                                                                M. Foster
                                                       Medidata Solutions
-                                                          March 28, 2014
+                                                          April 16, 2014
 
 
                Application-Level Profile Semantics (ALPS)
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 29, 2014.
+   This Internet-Draft will expire on October 18, 2014.
 
 
 
@@ -53,9 +53,9 @@ Status of This Memo
 
 
 
-Amundsen, et al.       Expires September 29, 2014               [Page 1]
+Amundsen, et al.        Expires October 18, 2014                [Page 1]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
 Copyright Notice
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Amundsen, et al.       Expires September 29, 2014               [Page 2]
+Amundsen, et al.        Expires October 18, 2014                [Page 2]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
    4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  22
@@ -165,9 +165,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014               [Page 3]
+Amundsen, et al.        Expires October 18, 2014                [Page 3]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
 1.2.  Motivation
@@ -221,9 +221,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014               [Page 4]
+Amundsen, et al.        Expires October 18, 2014                [Page 4]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
 1.3.  A Simple ALPS Example
@@ -277,9 +277,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014               [Page 5]
+Amundsen, et al.        Expires October 18, 2014                [Page 5]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
     <alps version="1.0">
@@ -333,9 +333,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014               [Page 6]
+Amundsen, et al.        Expires October 18, 2014                [Page 6]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
 <html>
@@ -389,9 +389,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014               [Page 7]
+Amundsen, et al.        Expires October 18, 2014                [Page 7]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
    HTML representations implement most ALPS elements using HTML's
@@ -445,9 +445,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014               [Page 8]
+Amundsen, et al.        Expires October 18, 2014                [Page 8]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
             {
@@ -501,9 +501,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014               [Page 9]
+Amundsen, et al.        Expires October 18, 2014                [Page 9]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
                     {
@@ -557,9 +557,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014              [Page 10]
+Amundsen, et al.        Expires October 18, 2014               [Page 10]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
    satisfies all the MUST level requirements but not all the SHOULD
@@ -613,9 +613,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014              [Page 11]
+Amundsen, et al.        Expires October 18, 2014               [Page 11]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
    A 'doc' element SHOULD appear as a child of 'descriptor'
@@ -669,9 +669,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014              [Page 12]
+Amundsen, et al.        Expires October 18, 2014               [Page 12]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
 2.2.4.  'ext'
@@ -719,15 +719,15 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
    Indicates how the text content should be parsed and/or rendered.
    This version of the spec identifies three possible values for
-   "format": "text", "html", and "asciidoc."  Any other calues for this
+   "format": "text", "html", and "asciidoc."  Any other values for this
    attribute are undefined and SHOULD be treated as plain text.  If the
    program does not recognize the value of the "format" property and/or
 
 
 
-Amundsen, et al.       Expires September 29, 2014              [Page 13]
+Amundsen, et al.        Expires October 18, 2014               [Page 13]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
    the "format" property is missing, the content SHOULD be treated as
@@ -781,9 +781,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014              [Page 14]
+Amundsen, et al.        Expires October 18, 2014               [Page 14]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
 2.2.7.1.  ALPS 'id' and 'name' Properties
@@ -837,9 +837,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014              [Page 15]
+Amundsen, et al.        Expires October 18, 2014               [Page 15]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
    instance, it can be used as the value of the IANA-registered link
@@ -893,9 +893,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014              [Page 16]
+Amundsen, et al.        Expires October 18, 2014               [Page 16]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
 2.2.10.  'rel'
@@ -949,9 +949,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014              [Page 17]
+Amundsen, et al.        Expires October 18, 2014               [Page 17]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
 2.2.14.  'version'
@@ -1005,9 +1005,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014              [Page 18]
+Amundsen, et al.        Expires October 18, 2014               [Page 18]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
 2.3.2.2.  Complete XML Representation
@@ -1061,9 +1061,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014              [Page 19]
+Amundsen, et al.        Expires October 18, 2014               [Page 19]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
    For example:
@@ -1117,9 +1117,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014              [Page 20]
+Amundsen, et al.        Expires October 18, 2014               [Page 20]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
    // http://alps.io/documents/search
@@ -1173,9 +1173,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014              [Page 21]
+Amundsen, et al.        Expires October 18, 2014               [Page 21]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
    alps.io).  [I implied earlier there would be a formal registry.
@@ -1229,9 +1229,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014              [Page 22]
+Amundsen, et al.        Expires October 18, 2014               [Page 22]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
       charset  This parameter has identical semantics to the charset
@@ -1285,9 +1285,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014              [Page 23]
+Amundsen, et al.        Expires October 18, 2014               [Page 23]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
    Intended usage:  Common
@@ -1341,9 +1341,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014              [Page 24]
+Amundsen, et al.        Expires October 18, 2014               [Page 24]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
    person to contact for further information:
@@ -1397,9 +1397,9 @@ Internet-Draft     Application-Level Profile Semantics        March 2014
 
 
 
-Amundsen, et al.       Expires September 29, 2014              [Page 25]
+Amundsen, et al.        Expires October 18, 2014               [Page 25]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
 Appendix A.  Frequently Asked Questions
@@ -1453,9 +1453,9 @@ A.3.  Why is there no way to indicate ranges for semantic descriptors?
 
 
 
-Amundsen, et al.       Expires September 29, 2014              [Page 26]
+Amundsen, et al.        Expires October 18, 2014               [Page 26]
 
-Internet-Draft     Application-Level Profile Semantics        March 2014
+Internet-Draft     Application-Level Profile Semantics        April 2014
 
 
    Since ALPS is meant to provide a single description that can be used
@@ -1509,4 +1509,4 @@ Authors' Addresses
 
 
 
-Amundsen, et al.       Expires September 29, 2014              [Page 27]
+Amundsen, et al.        Expires October 18, 2014               [Page 27]
