@@ -616,7 +616,7 @@
                     Indicates how the text content should be parsed and/or
                     rendered. This version of the spec identifies three
                     possible values for "format": "text", "html", and
-                    "asciidoc." Any other calues for this attribute are 
+                    "asciidoc." Any other values for this attribute are 
                     undefined and SHOULD be treated as plain text. If the
                     program does not recognize the value of the "format"
                     property and/or the "format" property is missing, the
