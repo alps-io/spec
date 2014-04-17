@@ -16,7 +16,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 <!-- the actual document! -->
-<rfc docName="draft-amundsen-richardson-alps-00.I" ipr="trust200902">
+<rfc docName="draft-amundsen-richardson-foster-alps-00.I" ipr="trust200902">
   <!-- front matter -->
   <front>
     <title abbrev="Application-Level Profile Semantics">
@@ -33,6 +33,12 @@
       <address>
         <email>leonardr@segfault.org</email>
         <uri>http://crummy.com</uri>
+      </address>
+    </author>
+    <author fullname="Mark W. Foster" surname="Foster" initials="M.">
+      <organization>Medidata Solutions</organization>
+      <address>
+        <email>mwf@fosrias.com</email>
       </address>
     </author>
     <date/>
@@ -1354,7 +1360,6 @@
     <section title="Acknowledgements">
       <t>
             The following people made contributions to this specification: 
-            Mark Foster.
         </t>
     </section>
   </middle>
@@ -1378,52 +1383,52 @@
         <format type="HTML" target="http://tools.ietf.org/html/draft-ietf-appsawg-uri-get-off-my-lawn-00"/>
       </reference>
     </references>
+    <section title="Frequently Asked Questions">
+      <section title="Why are there no URLs in ALPS?">
+        <t>
+          ALPS is meant to describe a service in a universal way. The same ALPS description document
+          can be used by many ALPS-compliant servers. Since each service implementation is in charge 
+          of their own URL space, ALPS descriptions do not include URLs. 
+          See <xref target="draft-ietf-appsawg-uri-get-off-my-lawn-00">Standardising Structure in URIs</xref>
+          for more on this principle.
+        </t>
+        <t>
+          When implementing ALPS-compliant servers, implementors are free to use any URL design they wish.
+          All that is required is that implementors use the same ALPS profile descriptor 'id' and 'name'
+          properties in the representations. When implementing ALPS-compliant client applications, the 
+          URLs will be supplied at runtime by the server represetentations. Client apps only need to 
+          recognize the descriptor 'id' and 'name' values from the referenced ALP profile document.
+        </t>
+      </section>
+      <section title="Why is there no workflow component in the ALPS specification?">
+        <t>
+          ALPS is not designed to describe workflows or execution paths for a process. Instead, ALPS
+          is designed to describe a shared set of data and actions elements that server MAY implement
+          in order to create a service. Each action descriptor (where the descriptor's type property is set to
+          "safe", "unsafe", or "idemponent") SHOULD describe a stateless state transition that a
+          ALPS-compliant client application can invoke when it is available. Servers are free to 
+          implement on the transitions they find useful and to arrange them in any order they wish.
+          ALPS-compliant client applications SHOULD be able to recognize these descriptors when they appear
+          and are free to act upon them directly, render them for humans to invoke, or ignore/hide them
+          completely.
+        </t>
+      </section>
+      <section title="Why is there no way to indicate ranges for semantic descriptors?">
+        <t>
+          For most all service implementations, there are cases where it would be helpful to document
+          a range of possible values for a semantic element. For example, when implementing the descriptor 
+          {"id":"size", ...}, one service might want to indicate the list of supported values such as:
+          "small", "meduim", "large", etc. However, another service might have a very different list of 
+          possible values such as "standard", "oversized", "undersized", etc. And there may be a service
+          that only supports a single value here and will always supply it ("onesie").
+        </t>
+        <t>
+          Since ALPS is meant to provide a single description that can be used by multiple services,
+          establishing ranges in the ALPS description is usually over-constraining existing (and future)
+          service implementations. Services are still free to supply this information within representations
+          at run time. But including them in the global ALPS profile is discouraged.
+        </t>
+      </section>
+    </section>
   </back>
-  <section title="Frequently Asked Questions">
-    <section title="Why are there no URLs in ALPS?">
-      <t>
-        ALPS is meant to describe a service in a universal way. The same ALPS description document
-        can be used by many ALPS-compliant servers. Since each service implementation is in charge 
-        of their own URL space, ALPS descriptions do not include URLs. 
-        See <xref target="draft-ietf-appsawg-uri-get-off-my-lawn-00">Standardising Structure in URIs</xref>
-        for more on this principle.
-      </t>
-      <t>
-        When implementing ALPS-compliant servers, implementors are free to use any URL design they wish.
-        All that is required is that implementors use the same ALPS profile descriptor 'id' and 'name'
-        properties in the representations. When implementing ALPS-compliant client applications, the 
-        URLs will be supplied at runtime by the server represetentations. Client apps only need to 
-        recognize the descriptor 'id' and 'name' values from the referenced ALP profile document.
-      </t>
-    </section>
-    <section title="Why is there no workflow component in the ALPS specification?">
-      <t>
-        ALPS is not designed to describe workflows or execution paths for a process. Instead, ALPS
-        is designed to describe a shared set of data and actions elements that server MAY implement
-        in order to create a service. Each action descriptor (where the descriptor's type property is set to
-        "safe", "unsafe", or "idemponent") SHOULD describe a stateless state transition that a
-        ALPS-compliant client application can invoke when it is available. Servers are free to 
-        implement on the transitions they find useful and to arrange them in any order they wish.
-        ALPS-compliant client applications SHOULD be able to recognize these descriptors when they appear
-        and are free to act upon them directly, render them for humans to invoke, or ignore/hide them
-        completely.
-      </t>
-    </section>
-    <section title="Why is there no way to indicate ranges for semantic descriptors?">
-      <t>
-        For most all service implementations, there are cases where it would be helpful to document
-        a range of possible values for a semantic element. For example, when implementing the descriptor 
-        {"id":"size", ...}, one service might want to indicate the list of supported values such as:
-        "small", "meduim", "large", etc. However, another service might have a very different list of 
-        possible values such as "standard", "oversized", "undersized", etc. And there may be a service
-        that only supports a single value here and will always supply it ("onesie").
-      </t>
-      <t>
-        Since ALPS is meant to provide a single description that can be used by multiple services,
-        establishing ranges in the ALPS description is usually over-constraining existing (and future)
-        service implementations. Services are still free to supply this information within representations
-        at run time. But including them in the global ALPS profile is discouraged.
-      </t>
-    </section>
-  </section>
 </rfc>
