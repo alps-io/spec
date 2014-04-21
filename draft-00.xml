@@ -571,6 +571,25 @@
                   and have established the correct value for each of
                   them.
                 </t>
+          <t>
+                  If descriptor is declared at a top level of ALPS document,
+                  then a client SHOULD assume that descriptor can appear anywhere
+                  in runtime message.
+          </t>
+          <t>     If descriptor is nested, i.e. declared
+                  as a child of another descriptor, then:
+                  <list style="numbers">
+                      <t>a client SHOULD assume them to appear in any
+                          sibling 'descriptor' element and recursively in their child descriptors
+                      </t>
+                      <t>a client SHOULD NOT
+                          assume that it can appear anywhere outside of parent descriptor,
+                          unless it was explicitly referenced by another descriptor
+                          in 'href' attribute. In that case the same rules are applied to
+                          'descriptor' containing 'href' attribute
+                      </t>
+                  </list>
+          </t>
         </section>
         <section anchor="prop-ext" title="'ext'">
           <t>
