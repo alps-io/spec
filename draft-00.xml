@@ -16,7 +16,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 <!-- the actual document! -->
-<rfc docName="draft-amundsen-richardson-foster-alps-00.I" ipr="trust200902">
+<rfc docName="draft-amundsen-richardson-foster-alps-00.J" ipr="trust200902">
   <!-- front matter -->
   <front>
     <title abbrev="Application-Level Profile Semantics">
@@ -160,8 +160,9 @@
         <section title="ALPS-based Client Implementations">
           <t>
                         Armed with a document's ALPS profile, client
-                        applications can identify the link relations
-                        and semantic descriptors within the document.
+                        applications can associate the ALPS descriptor 'id' and/or
+                        'name' attribute values with the appropriate
+                        elements within the document.
                         Client applications can "code for the profile"
                         and better adjust to detailed changes to the
                         response layout, or even the wholesale
@@ -756,18 +757,18 @@
                 identifier. This is a resolvable URI (URL) that can
                 be used to indicate the type of a resource; for
                 instance, it can be used as the value of the
-                IANA-registered link relation "type".
+                IANA-registered Link Relation Type.
               </t>
           </section>
           <section anchor="prop-id-rels" title="Link Relation Values and 'id'">
             <t>
                 A 'descriptor' that defines a state transition
-                establishes an extension link relation whose name is
+                establishes an extension relation type as defined by <xref target="RFC5988"/> whose name is
                 the unqualified URI of the
                 descriptor. (e.g. rel="http://example.com/#purchased-by")
                 However, within representations that include the
                 defining ALPS document as a profile, the descriptor's
-                'id' may be used on its own as a registered link
+                'id' may be used on its own as a registered link <!-- need to add 'name' wording -->
                 relation. (e.g. rel="purchased-by")
               </t>
             <t>
@@ -775,10 +776,10 @@
                 defining 'descriptor' semantics, it is important to
                 avoid creating conflicts with existing
                 IANA-registered values. If it is unclear whether a
-                registered link relation in a representation
+                registered link relation type in a representation
                 document refers to a relation registered with IANA
                 or a relation registered in an ALPS profile, the
-                semantics of that link are undefined.
+                semantics of that link are undefined. <!-- Allow relating to existing IANA rels and make this clear -->
               </t>
           </section>
         </section>
@@ -821,20 +822,21 @@
         <section anchor="prop-rel" title="'rel'">
           <t>
                   Contains a <xref target="RFC5988"/> approved
-                  value: either an extension link relation (a URI)
-                  or a registered link relation (a short string).
+                  value: either an extension relation type (a URI)
+                  or a registered relation type (a short string).
                 </t>
           <t>
                   Appears as a property of <xref target="prop-link">link</xref>.
                 </t>
-          <t>
-                  A link relation defined within an ALPS document MAY
-                  NOT be used as a registered link relation within the
-                  same ALPS document. 
-<!-- [TK MAY NOT or SHOULD NOT? -mca:: I think MAY NOT. I don't want an ALPS document to
-                  be used to describe itself. But I had to think for a
-                  while to remember the rationale for this. -leonardr] -->
-                </t>
+          <!--           <t>
+                            A link relation type defined within an ALPS document MAY
+                            NOT be used as a registered link relation within the
+                            same ALPS document.
+          [TK MAY NOT or SHOULD NOT? -mca:: I think MAY NOT. I don't want an ALPS document to
+                            be used to describe itself. But I had to think for a
+                            while to remember the rationale for this. -leonardr]
+                            :: Don't understand, let's drop. Mark
+                </t>-->
         </section>
         <section anchor="prop-rt" title="'rt'">
           <t>
