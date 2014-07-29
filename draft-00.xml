@@ -243,7 +243,7 @@
           <artwork><![CDATA[
 <html>
     <head>
-        <link rel="profile" href="http://alsp.io/profiles/contact" />
+        <link rel="profile" href="http://alps.io/profiles/contact" />
         <link rel="type" href="http://alps.io/profiles/contact#contact" />
     </head>
     <body>
@@ -563,6 +563,10 @@
         </section>
         <section anchor="prop-descriptor" title="'descriptor'">
           <t>
+            A 'descriptor' element defines the semantics of specific data elements or
+            state transitions that MAY exist in an associated representation.
+          </t>
+          <t>
             One or more 'descriptor' elements
             SHOULD appear as children of<xref target="prop-alps">'alps'</xref>. It may also appear
             as a child of itself; that is, the 'descriptor'
@@ -630,6 +634,18 @@
               </t>
             </list>
           </t>
+          <section  anchor="prop-descriptor-link-relations" title="'Descriptors and Link Relation Types'">
+            <t>
+              A 'descriptor' that defines a state transition establishes an extension
+              relation type as defined by <xref target="RFC5988"/> whose value is
+              the unqualified URI of the descriptor (e.g. rel="http://alps.io/profiles/item#purchased-by").
+
+              However, within representations that include the defining ALPS document
+              as a profile, a descriptor may be used on its own to define a
+              registered relation type (e.g. rel="purchased-by") using its
+              'id' or 'name' property per the conventions of section 2.2.7.1 and section 2.2.7.3.
+            </t>
+          </section>
         </section>
         <section anchor="prop-ext" title="'ext'">
           <t>
@@ -838,28 +854,26 @@
               IANA-registered Link Relation Type.
             </t>
           </section>
-          <section anchor="prop-id-rels" title="Link Relation Values and 'id'">
+          <section anchor="prop-id-rels" title="Link Relation Values and 'id' or 'name'">
             <t>
-              A 'descriptor' that defines a state transition
-              establishes an extension relation type as defined by
-              <xref target="RFC5988"/>
-              whose name is
-              the unqualified URI of the
-              descriptor. (e.g. rel="http://example.com/#purchased-by")
-              However, within representations that include the
-              defining ALPS document as a profile, the descriptor's
-              'id' may be used on its own as a registered link <!-- need to add 'name' wording -->
-              relation. (e.g. rel="purchased-by")
+              Since a state transition 'descriptor' establishes a registered relation type,
+              it is important to avoid creating conflicts with existing IANA-registered
+              values. If an 'id' or 'name' of the descriptor is the same as a
+              registered relation type, the descriptor MUST not change the meaning of the
+              IANA type.
+
+              <!-- [So, important to give preference to transition descriptors to use id vs name to clarify ambiguity.
+                 The extension type will be based on the id but the registered relation type would be using the name?
+                 Which wins for the semantically rich registered link relation.
+
+                 So, either Fragment allows using 'name' or we constrain 'id' as the winner between ambiguous semantic
+                 elements.That is if a semantic descriptor is going to collided with the transition descriptor, put
+                 the name on the descriptor. Is this a SHOULD or a MUST? - Mark]-->
             </t>
             <t>
-              For this reason, when selecting 'id' values and
-              defining 'descriptor' semantics, it is important to
-              avoid creating conflicts with existing
-              IANA-registered values. If it is unclear whether a
-              registered link relation type in a representation
-              document refers to a relation registered with IANA
-              or a relation registered in an ALPS profile, the
-              semantics of that link are undefined. <!-- Allow relating to existing IANA rels and make this clear -->
+              If it is unclear whether a registered link relation type in a representation
+              document refers to a relation registered with IANA or a relation registered
+              in an ALPS profile, the semantics of that link are undefined.
             </t>
           </section>
         </section>
