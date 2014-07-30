@@ -565,42 +565,25 @@
 <p id="rfc.section.1.3.p.2">The ALPS document also defines a single, safe state transition, to be represented by a hypermedia control (e.g. HTML.GET form) with the 'id' value of "collection." This hypermedia control has one input value ("nameSearch"). When executed, the response will contain one or more "contact" type items.  </p>
 <pre>
  &lt;alps version="1.0"&gt;
-    &lt;doc format="text"&gt;
-        A list of contacts
-    &lt;/doc&gt;
+    &lt;doc format="text"&gt;A contact list.&lt;/doc&gt;
 
     &lt;!-- a hypermedia control for returning contacts --&gt;
-    &lt;descriptor id="collection"
-        type="safe"
-        rt="contact"&gt;
-        &lt;doc&gt;
-            simple link/form for getting a list of contacts
-        &lt;/doc&gt;
-        &lt;descriptor id="nameSearch"
-            type="semantic"
-            &lt;doc&gt;
-                input for search form
-            &lt;/doc&gt;
+    &lt;descriptor id="collection" type="safe" rt="contact"&gt;
+        &lt;doc&gt; A simple link/form for getting a list of contacts.&lt;/doc&gt;
+        &lt;descriptor id="nameSearch" type="semantic"&gt;
+            &lt;doc&gt;Input for a search form.&lt;/doc&gt;
         &lt;/descriptor&gt;
     &lt;/descriptor&gt;
 
     &lt;!--  a contact: one or more of these may be returned --&gt;
-    &lt;descriptor id="contact" 
-        type="semantic"&gt;
-        &lt;descriptor id="item"
-            type="safe"&gt;
-            &lt;doc&gt;
-                link to individual contact
-            &lt;/doc&gt;
+    &lt;descriptor id="contact" type="semantic"&gt;
+        &lt;descriptor id="item" type="safe"&gt;
+            &lt;doc&gt;A link to an individual contact.&lt;/doc&gt;
         &lt;/descriptor&gt;
-        &lt;descriptor id="fullName" 
-            type="semantic"" /&gt;
-        &lt;descriptor id="email"
-            type="semantic" /&gt;
-        &lt;descriptor id="phone"
-            type="semantic"/&gt;
+        &lt;descriptor id="fullName" type="semantic" /&gt;
+        &lt;descriptor id="email"    type="semantic" /&gt;
+        &lt;descriptor id="phone"    type="semantic" /&gt;
     &lt;/descriptor&gt;
-
 &lt;/alps&gt;
                </pre>
 <p class="figure">ALPS Contact Profile document</p>
@@ -767,7 +750,7 @@
   <dt>XML:</dt>
   <dd style="margin-left: 8">&lt;alps&gt;...&lt;/alps&gt; </dd>
   <dt>JSON:</dt>
-  <dd style="margin-left: 8">{"alps" : ... } </dd>
+  <dd style="margin-left: 8">{ "alps" : ... } </dd>
 </dl>
 
 <p> </p>
@@ -786,7 +769,7 @@
   <dt>XML:</dt>
   <dd style="margin-left: 8">&lt;doc format="html"&gt; &lt;h1&gt;Date of Birth&lt;/h1&gt; &lt;p&gt;...&lt;/p&gt; &lt;/doc&gt; </dd>
   <dt>JSON:</dt>
-  <dd style="margin-left: 8">{"doc" : {"format" : "text" : "value" : "Date of Birth ..."} } </dd>
+  <dd style="margin-left: 8">{ "doc" : { "format" : "text" : "value" : "Date of Birth ..." } } </dd>
 </dl>
 
 <p> </p>
@@ -796,23 +779,23 @@
   <dt>XML:</dt>
   <dd style="margin-left: 8">&lt;descriptor ... &gt; &lt;doc&gt;...&lt;/doc&gt; &lt;/descriptor&gt; </dd>
   <dt>JSON:</dt>
-  <dd style="margin-left: 8">{"descriptor" : {...} {"doc" : {"value" : "..."} } </dd>
+  <dd style="margin-left: 8">{ "descriptor" : { { "doc" : { "value" : "..." } ...  } } </dd>
 </dl>
 
 <p> </p>
-<p id="rfc.section.2.2.2.p.3">The 'doc' element MAY appear as a child of<a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite>. When present, it describes the purpose of the ALPS document as a whole.  </p>
+<p id="rfc.section.2.2.2.p.3">The 'doc' element MAY appear as a child of <a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite>. When present, it describes the purpose of the ALPS document as a whole.  </p>
 
 <dl>
   <dt>XML:</dt>
   <dd style="margin-left: 8">&lt;alps&gt; &lt;doc&gt;...&lt;/doc&gt; ...  &lt;/apls&gt; </dd>
   <dt>JSON:</dt>
-  <dd style="margin-left: 8">{"alps : "doc" : { "value" : "..."}, ...  } </dd>
+  <dd style="margin-left: 8">{ "alps : "doc" : { "value" : "..." }, ...  } </dd>
 </dl>
 
 <p> </p>
 <h1 id="rfc.section.2.2.3"><a href="#rfc.section.2.2.3">2.2.3.</a> <a href="#prop-descriptor" id="prop-descriptor">'descriptor'</a></h1>
 <p id="rfc.section.2.2.3.p.1">A 'descriptor' element defines the semantics of specific data elements or state transitions that MAY exist in an associated representation.  </p>
-<p id="rfc.section.2.2.3.p.2">One or more 'descriptor' elements SHOULD appear as children of<a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite>. It may also appear as a child of itself; that is, the 'descriptor' property may be nested.  </p>
+<p id="rfc.section.2.2.3.p.2">One or more 'descriptor' elements SHOULD appear as children of <a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite>. It may also appear as a child of itself; that is, the 'descriptor' property may be nested.  </p>
 <p id="rfc.section.2.2.3.p.3">The 'descriptor' property SHOULD have either an <a href="#prop-id">'id'</a> <cite title="NONE">[prop-id]</cite> or <a href="#prop-href">'href'</a> <cite title="NONE">[prop-href]</cite> attribute. It MAY have both. Additionally, the 'descriptor' MAY have any of the following attributes: </p>
 
 <ol>
@@ -825,20 +808,26 @@
 <p> </p>
 <p id="rfc.section.2.2.3.p.4">If present, the 'href' property MUST be a dereferenceable URL, that points to another 'descriptor' either within the current ALPS document or in another ALPS document.  </p>
 <p id="rfc.section.2.2.3.p.5">If 'descriptor' has an 'href' attribute, then 'descriptor' is inheriting all the attributes and sub-properties of the descriptor pointed to by 'href'. When 'descriptor' has a property defined locally, that property value takes precedence over any inherited property value. Since there is no limit to the nesting of elements -- even ones linked remotely -- it is important to process 'all descriptor' chains starting from the bottom to make sure you have collected all the available properties and have established the correct value for each of them.  </p>
-<p id="rfc.section.2.2.3.p.6">If descriptor is declared at a top level of ALPS document, then a client SHOULD assume that descriptor can appear anywhere in runtime message.  </p>
-<p id="rfc.section.2.2.3.p.7">If descriptor is nested, i.e. declared as a child of another descriptor, then: </p>
+<p id="rfc.section.2.2.3.p.6">If 'descriptor' is declared at the top level of an ALPS document, then a client SHOULD assume that 'descriptor' can appear anywhere in a runtime message.  </p>
+<p id="rfc.section.2.2.3.p.7">If 'descriptor' is nested, i.e. declared as a child of another descriptor, then: </p>
 
 <ol>
-  <li>a client SHOULD assume them to appear in any sibling 'descriptor' element and recursively in their child descriptors </li>
-  <li>a client SHOULD NOT assume that it can appear anywhere outside of parent descriptor, unless it was explicitly referenced by another descriptor in 'href' attribute. In that case the same rules are applied to 'descriptor' containing 'href' attribute </li>
+  <li>A client SHOULD assume them to appear in any sibling 'descriptor' element and recursively in their child descriptors.  </li>
+  <li>A client SHOULD NOT assume that it can appear anywhere outside of parent descriptor, unless it was explicitly referenced by another descriptor in 'href' attribute. In that case the same rules are applied to 'descriptor' containing 'href' attribute.  </li>
 </ol>
 
 <p> </p>
 <h1 id="rfc.section.2.2.3.1"><a href="#rfc.section.2.2.3.1">2.2.3.1.</a> <a href="#prop-descriptor-link-relations" id="prop-descriptor-link-relations">'Descriptors and Link Relation Types'</a></h1>
 <p id="rfc.section.2.2.3.1.p.1">When a representation is generated that includes state transitions, valid values for link relation types are: </p>
-<p id="rfc.section.2.2.3.1.p.2">1. A registered IANA link relation type (e.g. rel="edit").  </p>
-<p id="rfc.section.2.2.3.1.p.3">2. An extension link relation type as defined by <a href="#RFC5988">[RFC5988]</a> whose value is the fully-qualified URI of an associated document describing the relation type. This includes URI fragment identifiers of ALPS descriptors (e.g. rel="http://alps.io/profiles/item#purchased-by") per the conventions of section 2.2.7.2.  </p>
-<p id="rfc.section.2.2.3.1.p.4">3. The 'id' property of a state transition descriptor of an associated ALPS document (e.g. rel="purchased-by") per the conventions of section 2.2.7.1 and section 2.2.7.3 if the representation includes an ALPS profile.  </p>
+<p/>
+
+<ol>
+  <li>A registered IANA link relation type (e.g. rel="edit").  </li>
+  <li>An extension link relation type as defined by <a href="#RFC5988">[RFC5988]</a> whose value is the fully-qualified URI of an associated document describing the relation type. This includes URI fragment identifiers of ALPS descriptors (e.g. rel="http://alps.io/profiles/item#purchased-by") per the conventions of <a href="#prop-id-frag">Section 2.2.7.2</a>.  </li>
+  <li>The 'id' property of a state transition descriptor of an associated ALPS document (e.g. rel="purchased-by") per the conventions of section <a href="#prop-id-name">Section 2.2.7.1</a> and <a href="#prop-id-rels">Section 2.2.7.3</a> if the representation includes an ALPS profile.  </li>
+</ol>
+
+<p> </p>
 <h1 id="rfc.section.2.2.4"><a href="#rfc.section.2.2.4">2.2.4.</a> <a href="#prop-ext" id="prop-ext">'ext'</a></h1>
 <p id="rfc.section.2.2.4.p.1">The 'ext' element can be used to extend the ALPS document with author-specific information. It provides a way to customize ALPS documents with additional properties not covered in this specification. This is an OPTIONAL element.  </p>
 <p id="rfc.section.2.2.4.p.2">The 'ext' element has the following properties.  </p>

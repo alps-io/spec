@@ -192,42 +192,25 @@
         <figure title="ALPS Contact Profile document">
           <artwork><![CDATA[
  <alps version="1.0">
-    <doc format="text">
-        A list of contacts
-    </doc>
+    <doc format="text">A contact list.</doc>
 
     <!-- a hypermedia control for returning contacts -->
-    <descriptor id="collection"
-        type="safe"
-        rt="contact">
-        <doc>
-            simple link/form for getting a list of contacts
-        </doc>
-        <descriptor id="nameSearch"
-            type="semantic"
-            <doc>
-                input for search form
-            </doc>
+    <descriptor id="collection" type="safe" rt="contact">
+        <doc> A simple link/form for getting a list of contacts.</doc>
+        <descriptor id="nameSearch" type="semantic">
+            <doc>Input for a search form.</doc>
         </descriptor>
     </descriptor>
 
     <!--  a contact: one or more of these may be returned -->
-    <descriptor id="contact" 
-        type="semantic">
-        <descriptor id="item"
-            type="safe">
-            <doc>
-                link to individual contact
-            </doc>
+    <descriptor id="contact" type="semantic">
+        <descriptor id="item" type="safe">
+            <doc>A link to an individual contact.</doc>
         </descriptor>
-        <descriptor id="fullName" 
-            type="semantic"" />
-        <descriptor id="email"
-            type="semantic" />
-        <descriptor id="phone"
-            type="semantic"/>
+        <descriptor id="fullName" type="semantic" />
+        <descriptor id="email"    type="semantic" />
+        <descriptor id="phone"    type="semantic" />
     </descriptor>
-
 </alps>
                ]]></artwork>
         </figure>
@@ -480,7 +463,7 @@
                 &lt;alps&gt;...&lt;/alps&gt;
               </t>
               <t hangText="JSON:">
-                {"alps" : ... }
+                { "alps" : ... }
               </t>
             </list>
           </t>
@@ -517,8 +500,8 @@
 </doc>
                         ]]></t>
               <t hangText="JSON:"><![CDATA[
-{"doc" : 
-    {"format" : "text" : "value" : "Date of Birth ..."}
+{ "doc" :
+    { "format" : "text" : "value" : "Date of Birth ..." }
 }
                         ]]></t>
             </list>
@@ -535,14 +518,16 @@
 </descriptor>
                         ]]></t>
               <t hangText="JSON:"><![CDATA[
-{"descriptor" : {...}
-    {"doc" : {"value" : "..."}
+{ "descriptor" : {
+    { "doc" : { "value" : "..." }
+    ...
+    }
 }
                         ]]></t>
             </list>
           </t>
           <t>
-            The 'doc' element MAY appear as a child of<xref target="prop-alps">'alps'</xref>. When present, it
+            The 'doc' element MAY appear as a child of <xref target="prop-alps">'alps'</xref>. When present, it
             describes the purpose of the ALPS document as a
             whole.
             <list style="hanging">
@@ -553,8 +538,8 @@
 </apls>
                         ]]></t>
               <t hangText="JSON:"><![CDATA[
-{"alps :
-   "doc" : { "value" : "..."},
+{ "alps :
+   "doc" : { "value" : "..." },
    ...
 }
                         ]]></t>
@@ -568,7 +553,7 @@
           </t>
           <t>
             One or more 'descriptor' elements
-            SHOULD appear as children of<xref target="prop-alps">'alps'</xref>. It may also appear
+            SHOULD appear as children of <xref target="prop-alps">'alps'</xref>. It may also appear
             as a child of itself; that is, the 'descriptor'
             property may be nested.
           </t>
@@ -616,21 +601,21 @@
             them.
           </t>
           <t>
-            If descriptor is declared at a top level of ALPS document,
-            then a client SHOULD assume that descriptor can appear anywhere
-            in runtime message.
+            If 'descriptor' is declared at the top level of an ALPS document,
+            then a client SHOULD assume that 'descriptor' can appear anywhere
+            in a runtime message.
           </t>
-          <t>If descriptor is nested, i.e. declared
+          <t>If 'descriptor' is nested, i.e. declared
             as a child of another descriptor, then:
             <list style="numbers">
-              <t>a client SHOULD assume them to appear in any
-                sibling 'descriptor' element and recursively in their child descriptors
+              <t>A client SHOULD assume them to appear in any
+                sibling 'descriptor' element and recursively in their child descriptors.
               </t>
-              <t>a client SHOULD NOT
+              <t>A client SHOULD NOT
                 assume that it can appear anywhere outside of parent descriptor,
                 unless it was explicitly referenced by another descriptor
                 in 'href' attribute. In that case the same rules are applied to
-                'descriptor' containing 'href' attribute
+                'descriptor' containing 'href' attribute.
               </t>
             </list>
           </t>
@@ -639,19 +624,24 @@
               When a representation is generated that includes state transitions, valid values for link relation types are:
             </t>
             <t>
-              1. A registered IANA link relation type (e.g. rel="edit").
-            </t>
-            <t>
-              2. An extension link relation type as defined by <xref target="RFC5988"/>
-              whose value is the fully-qualified URI of an associated document describing the
-              relation type. This includes URI fragment identifiers of ALPS descriptors
-              (e.g. rel="http://alps.io/profiles/item#purchased-by")
-              per the conventions of section 2.2.7.2.
-            </t>
-            <t>
-              3. The 'id' property of a state transition descriptor of an associated
-              ALPS document (e.g. rel="purchased-by") per the conventions of section
-              2.2.7.1 and section 2.2.7.3 if the representation includes an ALPS profile.
+              <list style="numbers">
+                <t>
+                  A registered IANA link relation type (e.g. rel="edit").
+                </t>
+                <t>
+                  An extension link relation type as defined by <xref target="RFC5988"/>
+                  whose value is the fully-qualified URI of an associated document describing the
+                  relation type. This includes URI fragment identifiers of ALPS descriptors
+                  (e.g. rel="http://alps.io/profiles/item#purchased-by")
+                  per the conventions of <xref target="prop-id-frag"/>.
+                </t>
+                <t>
+                  The 'id' property of a state transition descriptor of an associated
+                  ALPS document (e.g. rel="purchased-by") per the conventions of section
+                  <xref target="prop-id-name"/> and <xref target="prop-id-rels"/>
+                  if the representation includes an ALPS profile.
+                </t>
+              </list>
             </t>
           </section>
         </section>
