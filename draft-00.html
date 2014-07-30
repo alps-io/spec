@@ -424,7 +424,7 @@
 
   <meta name="dct.creator" content="Amundsen, M., Richardson, L., and M. Foster" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-amundsen-richardson-foster-alps-00.J" />
-  <meta name="dct.issued" scheme="ISO8601" content="2014-7-28" />
+  <meta name="dct.issued" scheme="ISO8601" content="2014-7-30" />
   <meta name="dct.abstract" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, or Siren). This increases the reusability of profile documents across media types.  " />
   <meta name="description" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, or Siren). This increases the reusability of profile documents across media types.  " />
 
@@ -444,7 +444,7 @@
   <td class="right">Layer 7 Technologies</td>
 </tr>
 <tr>
-  <td class="left">Expires: January 29, 2015</td>
+  <td class="left">Expires: January 31, 2015</td>
   <td class="right">L. Richardson</td>
 </tr>
 <tr>
@@ -461,7 +461,7 @@
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">July 28, 2014</td>
+  <td class="right">July 30, 2014</td>
 </tr>
 
     	
@@ -485,7 +485,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on January 29, 2015.</p>
+<p>This Internet-Draft will expire on January 31, 2015.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -547,11 +547,11 @@
   <h1 id="rfc.section.1"><a href="#rfc.section.1">1.</a> Introduction</h1>
 <p id="rfc.section.1.p.1">This document describes ALPS, a media type for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. These descriptions contain both human-readable and machine-readable explanations of the semantics.  </p>
 <p id="rfc.section.1.p.2">An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, or Siren).  </p>
-<p id="rfc.section.1.p.3">This document identifies a registry for ALPS documents, (The ALPS Profile Registry or APR). The details of this registry, it's goals, and operations are covered in a separate document (TBD).  </p>
-<p id="rfc.section.1.p.4">This document also identifies a process for authoring, publishing, and sharing normative human-readable instructions on applying an ALPS document as a profile to responses of a given media type. For' example, a document that describes how to apply the semantics of an ALPS profile to an HTML document.  </p>
+<p id="rfc.section.1.p.3">This document identifies a registry for ALPS documents, (The ALPS Profile Registry or APR). The details of this registry, its goals, and operations are covered in a separate document (TBD).  </p>
+<p id="rfc.section.1.p.4">This document also identifies a process for authoring, publishing, and sharing normative human-readable instructions on applying an ALPS document as a profile to responses of a given media type. For example, a document that describes how to apply the semantics of an ALPS profile to an HTML document.  </p>
 <p id="rfc.section.1.p.5">This document registers two media-type identifiers with the IANA: 'application/alps+xml' ("ALPS+XML") and 'application/alps+json' ("ALPS+JSON").  </p>
 <h1 id="rfc.section.1.1"><a href="#rfc.section.1.1">1.1.</a> Notational Conventions</h1>
-<p id="rfc.section.1.1.p.1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="#RFC2119">[RFC2119]</a>.  </p>
+<p id="rfc.section.1.1.p.1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in<a href="#RFC2119">[RFC2119]</a>.  </p>
 <h1 id="rfc.section.1.2"><a href="#rfc.section.1.2">1.2.</a> Motivation</h1>
 <p id="rfc.section.1.2.p.1">When implementing a hypermedia client/server application using a general media type (HTML, Atom, Collection+JSON, etc.), client and server instances need to share an understanding of domain-specific information such as data element names, link relation values, and state transfer parameters. This information is directly related to the application being implemented (e.g. accounting, contact management, etc.) rather than the media type used in the representations.  </p>
 <h1 id="rfc.section.1.2.1"><a href="#rfc.section.1.2.1">1.2.1.</a> Describing Domain-Specific Semantics</h1>
@@ -608,7 +608,7 @@
 <pre>
 &lt;html&gt;
     &lt;head&gt;
-        &lt;link rel="profile" href="http://alsp.io/profiles/contact" /&gt;
+        &lt;link rel="profile" href="http://alps.io/profiles/contact" /&gt;
         &lt;link rel="type" href="http://alps.io/profiles/contact#contact" /&gt;
     &lt;/head&gt;
     &lt;body&gt;
@@ -654,7 +654,7 @@
               </pre>
 <p class="figure">HTML ALPS Contact Representation</p>
 <p id="rfc.section.1.3.p.4">HTML representations implement most ALPS elements using HTML's "class" attribute. The "collection" ID has become the CSS class of an HTML form's submit button.  The "contact" ID has become the CSS class of an HTML table.  The subordinate descriptors "fullname","email", and "phone" </p>
-<p id="rfc.section.1.3.p.5">This HAL document uses the same profile to express the same application-level semantics as the HTML document.</p>
+<p id="rfc.section.1.3.p.5">This HAL document uses the same profile to express the same application-level semantics as the HTML document.  </p>
 <pre>
 &lt;resource href="http://example.org/contacts/"&gt;
     &lt;link rel="type" href="http://alps.io/profiles/contacts#contact" /&gt;
@@ -676,8 +676,8 @@
 &lt;/resource&gt;
                     </pre>
 <p class="figure">HAL XML Contacts Representation</p>
-<p id="rfc.section.1.3.p.6">In a HAL representation, all state transitions ("collection" and "item", in this case) are represented as link relations. All data descriptors ("fullName", "email", and "phone") are represented as XML tags named after the descriptors.</p>
-<p id="rfc.section.1.3.p.7">This Collection+JSON document uses the ALPS profile to express the same application-level semantics as the HTML and HAL documents.</p>
+<p id="rfc.section.1.3.p.6">In a HAL representation, all state transitions ("collection" and "item", in this case) are represented as link relations. All data descriptors ("fullName", "email", and "phone") are represented as XML tags named after the descriptors.  </p>
+<p id="rfc.section.1.3.p.7">This Collection+JSON document uses the ALPS profile to express the same application-level semantics as the HTML and HAL documents.  </p>
 <pre>
 {
     "collection" : {
@@ -749,14 +749,14 @@
                 
                </pre>
 <p class="figure">Collection+JSON Contacts Representation</p>
-<p id="rfc.section.1.3.p.8">The descriptor "collection" has become the link relation associated with a Collection+JSON query. The descriptors "fullName", "email", and "phone" have become the names of key-value pairs in the items in a Collection+JSON collection.</p>
+<p id="rfc.section.1.3.p.8">The descriptor "collection" has become the link relation associated with a Collection+JSON query. The descriptors "fullName", "email", and "phone" have become the names of key-value pairs in the items in a Collection+JSON collection.  </p>
 <h1 id="rfc.section.1.4"><a href="#rfc.section.1.4">1.4.</a> Identifying an ALPS Document</h1>
 <p id="rfc.section.1.4.p.1">An ALPS vocabulary is identified by a unique URL.  This URL SHOULD be assumed to be dereferencable.  All ALPS URLs MUST be unique and all ALPS documents intended for public consumption SHOULD be registered with the ALPS Registry located at (to be specified).  </p>
-<p id="rfc.section.1.4.p.2">In order to reduce load on servers responding to ALPS document requests, it is RECOMMENDED that servers use cache control directives  that instruct client apps to locally cache the results. Clients making these ALPS document requests SHOULD honor the server's caching directives.  </p>
+<p id="rfc.section.1.4.p.2">In order to reduce load on servers responding to ALPS document requests, it is RECOMMENDED that servers use cache control directives that instruct client apps to locally cache the results. Clients making these ALPS document requests SHOULD honor the server's caching directives.  </p>
 <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> ALPS Documents</h1>
-<p id="rfc.section.2.p.1">An ALPS document contains a machine-readable collection of identifying strings and their human-readable explanations. An ALPS document can be represented in either XML or JSON format. This section identifies the general elements and properties of an ALPS document, their meaning, and their use, independent of how the document is represented. <a href="#representations">Section 2.3</a> provides specific details on constructing a valid ALPS document in XML and in JSON format.  </p>
+<p id="rfc.section.2.p.1">An ALPS document contains a machine-readable collection of identifying strings and their human-readable explanations. An ALPS document can be represented in either XML or JSON format. This section identifies the general elements and properties of an ALPS document, their meaning, and their use, independent of how the document is represented.  <a href="#representations">Section 2.3</a> provides specific details on constructing a valid ALPS document in XML and in JSON format.  </p>
 <h1 id="rfc.section.2.1"><a href="#rfc.section.2.1">2.1.</a> Compliance</h1>
-<p id="rfc.section.2.1.p.1">An implementation is not compliant if it fails to satisfy one or more of the MUST or REQUIRED level requirements.  An implementation that satisfies all the MUST or REQUIRED level and all the SHOULD level requirements is said to be "unconditionally compliant"; one that satisfies all the MUST level requirements but not all the SHOULD level requirements is said to be "conditionally compliant." </p>
+<p id="rfc.section.2.1.p.1">An implementation is not compliant if it fails to satisfy one or more of the MUST or REQUIRED level requirements. An implementation that satisfies all the MUST or REQUIRED level and all the SHOULD level requirements is said to be "unconditionally compliant"; one that satisfies all the MUST level requirements but not all the SHOULD level requirements is said to be "conditionally compliant." </p>
 <h1 id="rfc.section.2.2"><a href="#rfc.section.2.2">2.2.</a> ALPS Document Properties</h1>
 <p id="rfc.section.2.2.p.1">The ALPS media type defines a small set of properties. These properties appear in both the XML and JSON formats. Below is a list of the properties that can appear in an ALPS document.  </p>
 <h1 id="rfc.section.2.2.1"><a href="#rfc.section.2.2.1">2.2.1.</a> <a href="#prop-alps" id="prop-alps">'alps'</a></h1>
@@ -790,7 +790,7 @@
 </dl>
 
 <p> </p>
-<p id="rfc.section.2.2.2.p.2">A 'doc' element SHOULD appear as a child of <a href="#prop-descriptor">'descriptor'</a> <cite title="NONE">[prop-descriptor]</cite>.  When present, it describes the meaning and use of the related 'descriptor'.  </p>
+<p id="rfc.section.2.2.2.p.2">A 'doc' element SHOULD appear as a child of <a href="#prop-descriptor">'descriptor'</a> <cite title="NONE">[prop-descriptor]</cite>. When present, it describes the meaning and use of the related 'descriptor'.  </p>
 
 <dl>
   <dt>XML:</dt>
@@ -800,7 +800,7 @@
 </dl>
 
 <p> </p>
-<p id="rfc.section.2.2.2.p.3">The 'doc' element MAY appear as a child of <a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite>.  When present, it describes the purpose of the ALPS document as a whole.  </p>
+<p id="rfc.section.2.2.2.p.3">The 'doc' element MAY appear as a child of<a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite>. When present, it describes the purpose of the ALPS document as a whole.  </p>
 
 <dl>
   <dt>XML:</dt>
@@ -811,21 +811,22 @@
 
 <p> </p>
 <h1 id="rfc.section.2.2.3"><a href="#rfc.section.2.2.3">2.2.3.</a> <a href="#prop-descriptor" id="prop-descriptor">'descriptor'</a></h1>
-<p id="rfc.section.2.2.3.p.1">One or more 'descriptor' elements SHOULD appear as children of <a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite>. It may also appear as a child of itself; that is, the 'descriptor' property may be nested.  </p>
-<p id="rfc.section.2.2.3.p.2">The 'descriptor' property SHOULD have either an <a href="#prop-id">'id'</a> <cite title="NONE">[prop-id]</cite> or <a href="#prop-href">'href'</a> <cite title="NONE">[prop-href]</cite> attribute. It MAY have both. Additionally, the 'descriptor' MAY have any of the following attributes: </p>
+<p id="rfc.section.2.2.3.p.1">A 'descriptor' element defines the semantics of specific data elements or state transitions that MAY exist in an associated representation.  </p>
+<p id="rfc.section.2.2.3.p.2">One or more 'descriptor' elements SHOULD appear as children of<a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite>. It may also appear as a child of itself; that is, the 'descriptor' property may be nested.  </p>
+<p id="rfc.section.2.2.3.p.3">The 'descriptor' property SHOULD have either an <a href="#prop-id">'id'</a> <cite title="NONE">[prop-id]</cite> or <a href="#prop-href">'href'</a> <cite title="NONE">[prop-href]</cite> attribute. It MAY have both. Additionally, the 'descriptor' MAY have any of the following attributes: </p>
 
 <ol>
-  <li><a href="#prop-doc">'doc'</a> <cite title="NONE">[prop-doc]</cite></li>
-  <li><a href="#prop-ext">'ext'</a> <cite title="NONE">[prop-ext]</cite></li>
-  <li><a href="#prop-name">'name'</a> <cite title="NONE">[prop-name]</cite></li>
-  <li><a href="#prop-type">'type'</a> <cite title="NONE">[prop-type]</cite></li>
+  <li><a href="#prop-doc">'doc'</a> <cite title="NONE">[prop-doc]</cite> </li>
+  <li><a href="#prop-ext">'ext'</a> <cite title="NONE">[prop-ext]</cite> </li>
+  <li><a href="#prop-name">'name'</a> <cite title="NONE">[prop-name]</cite> </li>
+  <li><a href="#prop-type">'type'</a> <cite title="NONE">[prop-type]</cite> </li>
 </ol>
 
 <p> </p>
-<p id="rfc.section.2.2.3.p.3">If present, the 'href' property MUST be a dereferenceable URL, that points to another 'descriptor' either within the current ALPS document or in another ALPS document.  </p>
-<p id="rfc.section.2.2.3.p.4">If 'descriptor' has an 'href' attribute, then 'descriptor' is inheriting all the attributes and sub-properties of the descriptor pointed to by 'href'. When 'descriptor' has a property defined locally, that property value takes precedence over any inherited property value. Since there is no limit to the nesting of elements -- even ones linked remotely -- it is important to process 'all descriptor' chains starting from the bottom to make sure you have collected all the available properties and have established the correct value for each of them.  </p>
-<p id="rfc.section.2.2.3.p.5">If descriptor is declared at a top level of ALPS document, then a client SHOULD assume that descriptor can appear anywhere in runtime message.  </p>
-<p id="rfc.section.2.2.3.p.6">If descriptor is nested, i.e. declared as a child of another descriptor, then: </p>
+<p id="rfc.section.2.2.3.p.4">If present, the 'href' property MUST be a dereferenceable URL, that points to another 'descriptor' either within the current ALPS document or in another ALPS document.  </p>
+<p id="rfc.section.2.2.3.p.5">If 'descriptor' has an 'href' attribute, then 'descriptor' is inheriting all the attributes and sub-properties of the descriptor pointed to by 'href'. When 'descriptor' has a property defined locally, that property value takes precedence over any inherited property value. Since there is no limit to the nesting of elements -- even ones linked remotely -- it is important to process 'all descriptor' chains starting from the bottom to make sure you have collected all the available properties and have established the correct value for each of them.  </p>
+<p id="rfc.section.2.2.3.p.6">If descriptor is declared at a top level of ALPS document, then a client SHOULD assume that descriptor can appear anywhere in runtime message.  </p>
+<p id="rfc.section.2.2.3.p.7">If descriptor is nested, i.e. declared as a child of another descriptor, then: </p>
 
 <ol>
   <li>a client SHOULD assume them to appear in any sibling 'descriptor' element and recursively in their child descriptors </li>
@@ -833,14 +834,19 @@
 </ol>
 
 <p> </p>
+<h1 id="rfc.section.2.2.3.1"><a href="#rfc.section.2.2.3.1">2.2.3.1.</a> <a href="#prop-descriptor-link-relations" id="prop-descriptor-link-relations">'Descriptors and Link Relation Types'</a></h1>
+<p id="rfc.section.2.2.3.1.p.1">When a representation is generated that includes state transitions, valid values for link relation types are: </p>
+<p id="rfc.section.2.2.3.1.p.2">1. A registered IANA link relation type (e.g. rel="edit").  </p>
+<p id="rfc.section.2.2.3.1.p.3">2. An extension link relation type as defined by <a href="#RFC5988">[RFC5988]</a> whose value is the fully-qualified URI of an associated document describing the relation type. This includes URI fragment identifiers of ALPS descriptors (e.g. rel="http://alps.io/profiles/item#purchased-by") per the conventions of section 2.2.7.2.  </p>
+<p id="rfc.section.2.2.3.1.p.4">3. The 'id' property of a state transition descriptor of an associated ALPS document (e.g. rel="purchased-by") per the conventions of section 2.2.7.1 and section 2.2.7.3 if the representation includes an ALPS profile.  </p>
 <h1 id="rfc.section.2.2.4"><a href="#rfc.section.2.2.4">2.2.4.</a> <a href="#prop-ext" id="prop-ext">'ext'</a></h1>
 <p id="rfc.section.2.2.4.p.1">The 'ext' element can be used to extend the ALPS document with author-specific information. It provides a way to customize ALPS documents with additional properties not covered in this specification. This is an OPTIONAL element.  </p>
 <p id="rfc.section.2.2.4.p.2">The 'ext' element has the following properties.  </p>
 
 <ol>
-  <li><a href="#prop-id">id</a> <cite title="NONE">[prop-id]</cite></li>
-  <li><a href="#prop-href">href</a> <cite title="NONE">[prop-href]</cite></li>
-  <li><a href="#prop-value">value</a> <cite title="NONE">[prop-value]</cite></li>
+  <li><a href="#prop-id">id</a> <cite title="NONE">[prop-id]</cite> </li>
+  <li><a href="#prop-href">href</a> <cite title="NONE">[prop-href]</cite> </li>
+  <li><a href="#prop-value">value</a> <cite title="NONE">[prop-value]</cite> </li>
 </ol>
 
 <p> </p>
@@ -858,8 +864,8 @@
 <p id="rfc.section.2.2.4.p.5">The 'ext' element MAY appear as a child of the following elements: </p>
 
 <ol>
-  <li><a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite></li>
-  <li><a href="#prop-descriptor">'descriptor'</a> <cite title="NONE">[prop-descriptor]</cite></li>
+  <li><a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite> </li>
+  <li><a href="#prop-descriptor">'descriptor'</a> <cite title="NONE">[prop-descriptor]</cite> </li>
 </ol>
 
 <p> </p>
@@ -868,8 +874,8 @@
 <p id="rfc.section.2.2.5.p.1">Indicates how the text content should be parsed and/or rendered. This version of the spec identifies three possible values for "format": "text", "html", and "asciidoc." Any other values for this attribute are undefined and SHOULD be treated as plain text. If the program does not recognize the value of the "format" property and/or the "format" property is missing, the content SHOULD be treated as plain text.  This property MAY appear as an attribute of the <a href="#prop-doc">'doc'</a> <cite title="NONE">[prop-doc]</cite> element.  </p>
 <h1 id="rfc.section.2.2.6"><a href="#rfc.section.2.2.6">2.2.6.</a> <a href="#prop-href" id="prop-href">'href'</a></h1>
 <p id="rfc.section.2.2.6.p.1">Contains a resolvable URL.  </p>
-<p id="rfc.section.2.2.6.p.2">When it appears as an attribute of <a href="#prop-descriptor">'descriptor'</a> <cite title="NONE">[prop-descriptor]</cite>, 'href' points to another 'descriptor' either within the existing ALPS document or in another ALPS document.  </p>
-<p id="rfc.section.2.2.6.p.3">When it appears as an attribute of <a href="#prop-ext">'ext'</a> <cite title="NONE">[prop-ext]</cite>, 'href' points to an external document which provides the defintion of the extension.  </p>
+<p id="rfc.section.2.2.6.p.2">When it appears as an attribute of<a href="#prop-descriptor">'descriptor'</a> <cite title="NONE">[prop-descriptor]</cite>, 'href' points to another 'descriptor' either within the existing ALPS document or in another ALPS document.  </p>
+<p id="rfc.section.2.2.6.p.3">When it appears as an attribute of<a href="#prop-ext">'ext'</a> <cite title="NONE">[prop-ext]</cite>, 'href' points to an external document which provides the defintion of the extension.  </p>
 <p id="rfc.section.2.2.6.p.4">When it appears as an attribute of <a href="#prop-link">'link'</a> <cite title="NONE">[prop-link]</cite> 'href' points to an external document whose relationship to the current document or 'descriptor' is described by the associated <a href="#prop-rel">'rel'</a> <cite title="NONE">[prop-rel]</cite> property.  </p>
 <p id="rfc.section.2.2.6.p.5">When it appears as an attribute of <a href="#prop-doc">'doc'</a> <cite title="NONE">[prop-doc]</cite>, 'href' points to a document that contains human-readable text that describes the associated 'descriptor' or ALPS document.  </p>
 <h1 id="rfc.section.2.2.7"><a href="#rfc.section.2.2.7">2.2.7.</a> <a href="#prop-id" id="prop-id">'id'</a></h1>
@@ -887,6 +893,8 @@
   <dt>...becomes the 'class' in HTML</dt>
   <dd style="margin-left: 8">&lt;input name="q" type="text" value="" /&gt; </dd>
 </dl>
+
+<p> </p>
 <p id="rfc.section.2.2.7.p.3">It should be noted that the exact mapping from ALPS elements (e.g. 'id') to elements within a particular media type (HTML, Collection+JSON, etc.) is covered in separate documents (to be speficied).  </p>
 <h1 id="rfc.section.2.2.7.1"><a href="#rfc.section.2.2.7.1">2.2.7.1.</a> <a href="#prop-id-name" id="prop-id-name">ALPS 'id' and 'name' Properties</a></h1>
 <p id="rfc.section.2.2.7.1.p.1">In some cases, media types support non-unique identifiers (e.g. HTML's 'name' property) or will allow the same identifier value for multiple elements in the same representation (e.g. &lt;div id="search" ... /&gt; and &lt;input type="submit" class="search" .../&gt; and &lt;input name="search" ... /&gt;). In those cases, translating that representation into ALPS documents could result in multiple 'id' properties with the same value.  </p>
@@ -914,28 +922,29 @@
 <p id="rfc.section.2.2.7.2.p.1">When applied to an ALPS document, a URI fragment identifier points to the 'descriptor' with the appropriate 'id'. For example, the fragment identifier "customer" in the URI http://example.com/my-alps-document#customer refers to an ALPS 'descriptor' with 'id' set to "customer".  </p>
 <p id="rfc.section.2.2.7.2.p.2">A relative URL with a fragment identifier (e.g. "#customer") refers to a 'descriptor' within the ALPS document containing the reference.  </p>
 <p id="rfc.section.2.2.7.2.p.3">The complete URI to an ALPS 'descriptor' (including the fragement) forms an "abstract semantic type" identifier. This is a resolvable URI (URL) that can be used to indicate the type of a resource; for instance, it can be used as the value of the IANA-registered Link Relation Type.  </p>
-<h1 id="rfc.section.2.2.7.3"><a href="#rfc.section.2.2.7.3">2.2.7.3.</a> <a href="#prop-id-rels" id="prop-id-rels">Link Relation Values and 'id'</a></h1>
-<p id="rfc.section.2.2.7.3.p.1">A 'descriptor' that defines a state transition establishes an extension relation type as defined by <a href="#RFC5988">[RFC5988]</a> whose name is the unqualified URI of the descriptor. (e.g. rel="http://example.com/#purchased-by") However, within representations that include the defining ALPS document as a profile, the descriptor's 'id' may be used on its own as a registered link relation. (e.g. rel="purchased-by") </p>
-<p id="rfc.section.2.2.7.3.p.2">For this reason, when selecting 'id' values and defining 'descriptor' semantics, it is important to avoid creating conflicts with existing IANA-registered values. If it is unclear whether a registered link relation type in a representation document refers to a relation registered with IANA or a relation registered in an ALPS profile, the semantics of that link are undefined.  </p>
+<h1 id="rfc.section.2.2.7.3"><a href="#rfc.section.2.2.7.3">2.2.7.3.</a> <a href="#prop-id-rels" id="prop-id-rels">Link Relation Values and 'id' or 'name'</a></h1>
+<p id="rfc.section.2.2.7.3.p.1">Since a state transition 'descriptor' may define a relation type value, it is important to avoid creating conflicts with existing IANA-registered values. If the resulting link relation type is the same as a registered relation type, the descriptor MUST not change the meaning of the IANA type.  </p>
+<p id="rfc.section.2.2.7.3.p.2">Further, since the 'id' of a descriptor may define a link relation value per section 2.2.3.1, if a conflict exists in defining such a descriptor's document unique 'id' with another descriptor, the conflicting descriptor MUST define a unique 'id' and MAY specify a 'name' property to resolve the conflict.  </p>
+<p id="rfc.section.2.2.7.3.p.3">If it is unclear whether a registered link relation type in a representation document refers to a relation registered with IANA or a relation registered in an ALPS profile, the semantics of that link are undefined.  </p>
 <h1 id="rfc.section.2.2.8"><a href="#rfc.section.2.2.8">2.2.8.</a> <a href="#prop-link" id="prop-link">'link'</a></h1>
 <p id="rfc.section.2.2.8.p.1">Identifies a link between the current ALPS element and some other (possibly external) resource. Can be applied to the <a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite> and the <a href="#prop-descriptor">'descriptor'</a> <cite title="NONE">[prop-descriptor]</cite> elements.  </p>
-<p id="rfc.section.2.2.8.p.2">The 'link' property MUST define the two attributes <a href="#prop-href">'href'</a> <cite title="NONE">[prop-href]</cite>  and <a href="#prop-rel">'rel'</a> <cite title="NONE">[prop-rel]</cite>.  </p>
+<p id="rfc.section.2.2.8.p.2">The 'link' property MUST define the two attributes <a href="#prop-href">'href'</a> <cite title="NONE">[prop-href]</cite> and <a href="#prop-rel">'rel'</a> <cite title="NONE">[prop-rel]</cite>.  </p>
 <h1 id="rfc.section.2.2.9"><a href="#rfc.section.2.2.9">2.2.9.</a> <a href="#prop-name" id="prop-name">'name'</a></h1>
 <p id="rfc.section.2.2.9.p.1">Indicates the name of the <a href="#prop-descriptor">'descriptor'</a> <cite title="NONE">[prop-descriptor]</cite> as found in generic representations. It MAY appear as a property of 'descriptor'.  </p>
 <p id="rfc.section.2.2.9.p.2">This is used when the name of the 'descriptor' is used as an <a href="#prop-id">'id'</a> <cite title="NONE">[prop-id]</cite> value elsewhere in the ALPS document. For instance, if a single ALPS document defines a semantic descriptor (data element) called "customer" and a safe descriptor (transition element) also called "customer", they can't both have 'id="customer"' in the ALPS document. One of them needs to have some other 'id', and to set 'name="customer"'.  </p>
 <p id="rfc.section.2.2.9.p.3">The use of the 'name' property usually indicates an ambiguity in the application semantics. Thus, it SHOULD only be used when creating an ALPS profile that describes an existing design.  </p>
 <h1 id="rfc.section.2.2.10"><a href="#rfc.section.2.2.10">2.2.10.</a> <a href="#prop-rel" id="prop-rel">'rel'</a></h1>
 <p id="rfc.section.2.2.10.p.1">Contains a <a href="#RFC5988">[RFC5988]</a> approved value: either an extension relation type (a URI) or a registered relation type (a short string).  </p>
-<p id="rfc.section.2.2.10.p.2">Appears as a property of <a href="#prop-link">link</a> <cite title="NONE">[prop-link]</cite>.  </p>
+<p id="rfc.section.2.2.10.p.2">Appears as a property of<a href="#prop-link">link</a> <cite title="NONE">[prop-link]</cite>.  </p>
 <h1 id="rfc.section.2.2.11"><a href="#rfc.section.2.2.11">2.2.11.</a> <a href="#prop-rt" id="prop-rt">'rt'</a></h1>
 <p id="rfc.section.2.2.11.p.1">Indicates the resource type that will be returned when executing the specified network request. The 'rt' attribute SHOULD appear only on a <a href="#prop-descriptor">descriptor</a> <cite title="NONE">[prop-descriptor]</cite> with a <a href="#prop-type">type</a> <cite title="NONE">[prop-type]</cite> value of 'safe', 'unsafe', or 'idempotent.' </p>
-<p id="rfc.section.2.2.11.p.2">The 'rt' attribute is OPTIONAL and is an opaque string and MAY match the <a href="#prop-id">id</a> <cite title="NONE">[prop-id]</cite> of an existing <a href="#prop-descriptor">descriptor</a> <cite title="NONE">[prop-descriptor]</cite>.  </p>
+<p id="rfc.section.2.2.11.p.2">The 'rt' attribute is OPTIONAL and is an opaque string and MAY match the <a href="#prop-id">id</a> <cite title="NONE">[prop-id]</cite> of an existing<a href="#prop-descriptor">descriptor</a> <cite title="NONE">[prop-descriptor]</cite>.  </p>
 <h1 id="rfc.section.2.2.12"><a href="#rfc.section.2.2.12">2.2.12.</a> <a href="#prop-type" id="prop-type">'type'</a></h1>
-<p id="rfc.section.2.2.12.p.1">Indicates the type of representation control to which the element is applied. This MUST appear for each element.  Four valid values are defined: </p>
+<p id="rfc.section.2.2.12.p.1">Indicates the type of representation control to which the element is applied. This MUST appear for each element. Four valid values are defined: </p>
 
 <dl>
   <dt>"semantic"</dt>
-  <dd style="margin-left: 8">A state element (e.g.  HTML.SPAN, HTML.INPUT, etc.) or a hypermedia control that triggers a safe, idempotent transition (e.g. HTTP.GET or HTTP.HEAD).  </dd>
+  <dd style="margin-left: 8">A state element (e.g. HTML.SPAN, HTML.INPUT, etc.) or a hypermedia control that triggers a safe, idempotent transition (e.g. HTTP.GET or HTTP.HEAD).  </dd>
   <dt>"safe"</dt>
   <dd style="margin-left: 8">A hypermedia control that triggers a safe, idempotent state transition (e.g. HTTP.GET or HTTP.HEAD).  </dd>
   <dt>"idempotent"</dt>
@@ -948,7 +957,7 @@
 <h1 id="rfc.section.2.2.13"><a href="#rfc.section.2.2.13">2.2.13.</a> <a href="#prop-value" id="prop-value">'value'</a></h1>
 <p id="rfc.section.2.2.13.p.1">Contains a string value. It MAY appear as an attribute of the <a href="#prop-doc">'doc'</a> <cite title="NONE">[prop-doc]</cite> and the <a href="#prop-ext">'ext'</a> <cite title="NONE">[prop-ext]</cite> elements.  </p>
 <h1 id="rfc.section.2.2.14"><a href="#rfc.section.2.2.14">2.2.14.</a> <a href="#prop-version" id="prop-version">'version'</a></h1>
-<p id="rfc.section.2.2.14.p.1">Indicates the version of the ALPS specification used in the document. This SHOULD appear as a property of the <a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite> property.  Currently the only valid value is "1.0".  If no value appears, then 'version="1.0"' is implied.  </p>
+<p id="rfc.section.2.2.14.p.1">Indicates the version of the ALPS specification used in the document. This SHOULD appear as a property of the <a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite> property.  Currently the only valid value is "1.0". If no value appears, then 'version="1.0"' is implied.  </p>
 <h1 id="rfc.section.2.3"><a href="#rfc.section.2.3">2.3.</a> <a href="#representations" id="representations">ALPS Representations</a></h1>
 <p id="rfc.section.2.3.p.1">An ALPS document may be represented in either XML or JSON format. This section contains notes on how the ALPS elements and attributes appear in each format, along with examples to guide ALPS document authors.  </p>
 <h1 id="rfc.section.2.3.1"><a href="#rfc.section.2.3.1">2.3.1.</a> <a href="#html-representation" id="html-representation">Sample HTML</a></h1>
@@ -974,7 +983,7 @@
 <p id="rfc.section.2.3.1.p.1">Below is a simple HTML document that contains a handful of semantic descriptors and transition instructions.  This document was generated from the XML and JSON ALPS documents that follow. Use this HTML document as a guide when evaluating the XML and JSON examples.  </p>
 <h1 id="rfc.section.2.3.2"><a href="#rfc.section.2.3.2">2.3.2.</a> <a href="#xml-representation" id="xml-representation">XML Representation</a></h1>
 <h1 id="rfc.section.2.3.2.1"><a href="#rfc.section.2.3.2.1">2.3.2.1.</a> XML Representation Notes</h1>
-<p id="rfc.section.2.3.2.1.p.1">In the XML version of an ALPS document, the following ALPS properties always appear as XML elements: <a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite>, <a href="#prop-doc">'doc'</a> <cite title="NONE">[prop-doc]</cite>, <a href="#prop-descriptor">'descriptor'</a> <cite title="NONE">[prop-descriptor]</cite>, and <a href="#prop-ext">'ext'</a> <cite title="NONE">[prop-ext]</cite>.  All other ALPS properties appear as XML attributes.  </p>
+<p id="rfc.section.2.3.2.1.p.1">In the XML version of an ALPS document, the following ALPS properties always appear as XML elements:<a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite>,<a href="#prop-doc">'doc'</a> <cite title="NONE">[prop-doc]</cite>,<a href="#prop-descriptor">'descriptor'</a> <cite title="NONE">[prop-descriptor]</cite>, and<a href="#prop-ext">'ext'</a> <cite title="NONE">[prop-ext]</cite>. All other ALPS properties appear as XML attributes.  </p>
 <h1 id="rfc.section.2.3.2.2"><a href="#rfc.section.2.3.2.2">2.3.2.2.</a> Complete XML Representation</h1>
 <pre>
 &lt;?xml version="1.0"?&gt;
@@ -1011,43 +1020,43 @@
 
 <p>For example:</p>
 <pre>
-"descriptor" : [
-    {
-        "id" : "search",
-        "type" : "safe"
-        "descriptor" : [
-            {"href" : "#value"},
-            {
-                "id" : "resultType",
-                "type" : "semantic",
-                "ext" : [
-                    {
-                        "href" : "http://alps.io/ext/range",
-                        "value" : "summary,detail"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id" : "#value",
-        "type" : "semantic"
-    }
-]
-                  </pre>
+                  "descriptor" : [
+                  {
+                  "id" : "search",
+                  "type" : "safe"
+                  "descriptor" : [
+                  {"href" : "#value"},
+                  {
+                  "id" : "resultType",
+                  "type" : "semantic",
+                  "ext" : [
+                  {
+                  "href" : "http://alps.io/ext/range",
+                  "value" : "summary,detail"
+                  }
+                  ]
+                  }
+                  ]
+                  },
+                  {
+                  "id" : "#value",
+                  "type" : "semantic"
+                  }
+                  ]
+                </pre>
 <p class="figure">Arrays in ALPS+JSON</p>
 <p id="rfc.section.2.3.3.1.p.2">The <a href="#prop-doc">'doc'</a> <cite title="NONE">[prop-doc]</cite> property is always expressed as a named object.  </p>
 <p/>
 
 <p>For example:</p>
 <pre>
-{
-    "doc" : {
-        "format" : "text", 
-        "value" : "Rules are imporant"
-    }
-}
-                  </pre>
+                  {
+                  "doc" : {
+                  "format" : "text",
+                  "value" : "Rules are imporant"
+                  }
+                  }
+                </pre>
 <p class="figure">Descriptions in ALPS+JSON</p>
 <h1 id="rfc.section.2.3.3.2"><a href="#rfc.section.2.3.3.2">2.3.3.2.</a> Complete Representation</h1>
 <pre>
@@ -1115,7 +1124,7 @@
   <dd style="margin-left: 8">
     <dl>
       <dt>charset</dt>
-      <dd style="margin-left: 8">This parameter has identical semantics to the charset parameter of the 'application/xml' media type as specified in <a href="#RFC3023">[RFC3023]</a>.  </dd>
+      <dd style="margin-left: 8">This parameter has identical semantics to the charset parameter of the 'application/xml' media type as specified in<a href="#RFC3023">[RFC3023]</a>.  </dd>
       <dt>profile</dt>
       <dd style="margin-left: 8">A whitespace-separated list of IRIs identifying specific constraints or conventions that apply to an ALPS document.  A profile must not change the semantics of the resource representation when processed without profile knowledge, so that clients both with and without knowledge of a profiled resource can safely use the same representation. The profile parameter may also be used by clients to express their preferences in the content negotiation process. It is recommended that profile IRIs are dereferenceable and provide useful documentation at that IRI.  </dd>
     </dl>
@@ -1125,7 +1134,7 @@
   <dd style="margin-left: 8">
     <dl>
       <dt>binary</dt>
-      <dd style="margin-left: 8">Same as encoding considerations of application/xml as specified in <a href="#RFC3023">[RFC3023]</a>.  </dd>
+      <dd style="margin-left: 8">Same as encoding considerations of application/xml as specified in<a href="#RFC3023">[RFC3023]</a>.  </dd>
     </dl>
     <p> </p>
   </dd>
@@ -1189,7 +1198,7 @@
   <dt>Encoding considerations:</dt>
   <dd style="margin-left: 8">binary </dd>
   <dt>Security considerations:</dt>
-  <dd style="margin-left: 8">This media type shares security issues common to all JSON content types. See <a href="#RFC4627">[RFC4627]</a> Section #6 for additional information. ALPS+JSON does not provide executable content.  Information contained in ALPS+JSON documents do not require privacy or integrity services.  </dd>
+  <dd style="margin-left: 8">This media type shares security issues common to all JSON content types. See <a href="#RFC4627">[RFC4627]</a> Section #6 for additional information. ALPS+JSON does not provide executable content. Information contained in ALPS+JSON documents do not require privacy or integrity services.  </dd>
   <dt>Interoperability considerations:</dt>
   <dd style="margin-left: 8">None </dd>
   <dt>Published specification:</dt>

@@ -243,7 +243,7 @@
           <artwork><![CDATA[
 <html>
     <head>
-        <link rel="profile" href="http://alsp.io/profiles/contact" />
+        <link rel="profile" href="http://alps.io/profiles/contact" />
         <link rel="type" href="http://alps.io/profiles/contact#contact" />
     </head>
     <body>
@@ -563,6 +563,10 @@
         </section>
         <section anchor="prop-descriptor" title="'descriptor'">
           <t>
+            A 'descriptor' element defines the semantics of specific data elements or
+            state transitions that MAY exist in an associated representation.
+          </t>
+          <t>
             One or more 'descriptor' elements
             SHOULD appear as children of<xref target="prop-alps">'alps'</xref>. It may also appear
             as a child of itself; that is, the 'descriptor'
@@ -630,6 +634,26 @@
               </t>
             </list>
           </t>
+          <section  anchor="prop-descriptor-link-relations" title="'Descriptors and Link Relation Types'">
+            <t>
+              When a representation is generated that includes state transitions, valid values for link relation types are:
+            </t>
+            <t>
+              1. A registered IANA link relation type (e.g. rel="edit").
+            </t>
+            <t>
+              2. An extension link relation type as defined by <xref target="RFC5988"/>
+              whose value is the fully-qualified URI of an associated document describing the
+              relation type. This includes URI fragment identifiers of ALPS descriptors
+              (e.g. rel="http://alps.io/profiles/item#purchased-by")
+              per the conventions of section 2.2.7.2.
+            </t>
+            <t>
+              3. The 'id' property of a state transition descriptor of an associated
+              ALPS document (e.g. rel="purchased-by") per the conventions of section
+              2.2.7.1 and section 2.2.7.3 if the representation includes an ALPS profile.
+            </t>
+          </section>
         </section>
         <section anchor="prop-ext" title="'ext'">
           <t>
@@ -838,28 +862,24 @@
               IANA-registered Link Relation Type.
             </t>
           </section>
-          <section anchor="prop-id-rels" title="Link Relation Values and 'id'">
+          <section anchor="prop-id-rels" title="Link Relation Values and 'id' or 'name'">
             <t>
-              A 'descriptor' that defines a state transition
-              establishes an extension relation type as defined by
-              <xref target="RFC5988"/>
-              whose name is
-              the unqualified URI of the
-              descriptor. (e.g. rel="http://example.com/#purchased-by")
-              However, within representations that include the
-              defining ALPS document as a profile, the descriptor's
-              'id' may be used on its own as a registered link <!-- need to add 'name' wording -->
-              relation. (e.g. rel="purchased-by")
+              Since a state transition 'descriptor' may define a relation type value,
+              it is important to avoid creating conflicts with existing IANA-registered
+              values. If the resulting link relation type is the same as a
+              registered relation type, the descriptor MUST not change the meaning of the
+              IANA type.
             </t>
             <t>
-              For this reason, when selecting 'id' values and
-              defining 'descriptor' semantics, it is important to
-              avoid creating conflicts with existing
-              IANA-registered values. If it is unclear whether a
-              registered link relation type in a representation
-              document refers to a relation registered with IANA
-              or a relation registered in an ALPS profile, the
-              semantics of that link are undefined. <!-- Allow relating to existing IANA rels and make this clear -->
+              Further, since the 'id' of a descriptor may define a link relation value per section
+              2.2.3.1, if a conflict exists in defining such a descriptor's document unique 'id' with
+              another descriptor, the conflicting descriptor MUST define a unique 'id' and MAY specify a
+              'name' property to resolve the conflict.
+            </t>
+            <t>
+              If it is unclear whether a registered link relation type in a representation
+              document refers to a relation registered with IANA or a relation registered
+              in an ALPS profile, the semantics of that link are undefined.
             </t>
           </section>
         </section>
