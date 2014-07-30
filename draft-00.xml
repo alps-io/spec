@@ -866,7 +866,7 @@
             <t>
               Since a state transition 'descriptor' may define a relation type value,
               it is important to avoid creating conflicts with existing IANA-registered
-              values. If an 'id' or 'name' of the descriptor is the same as a
+              values. If the resulting link relation type is the same as a
               registered relation type, the descriptor MUST not change the meaning of the
               IANA type.
             </t>
