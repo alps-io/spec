@@ -82,14 +82,14 @@
       <t>
         This document identifies a registry for ALPS documents,
         (The ALPS Profile Registry or APR). The details of
-        this registry, it's goals, and operations are covered
+        this registry, its goals, and operations are covered
         in a separate document (TBD).
       </t>
       <t>
         This document also identifies a process for authoring,
         publishing, and sharing normative
         human-readable instructions on applying an ALPS document
-        as a profile to responses of a given media type. For'
+        as a profile to responses of a given media type. For
         example, a document that describes how to apply the
         semantics of an ALPS profile to an HTML document.
       </t>
