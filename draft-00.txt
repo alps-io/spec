@@ -101,7 +101,7 @@ Table of Contents
        2.2.13. 'value' . . . . . . . . . . . . . . . . . . . . . . .  18
        2.2.14. 'version' . . . . . . . . . . . . . . . . . . . . . .  18
      2.3.  ALPS Representations  . . . . . . . . . . . . . . . . . .  18
-       2.3.1.  Sample HTML . . . . . . . . . . . . . . . . . . . . .  18
+       2.3.1.  Sample HTML . . . . . . . . . . . . . . . . . . . . .  19
        2.3.2.  XML Representation  . . . . . . . . . . . . . . . . .  19
        2.3.3.  JSON Representation . . . . . . . . . . . . . . . . .  20
    3.  Applying ALPS documents to Existing Media Types . . . . . . .  22
@@ -141,12 +141,12 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
    as HTML, HAL, Collection+JSON, or Siren).
 
    This document identifies a registry for ALPS documents, (The ALPS
-   Profile Registry or APR).  The details of this registry, it's goals,
+   Profile Registry or APR).  The details of this registry, its goals,
    and operations are covered in a separate document (TBD).
 
    This document also identifies a process for authoring, publishing,
    and sharing normative human-readable instructions on applying an ALPS
-   document as a profile to responses of a given media type.  For'
+   document as a profile to responses of a given media type.  For
    example, a document that describes how to apply the semantics of an
    ALPS profile to an HTML document.
 
@@ -880,16 +880,16 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 2.2.7.3.  Link Relation Values and 'id' or 'name'
 
-   Since a state transition 'descriptor' establishes a registered
-   relation type, it is important to avoid creating conflicts with
-   existing IANA-registered values.  If an 'id' or 'name' of the
-   descriptor is the same as a registered relation type, the descriptor
-   MUST not change the meaning of the IANA type.
+   Since a state transition 'descriptor' may define a relation type
+   value, it is important to avoid creating conflicts with existing
+   IANA-registered values.  If an 'id' or 'name' of the descriptor is
+   the same as a registered relation type, the descriptor MUST not
+   change the meaning of the IANA type.
 
-   If it is unclear whether a registered link relation type in a
-   representation document refers to a relation registered with IANA or
-   a relation registered in an ALPS profile, the semantics of that link
-   are undefined.
+   Further, since the 'id' of a descriptor may define a link relation
+   value per section 2.2.3.1, if a conflict exists in defining such a
+   descriptor's document unique 'id' with another descriptor, the
+
 
 
 
@@ -897,6 +897,14 @@ Amundsen, et al.        Expires January 31, 2015               [Page 16]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
+
+   conflicting descriptor MUST define a unique 'id' and MAY specify a
+   'name' property to resolve the conflict.
+
+   If it is unclear whether a registered link relation type in a
+   representation document refers to a relation registered with IANA or
+   a relation registered in an ALPS profile, the semantics of that link
+   are undefined.
 
 2.2.8.  'link'
 
@@ -939,20 +947,15 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
    a descriptor (Section 2.2.3) with a type (Section 2.2.12) value of
    'safe', 'unsafe', or 'idempotent.'
 
-   The 'rt' attribute is OPTIONAL and is an opaque string and MAY match
-   the id (Section 2.2.7) of an existingdescriptor (Section 2.2.3).
-
-
-
-
-
-
 
 
 Amundsen, et al.        Expires January 31, 2015               [Page 17]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
+
+   The 'rt' attribute is OPTIONAL and is an opaque string and MAY match
+   the id (Section 2.2.7) of an existingdescriptor (Section 2.2.3).
 
 2.2.12.  'type'
 
@@ -995,12 +998,9 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
    appear in each format, along with examples to guide ALPS document
    authors.
 
-2.3.1.  Sample HTML
 
-   Below is a simple HTML document that contains a handful of semantic
-   descriptors and transition instructions.  This document was generated
-   from the XML and JSON ALPS documents that follow.  Use this HTML
-   document as a guide when evaluating the XML and JSON examples.
+
+
 
 
 
@@ -1009,6 +1009,13 @@ Amundsen, et al.        Expires January 31, 2015               [Page 18]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
+
+2.3.1.  Sample HTML
+
+   Below is a simple HTML document that contains a handful of semantic
+   descriptors and transition instructions.  This document was generated
+   from the XML and JSON ALPS documents that follow.  Use this HTML
+   document as a guide when evaluating the XML and JSON examples.
 
    <!-- sample HTML document -->
    <html>
@@ -1041,13 +1048,6 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 2.3.2.2.  Complete XML Representation
 
    Below is an example of an applcation/alps+xml representation.
-
-
-
-
-
-
-
 
 
 

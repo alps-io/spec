@@ -1,379 +1,379 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head profile="http://www.w3.org/2006/03/hcard http://dublincore.org/documents/2008/08/04/dc-html/">
-<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+  <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
 
-<title>Application-Level Profile Semantics (ALPS) </title>
+  <title>Application-Level Profile Semantics (ALPS) </title>
 
-<style type="text/css" title="Xml2Rfc (sans serif)">
-/*<![CDATA[*/
-a {
-    text-decoration: none;
-}
-/* info code from SantaKlauss at http://www.madaboutstyle.com/tooltip2.html */
-a.info {
-    /* This is the key. */
-    position: relative;
-    z-index: 24;
-    text-decoration: none;
-}
-a.info:hover {
-    z-index: 25;
-    color: #FFF; background-color: #900;
-}
-a.info span { display: none; }
-a.info:hover span.info {
-    /* The span will display just on :hover state. */
-    display: block;
-    position: absolute;
-    font-size: smaller;
-    top: 2em; left: -5em; width: 15em;
-    padding: 2px; border: 1px solid #333;
-    color: #900; background-color: #EEE;
-    text-align: left;
-}
-a.smpl {
-    color: black;
-}
-a:hover {
-    text-decoration: underline;
-}
-a:active {
-    text-decoration: underline;
-}
-address {
-    margin-top: 1em;
-    margin-left: 2em;
-    font-style: normal;
-}
-body {
-    color: black;
-    font-family: verdana, helvetica, arial, sans-serif;
-    font-size: 10pt;
-    max-width: 55em;
+  <style type="text/css" title="Xml2Rfc (sans serif)">
+  /*<![CDATA[*/
+	  a {
+	  text-decoration: none;
+	  }
+      /* info code from SantaKlauss at http://www.madaboutstyle.com/tooltip2.html */
+      a.info {
+          /* This is the key. */
+          position: relative;
+          z-index: 24;
+          text-decoration: none;
+      }
+      a.info:hover {
+          z-index: 25;
+          color: #FFF; background-color: #900;
+      }
+      a.info span { display: none; }
+      a.info:hover span.info {
+          /* The span will display just on :hover state. */
+          display: block;
+          position: absolute;
+          font-size: smaller;
+          top: 2em; left: -5em; width: 15em;
+          padding: 2px; border: 1px solid #333;
+          color: #900; background-color: #EEE;
+          text-align: left;
+      }
+	  a.smpl {
+	  color: black;
+	  }
+	  a:hover {
+	  text-decoration: underline;
+	  }
+	  a:active {
+	  text-decoration: underline;
+	  }
+	  address {
+	  margin-top: 1em;
+	  margin-left: 2em;
+	  font-style: normal;
+	  }
+	  body {
+	  color: black;
+	  font-family: verdana, helvetica, arial, sans-serif;
+	  font-size: 10pt;
+	  max-width: 55em;
+	  
+	  }
+	  cite {
+	  font-style: normal;
+	  }
+	  dd {
+	  margin-right: 2em;
+	  }
+	  dl {
+	  margin-left: 2em;
+	  }
+	
+	  ul.empty {
+	  list-style-type: none;
+	  }
+	  ul.empty li {
+	  margin-top: .5em;
+	  }
+	  dl p {
+	  margin-left: 0em;
+	  }
+	  dt {
+	  margin-top: .5em;
+	  }
+	  h1 {
+	  font-size: 14pt;
+	  line-height: 21pt;
+	  page-break-after: avoid;
+	  }
+	  h1.np {
+	  page-break-before: always;
+	  }
+	  h1 a {
+	  color: #333333;
+	  }
+	  h2 {
+	  font-size: 12pt;
+	  line-height: 15pt;
+	  page-break-after: avoid;
+	  }
+	  h3, h4, h5, h6 {
+	  font-size: 10pt;
+	  page-break-after: avoid;
+	  }
+	  h2 a, h3 a, h4 a, h5 a, h6 a {
+	  color: black;
+	  }
+	  img {
+	  margin-left: 3em;
+	  }
+	  li {
+	  margin-left: 2em;
+	  margin-right: 2em;
+	  }
+	  ol {
+	  margin-left: 2em;
+	  margin-right: 2em;
+	  }
+	  ol p {
+	  margin-left: 0em;
+	  }
+	  p {
+	  margin-left: 2em;
+	  margin-right: 2em;
+	  }
+	  pre {
+	  margin-left: 3em;
+	  background-color: lightyellow;
+	  padding: .25em;
+	  }
+	  pre.text2 {
+	  border-style: dotted;
+	  border-width: 1px;
+	  background-color: #f0f0f0;
+	  width: 69em;
+	  }
+	  pre.inline {
+	  background-color: white;
+	  padding: 0em;
+	  }
+	  pre.text {
+	  border-style: dotted;
+	  border-width: 1px;
+	  background-color: #f8f8f8;
+	  width: 69em;
+	  }
+	  pre.drawing {
+	  border-style: solid;
+	  border-width: 1px;
+	  background-color: #f8f8f8;
+	  padding: 2em;
+	  }
+	  table {
+	  margin-left: 2em;
+	  }
+	  table.tt {
+	  vertical-align: top;
+	  }
+	  table.full {
+	  border-style: outset;
+	  border-width: 1px;
+	  }
+	  table.headers {
+	  border-style: outset;
+	  border-width: 1px;
+	  }
+	  table.tt td {
+	  vertical-align: top;
+	  }
+	  table.full td {
+	  border-style: inset;
+	  border-width: 1px;
+	  }
+	  table.tt th {
+	  vertical-align: top;
+	  }
+	  table.full th {
+	  border-style: inset;
+	  border-width: 1px;
+	  }
+	  table.headers th {
+	  border-style: none none inset none;
+	  border-width: 1px;
+	  }
+	  table.left {
+	  margin-right: auto;
+	  }
+	  table.right {
+	  margin-left: auto;
+	  }
+	  table.center {
+	  margin-left: auto;
+	  margin-right: auto;
+	  }
+	  caption {
+	  caption-side: bottom;
+	  font-weight: bold;
+	  font-size: 9pt;
+	  margin-top: .5em;
+	  }
+	
+	  table.header {
+	  border-spacing: 1px;
+	  width: 95%;
+	  font-size: 10pt;
+	  color: white;
+	  }
+	  td.top {
+	  vertical-align: top;
+	  }
+	  td.topnowrap {
+	  vertical-align: top;
+	  white-space: nowrap; 
+	  }
+	  table.header td {
+	  background-color: gray;
+	  width: 50%;
+	  }
+	  table.header a {
+	  color: white;
+	  }
+	  td.reference {
+	  vertical-align: top;
+	  white-space: nowrap;
+	  padding-right: 1em;
+	  }
+	  thead {
+	  display:table-header-group;
+	  }
+	  ul.toc, ul.toc ul {
+	  list-style: none;
+	  margin-left: 1.5em;
+	  margin-right: 0em;
+	  padding-left: 0em;
+	  }
+	  ul.toc li {
+	  line-height: 150%;
+	  font-weight: bold;
+	  font-size: 10pt;
+	  margin-left: 0em;
+	  margin-right: 0em;
+	  }
+	  ul.toc li li {
+	  line-height: normal;
+	  font-weight: normal;
+	  font-size: 9pt;
+	  margin-left: 0em;
+	  margin-right: 0em;
+	  }
+	  li.excluded {
+	  font-size: 0pt;
+	  }
+	  ul p {
+	  margin-left: 0em;
+	  }
+	
+	  .comment {
+	  background-color: yellow;
+	  }
+	  .center {
+	  text-align: center;
+	  }
+	  .error {
+	  color: red;
+	  font-style: italic;
+	  font-weight: bold;
+	  }
+	  .figure {
+	  font-weight: bold;
+	  text-align: center;
+	  font-size: 9pt;
+	  }
+	  .filename {
+	  color: #333333;
+	  font-weight: bold;
+	  font-size: 12pt;
+	  line-height: 21pt;
+	  text-align: center;
+	  }
+	  .fn {
+	  font-weight: bold;
+	  }
+	  .hidden {
+	  display: none;
+	  }
+	  .left {
+	  text-align: left;
+	  }
+	  .right {
+	  text-align: right;
+	  }
+	  .title {
+	  color: #990000;
+	  font-size: 18pt;
+	  line-height: 18pt;
+	  font-weight: bold;
+	  text-align: center;
+	  margin-top: 36pt;
+	  }
+	  .vcardline {
+	  display: block;
+	  }
+	  .warning {
+	  font-size: 14pt;
+	  background-color: yellow;
+	  }
+	
+	
+	  @media print {
+	  .noprint {
+		display: none;
+	  }
+	
+	  a {
+		color: black;
+		text-decoration: none;
+	  }
+	
+	  table.header {
+		width: 90%;
+	  }
+	
+	  td.header {
+		width: 50%;
+		color: black;
+		background-color: white;
+		vertical-align: top;
+		font-size: 12pt;
+	  }
+	
+	  ul.toc a::after {
+		content: leader('.') target-counter(attr(href), page);
+	  }
+	
+	  ul.ind li li a {
+		content: target-counter(attr(href), page);
+	  }
+	
+	  .print2col {
+		column-count: 2;
+		-moz-column-count: 2;
+		column-fill: auto;
+	  }
+	  }
+	
+	  @page {
+	  @top-left {
+		   content: "Internet-Draft"; 
+	  } 
+	  @top-right {
+		   content: "December 2010"; 
+	  } 
+	  @top-center {
+		   content: "Abbreviated Title";
+	  } 
+	  @bottom-left {
+		   content: "Doe"; 
+	  } 
+	  @bottom-center {
+		   content: "Expires June 2011"; 
+	  } 
+	  @bottom-right {
+		   content: "[Page " counter(page) "]"; 
+	  } 
+	  }
+	
+	  @page:first { 
+		@top-left {
+		  content: normal;
+		}
+		@top-right {
+		  content: normal;
+		}
+		@top-center {
+		  content: normal;
+		}
+	  }
+  /*]]>*/
+  </style>
 
-}
-cite {
-    font-style: normal;
-}
-dd {
-    margin-right: 2em;
-}
-dl {
-    margin-left: 2em;
-}
-
-ul.empty {
-    list-style-type: none;
-}
-ul.empty li {
-    margin-top: .5em;
-}
-dl p {
-    margin-left: 0em;
-}
-dt {
-    margin-top: .5em;
-}
-h1 {
-    font-size: 14pt;
-    line-height: 21pt;
-    page-break-after: avoid;
-}
-h1.np {
-    page-break-before: always;
-}
-h1 a {
-    color: #333333;
-}
-h2 {
-    font-size: 12pt;
-    line-height: 15pt;
-    page-break-after: avoid;
-}
-h3, h4, h5, h6 {
-    font-size: 10pt;
-    page-break-after: avoid;
-}
-h2 a, h3 a, h4 a, h5 a, h6 a {
-    color: black;
-}
-img {
-    margin-left: 3em;
-}
-li {
-    margin-left: 2em;
-    margin-right: 2em;
-}
-ol {
-    margin-left: 2em;
-    margin-right: 2em;
-}
-ol p {
-    margin-left: 0em;
-}
-p {
-    margin-left: 2em;
-    margin-right: 2em;
-}
-pre {
-    margin-left: 3em;
-    background-color: lightyellow;
-    padding: .25em;
-}
-pre.text2 {
-    border-style: dotted;
-    border-width: 1px;
-    background-color: #f0f0f0;
-    width: 69em;
-}
-pre.inline {
-    background-color: white;
-    padding: 0em;
-}
-pre.text {
-    border-style: dotted;
-    border-width: 1px;
-    background-color: #f8f8f8;
-    width: 69em;
-}
-pre.drawing {
-    border-style: solid;
-    border-width: 1px;
-    background-color: #f8f8f8;
-    padding: 2em;
-}
-table {
-    margin-left: 2em;
-}
-table.tt {
-    vertical-align: top;
-}
-table.full {
-    border-style: outset;
-    border-width: 1px;
-}
-table.headers {
-    border-style: outset;
-    border-width: 1px;
-}
-table.tt td {
-    vertical-align: top;
-}
-table.full td {
-    border-style: inset;
-    border-width: 1px;
-}
-table.tt th {
-    vertical-align: top;
-}
-table.full th {
-    border-style: inset;
-    border-width: 1px;
-}
-table.headers th {
-    border-style: none none inset none;
-    border-width: 1px;
-}
-table.left {
-    margin-right: auto;
-}
-table.right {
-    margin-left: auto;
-}
-table.center {
-    margin-left: auto;
-    margin-right: auto;
-}
-caption {
-    caption-side: bottom;
-    font-weight: bold;
-    font-size: 9pt;
-    margin-top: .5em;
-}
-
-table.header {
-    border-spacing: 1px;
-    width: 95%;
-    font-size: 10pt;
-    color: white;
-}
-td.top {
-    vertical-align: top;
-}
-td.topnowrap {
-    vertical-align: top;
-    white-space: nowrap;
-}
-table.header td {
-    background-color: gray;
-    width: 50%;
-}
-table.header a {
-    color: white;
-}
-td.reference {
-    vertical-align: top;
-    white-space: nowrap;
-    padding-right: 1em;
-}
-thead {
-    display:table-header-group;
-}
-ul.toc, ul.toc ul {
-    list-style: none;
-    margin-left: 1.5em;
-    margin-right: 0em;
-    padding-left: 0em;
-}
-ul.toc li {
-    line-height: 150%;
-    font-weight: bold;
-    font-size: 10pt;
-    margin-left: 0em;
-    margin-right: 0em;
-}
-ul.toc li li {
-    line-height: normal;
-    font-weight: normal;
-    font-size: 9pt;
-    margin-left: 0em;
-    margin-right: 0em;
-}
-li.excluded {
-    font-size: 0pt;
-}
-ul p {
-    margin-left: 0em;
-}
-
-.comment {
-    background-color: yellow;
-}
-.center {
-    text-align: center;
-}
-.error {
-    color: red;
-    font-style: italic;
-    font-weight: bold;
-}
-.figure {
-    font-weight: bold;
-    text-align: center;
-    font-size: 9pt;
-}
-.filename {
-    color: #333333;
-    font-weight: bold;
-    font-size: 12pt;
-    line-height: 21pt;
-    text-align: center;
-}
-.fn {
-    font-weight: bold;
-}
-.hidden {
-    display: none;
-}
-.left {
-    text-align: left;
-}
-.right {
-    text-align: right;
-}
-.title {
-    color: #990000;
-    font-size: 18pt;
-    line-height: 18pt;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 36pt;
-}
-.vcardline {
-    display: block;
-}
-.warning {
-    font-size: 14pt;
-    background-color: yellow;
-}
-
-
-@media print {
-    .noprint {
-        display: none;
-    }
-
-    a {
-        color: black;
-        text-decoration: none;
-    }
-
-    table.header {
-        width: 90%;
-    }
-
-    td.header {
-        width: 50%;
-        color: black;
-        background-color: white;
-        vertical-align: top;
-        font-size: 12pt;
-    }
-
-    ul.toc a::after {
-        content: leader('.') target-counter(attr(href), page);
-    }
-
-    ul.ind li li a {
-        content: target-counter(attr(href), page);
-    }
-
-    .print2col {
-        column-count: 2;
-        -moz-column-count: 2;
-        column-fill: auto;
-    }
-}
-
-@page {
-    @top-left {
-        content: "Internet-Draft";
-    }
-    @top-right {
-        content: "December 2010";
-    }
-    @top-center {
-        content: "Abbreviated Title";
-    }
-    @bottom-left {
-        content: "Doe";
-    }
-    @bottom-center {
-        content: "Expires June 2011";
-    }
-    @bottom-right {
-        content: "[Page " counter(page) "]";
-    }
-}
-
-@page:first {
-    @top-left {
-        content: normal;
-    }
-    @top-right {
-        content: normal;
-    }
-    @top-center {
-        content: normal;
-    }
-}
-/*]]>*/
-</style>
-
-<link href="#rfc.toc" rel="Contents"/>
+  <link href="#rfc.toc" rel="Contents"/>
 <link href="#rfc.section.1" rel="Chapter" title="1 Introduction"/>
 <link href="#rfc.section.1.1" rel="Chapter" title="1.1 Notational Conventions"/>
 <link href="#rfc.section.1.2" rel="Chapter" title="1.2 Motivation"/>
@@ -419,136 +419,136 @@ ul p {
 <link href="#rfc.appendix.A.3" rel="Chapter" title="A.3 Why is there no way to indicate ranges for semantic descriptors?"/>
 
 
-<meta name="generator" content="xml2rfc version 2.4.8 - http://tools.ietf.org/tools/xml2rfc" />
-<link rel="schema.dct" href="http://purl.org/dc/terms/" />
+  <meta name="generator" content="xml2rfc version 2.4.8 - http://tools.ietf.org/tools/xml2rfc" />
+  <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
-<meta name="dct.creator" content="Amundsen, M., Richardson, L., and M. Foster" />
-<meta name="dct.identifier" content="urn:ietf:id:draft-amundsen-richardson-foster-alps-00.J" />
-<meta name="dct.issued" scheme="ISO8601" content="2014-7-30" />
-<meta name="dct.abstract" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, or Siren). This increases the reusability of profile documents across media types.  " />
-<meta name="description" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, or Siren). This increases the reusability of profile documents across media types.  " />
+  <meta name="dct.creator" content="Amundsen, M., Richardson, L., and M. Foster" />
+  <meta name="dct.identifier" content="urn:ietf:id:draft-amundsen-richardson-foster-alps-00.J" />
+  <meta name="dct.issued" scheme="ISO8601" content="2014-7-30" />
+  <meta name="dct.abstract" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, or Siren). This increases the reusability of profile documents across media types.  " />
+  <meta name="description" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, or Siren). This increases the reusability of profile documents across media types.  " />
 
 </head>
 
 <body>
 
-<table class="header">
+  <table class="header">
     <tbody>
+    
+    	<tr>
+  <td class="left">Network Working Group</td>
+  <td class="right">M. Amundsen</td>
+</tr>
+<tr>
+  <td class="left">Internet-Draft</td>
+  <td class="right">Layer 7 Technologies</td>
+</tr>
+<tr>
+  <td class="left">Expires: January 31, 2015</td>
+  <td class="right">L. Richardson</td>
+</tr>
+<tr>
+  <td class="left"></td>
+  <td class="right"></td>
+</tr>
+<tr>
+  <td class="left"></td>
+  <td class="right">M. Foster</td>
+</tr>
+<tr>
+  <td class="left"></td>
+  <td class="right">Medidata Solutions</td>
+</tr>
+<tr>
+  <td class="left"></td>
+  <td class="right">July 30, 2014</td>
+</tr>
 
-    <tr>
-        <td class="left">Network Working Group</td>
-        <td class="right">M. Amundsen</td>
-    </tr>
-    <tr>
-        <td class="left">Internet-Draft</td>
-        <td class="right">Layer 7 Technologies</td>
-    </tr>
-    <tr>
-        <td class="left">Expires: January 31, 2015</td>
-        <td class="right">L. Richardson</td>
-    </tr>
-    <tr>
-        <td class="left"></td>
-        <td class="right"></td>
-    </tr>
-    <tr>
-        <td class="left"></td>
-        <td class="right">M. Foster</td>
-    </tr>
-    <tr>
-        <td class="left"></td>
-        <td class="right">Medidata Solutions</td>
-    </tr>
-    <tr>
-        <td class="left"></td>
-        <td class="right">July 30, 2014</td>
-    </tr>
-
-
+    	
     </tbody>
-</table>
+  </table>
 
-<p class="title">Application-Level Profile Semantics (ALPS) <br />
-    <span class="filename">draft-amundsen-richardson-foster-alps-00.J</span></p>
-
-<h1 id="rfc.abstract">
-    <a href="#rfc.abstract">Abstract</a>
+  <p class="title">Application-Level Profile Semantics (ALPS) <br />
+  <span class="filename">draft-amundsen-richardson-foster-alps-00.J</span></p>
+  
+  <h1 id="rfc.abstract">
+  <a href="#rfc.abstract">Abstract</a>
 </h1>
 <p>This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, or Siren). This increases the reusability of profile documents across media types.  </p>
 <h1>
-    <a>Editorial Note (To be removed by RFC Editor)</a>
+  <a>Editorial Note (To be removed by RFC Editor)</a>
 </h1>
 <p>Distribution of this document is unlimited. Comments should be sent to the IETF Media-Types mailing list (see <a href="https://www.ietf.org/mailman/listinfo/media-types">https://www.ietf.org/mailman/listinfo/media-types</a>).  </p>
 <h1 id="rfc.status">
-    <a href="#rfc.status">Status of This Memo</a>
+  <a href="#rfc.status">Status of This Memo</a>
 </h1>
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
 <p>This Internet-Draft will expire on January 31, 2015.</p>
 <h1 id="rfc.copyrightnotice">
-    <a href="#rfc.copyrightnotice">Copyright Notice</a>
+  <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
 <p>Copyright (c) 2014 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
 
+  
+  <hr class="noprint" />
+  <h1 class="np" id="rfc.toc"><a href="#rfc.toc">Table of Contents</a></h1>
+  <ul class="toc">
 
-<hr class="noprint" />
-<h1 class="np" id="rfc.toc"><a href="#rfc.toc">Table of Contents</a></h1>
-<ul class="toc">
-
-    <li>1.   <a href="#rfc.section.1">Introduction</a></li>
-    <li>1.1.   <a href="#rfc.section.1.1">Notational Conventions</a></li>
-    <li>1.2.   <a href="#rfc.section.1.2">Motivation</a></li>
-    <li>1.2.1.   <a href="#rfc.section.1.2.1">Describing Domain-Specific Semantics</a></li>
-    <li>1.2.2.   <a href="#rfc.section.1.2.2">ALPS-based Server Implementations</a></li>
-    <li>1.2.3.   <a href="#rfc.section.1.2.3">ALPS-based Client Implementations</a></li>
-    <li>1.3.   <a href="#rfc.section.1.3">A Simple ALPS Example</a></li>
-    <li>1.4.   <a href="#rfc.section.1.4">Identifying an ALPS Document</a></li>
-    <li>2.   <a href="#rfc.section.2">ALPS Documents</a></li>
-    <li>2.1.   <a href="#rfc.section.2.1">Compliance</a></li>
-    <li>2.2.   <a href="#rfc.section.2.2">ALPS Document Properties</a></li>
-    <li>2.2.1.   <a href="#rfc.section.2.2.1">'alps'</a></li>
-    <li>2.2.2.   <a href="#rfc.section.2.2.2">'doc'</a></li>
-    <li>2.2.3.   <a href="#rfc.section.2.2.3">'descriptor'</a></li>
-    <li>2.2.4.   <a href="#rfc.section.2.2.4">'ext'</a></li>
-    <li>2.2.5.   <a href="#rfc.section.2.2.5">'format'</a></li>
-    <li>2.2.6.   <a href="#rfc.section.2.2.6">'href'</a></li>
-    <li>2.2.7.   <a href="#rfc.section.2.2.7">'id'</a></li>
-    <li>2.2.8.   <a href="#rfc.section.2.2.8">'link'</a></li>
-    <li>2.2.9.   <a href="#rfc.section.2.2.9">'name'</a></li>
-    <li>2.2.10.   <a href="#rfc.section.2.2.10">'rel'</a></li>
-    <li>2.2.11.   <a href="#rfc.section.2.2.11">'rt'</a></li>
-    <li>2.2.12.   <a href="#rfc.section.2.2.12">'type'</a></li>
-    <li>2.2.13.   <a href="#rfc.section.2.2.13">'value'</a></li>
-    <li>2.2.14.   <a href="#rfc.section.2.2.14">'version'</a></li>
-    <li>2.3.   <a href="#rfc.section.2.3">ALPS Representations</a></li>
-    <li>2.3.1.   <a href="#rfc.section.2.3.1">Sample HTML</a></li>
-    <li>2.3.2.   <a href="#rfc.section.2.3.2">XML Representation</a></li>
-    <li>2.3.3.   <a href="#rfc.section.2.3.3">JSON Representation</a></li>
-    <li>3.   <a href="#rfc.section.3">Applying ALPS documents to Existing Media Types</a></li>
-    <li>3.1.   <a href="#rfc.section.3.1">Linking to ALPS Documents</a></li>
-    <li>4.   <a href="#rfc.section.4">IANA Considerations</a></li>
-    <li>4.1.   <a href="#rfc.section.4.1">application/alps+xml</a></li>
-    <li>4.2.   <a href="#rfc.section.4.2">application/alps+json</a></li>
-    <li>5.   <a href="#rfc.section.5">Internationalization Considerations</a></li>
-    <li>6.   <a href="#rfc.section.6">Acknowledgements</a></li>
-    <li>7.   <a href="#rfc.references">References</a></li>
-    <li>7.1.   <a href="#rfc.references.1">Normative References</a></li>
-    <li>7.2.   <a href="#rfc.references.2">Informative References</a></li>
-    <li>Appendix A.   <a href="#rfc.appendix.A">Frequently Asked Questions</a></li>
-    <li>A.1.   <a href="#rfc.appendix.A.1">Why are there no URLs in ALPS?</a></li>
-    <li>A.2.   <a href="#rfc.appendix.A.2">Why is there no workflow component in the ALPS specification?</a></li>
-    <li>A.3.   <a href="#rfc.appendix.A.3">Why is there no way to indicate ranges for semantic descriptors?</a></li>
+  	<li>1.   <a href="#rfc.section.1">Introduction</a></li>
+<li>1.1.   <a href="#rfc.section.1.1">Notational Conventions</a></li>
+<li>1.2.   <a href="#rfc.section.1.2">Motivation</a></li>
+<li>1.2.1.   <a href="#rfc.section.1.2.1">Describing Domain-Specific Semantics</a></li>
+<li>1.2.2.   <a href="#rfc.section.1.2.2">ALPS-based Server Implementations</a></li>
+<li>1.2.3.   <a href="#rfc.section.1.2.3">ALPS-based Client Implementations</a></li>
+<li>1.3.   <a href="#rfc.section.1.3">A Simple ALPS Example</a></li>
+<li>1.4.   <a href="#rfc.section.1.4">Identifying an ALPS Document</a></li>
+<li>2.   <a href="#rfc.section.2">ALPS Documents</a></li>
+<li>2.1.   <a href="#rfc.section.2.1">Compliance</a></li>
+<li>2.2.   <a href="#rfc.section.2.2">ALPS Document Properties</a></li>
+<li>2.2.1.   <a href="#rfc.section.2.2.1">'alps'</a></li>
+<li>2.2.2.   <a href="#rfc.section.2.2.2">'doc'</a></li>
+<li>2.2.3.   <a href="#rfc.section.2.2.3">'descriptor'</a></li>
+<li>2.2.4.   <a href="#rfc.section.2.2.4">'ext'</a></li>
+<li>2.2.5.   <a href="#rfc.section.2.2.5">'format'</a></li>
+<li>2.2.6.   <a href="#rfc.section.2.2.6">'href'</a></li>
+<li>2.2.7.   <a href="#rfc.section.2.2.7">'id'</a></li>
+<li>2.2.8.   <a href="#rfc.section.2.2.8">'link'</a></li>
+<li>2.2.9.   <a href="#rfc.section.2.2.9">'name'</a></li>
+<li>2.2.10.   <a href="#rfc.section.2.2.10">'rel'</a></li>
+<li>2.2.11.   <a href="#rfc.section.2.2.11">'rt'</a></li>
+<li>2.2.12.   <a href="#rfc.section.2.2.12">'type'</a></li>
+<li>2.2.13.   <a href="#rfc.section.2.2.13">'value'</a></li>
+<li>2.2.14.   <a href="#rfc.section.2.2.14">'version'</a></li>
+<li>2.3.   <a href="#rfc.section.2.3">ALPS Representations</a></li>
+<li>2.3.1.   <a href="#rfc.section.2.3.1">Sample HTML</a></li>
+<li>2.3.2.   <a href="#rfc.section.2.3.2">XML Representation</a></li>
+<li>2.3.3.   <a href="#rfc.section.2.3.3">JSON Representation</a></li>
+<li>3.   <a href="#rfc.section.3">Applying ALPS documents to Existing Media Types</a></li>
+<li>3.1.   <a href="#rfc.section.3.1">Linking to ALPS Documents</a></li>
+<li>4.   <a href="#rfc.section.4">IANA Considerations</a></li>
+<li>4.1.   <a href="#rfc.section.4.1">application/alps+xml</a></li>
+<li>4.2.   <a href="#rfc.section.4.2">application/alps+json</a></li>
+<li>5.   <a href="#rfc.section.5">Internationalization Considerations</a></li>
+<li>6.   <a href="#rfc.section.6">Acknowledgements</a></li>
+<li>7.   <a href="#rfc.references">References</a></li>
+<li>7.1.   <a href="#rfc.references.1">Normative References</a></li>
+<li>7.2.   <a href="#rfc.references.2">Informative References</a></li>
+<li>Appendix A.   <a href="#rfc.appendix.A">Frequently Asked Questions</a></li>
+<li>A.1.   <a href="#rfc.appendix.A.1">Why are there no URLs in ALPS?</a></li>
+<li>A.2.   <a href="#rfc.appendix.A.2">Why is there no workflow component in the ALPS specification?</a></li>
+<li>A.3.   <a href="#rfc.appendix.A.3">Why is there no way to indicate ranges for semantic descriptors?</a></li>
 
 
-</ul>
+  </ul>
 
-<h1 id="rfc.section.1"><a href="#rfc.section.1">1.</a> Introduction</h1>
+  <h1 id="rfc.section.1"><a href="#rfc.section.1">1.</a> Introduction</h1>
 <p id="rfc.section.1.p.1">This document describes ALPS, a media type for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. These descriptions contain both human-readable and machine-readable explanations of the semantics.  </p>
 <p id="rfc.section.1.p.2">An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, or Siren).  </p>
-<p id="rfc.section.1.p.3">This document identifies a registry for ALPS documents, (The ALPS Profile Registry or APR). The details of this registry, it's goals, and operations are covered in a separate document (TBD).  </p>
-<p id="rfc.section.1.p.4">This document also identifies a process for authoring, publishing, and sharing normative human-readable instructions on applying an ALPS document as a profile to responses of a given media type. For' example, a document that describes how to apply the semantics of an ALPS profile to an HTML document.  </p>
+<p id="rfc.section.1.p.3">This document identifies a registry for ALPS documents, (The ALPS Profile Registry or APR). The details of this registry, its goals, and operations are covered in a separate document (TBD).  </p>
+<p id="rfc.section.1.p.4">This document also identifies a process for authoring, publishing, and sharing normative human-readable instructions on applying an ALPS document as a profile to responses of a given media type. For example, a document that describes how to apply the semantics of an ALPS profile to an HTML document.  </p>
 <p id="rfc.section.1.p.5">This document registers two media-type identifiers with the IANA: 'application/alps+xml' ("ALPS+XML") and 'application/alps+json' ("ALPS+JSON").  </p>
 <h1 id="rfc.section.1.1"><a href="#rfc.section.1.1">1.1.</a> Notational Conventions</h1>
 <p id="rfc.section.1.1.p.1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in<a href="#RFC2119">[RFC2119]</a>.  </p>
@@ -764,10 +764,10 @@ ul p {
 <p id="rfc.section.2.2.1.p.2">Examples: </p>
 
 <dl>
-    <dt>XML:</dt>
-    <dd style="margin-left: 8">&lt;alps&gt;...&lt;/alps&gt; </dd>
-    <dt>JSON:</dt>
-    <dd style="margin-left: 8">{"alps" : ... } </dd>
+  <dt>XML:</dt>
+  <dd style="margin-left: 8">&lt;alps&gt;...&lt;/alps&gt; </dd>
+  <dt>JSON:</dt>
+  <dd style="margin-left: 8">{"alps" : ... } </dd>
 </dl>
 
 <p> </p>
@@ -775,38 +775,38 @@ ul p {
 <p id="rfc.section.2.2.2.p.1">A text field that contains free-form, usually human-readable, text.  The 'doc' element MAY have two properties: <a href="#prop-href">'href'</a> <cite title="NONE">[prop-href]</cite> and <a href="#prop-format">'format'</a> <cite title="NONE">[prop-format]</cite>.  If the 'href' property appears it SHOULD contain a dereferencable URL that points to human-readable text. If the 'format' property appears it SHOULD contain one of the following values: </p>
 
 <ol>
-    <li>"text"</li>
-    <li>"html"</li>
-    <li>"asciidoc"</li>
+  <li>"text"</li>
+  <li>"html"</li>
+  <li>"asciidoc"</li>
 </ol>
 
 <p> Any program processing "doc" elements SHOULD honor the "format" directive and parse/render the content appropriately. If the value in the "format" property is not recognized and/or supported, the processing program MUST treat the content as plain text. If no 'format' property is present, the content SHOULD be treated as plain text.  </p>
 
 <dl>
-    <dt>XML:</dt>
-    <dd style="margin-left: 8">&lt;doc format="html"&gt; &lt;h1&gt;Date of Birth&lt;/h1&gt; &lt;p&gt;...&lt;/p&gt; &lt;/doc&gt; </dd>
-    <dt>JSON:</dt>
-    <dd style="margin-left: 8">{"doc" : {"format" : "text" : "value" : "Date of Birth ..."} } </dd>
+  <dt>XML:</dt>
+  <dd style="margin-left: 8">&lt;doc format="html"&gt; &lt;h1&gt;Date of Birth&lt;/h1&gt; &lt;p&gt;...&lt;/p&gt; &lt;/doc&gt; </dd>
+  <dt>JSON:</dt>
+  <dd style="margin-left: 8">{"doc" : {"format" : "text" : "value" : "Date of Birth ..."} } </dd>
 </dl>
 
 <p> </p>
 <p id="rfc.section.2.2.2.p.2">A 'doc' element SHOULD appear as a child of <a href="#prop-descriptor">'descriptor'</a> <cite title="NONE">[prop-descriptor]</cite>. When present, it describes the meaning and use of the related 'descriptor'.  </p>
 
 <dl>
-    <dt>XML:</dt>
-    <dd style="margin-left: 8">&lt;descriptor ... &gt; &lt;doc&gt;...&lt;/doc&gt; &lt;/descriptor&gt; </dd>
-    <dt>JSON:</dt>
-    <dd style="margin-left: 8">{"descriptor" : {...} {"doc" : {"value" : "..."} } </dd>
+  <dt>XML:</dt>
+  <dd style="margin-left: 8">&lt;descriptor ... &gt; &lt;doc&gt;...&lt;/doc&gt; &lt;/descriptor&gt; </dd>
+  <dt>JSON:</dt>
+  <dd style="margin-left: 8">{"descriptor" : {...} {"doc" : {"value" : "..."} } </dd>
 </dl>
 
 <p> </p>
 <p id="rfc.section.2.2.2.p.3">The 'doc' element MAY appear as a child of<a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite>. When present, it describes the purpose of the ALPS document as a whole.  </p>
 
 <dl>
-    <dt>XML:</dt>
-    <dd style="margin-left: 8">&lt;alps&gt; &lt;doc&gt;...&lt;/doc&gt; ...  &lt;/apls&gt; </dd>
-    <dt>JSON:</dt>
-    <dd style="margin-left: 8">{"alps : "doc" : { "value" : "..."}, ...  } </dd>
+  <dt>XML:</dt>
+  <dd style="margin-left: 8">&lt;alps&gt; &lt;doc&gt;...&lt;/doc&gt; ...  &lt;/apls&gt; </dd>
+  <dt>JSON:</dt>
+  <dd style="margin-left: 8">{"alps : "doc" : { "value" : "..."}, ...  } </dd>
 </dl>
 
 <p> </p>
@@ -816,10 +816,10 @@ ul p {
 <p id="rfc.section.2.2.3.p.3">The 'descriptor' property SHOULD have either an <a href="#prop-id">'id'</a> <cite title="NONE">[prop-id]</cite> or <a href="#prop-href">'href'</a> <cite title="NONE">[prop-href]</cite> attribute. It MAY have both. Additionally, the 'descriptor' MAY have any of the following attributes: </p>
 
 <ol>
-    <li><a href="#prop-doc">'doc'</a> <cite title="NONE">[prop-doc]</cite> </li>
-    <li><a href="#prop-ext">'ext'</a> <cite title="NONE">[prop-ext]</cite> </li>
-    <li><a href="#prop-name">'name'</a> <cite title="NONE">[prop-name]</cite> </li>
-    <li><a href="#prop-type">'type'</a> <cite title="NONE">[prop-type]</cite> </li>
+  <li><a href="#prop-doc">'doc'</a> <cite title="NONE">[prop-doc]</cite> </li>
+  <li><a href="#prop-ext">'ext'</a> <cite title="NONE">[prop-ext]</cite> </li>
+  <li><a href="#prop-name">'name'</a> <cite title="NONE">[prop-name]</cite> </li>
+  <li><a href="#prop-type">'type'</a> <cite title="NONE">[prop-type]</cite> </li>
 </ol>
 
 <p> </p>
@@ -829,8 +829,8 @@ ul p {
 <p id="rfc.section.2.2.3.p.7">If descriptor is nested, i.e. declared as a child of another descriptor, then: </p>
 
 <ol>
-    <li>a client SHOULD assume them to appear in any sibling 'descriptor' element and recursively in their child descriptors </li>
-    <li>a client SHOULD NOT assume that it can appear anywhere outside of parent descriptor, unless it was explicitly referenced by another descriptor in 'href' attribute. In that case the same rules are applied to 'descriptor' containing 'href' attribute </li>
+  <li>a client SHOULD assume them to appear in any sibling 'descriptor' element and recursively in their child descriptors </li>
+  <li>a client SHOULD NOT assume that it can appear anywhere outside of parent descriptor, unless it was explicitly referenced by another descriptor in 'href' attribute. In that case the same rules are applied to 'descriptor' containing 'href' attribute </li>
 </ol>
 
 <p> </p>
@@ -844,9 +844,9 @@ ul p {
 <p id="rfc.section.2.2.4.p.2">The 'ext' element has the following properties.  </p>
 
 <ol>
-    <li><a href="#prop-id">id</a> <cite title="NONE">[prop-id]</cite> </li>
-    <li><a href="#prop-href">href</a> <cite title="NONE">[prop-href]</cite> </li>
-    <li><a href="#prop-value">value</a> <cite title="NONE">[prop-value]</cite> </li>
+  <li><a href="#prop-id">id</a> <cite title="NONE">[prop-id]</cite> </li>
+  <li><a href="#prop-href">href</a> <cite title="NONE">[prop-href]</cite> </li>
+  <li><a href="#prop-value">value</a> <cite title="NONE">[prop-value]</cite> </li>
 </ol>
 
 <p> </p>
@@ -854,18 +854,18 @@ ul p {
 <p id="rfc.section.2.2.4.p.4">Examples: </p>
 
 <dl>
-    <dt>XML:</dt>
-    <dd style="margin-left: 8">&lt;ext id="directions" href="http://alps.io/ext/directions" value="north south east west" &gt; </dd>
-    <dt>JSON:</dt>
-    <dd style="margin-left: 8">{"ext" : {" id" : "directions", "href" : "http://alps.io/ext/directions", value="north south east west"}} </dd>
+  <dt>XML:</dt>
+  <dd style="margin-left: 8">&lt;ext id="directions" href="http://alps.io/ext/directions" value="north south east west" &gt; </dd>
+  <dt>JSON:</dt>
+  <dd style="margin-left: 8">{"ext" : {" id" : "directions", "href" : "http://alps.io/ext/directions", value="north south east west"}} </dd>
 </dl>
 
 <p> </p>
 <p id="rfc.section.2.2.4.p.5">The 'ext' element MAY appear as a child of the following elements: </p>
 
 <ol>
-    <li><a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite> </li>
-    <li><a href="#prop-descriptor">'descriptor'</a> <cite title="NONE">[prop-descriptor]</cite> </li>
+  <li><a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite> </li>
+  <li><a href="#prop-descriptor">'descriptor'</a> <cite title="NONE">[prop-descriptor]</cite> </li>
 </ol>
 
 <p> </p>
@@ -883,15 +883,15 @@ ul p {
 <p id="rfc.section.2.2.7.p.2">The value of this attribute MAY be used as an identifier in the related runtime hypermedia representation. In the example below the ALPS descriptor with an 'id' of "q" is used to identify an HTML input element: </p>
 
 <dl>
-    <dt>'id' in ALPS...</dt>
-    <dd style="margin-left: 8">&lt;descriptor id="q" type="semantic" /&gt; </dd>
+  <dt>'id' in ALPS...</dt>
+  <dd style="margin-left: 8">&lt;descriptor id="q" type="semantic" /&gt; </dd>
 </dl>
 
 <p> </p>
 
 <dl>
-    <dt>...becomes the 'class' in HTML</dt>
-    <dd style="margin-left: 8">&lt;input name="q" type="text" value="" /&gt; </dd>
+  <dt>...becomes the 'class' in HTML</dt>
+  <dd style="margin-left: 8">&lt;input name="q" type="text" value="" /&gt; </dd>
 </dl>
 
 <p> </p>
@@ -923,8 +923,9 @@ ul p {
 <p id="rfc.section.2.2.7.2.p.2">A relative URL with a fragment identifier (e.g. "#customer") refers to a 'descriptor' within the ALPS document containing the reference.  </p>
 <p id="rfc.section.2.2.7.2.p.3">The complete URI to an ALPS 'descriptor' (including the fragement) forms an "abstract semantic type" identifier. This is a resolvable URI (URL) that can be used to indicate the type of a resource; for instance, it can be used as the value of the IANA-registered Link Relation Type.  </p>
 <h1 id="rfc.section.2.2.7.3"><a href="#rfc.section.2.2.7.3">2.2.7.3.</a> <a href="#prop-id-rels" id="prop-id-rels">Link Relation Values and 'id' or 'name'</a></h1>
-<p id="rfc.section.2.2.7.3.p.1">Since a state transition 'descriptor' establishes a registered relation type, it is important to avoid creating conflicts with existing IANA-registered values. If an 'id' or 'name' of the descriptor is the same as a registered relation type, the descriptor MUST not change the meaning of the IANA type.  </p>
-<p id="rfc.section.2.2.7.3.p.2">If it is unclear whether a registered link relation type in a representation document refers to a relation registered with IANA or a relation registered in an ALPS profile, the semantics of that link are undefined.  </p>
+<p id="rfc.section.2.2.7.3.p.1">Since a state transition 'descriptor' may define a relation type value, it is important to avoid creating conflicts with existing IANA-registered values. If an 'id' or 'name' of the descriptor is the same as a registered relation type, the descriptor MUST not change the meaning of the IANA type.  </p>
+<p id="rfc.section.2.2.7.3.p.2">Further, since the 'id' of a descriptor may define a link relation value per section 2.2.3.1, if a conflict exists in defining such a descriptor's document unique 'id' with another descriptor, the conflicting descriptor MUST define a unique 'id' and MAY specify a 'name' property to resolve the conflict.  </p>
+<p id="rfc.section.2.2.7.3.p.3">If it is unclear whether a registered link relation type in a representation document refers to a relation registered with IANA or a relation registered in an ALPS profile, the semantics of that link are undefined.  </p>
 <h1 id="rfc.section.2.2.8"><a href="#rfc.section.2.2.8">2.2.8.</a> <a href="#prop-link" id="prop-link">'link'</a></h1>
 <p id="rfc.section.2.2.8.p.1">Identifies a link between the current ALPS element and some other (possibly external) resource. Can be applied to the <a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite> and the <a href="#prop-descriptor">'descriptor'</a> <cite title="NONE">[prop-descriptor]</cite> elements.  </p>
 <p id="rfc.section.2.2.8.p.2">The 'link' property MUST define the two attributes <a href="#prop-href">'href'</a> <cite title="NONE">[prop-href]</cite> and <a href="#prop-rel">'rel'</a> <cite title="NONE">[prop-rel]</cite>.  </p>
@@ -942,14 +943,14 @@ ul p {
 <p id="rfc.section.2.2.12.p.1">Indicates the type of representation control to which the element is applied. This MUST appear for each element. Four valid values are defined: </p>
 
 <dl>
-    <dt>"semantic"</dt>
-    <dd style="margin-left: 8">A state element (e.g. HTML.SPAN, HTML.INPUT, etc.) or a hypermedia control that triggers a safe, idempotent transition (e.g. HTTP.GET or HTTP.HEAD).  </dd>
-    <dt>"safe"</dt>
-    <dd style="margin-left: 8">A hypermedia control that triggers a safe, idempotent state transition (e.g. HTTP.GET or HTTP.HEAD).  </dd>
-    <dt>"idempotent"</dt>
-    <dd style="margin-left: 8">A hypermedia control that triggers an unsafe, idempotent state transition (e.g. HTTP.PUT or HTTP.DELETE).  </dd>
-    <dt>"unsafe"</dt>
-    <dd style="margin-left: 8">A hypermedia control that triggers an unsafe, non-idempotent state transition (e.g. HTTP.POST).  </dd>
+  <dt>"semantic"</dt>
+  <dd style="margin-left: 8">A state element (e.g. HTML.SPAN, HTML.INPUT, etc.) or a hypermedia control that triggers a safe, idempotent transition (e.g. HTTP.GET or HTTP.HEAD).  </dd>
+  <dt>"safe"</dt>
+  <dd style="margin-left: 8">A hypermedia control that triggers a safe, idempotent state transition (e.g. HTTP.GET or HTTP.HEAD).  </dd>
+  <dt>"idempotent"</dt>
+  <dd style="margin-left: 8">A hypermedia control that triggers an unsafe, idempotent state transition (e.g. HTTP.PUT or HTTP.DELETE).  </dd>
+  <dt>"unsafe"</dt>
+  <dd style="margin-left: 8">A hypermedia control that triggers an unsafe, non-idempotent state transition (e.g. HTTP.POST).  </dd>
 </dl>
 
 <p> If no 'type' attribute is associated with the element then the 'type="semantic"' is implied.  </p>
@@ -1113,66 +1114,66 @@ ul p {
 <p/>
 
 <dl>
-    <dt>Type name:</dt>
-    <dd style="margin-left: 8">application </dd>
-    <dt>Subtype name:</dt>
-    <dd style="margin-left: 8">alps+xml </dd>
-    <dt>Required parameters:</dt>
-    <dd style="margin-left: 8">None </dd>
-    <dt>Optional parameters:</dt>
-    <dd style="margin-left: 8">
-        <dl>
-            <dt>charset</dt>
-            <dd style="margin-left: 8">This parameter has identical semantics to the charset parameter of the 'application/xml' media type as specified in<a href="#RFC3023">[RFC3023]</a>.  </dd>
-            <dt>profile</dt>
-            <dd style="margin-left: 8">A whitespace-separated list of IRIs identifying specific constraints or conventions that apply to an ALPS document.  A profile must not change the semantics of the resource representation when processed without profile knowledge, so that clients both with and without knowledge of a profiled resource can safely use the same representation. The profile parameter may also be used by clients to express their preferences in the content negotiation process. It is recommended that profile IRIs are dereferenceable and provide useful documentation at that IRI.  </dd>
-        </dl>
-        <p> </p>
-    </dd>
-    <dt>Encoding considerations:</dt>
-    <dd style="margin-left: 8">
-        <dl>
-            <dt>binary</dt>
-            <dd style="margin-left: 8">Same as encoding considerations of application/xml as specified in<a href="#RFC3023">[RFC3023]</a>.  </dd>
-        </dl>
-        <p> </p>
-    </dd>
-    <dt>Security considerations:</dt>
-    <dd style="margin-left: 8">This format shares security issues common to all XML content types. It does not provide executable content.  Information contained in ALPS documents do not require privacy or integrity services.  </dd>
-    <dt>Interoperability considerations:</dt>
-    <dd style="margin-left: 8">ALPS is not described by a DTD and applies only the well-formedness rules of XML. It should only be parsed by a non-validating parser.  </dd>
-    <dt>Published specification:</dt>
-    <dd style="margin-left: 8">This Document </dd>
-    <dt>Applications that use this media type:</dt>
-    <dd style="margin-left: 8">Various </dd>
-    <dt>Additional information:</dt>
-    <dd style="margin-left: 8">
-        <dl>
-            <dt>magic number(s):</dt>
-            <dd style="margin-left: 8">none </dd>
-            <dt>file extensions:</dt>
-            <dd style="margin-left: 8">.xml </dd>
-            <dt>macintosh type file code:</dt>
-            <dd style="margin-left: 8">TEXT </dd>
-            <dt>object idenfiers:</dt>
-            <dd style="margin-left: 8">none </dd>
-        </dl>
-        <p> </p>
-    </dd>
-    <dt>person to contact for further information:</dt>
-    <dd style="margin-left: 8">
-        <dl>
-            <dt>Name:</dt>
-            <dd style="margin-left: 8">Mike Amundsen </dd>
-            <dt>Email:</dt>
-            <dd style="margin-left: 8">mca@amundsen.com </dd>
-        </dl>
-        <p> </p>
-    </dd>
-    <dt>Intended usage:</dt>
-    <dd style="margin-left: 8">Common </dd>
-    <dt>Author/change controller:</dt>
-    <dd style="margin-left: 8">Mike Amundsen </dd>
+  <dt>Type name:</dt>
+  <dd style="margin-left: 8">application </dd>
+  <dt>Subtype name:</dt>
+  <dd style="margin-left: 8">alps+xml </dd>
+  <dt>Required parameters:</dt>
+  <dd style="margin-left: 8">None </dd>
+  <dt>Optional parameters:</dt>
+  <dd style="margin-left: 8">
+    <dl>
+      <dt>charset</dt>
+      <dd style="margin-left: 8">This parameter has identical semantics to the charset parameter of the 'application/xml' media type as specified in<a href="#RFC3023">[RFC3023]</a>.  </dd>
+      <dt>profile</dt>
+      <dd style="margin-left: 8">A whitespace-separated list of IRIs identifying specific constraints or conventions that apply to an ALPS document.  A profile must not change the semantics of the resource representation when processed without profile knowledge, so that clients both with and without knowledge of a profiled resource can safely use the same representation. The profile parameter may also be used by clients to express their preferences in the content negotiation process. It is recommended that profile IRIs are dereferenceable and provide useful documentation at that IRI.  </dd>
+    </dl>
+    <p> </p>
+  </dd>
+  <dt>Encoding considerations:</dt>
+  <dd style="margin-left: 8">
+    <dl>
+      <dt>binary</dt>
+      <dd style="margin-left: 8">Same as encoding considerations of application/xml as specified in<a href="#RFC3023">[RFC3023]</a>.  </dd>
+    </dl>
+    <p> </p>
+  </dd>
+  <dt>Security considerations:</dt>
+  <dd style="margin-left: 8">This format shares security issues common to all XML content types. It does not provide executable content.  Information contained in ALPS documents do not require privacy or integrity services.  </dd>
+  <dt>Interoperability considerations:</dt>
+  <dd style="margin-left: 8">ALPS is not described by a DTD and applies only the well-formedness rules of XML. It should only be parsed by a non-validating parser.  </dd>
+  <dt>Published specification:</dt>
+  <dd style="margin-left: 8">This Document </dd>
+  <dt>Applications that use this media type:</dt>
+  <dd style="margin-left: 8">Various </dd>
+  <dt>Additional information:</dt>
+  <dd style="margin-left: 8">
+    <dl>
+      <dt>magic number(s):</dt>
+      <dd style="margin-left: 8">none </dd>
+      <dt>file extensions:</dt>
+      <dd style="margin-left: 8">.xml </dd>
+      <dt>macintosh type file code:</dt>
+      <dd style="margin-left: 8">TEXT </dd>
+      <dt>object idenfiers:</dt>
+      <dd style="margin-left: 8">none </dd>
+    </dl>
+    <p> </p>
+  </dd>
+  <dt>person to contact for further information:</dt>
+  <dd style="margin-left: 8">
+    <dl>
+      <dt>Name:</dt>
+      <dd style="margin-left: 8">Mike Amundsen </dd>
+      <dt>Email:</dt>
+      <dd style="margin-left: 8">mca@amundsen.com </dd>
+    </dl>
+    <p> </p>
+  </dd>
+  <dt>Intended usage:</dt>
+  <dd style="margin-left: 8">Common </dd>
+  <dt>Author/change controller:</dt>
+  <dd style="margin-left: 8">Mike Amundsen </dd>
 </dl>
 
 <p> </p>
@@ -1180,58 +1181,58 @@ ul p {
 <p/>
 
 <dl>
-    <dt>Type name:</dt>
-    <dd style="margin-left: 8">application </dd>
-    <dt>Subtype name:</dt>
-    <dd style="margin-left: 8">alps+json </dd>
-    <dt>Required parameters:</dt>
-    <dd style="margin-left: 8">None </dd>
-    <dt>Optional parameters:</dt>
-    <dd style="margin-left: 8">
-        <dl>
-            <dt>profile</dt>
-            <dd style="margin-left: 8">A whitespace-separated list of IRIs identifying specific constraints or conventions that apply to an ALPS document.  A profile must not change the semantics of the resource representation when processed without profile knowledge, so that clients both with and without knowledge of a profiled resource can safely use the same representation. The profile parameter may also be used by clients to express their preferences in the content negotiation process. It is recommended that profile IRIs are dereferenceable and provide useful documentation at that IRI.  </dd>
-        </dl>
-        <p> </p>
-    </dd>
-    <dt>Encoding considerations:</dt>
-    <dd style="margin-left: 8">binary </dd>
-    <dt>Security considerations:</dt>
-    <dd style="margin-left: 8">This media type shares security issues common to all JSON content types. See <a href="#RFC4627">[RFC4627]</a> Section #6 for additional information. ALPS+JSON does not provide executable content. Information contained in ALPS+JSON documents do not require privacy or integrity services.  </dd>
-    <dt>Interoperability considerations:</dt>
-    <dd style="margin-left: 8">None </dd>
-    <dt>Published specification:</dt>
-    <dd style="margin-left: 8">This Document </dd>
-    <dt>Applications that use this media type:</dt>
-    <dd style="margin-left: 8">Various </dd>
-    <dt>Additional information:</dt>
-    <dd style="margin-left: 8">
-        <dl>
-            <dt>magic number(s):</dt>
-            <dd style="margin-left: 8">none </dd>
-            <dt>file extensions:</dt>
-            <dd style="margin-left: 8">.json </dd>
-            <dt>macintosh type file code:</dt>
-            <dd style="margin-left: 8">TEXT </dd>
-            <dt>object idenfiers:</dt>
-            <dd style="margin-left: 8">none </dd>
-        </dl>
-        <p> </p>
-    </dd>
-    <dt>person to contact for further information:</dt>
-    <dd style="margin-left: 8">
-        <dl>
-            <dt>Name:</dt>
-            <dd style="margin-left: 8">Mike Amundsen </dd>
-            <dt>Email:</dt>
-            <dd style="margin-left: 8">mca@amundsen.com </dd>
-        </dl>
-        <p> </p>
-    </dd>
-    <dt>Intended usage:</dt>
-    <dd style="margin-left: 8">Common </dd>
-    <dt>Author/change controller:</dt>
-    <dd style="margin-left: 8">Mike Amundsen </dd>
+  <dt>Type name:</dt>
+  <dd style="margin-left: 8">application </dd>
+  <dt>Subtype name:</dt>
+  <dd style="margin-left: 8">alps+json </dd>
+  <dt>Required parameters:</dt>
+  <dd style="margin-left: 8">None </dd>
+  <dt>Optional parameters:</dt>
+  <dd style="margin-left: 8">
+    <dl>
+      <dt>profile</dt>
+      <dd style="margin-left: 8">A whitespace-separated list of IRIs identifying specific constraints or conventions that apply to an ALPS document.  A profile must not change the semantics of the resource representation when processed without profile knowledge, so that clients both with and without knowledge of a profiled resource can safely use the same representation. The profile parameter may also be used by clients to express their preferences in the content negotiation process. It is recommended that profile IRIs are dereferenceable and provide useful documentation at that IRI.  </dd>
+    </dl>
+    <p> </p>
+  </dd>
+  <dt>Encoding considerations:</dt>
+  <dd style="margin-left: 8">binary </dd>
+  <dt>Security considerations:</dt>
+  <dd style="margin-left: 8">This media type shares security issues common to all JSON content types. See <a href="#RFC4627">[RFC4627]</a> Section #6 for additional information. ALPS+JSON does not provide executable content. Information contained in ALPS+JSON documents do not require privacy or integrity services.  </dd>
+  <dt>Interoperability considerations:</dt>
+  <dd style="margin-left: 8">None </dd>
+  <dt>Published specification:</dt>
+  <dd style="margin-left: 8">This Document </dd>
+  <dt>Applications that use this media type:</dt>
+  <dd style="margin-left: 8">Various </dd>
+  <dt>Additional information:</dt>
+  <dd style="margin-left: 8">
+    <dl>
+      <dt>magic number(s):</dt>
+      <dd style="margin-left: 8">none </dd>
+      <dt>file extensions:</dt>
+      <dd style="margin-left: 8">.json </dd>
+      <dt>macintosh type file code:</dt>
+      <dd style="margin-left: 8">TEXT </dd>
+      <dt>object idenfiers:</dt>
+      <dd style="margin-left: 8">none </dd>
+    </dl>
+    <p> </p>
+  </dd>
+  <dt>person to contact for further information:</dt>
+  <dd style="margin-left: 8">
+    <dl>
+      <dt>Name:</dt>
+      <dd style="margin-left: 8">Mike Amundsen </dd>
+      <dt>Email:</dt>
+      <dd style="margin-left: 8">mca@amundsen.com </dd>
+    </dl>
+    <p> </p>
+  </dd>
+  <dt>Intended usage:</dt>
+  <dd style="margin-left: 8">Common </dd>
+  <dt>Author/change controller:</dt>
+  <dd style="margin-left: 8">Mike Amundsen </dd>
 </dl>
 
 <p> </p>
@@ -1243,43 +1244,43 @@ ul p {
 <h1 id="rfc.references"><a href="#rfc.references">7.</a> References</h1>
 <h1 id="rfc.references.1"><a href="#rfc.references.1">7.1.</a> Normative References</h1>
 <table>
-    <tbody>
+  <tbody>
     <tr>
-        <td class="reference">
-            <b id="RFC2119">[RFC2119]</b>
-        </td>
-        <td class="top"><a href="mailto:sob@harvard.edu" title="Harvard University">Bradner, S.</a>, "<a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>", BCP 14, RFC 2119, March 1997.</td>
+      <td class="reference">
+        <b id="RFC2119">[RFC2119]</b>
+      </td>
+      <td class="top"><a href="mailto:sob@harvard.edu" title="Harvard University">Bradner, S.</a>, "<a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>", BCP 14, RFC 2119, March 1997.</td>
     </tr>
     <tr>
-        <td class="reference">
-            <b id="RFC3023">[RFC3023]</b>
-        </td>
-        <td class="top"><a>Murata, M.</a>, <a>St. Laurent, S.</a> and <a>D. Kohn</a>, "<a href="http://tools.ietf.org/html/rfc3023">XML Media Types</a>", RFC 3023, January 2001.</td>
+      <td class="reference">
+        <b id="RFC3023">[RFC3023]</b>
+      </td>
+      <td class="top"><a>Murata, M.</a>, <a>St. Laurent, S.</a> and <a>D. Kohn</a>, "<a href="http://tools.ietf.org/html/rfc3023">XML Media Types</a>", RFC 3023, January 2001.</td>
     </tr>
     <tr>
-        <td class="reference">
-            <b id="RFC4627">[RFC4627]</b>
-        </td>
-        <td class="top"><a>Crockford, D.</a>, "<a href="http://tools.ietf.org/html/rfc4627">The application/json Media Type for JavaScript Object Notation (JSON)</a>", RFC 4627, July 2006.</td>
+      <td class="reference">
+        <b id="RFC4627">[RFC4627]</b>
+      </td>
+      <td class="top"><a>Crockford, D.</a>, "<a href="http://tools.ietf.org/html/rfc4627">The application/json Media Type for JavaScript Object Notation (JSON)</a>", RFC 4627, July 2006.</td>
     </tr>
     <tr>
-        <td class="reference">
-            <b id="RFC5988">[RFC5988]</b>
-        </td>
-        <td class="top"><a>Nottingham, M.</a>, "<a href="http://tools.ietf.org/html/rfc5988">Web Linking</a>", RFC 5988, October 2010.</td>
+      <td class="reference">
+        <b id="RFC5988">[RFC5988]</b>
+      </td>
+      <td class="top"><a>Nottingham, M.</a>, "<a href="http://tools.ietf.org/html/rfc5988">Web Linking</a>", RFC 5988, October 2010.</td>
     </tr>
-    </tbody>
+  </tbody>
 </table>
 <h1 id="rfc.references.2"><a href="#rfc.references.2">7.2.</a> Informative References</h1>
 <table>
-    <tbody>
+  <tbody>
     <tr>
-        <td class="reference">
-            <b id="draft-ietf-appsawg-uri-get-off-my-lawn-00">[draft-ietf-appsawg-uri-get-off-my-lawn-00]</b>
-        </td>
-        <td class="top"><a>Nottingham, M.</a>, "<a>Standardising Structure in URIs</a>", I-D draft-ietf-appsawg-uri-get-off-my-lawn-00, September 2013.</td>
+      <td class="reference">
+        <b id="draft-ietf-appsawg-uri-get-off-my-lawn-00">[draft-ietf-appsawg-uri-get-off-my-lawn-00]</b>
+      </td>
+      <td class="top"><a>Nottingham, M.</a>, "<a>Standardising Structure in URIs</a>", I-D draft-ietf-appsawg-uri-get-off-my-lawn-00, September 2013.</td>
     </tr>
-    </tbody>
+  </tbody>
 </table>
 <h1 id="rfc.appendix.A"><a href="#rfc.appendix.A">Appendix A.</a> Frequently Asked Questions</h1>
 <h1 id="rfc.appendix.A.1"><a href="#rfc.appendix.A.1">A.1.</a> Why are there no URLs in ALPS?</h1>
@@ -1291,17 +1292,17 @@ ul p {
 <p id="rfc.section.A.3.p.1">For most all service implementations, there are cases where it would be helpful to document a range of possible values for a semantic element. For example, when implementing the descriptor {"id":"size", ...}, one service might want to indicate the list of supported values such as: "small", "meduim", "large", etc. However, another service might have a very different list of possible values such as "standard", "oversized", "undersized", etc. And there may be a service that only supports a single value here and will always supply it ("onesie").  </p>
 <p id="rfc.section.A.3.p.2">Since ALPS is meant to provide a single description that can be used by multiple services, establishing ranges in the ALPS description is usually over-constraining existing (and future) service implementations. Services are still free to supply this information within representations at run time. But including them in the global ALPS profile is discouraged.  </p>
 <h1 id="rfc.authors">
-    <a href="#rfc.authors">Authors' Addresses</a>
+  <a href="#rfc.authors">Authors' Addresses</a>
 </h1>
 <div class="avoidbreak">
-    <address class="vcard">
+  <address class="vcard">
 	<span class="vcardline">
 	  <span class="fn">Mike Amundsen</span> 
 	  <span class="n hidden">
 		<span class="family-name">Amundsen</span>
 	  </span>
 	</span>
-        <span class="org vcardline">Layer 7 Technologies</span>
+	<span class="org vcardline">Layer 7 Technologies</span>
 	<span class="adr">
 	  
 	  <span class="vcardline">
@@ -1311,20 +1312,20 @@ ul p {
 	  </span>
 	  <span class="country-name vcardline"></span>
 	</span>
-        <span class="vcardline">EMail: <a href="mailto:mca@amundsen.com">mca@amundsen.com</a></span>
+	<span class="vcardline">EMail: <a href="mailto:mca@amundsen.com">mca@amundsen.com</a></span>
 
-        <span class="vcardline">URI: <a href="http://amundsen.com">http://amundsen.com</a></span>
+<span class="vcardline">URI: <a href="http://amundsen.com">http://amundsen.com</a></span>
 
-    </address>
+  </address>
 </div><div class="avoidbreak">
-    <address class="vcard">
+  <address class="vcard">
 	<span class="vcardline">
 	  <span class="fn">Leonard Richardson</span> 
 	  <span class="n hidden">
 		<span class="family-name">Richardson</span>
 	  </span>
 	</span>
-        <span class="org vcardline"></span>
+	<span class="org vcardline"></span>
 	<span class="adr">
 	  
 	  <span class="vcardline">
@@ -1334,20 +1335,20 @@ ul p {
 	  </span>
 	  <span class="country-name vcardline"></span>
 	</span>
-        <span class="vcardline">EMail: <a href="mailto:leonardr@segfault.org">leonardr@segfault.org</a></span>
+	<span class="vcardline">EMail: <a href="mailto:leonardr@segfault.org">leonardr@segfault.org</a></span>
 
-        <span class="vcardline">URI: <a href="http://crummy.com">http://crummy.com</a></span>
+<span class="vcardline">URI: <a href="http://crummy.com">http://crummy.com</a></span>
 
-    </address>
+  </address>
 </div><div class="avoidbreak">
-    <address class="vcard">
+  <address class="vcard">
 	<span class="vcardline">
 	  <span class="fn">Mark W. Foster</span> 
 	  <span class="n hidden">
 		<span class="family-name">Foster</span>
 	  </span>
 	</span>
-        <span class="org vcardline">Medidata Solutions</span>
+	<span class="org vcardline">Medidata Solutions</span>
 	<span class="adr">
 	  
 	  <span class="vcardline">
@@ -1357,9 +1358,9 @@ ul p {
 	  </span>
 	  <span class="country-name vcardline"></span>
 	</span>
-        <span class="vcardline">EMail: <a href="mailto:mwf@fosrias.com">mwf@fosrias.com</a></span>
+	<span class="vcardline">EMail: <a href="mailto:mwf@fosrias.com">mwf@fosrias.com</a></span>
 
-    </address>
+  </address>
 </div>
 
 </body>

@@ -864,19 +864,17 @@
           </section>
           <section anchor="prop-id-rels" title="Link Relation Values and 'id' or 'name'">
             <t>
-              Since a state transition 'descriptor' establishes a registered relation type,
+              Since a state transition 'descriptor' may define a relation type value,
               it is important to avoid creating conflicts with existing IANA-registered
               values. If an 'id' or 'name' of the descriptor is the same as a
               registered relation type, the descriptor MUST not change the meaning of the
               IANA type.
-
-              <!-- [So, important to give preference to transition descriptors to use id vs name to clarify ambiguity.
-                 The extension type will be based on the id but the registered relation type would be using the name?
-                 Which wins for the semantically rich registered link relation.
-
-                 So, either Fragment allows using 'name' or we constrain 'id' as the winner between ambiguous semantic
-                 elements.That is if a semantic descriptor is going to collided with the transition descriptor, put
-                 the name on the descriptor. Is this a SHOULD or a MUST? - Mark]-->
+            </t>
+            <t>
+              Further, since the 'id' of a descriptor may define a link relation value per section
+              2.2.3.1, if a conflict exists in defining such a descriptor's document unique 'id' with
+              another descriptor, the conflicting descriptor MUST define a unique 'id' and MAY specify a
+              'name' property to resolve the conflict.
             </t>
             <t>
               If it is unclear whether a registered link relation type in a representation
