@@ -4,11 +4,11 @@
 
 Network Working Group                                        M. Amundsen
 Internet-Draft                                      Layer 7 Technologies
-Expires: January 30, 2015                                  L. Richardson
+Expires: January 31, 2015                                  L. Richardson
 
                                                                M. Foster
                                                       Medidata Solutions
-                                                           July 29, 2014
+                                                           July 30, 2014
 
 
                Application-Level Profile Semantics (ALPS)
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 30, 2015.
+   This Internet-Draft will expire on January 31, 2015.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Amundsen, et al.        Expires January 30, 2015                [Page 1]
+Amundsen, et al.        Expires January 31, 2015                [Page 1]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Amundsen, et al.        Expires January 30, 2015                [Page 2]
+Amundsen, et al.        Expires January 31, 2015                [Page 2]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -165,7 +165,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 30, 2015                [Page 3]
+Amundsen, et al.        Expires January 31, 2015                [Page 3]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -221,7 +221,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 30, 2015                [Page 4]
+Amundsen, et al.        Expires January 31, 2015                [Page 4]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -277,7 +277,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 30, 2015                [Page 5]
+Amundsen, et al.        Expires January 31, 2015                [Page 5]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -333,7 +333,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 30, 2015                [Page 6]
+Amundsen, et al.        Expires January 31, 2015                [Page 6]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -389,7 +389,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 30, 2015                [Page 7]
+Amundsen, et al.        Expires January 31, 2015                [Page 7]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -445,7 +445,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 30, 2015                [Page 8]
+Amundsen, et al.        Expires January 31, 2015                [Page 8]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -501,7 +501,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 30, 2015                [Page 9]
+Amundsen, et al.        Expires January 31, 2015                [Page 9]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -557,7 +557,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 30, 2015               [Page 10]
+Amundsen, et al.        Expires January 31, 2015               [Page 10]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -613,7 +613,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 30, 2015               [Page 11]
+Amundsen, et al.        Expires January 31, 2015               [Page 11]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -669,7 +669,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 30, 2015               [Page 12]
+Amundsen, et al.        Expires January 31, 2015               [Page 12]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -696,14 +696,21 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 2.2.3.1.  'Descriptors and Link Relation Types'
 
-   A 'descriptor' that defines a state transition establishes an
-   extension relation type as defined by [RFC5988] whose value is the
-   unqualified URI of the descriptor (e.g. rel="http://alps.io/profiles/
-   item#purchased-by").  However, within representations that include
-   the defining ALPS document as a profile, a descriptor may be used on
-   its own to define a registered relation type (e.g. rel="purchased-
-   by") using its 'id' or 'name' property per the conventions of section
-   2.2.7.1 and section 2.2.7.3.
+   When a representation is generated that includes state transitions,
+   valid values for link relation types are:
+
+   1.  A registered IANA link relation type (e.g. rel="edit").
+
+   2.  An extension link relation type as defined by [RFC5988] whose
+   value is the fully-qualified URI of an associated document describing
+   the relation type.  This includes URI fragment identifiers of ALPS
+   descriptors (e.g. rel="http://alps.io/profiles/item#purchased-by")
+   per the conventions of section 2.2.7.2.
+
+   3.  The 'id' property of a state transition descriptor of an
+   associated ALPS document (e.g. rel="purchased-by") per the
+   conventions of section 2.2.7.1 and section 2.2.7.3 if the
+   representation includes an ALPS profile.
 
 2.2.4.  'ext'
 
@@ -716,20 +723,19 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
    1.  id (Section 2.2.7)
 
+
+
+Amundsen, et al.        Expires January 31, 2015               [Page 13]
+
+Internet-Draft     Application-Level Profile Semantics         July 2014
+
+
    2.  href (Section 2.2.6)
 
    3.  value (Section 2.2.13)
 
    The id (Section 2.2.7) property is REQUIRED.  The href
    (Section 2.2.6) is RECOMMENDED and it SHOULD point to documentation
-
-
-
-Amundsen, et al.        Expires January 30, 2015               [Page 13]
-
-Internet-Draft     Application-Level Profile Semantics         July 2014
-
-
    that explains the use and meaning of this ext (Section 2.2.4)
    element.  The value (Section 2.2.13) property is OPTIONAL.  The
    content is undetermined; its meaning and use SHOULD be explained by
@@ -773,18 +779,16 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
    'href' points to another 'descriptor' either within the existing ALPS
    document or in another ALPS document.
 
-   When it appears as an attribute of'ext' (Section 2.2.4), 'href'
-   points to an external document which provides the defintion of the
-   extension.
 
 
-
-
-
-Amundsen, et al.        Expires January 30, 2015               [Page 14]
+Amundsen, et al.        Expires January 31, 2015               [Page 14]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
+
+   When it appears as an attribute of'ext' (Section 2.2.4), 'href'
+   points to an external document which provides the defintion of the
+   extension.
 
    When it appears as an attribute of 'link' (Section 2.2.8) 'href'
    points to an external document whose relationship to the current
@@ -833,11 +837,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-
-
-
-
-Amundsen, et al.        Expires January 30, 2015               [Page 15]
+Amundsen, et al.        Expires January 31, 2015               [Page 15]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -893,7 +893,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 30, 2015               [Page 16]
+Amundsen, et al.        Expires January 31, 2015               [Page 16]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -949,7 +949,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 30, 2015               [Page 17]
+Amundsen, et al.        Expires January 31, 2015               [Page 17]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -1005,7 +1005,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 30, 2015               [Page 18]
+Amundsen, et al.        Expires January 31, 2015               [Page 18]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -1061,7 +1061,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 30, 2015               [Page 19]
+Amundsen, et al.        Expires January 31, 2015               [Page 19]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -1117,7 +1117,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 30, 2015               [Page 20]
+Amundsen, et al.        Expires January 31, 2015               [Page 20]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -1173,7 +1173,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 30, 2015               [Page 21]
+Amundsen, et al.        Expires January 31, 2015               [Page 21]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -1229,7 +1229,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 30, 2015               [Page 22]
+Amundsen, et al.        Expires January 31, 2015               [Page 22]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -1285,7 +1285,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 30, 2015               [Page 23]
+Amundsen, et al.        Expires January 31, 2015               [Page 23]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -1341,7 +1341,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 30, 2015               [Page 24]
+Amundsen, et al.        Expires January 31, 2015               [Page 24]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -1397,7 +1397,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 30, 2015               [Page 25]
+Amundsen, et al.        Expires January 31, 2015               [Page 25]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -1453,7 +1453,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 30, 2015               [Page 26]
+Amundsen, et al.        Expires January 31, 2015               [Page 26]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -1509,7 +1509,7 @@ A.3.  Why is there no way to indicate ranges for semantic descriptors?
 
 
 
-Amundsen, et al.        Expires January 30, 2015               [Page 27]
+Amundsen, et al.        Expires January 31, 2015               [Page 27]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
@@ -1565,4 +1565,4 @@ Authors' Addresses
 
 
 
-Amundsen, et al.        Expires January 30, 2015               [Page 28]
+Amundsen, et al.        Expires January 31, 2015               [Page 28]

@@ -636,14 +636,22 @@
           </t>
           <section  anchor="prop-descriptor-link-relations" title="'Descriptors and Link Relation Types'">
             <t>
-              A 'descriptor' that defines a state transition establishes an extension
-              relation type as defined by <xref target="RFC5988"/> whose value is
-              the unqualified URI of the descriptor (e.g. rel="http://alps.io/profiles/item#purchased-by").
-
-              However, within representations that include the defining ALPS document
-              as a profile, a descriptor may be used on its own to define a
-              registered relation type (e.g. rel="purchased-by") using its
-              'id' or 'name' property per the conventions of section 2.2.7.1 and section 2.2.7.3.
+              When a representation is generated that includes state transitions, valid values for link relation types are:
+            </t>
+            <t>
+              1. A registered IANA link relation type (e.g. rel="edit").
+            </t>
+            <t>
+              2. An extension link relation type as defined by <xref target="RFC5988"/>
+              whose value is the fully-qualified URI of an associated document describing the
+              relation type. This includes URI fragment identifiers of ALPS descriptors
+              (e.g. rel="http://alps.io/profiles/item#purchased-by")
+              per the conventions of section 2.2.7.2.
+            </t>
+            <t>
+              3. The 'id' property of a state transition descriptor of an associated
+              ALPS document (e.g. rel="purchased-by") per the conventions of section
+              2.2.7.1 and section 2.2.7.3 if the representation includes an ALPS profile.
             </t>
           </section>
         </section>

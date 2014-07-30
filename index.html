@@ -424,7 +424,7 @@ ul p {
 
 <meta name="dct.creator" content="Amundsen, M., Richardson, L., and M. Foster" />
 <meta name="dct.identifier" content="urn:ietf:id:draft-amundsen-richardson-foster-alps-00.J" />
-<meta name="dct.issued" scheme="ISO8601" content="2014-7-29" />
+<meta name="dct.issued" scheme="ISO8601" content="2014-7-30" />
 <meta name="dct.abstract" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, or Siren). This increases the reusability of profile documents across media types.  " />
 <meta name="description" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, or Siren). This increases the reusability of profile documents across media types.  " />
 
@@ -444,7 +444,7 @@ ul p {
         <td class="right">Layer 7 Technologies</td>
     </tr>
     <tr>
-        <td class="left">Expires: January 30, 2015</td>
+        <td class="left">Expires: January 31, 2015</td>
         <td class="right">L. Richardson</td>
     </tr>
     <tr>
@@ -461,7 +461,7 @@ ul p {
     </tr>
     <tr>
         <td class="left"></td>
-        <td class="right">July 29, 2014</td>
+        <td class="right">July 30, 2014</td>
     </tr>
 
 
@@ -485,7 +485,7 @@ ul p {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on January 30, 2015.</p>
+<p>This Internet-Draft will expire on January 31, 2015.</p>
 <h1 id="rfc.copyrightnotice">
     <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -835,7 +835,10 @@ ul p {
 
 <p> </p>
 <h1 id="rfc.section.2.2.3.1"><a href="#rfc.section.2.2.3.1">2.2.3.1.</a> <a href="#prop-descriptor-link-relations" id="prop-descriptor-link-relations">'Descriptors and Link Relation Types'</a></h1>
-<p id="rfc.section.2.2.3.1.p.1">A 'descriptor' that defines a state transition establishes an extension relation type as defined by <a href="#RFC5988">[RFC5988]</a> whose value is the unqualified URI of the descriptor (e.g. rel="http://alps.io/profiles/item#purchased-by").  However, within representations that include the defining ALPS document as a profile, a descriptor may be used on its own to define a 'local' registered relation type (e.g. rel="purchased-by") using its 'id' or 'name' property per the conventions of section 2.2.7.1 and section 2.2.7.3.  </p>
+<p id="rfc.section.2.2.3.1.p.1">When a representation is generated that includes state transitions, valid values for link relation types are: </p>
+<p id="rfc.section.2.2.3.1.p.2">1. A registered IANA link relation type (e.g. rel="edit").  </p>
+<p id="rfc.section.2.2.3.1.p.3">2. An extension link relation type as defined by <a href="#RFC5988">[RFC5988]</a> whose value is the fully-qualified URI of an associated document describing the relation type. This includes URI fragment identifiers of ALPS descriptors (e.g. rel="http://alps.io/profiles/item#purchased-by") per the conventions of section 2.2.7.2.  </p>
+<p id="rfc.section.2.2.3.1.p.4">3. The 'id' property of a state transition descriptor of an associated ALPS document (e.g. rel="purchased-by") per the conventions of section 2.2.7.1 and section 2.2.7.3 if the representation includes an ALPS profile.  </p>
 <h1 id="rfc.section.2.2.4"><a href="#rfc.section.2.2.4">2.2.4.</a> <a href="#prop-ext" id="prop-ext">'ext'</a></h1>
 <p id="rfc.section.2.2.4.p.1">The 'ext' element can be used to extend the ALPS document with author-specific information. It provides a way to customize ALPS documents with additional properties not covered in this specification. This is an OPTIONAL element.  </p>
 <p id="rfc.section.2.2.4.p.2">The 'ext' element has the following properties.  </p>
@@ -920,7 +923,8 @@ ul p {
 <p id="rfc.section.2.2.7.2.p.2">A relative URL with a fragment identifier (e.g. "#customer") refers to a 'descriptor' within the ALPS document containing the reference.  </p>
 <p id="rfc.section.2.2.7.2.p.3">The complete URI to an ALPS 'descriptor' (including the fragement) forms an "abstract semantic type" identifier. This is a resolvable URI (URL) that can be used to indicate the type of a resource; for instance, it can be used as the value of the IANA-registered Link Relation Type.  </p>
 <h1 id="rfc.section.2.2.7.3"><a href="#rfc.section.2.2.7.3">2.2.7.3.</a> <a href="#prop-id-rels" id="prop-id-rels">Link Relation Values and 'id' or 'name'</a></h1>
-<p id="rfc.section.2.2.7.3.p.1">Since a state transition 'descriptor' establishes a link relation type, it is important to avoid creating conflicts with existing IANA-registered values. If an 'id' or 'name' of the descriptor is the same as a registered relation type, the descriptor MUST not change the meaning of the IANA type.  If it is unclear whether a registered link relation type in a representation document refers to a relation registered with IANA or a relation registered in an ALPS profile, the semantics of that link are undefined.  </p>
+<p id="rfc.section.2.2.7.3.p.1">Since a state transition 'descriptor' establishes a registered relation type, it is important to avoid creating conflicts with existing IANA-registered values. If an 'id' or 'name' of the descriptor is the same as a registered relation type, the descriptor MUST not change the meaning of the IANA type.  </p>
+<p id="rfc.section.2.2.7.3.p.2">If it is unclear whether a registered link relation type in a representation document refers to a relation registered with IANA or a relation registered in an ALPS profile, the semantics of that link are undefined.  </p>
 <h1 id="rfc.section.2.2.8"><a href="#rfc.section.2.2.8">2.2.8.</a> <a href="#prop-link" id="prop-link">'link'</a></h1>
 <p id="rfc.section.2.2.8.p.1">Identifies a link between the current ALPS element and some other (possibly external) resource. Can be applied to the <a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite> and the <a href="#prop-descriptor">'descriptor'</a> <cite title="NONE">[prop-descriptor]</cite> elements.  </p>
 <p id="rfc.section.2.2.8.p.2">The 'link' property MUST define the two attributes <a href="#prop-href">'href'</a> <cite title="NONE">[prop-href]</cite> and <a href="#prop-rel">'rel'</a> <cite title="NONE">[prop-rel]</cite>.  </p>
