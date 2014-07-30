@@ -101,7 +101,7 @@ Table of Contents
        2.2.13. 'value' . . . . . . . . . . . . . . . . . . . . . . .  18
        2.2.14. 'version' . . . . . . . . . . . . . . . . . . . . . .  18
      2.3.  ALPS Representations  . . . . . . . . . . . . . . . . . .  18
-       2.3.1.  Sample HTML . . . . . . . . . . . . . . . . . . . . .  19
+       2.3.1.  Sample HTML . . . . . . . . . . . . . . . . . . . . .  18
        2.3.2.  XML Representation  . . . . . . . . . . . . . . . . .  19
        2.3.3.  JSON Representation . . . . . . . . . . . . . . . . .  20
    3.  Applying ALPS documents to Existing Media Types . . . . . . .  22
@@ -963,9 +963,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
    applied.  This MUST appear for each element.  Four valid values are
    defined:
 
-   "semantic"  A state element (e.g.  HTML.SPAN, HTML.INPUT, etc.) or a
-      hypermedia control that triggers a safe, idempotent transition
-      (e.g.  HTTP.GET or HTTP.HEAD).
+   "semantic"  A state element (e.g.  HTML.SPAN, HTML.INPUT, etc.).
 
    "safe"  A hypermedia control that triggers a safe, idempotent state
       transition (e.g.  HTTP.GET or HTTP.HEAD).
@@ -998,10 +996,12 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
    appear in each format, along with examples to guide ALPS document
    authors.
 
+2.3.1.  Sample HTML
 
-
-
-
+   Below is a simple HTML document that contains a handful of semantic
+   descriptors and transition instructions.  This document was generated
+   from the XML and JSON ALPS documents that follow.  Use this HTML
+   document as a guide when evaluating the XML and JSON examples.
 
 
 
@@ -1009,13 +1009,6 @@ Amundsen, et al.        Expires January 31, 2015               [Page 18]
 
 Internet-Draft     Application-Level Profile Semantics         July 2014
 
-
-2.3.1.  Sample HTML
-
-   Below is a simple HTML document that contains a handful of semantic
-   descriptors and transition instructions.  This document was generated
-   from the XML and JSON ALPS documents that follow.  Use this HTML
-   document as a guide when evaluating the XML and JSON examples.
 
    <!-- sample HTML document -->
    <html>
@@ -1048,6 +1041,13 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 2.3.2.2.  Complete XML Representation
 
    Below is an example of an applcation/alps+xml representation.
+
+
+
+
+
+
+
 
 
 
