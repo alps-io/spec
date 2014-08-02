@@ -626,19 +626,19 @@
             <t>
               <list style="numbers">
                 <t>
-                  A registered IANA link relation type (e.g. rel="edit").
+                  A registered IANA link relation type (e.g. rel="edit", a short string).
                 </t>
                 <t>
                   An extension link relation type as defined by <xref target="RFC5988"/>
                   whose value is the fully-qualified URI of an associated document describing the
                   relation type. This includes URI fragment identifiers of ALPS descriptors
-                  (e.g. rel="http://alps.io/profiles/item#purchased-by")
+                  (e.g. rel="http://alps.io/profiles/item#purchased-by", a URI)
                   per the conventions of <xref target="prop-id-frag"/>.
                 </t>
                 <t>
                   The 'id' property of a state transition descriptor of an associated
-                  ALPS document (e.g. rel="purchased-by") per the conventions of section
-                  <xref target="prop-id-name"/> and <xref target="prop-id-rels"/>
+                  ALPS document (e.g. rel="purchased-by", a short string) per the conventions
+                  of section <xref target="prop-id-name"/> and <xref target="prop-id-rels"/>
                   if the representation includes an ALPS profile.
                 </t>
               </list>
@@ -694,9 +694,9 @@
                 value="north south east west" &gt;
               </t>
               <t hangText="JSON:">
-                {"ext" : {" id" : "directions", "href"
+                { "ext" : { "id" : "directions", "href"
                 : "http://alps.io/ext/directions",
-                value="north south east west"}}
+                value="north south east west" } }
               </t>
             </list>
           </t>
@@ -738,18 +738,18 @@
             Contains a resolvable URL.
           </t>
           <t>
-            When it appears as an attribute of<xref target="prop-descriptor">'descriptor'</xref>, 'href'
+            When it appears as an attribute of <xref target="prop-descriptor">'descriptor'</xref>, 'href'
             points to another 'descriptor' either within the
             existing ALPS document or in another ALPS document.
           </t>
           <t>
-            When it appears as an attribute of<xref target="prop-ext">'ext'</xref>, 'href' points to an
+            When it appears as an attribute of <xref target="prop-ext">'ext'</xref>, 'href' points to an
             external document which provides the defintion of
             the extension.
           </t>
           <t>
             When it appears as an attribute of
-            <xref target="prop-link">'link'</xref>
+            <xref target="prop-link">'link'</xref>,
             'href' points to an
             external document whose relationship to the current
             document or 'descriptor' is described by
@@ -767,7 +767,7 @@
         <section anchor="prop-id" title="'id'">
           <t>
             A document-wide unique identifier for the related
-            element. This SHOULD appear as an attribute of an
+            element. This SHOULD appear as an attribute of a
             <xref target="prop-descriptor">'descriptor'</xref>.
           </t>
           <t>
@@ -783,14 +783,14 @@
 
             <list style="hanging">
               <t hangText="...becomes the 'class' in HTML"><![CDATA[
-<input name="q" type="text" value="" />
+<input class="q" type="text" value="" />
                         ]]></t>
             </list>
           </t>
           <t>
             It should be noted that the exact mapping from ALPS elements (e.g. 'id')
             to elements within a particular media type (HTML, Collection+JSON, etc.)
-            is covered in separate documents (to be speficied).
+            is covered in separate documents (to be specified).
           </t>
           <section anchor="prop-id-name" title="ALPS 'id' and 'name' Properties">
             <t>
@@ -803,9 +803,9 @@
             <t>
               To avoid this, ALPS document designers can add the
               <xref target="prop-name">name</xref>
-              property to the descriptor to hold the common value ("search") while still using the
+              property to a 'descriptor' to hold the common value ("search") while still using the
               <xref target="prop-id">id</xref>
-              property to hold a document-wide unqiue value. For example:
+              property to hold a document-wide unique value. For example:
             </t>
             <figure title="HTML Representation of a Search Transition">
               <artwork><![CDATA[
@@ -821,7 +821,7 @@
             <figure title="ALPS Description of the same Search Transition">
               <artwork><![CDATA[
 <!-- ALPS -->
-<descriptor id="search-block" type="semantic name="search">
+<descriptor id="search-block" type="semantic" name="search">
   <descriptor id="search-form" type="safe" name="search">
     <descriptor id="search-data" type="semantic" name="search" />
   </descriptor>
@@ -832,8 +832,8 @@
           <section anchor="prop-id-frag" title="Fragment Identifiers and 'id'">
             <t>
               When applied to an ALPS document, a URI fragment
-              identifier points to the 'descriptor' with the
-              appropriate 'id'. For example, the fragment
+              identifier points to the 'descriptor' whose
+              'id' is the value of the fragment. For example, the fragment
               identifier "customer" in the URI
               http://example.com/my-alps-document#customer refers to an ALPS
               'descriptor' with 'id' set to "customer".
@@ -845,11 +845,11 @@
             </t>
             <t>
               The complete URI to an ALPS 'descriptor' (including the
-              fragement) forms an "abstract semantic type"
+              fragment) forms an "abstract semantic type"
               identifier. This is a resolvable URI (URL) that can
               be used to indicate the type of a resource; for
               instance, it can be used as the value of the
-              IANA-registered Link Relation Type.
+              IANA-registered relation type 'type'.
             </t>
           </section>
           <section anchor="prop-id-rels" title="Link Relation Values and 'id' or 'name'">
@@ -858,12 +858,13 @@
               it is important to avoid creating conflicts with existing IANA-registered
               values. If the resulting link relation type is the same as a
               registered relation type, the descriptor MUST not change the meaning of the
-              IANA type.
+              IANA relation type.
             </t>
             <t>
-              Further, since the 'id' of a descriptor may define a link relation value per section
-              2.2.3.1, if a conflict exists in defining such a descriptor's document unique 'id' with
-              another descriptor, the conflicting descriptor MUST define a unique 'id' and MAY specify a
+              Further, since the 'id' of a 'descriptor' may define a link relation value per
+              <xref target="prop-descriptor-link-relations"/>, if a conflict exists in defining
+              such a descriptor's document-wide unique 'id' with
+              another 'descriptor', the conflicting 'descriptor' MUST define a unique 'id' and MAY specify a
               'name' property to resolve the conflict.
             </t>
             <t>
@@ -905,7 +906,7 @@
             ALPS document. For instance, if a single ALPS
             document defines a semantic descriptor (data element) called
             "customer" and a safe descriptor (transition element) also called
-            "customer", they can't both have 'id="customer"' in
+            "customer", they cannot both have 'id="customer"' in
             the ALPS document. One of them needs to have some
             other 'id', and to set 'name="customer"'.
           </t>
@@ -942,17 +943,17 @@
             Indicates the resource type that will be returned when
             executing the specified network request. The 'rt' attribute
             SHOULD appear only on a
-            <xref target="prop-descriptor">descriptor</xref>
+            <xref target="prop-descriptor">'descriptor'</xref>
             with a
-            <xref target="prop-type">type</xref>
+            <xref target="prop-type">'type'</xref>
             value of
             'safe', 'unsafe', or 'idempotent.'
           </t>
           <t>
             The 'rt' attribute is OPTIONAL and is an opaque string and MAY match the
-            <xref target="prop-id">id</xref>
+            <xref target="prop-id">'id'</xref>
             of an
-            existing<xref target="prop-descriptor">descriptor</xref>.
+            existing<xref target="prop-descriptor">'descriptor'</xref>.
           </t>
         </section>
         <section anchor="prop-type" title="'type'">
@@ -982,8 +983,10 @@
               </t>
             </list>
 
-            If no 'type' attribute is associated with the element
-            then the 'type="semantic"' is implied.
+            <!-- [This statement is inconsistent with the MUST requirement for 'type' above. Seems this
+            implies the MUST should change to a MAY - Mark] -->
+            If no 'type' attribute is associated with the
+            element, then 'type="semantic"' is implied.
           </t>
         </section>
         <section anchor="prop-value" title="'value'">
@@ -1049,48 +1052,47 @@
         </section>
         <section anchor="xml-representation" title="XML Representation">
           <section title="XML Representation Notes">
+            <!-- [I don't seen any reason for having this "Notes" section. This content is perfectly
+            appropriate (and actually more appropriate since it gives directives) for the
+            "XML Represesentation" section above it that has no descriptive content
+            and is just topical cruft IMO. I recommend we bump the notes into the parent section
+            and call notes "XML Representation Examples". Ditto on JSON section. - Mark] -->
             <t>
               In the XML version of an ALPS document, the following
-              ALPS properties always appear as XML elements:<xref target="prop-alps">'alps'</xref>,<xref
-                    target="prop-doc">'doc'</xref>,<xref target="prop-descriptor">'descriptor'</xref>, and<xref
+              ALPS properties always appear as XML elements: <xref target="prop-alps">'alps'</xref>, <xref
+                    target="prop-doc">'doc'</xref>, <xref target="prop-descriptor">'descriptor'</xref>, and <xref
                     target="prop-ext">'ext'</xref>. All other ALPS
               properties appear as XML attributes.
             </t>
           </section>
           <section title="Complete XML Representation">
             <t>
-              Below is an example of an applcation/alps+xml
+              Below is an example of an application/alps+xml
               representation.
-              <figure title="Complete XML Representation">
-                <artwork><![CDATA[
+            </t>
+            <figure title="Complete XML Representation">
+              <artwork><![CDATA[
 <?xml version="1.0"?>
 <alps version="1.0">
     <doc href="http://example.org/samples/full/doc.html" />
 
-    <descriptor id="search" 
-        type="safe">
-        <doc format="text">
-            A search form with two inputs.
-        </doc>
+    <descriptor id="search" type="safe">
+        <doc format="text">A search form with two inputs.</doc>
         <descriptor href="#resultType" />
-        <descriptor id="value"
-            name="search" 
-            type="semantic">
+        <descriptor id="value" name="search" type="semantic">
             <doc>input for search</doc>
         </descriptor>
     </descriptor>
 
-    <descriptor id="resultType"
-        type="semantic">
+    <descriptor id="resultType" type="semantic">
         <doc>results format</doc>
         <ext 
             href="http://alps.io/ext/range" 
             value="summary,detail" />
     </descriptor>
 </alps>
-                            ]]></artwork>
-              </figure>
-            </t>
+                          ]]></artwork>
+            </figure>
           </section>
         </section>
         <section anchor="json-representation" title="JSON Representation">
@@ -1107,31 +1109,17 @@
 
               <figure title="Arrays in ALPS+JSON">
                 <preamble>For example:</preamble>
-                <artwork>
-                  "descriptor" : [
-                  {
-                  "id" : "search",
-                  "type" : "safe"
-                  "descriptor" : [
-                  {"href" : "#value"},
-                  {
-                  "id" : "resultType",
-                  "type" : "semantic",
-                  "ext" : [
-                  {
-                  "href" : "http://alps.io/ext/range",
-                  "value" : "summary,detail"
-                  }
-                  ]
-                  }
-                  ]
-                  },
-                  {
-                  "id" : "#value",
-                  "type" : "semantic"
-                  }
-                  ]
-                </artwork>
+                <artwork><![CDATA[
+"descriptor" : [
+    {
+        "id" : "value",
+        "name" : "search",
+        "type" : "descriptor",
+        "doc" : {"value" : "input for search"}
+    },
+    {"href" : "#resultType"}
+]
+                ]]></artwork>
               </figure>
             </t>
             <t>
@@ -1142,14 +1130,14 @@
             <t>
               <figure title="Descriptions in ALPS+JSON">
                 <preamble>For example:</preamble>
-                <artwork>
-                  {
-                  "doc" : {
-                  "format" : "text",
-                  "value" : "Rules are imporant"
-                  }
-                  }
-                </artwork>
+                <artwork><![CDATA[
+{
+    "doc" : {
+        "format" : "text",
+        "value" : "Rules are important"
+    }
+}
+                ]]></artwork>
               </figure>
             </t>
           </section>
@@ -1157,9 +1145,9 @@
             <t>
               Below is a example of the application/alps+json
               representation of an ALPS document.
-              <figure title="Complete ALPS+JSON Representation">
-                <artwork><![CDATA[
-// http://alps.io/documents/search
+            </t>
+            <figure title="Complete ALPS+JSON Representation">
+              <artwork><![CDATA[
 { 
     "alps" : {
         "version" : "1.0",
@@ -1197,9 +1185,8 @@
         ]  
     }
 }
-                            ]]></artwork>
-              </figure>
-            </t>
+                          ]]></artwork>
+            </figure>
           </section>
         </section>
       </section>

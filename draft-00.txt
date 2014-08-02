@@ -4,11 +4,11 @@
 
 Network Working Group                                        M. Amundsen
 Internet-Draft                                      Layer 7 Technologies
-Expires: January 31, 2015                                  L. Richardson
+Expires: February 3, 2015                                  L. Richardson
 
                                                                M. Foster
                                                       Medidata Solutions
-                                                           July 30, 2014
+                                                          August 2, 2014
 
 
                Application-Level Profile Semantics (ALPS)
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 31, 2015.
+   This Internet-Draft will expire on February 3, 2015.
 
 
 
@@ -53,9 +53,9 @@ Status of This Memo
 
 
 
-Amundsen, et al.        Expires January 31, 2015                [Page 1]
+Amundsen, et al.        Expires February 3, 2015                [Page 1]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
 Copyright Notice
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Amundsen, et al.        Expires January 31, 2015                [Page 2]
+Amundsen, et al.        Expires February 3, 2015                [Page 2]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
    4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  22
@@ -165,9 +165,9 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 31, 2015                [Page 3]
+Amundsen, et al.        Expires February 3, 2015                [Page 3]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
 1.2.  Motivation
@@ -221,9 +221,9 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 31, 2015                [Page 4]
+Amundsen, et al.        Expires February 3, 2015                [Page 4]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
 1.3.  A Simple ALPS Example
@@ -277,9 +277,9 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 31, 2015                [Page 5]
+Amundsen, et al.        Expires February 3, 2015                [Page 5]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
 <html>
@@ -333,9 +333,9 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 31, 2015                [Page 6]
+Amundsen, et al.        Expires February 3, 2015                [Page 6]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
    HTML representations implement most ALPS elements using HTML's
@@ -389,9 +389,9 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 31, 2015                [Page 7]
+Amundsen, et al.        Expires February 3, 2015                [Page 7]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
             {
@@ -445,9 +445,9 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 31, 2015                [Page 8]
+Amundsen, et al.        Expires February 3, 2015                [Page 8]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
                     {
@@ -501,9 +501,9 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 31, 2015                [Page 9]
+Amundsen, et al.        Expires February 3, 2015                [Page 9]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
    satisfies all the MUST level requirements but not all the SHOULD
@@ -557,9 +557,9 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 31, 2015               [Page 10]
+Amundsen, et al.        Expires February 3, 2015               [Page 10]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
    A 'doc' element SHOULD appear as a child of 'descriptor'
@@ -613,9 +613,9 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 31, 2015               [Page 11]
+Amundsen, et al.        Expires February 3, 2015               [Page 11]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
    -- even ones linked remotely -- it is important to process 'all
@@ -643,19 +643,20 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
    When a representation is generated that includes state transitions,
    valid values for link relation types are:
 
-   1.  A registered IANA link relation type (e.g. rel="edit").
+   1.  A registered IANA link relation type (e.g. rel="edit", a short
+       string).
 
    2.  An extension link relation type as defined by [RFC5988] whose
        value is the fully-qualified URI of an associated document
        describing the relation type.  This includes URI fragment
        identifiers of ALPS descriptors (e.g.
-       rel="http://alps.io/profiles/item#purchased-by") per the
+       rel="http://alps.io/profiles/item#purchased-by", a URI) per the
        conventions of Section 2.2.7.2.
 
    3.  The 'id' property of a state transition descriptor of an
-       associated ALPS document (e.g. rel="purchased-by") per the
-       conventions of section Section 2.2.7.1 and Section 2.2.7.3 if the
-       representation includes an ALPS profile.
+       associated ALPS document (e.g. rel="purchased-by", a short
+       string) per the conventions of section Section 2.2.7.1 and
+       Section 2.2.7.3 if the representation includes an ALPS profile.
 
 2.2.4.  'ext'
 
@@ -668,10 +669,9 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-
-Amundsen, et al.        Expires January 31, 2015               [Page 12]
+Amundsen, et al.        Expires February 3, 2015               [Page 12]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
    1.  id (Section 2.2.7)
@@ -693,8 +693,8 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
    XML:  <ext id="directions" href="http://alps.io/ext/directions"
       value="north south east west" >
 
-   JSON:  {"ext" : {" id" : "directions", "href" : "http://alps.io/ext/
-      directions", value="north south east west"}}
+   JSON:  { "ext" : { "id" : "directions", "href" : "http://alps.io/ext/
+      directions", value="north south east west" } }
 
    The 'ext' element MAY appear as a child of the following elements:
 
@@ -725,20 +725,20 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 31, 2015               [Page 13]
+Amundsen, et al.        Expires February 3, 2015               [Page 13]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
-   When it appears as an attribute of'descriptor' (Section 2.2.3),
+   When it appears as an attribute of 'descriptor' (Section 2.2.3),
    'href' points to another 'descriptor' either within the existing ALPS
    document or in another ALPS document.
 
-   When it appears as an attribute of'ext' (Section 2.2.4), 'href'
+   When it appears as an attribute of 'ext' (Section 2.2.4), 'href'
    points to an external document which provides the defintion of the
    extension.
 
-   When it appears as an attribute of 'link' (Section 2.2.8) 'href'
+   When it appears as an attribute of 'link' (Section 2.2.8), 'href'
    points to an external document whose relationship to the current
    document or 'descriptor' is described by the associated 'rel'
    (Section 2.2.10) property.
@@ -750,7 +750,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 2.2.7.  'id'
 
    A document-wide unique identifier for the related element.  This
-   SHOULD appear as an attribute of an 'descriptor' (Section 2.2.3).
+   SHOULD appear as an attribute of a 'descriptor' (Section 2.2.3).
 
    The value of this attribute MAY be used as an identifier in the
    related runtime hypermedia representation.  In the example below the
@@ -759,13 +759,13 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
    'id' in ALPS...  <descriptor id="q" type="semantic" />
 
-   ...becomes the 'class' in HTML  <input name="q" type="text" value=""
+   ...becomes the 'class' in HTML  <input class="q" type="text" value=""
       />
 
    It should be noted that the exact mapping from ALPS elements (e.g.
    'id') to elements within a particular media type (HTML,
    Collection+JSON, etc.) is covered in separate documents (to be
-   speficied).
+   specified).
 
 2.2.7.1.  ALPS 'id' and 'name' Properties
 
@@ -781,15 +781,15 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 31, 2015               [Page 14]
+Amundsen, et al.        Expires February 3, 2015               [Page 14]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
    To avoid this, ALPS document designers can add the name
-   (Section 2.2.9) property to the descriptor to hold the common value
+   (Section 2.2.9) property to a 'descriptor' to hold the common value
    ("search") while still using the id (Section 2.2.7) property to hold
-   a document-wide unqiue value.  For example:
+   a document-wide unique value.  For example:
 
    <!-- HTML -->
    <div id="search">
@@ -802,7 +802,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
                 HTML Representation of a Search Transition
 
    <!-- ALPS -->
-   <descriptor id="search-block" type="semantic name="search">
+   <descriptor id="search-block" type="semantic" name="search">
      <descriptor id="search-form" type="safe" name="search">
        <descriptor id="search-data" type="semantic" name="search" />
      </descriptor>
@@ -813,19 +813,19 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 2.2.7.2.  Fragment Identifiers and 'id'
 
    When applied to an ALPS document, a URI fragment identifier points to
-   the 'descriptor' with the appropriate 'id'.  For example, the
-   fragment identifier "customer" in the URI http://example.com/my-alps-
-   document#customer refers to an ALPS 'descriptor' with 'id' set to
-   "customer".
+   the 'descriptor' whose 'id' is the value of the fragment.  For
+   example, the fragment identifier "customer" in the URI
+   http://example.com/my-alps-document#customer refers to an ALPS
+   'descriptor' with 'id' set to "customer".
 
    A relative URL with a fragment identifier (e.g. "#customer") refers
    to a 'descriptor' within the ALPS document containing the reference.
 
-   The complete URI to an ALPS 'descriptor' (including the fragement)
+   The complete URI to an ALPS 'descriptor' (including the fragment)
    forms an "abstract semantic type" identifier.  This is a resolvable
    URI (URL) that can be used to indicate the type of a resource; for
-   instance, it can be used as the value of the IANA-registered Link
-   Relation Type.
+   instance, it can be used as the value of the IANA-registered relation
+   type 'type'.
 
 2.2.7.3.  Link Relation Values and 'id' or 'name'
 
@@ -833,19 +833,19 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
    value, it is important to avoid creating conflicts with existing
    IANA-registered values.  If the resulting link relation type is the
    same as a registered relation type, the descriptor MUST not change
-   the meaning of the IANA type.
+   the meaning of the IANA relation type.
 
 
 
-Amundsen, et al.        Expires January 31, 2015               [Page 15]
+Amundsen, et al.        Expires February 3, 2015               [Page 15]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
-   Further, since the 'id' of a descriptor may define a link relation
-   value per section 2.2.3.1, if a conflict exists in defining such a
-   descriptor's document unique 'id' with another descriptor, the
-   conflicting descriptor MUST define a unique 'id' and MAY specify a
+   Further, since the 'id' of a 'descriptor' may define a link relation
+   value per Section 2.2.3.1, if a conflict exists in defining such a
+   descriptor's document-wide unique 'id' with another 'descriptor', the
+   conflicting 'descriptor' MUST define a unique 'id' and MAY specify a
    'name' property to resolve the conflict.
 
    If it is unclear whether a registered link relation type in a
@@ -872,7 +872,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
    (Section 2.2.7) value elsewhere in the ALPS document.  For instance,
    if a single ALPS document defines a semantic descriptor (data
    element) called "customer" and a safe descriptor (transition element)
-   also called "customer", they can't both have 'id="customer"' in the
+   also called "customer", they cannot both have 'id="customer"' in the
    ALPS document.  One of them needs to have some other 'id', and to set
    'name="customer"'.
 
@@ -893,20 +893,20 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 31, 2015               [Page 16]
+Amundsen, et al.        Expires February 3, 2015               [Page 16]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
 2.2.11.  'rt'
 
    Indicates the resource type that will be returned when executing the
    specified network request.  The 'rt' attribute SHOULD appear only on
-   a descriptor (Section 2.2.3) with a type (Section 2.2.12) value of
-   'safe', 'unsafe', or 'idempotent.'
+   a 'descriptor' (Section 2.2.3) with a 'type' (Section 2.2.12) value
+   of 'safe', 'unsafe', or 'idempotent.'
 
    The 'rt' attribute is OPTIONAL and is an opaque string and MAY match
-   the id (Section 2.2.7) of an existingdescriptor (Section 2.2.3).
+   the 'id' (Section 2.2.7) of an existing'descriptor' (Section 2.2.3).
 
 2.2.12.  'type'
 
@@ -925,7 +925,7 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
    "unsafe"  A hypermedia control that triggers an unsafe, non-
       idempotent state transition (e.g.  HTTP.POST).
 
-   If no 'type' attribute is associated with the element then the
+   If no 'type' attribute is associated with the element, then
    'type="semantic"' is implied.
 
 2.2.13.  'value'
@@ -949,9 +949,9 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 31, 2015               [Page 17]
+Amundsen, et al.        Expires February 3, 2015               [Page 17]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
 2.3.1.  Sample HTML
@@ -985,13 +985,13 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 2.3.2.1.  XML Representation Notes
 
    In the XML version of an ALPS document, the following ALPS properties
-   always appear as XML elements:'alps' (Section 2.2.1),'doc'
-   (Section 2.2.2),'descriptor' (Section 2.2.3), and'ext'
+   always appear as XML elements: 'alps' (Section 2.2.1), 'doc'
+   (Section 2.2.2), 'descriptor' (Section 2.2.3), and 'ext'
    (Section 2.2.4).  All other ALPS properties appear as XML attributes.
 
 2.3.2.2.  Complete XML Representation
 
-   Below is an example of an applcation/alps+xml representation.
+   Below is an example of an application/alps+xml representation.
 
 
 
@@ -1005,30 +1005,24 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 31, 2015               [Page 18]
+Amundsen, et al.        Expires February 3, 2015               [Page 18]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
    <?xml version="1.0"?>
    <alps version="1.0">
        <doc href="http://example.org/samples/full/doc.html" />
 
-       <descriptor id="search"
-           type="safe">
-           <doc format="text">
-               A search form with two inputs.
-           </doc>
+       <descriptor id="search" type="safe">
+           <doc format="text">A search form with two inputs.</doc>
            <descriptor href="#resultType" />
-           <descriptor id="value"
-               name="search"
-               type="semantic">
+           <descriptor id="value" name="search" type="semantic">
                <doc>input for search</doc>
            </descriptor>
        </descriptor>
 
-       <descriptor id="resultType"
-           type="semantic">
+       <descriptor id="resultType" type="semantic">
            <doc>results format</doc>
            <ext
                href="http://alps.io/ext/range"
@@ -1047,64 +1041,39 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
    expressed as arrays of anonymous objects - even when there is only
    one member in the array.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Amundsen, et al.        Expires January 31, 2015               [Page 19]
-
-Internet-Draft     Application-Level Profile Semantics         July 2014
-
-
    For example:
 
-                     "descriptor" : [
-                     {
-                     "id" : "search",
-                     "type" : "safe"
-                     "descriptor" : [
-                     {"href" : "#value"},
-                     {
-                     "id" : "resultType",
-                     "type" : "semantic",
-                     "ext" : [
-                     {
-                     "href" : "http://alps.io/ext/range",
-                     "value" : "summary,detail"
-                     }
-                     ]
-                     }
-                     ]
-                     },
-                     {
-                     "id" : "#value",
-                     "type" : "semantic"
-                     }
-                     ]
+   "descriptor" : [
+       {
+           "id" : "value",
+           "name" : "search",
+           "type" : "descriptor",
+           "doc" : {"value" : "input for search"}
+       },
+       {"href" : "#resultType"}
+   ]
 
                             Arrays in ALPS+JSON
 
    The 'doc' (Section 2.2.2) property is always expressed as a named
    object.
 
+
+
+
+Amundsen, et al.        Expires February 3, 2015               [Page 19]
+
+Internet-Draft     Application-Level Profile Semantics       August 2014
+
+
    For example:
 
-                     {
-                     "doc" : {
-                     "format" : "text",
-                     "value" : "Rules are imporant"
-                     }
-                     }
+   {
+       "doc" : {
+           "format" : "text",
+           "value" : "Rules are important"
+       }
+   }
 
                          Descriptions in ALPS+JSON
 
@@ -1117,12 +1086,42 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 31, 2015               [Page 20]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Amundsen, et al.        Expires February 3, 2015               [Page 20]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
-   // http://alps.io/documents/search
    {
        "alps" : {
            "version" : "1.0",
@@ -1173,9 +1172,10 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 31, 2015               [Page 21]
+
+Amundsen, et al.        Expires February 3, 2015               [Page 21]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
    (http://alps.io).  [I implied earlier there would be a formal
@@ -1229,9 +1229,9 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 31, 2015               [Page 22]
+Amundsen, et al.        Expires February 3, 2015               [Page 22]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
       charset  This parameter has identical semantics to the charset
@@ -1285,9 +1285,9 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 31, 2015               [Page 23]
+Amundsen, et al.        Expires February 3, 2015               [Page 23]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
    Intended usage:  Common
@@ -1341,9 +1341,9 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 31, 2015               [Page 24]
+Amundsen, et al.        Expires February 3, 2015               [Page 24]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
    person to contact for further information:
@@ -1397,9 +1397,9 @@ Internet-Draft     Application-Level Profile Semantics         July 2014
 
 
 
-Amundsen, et al.        Expires January 31, 2015               [Page 25]
+Amundsen, et al.        Expires February 3, 2015               [Page 25]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
 Appendix A.  Frequently Asked Questions
@@ -1453,9 +1453,9 @@ A.3.  Why is there no way to indicate ranges for semantic descriptors?
 
 
 
-Amundsen, et al.        Expires January 31, 2015               [Page 26]
+Amundsen, et al.        Expires February 3, 2015               [Page 26]
 
-Internet-Draft     Application-Level Profile Semantics         July 2014
+Internet-Draft     Application-Level Profile Semantics       August 2014
 
 
    Since ALPS is meant to provide a single description that can be used
@@ -1509,4 +1509,4 @@ Authors' Addresses
 
 
 
-Amundsen, et al.        Expires January 31, 2015               [Page 27]
+Amundsen, et al.        Expires February 3, 2015               [Page 27]
