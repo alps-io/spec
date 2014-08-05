@@ -1,4 +1,0 @@
-#!/bin/bash
-
-xml2rfc draft-00.xml  --basename=draft-00  --text --html
-cp draft-00.html index.html
