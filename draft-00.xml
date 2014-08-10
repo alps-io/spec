@@ -412,7 +412,7 @@
           An ALPS vocabulary is identified by a unique URL.
           This URL SHOULD be assumed to be dereferencable.
           All ALPS URLs MUST be unique and all ALPS documents
-          intended for public consumption SHOULD be registered
+          intended for public consumption SHOULD be registered in
           an the ALPS Registry [TK: add text on where/how to find 
           registries -mamund].
         </t>
