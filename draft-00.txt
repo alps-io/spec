@@ -3,7 +3,7 @@
 
 
 Network Working Group                                        M. Amundsen
-Internet-Draft
+Internet-Draft                                     CA Technologies, Inc.
 Expires: February 11, 2015                                 L. Richardson
 
                                                                M. Foster
@@ -1467,6 +1467,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2014
 Authors' Addresses
 
    Mike Amundsen
+   CA Technologies, Inc.
 
    EMail: mca@amundsen.com
    URI:   http://amundsen.com
@@ -1482,7 +1483,6 @@ Authors' Addresses
    Fingi, Inc.
 
    EMail: mwf@fosrias.com
-
 
 
 
