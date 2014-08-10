@@ -36,7 +36,7 @@
       </address>
     </author>
     <author fullname="Mark W. Foster" surname="Foster" initials="M.">
-      <organization>Medidata Solutions</organization>
+      <organization>Fingi, Inc.</organization>
       <address>
         <email>mwf@fosrias.com</email>
       </address>
@@ -986,8 +986,6 @@
               </t>
             </list>
 
-            <!-- [This statement is inconsistent with the MUST requirement for 'type' above. Seems this
-            implies the MUST should change to a MAY - Mark] -->
             If no 'type' attribute is associated with the
             element, then 'type="semantic"' is implied.
           </t>
