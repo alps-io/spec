@@ -190,27 +190,27 @@
         <figure title="ALPS Contact Profile document">
           <artwork><![CDATA[
  <alps version="1.0">
-    <doc format="text">A contact list.</doc>
+  <doc format="text">A contact list.</doc>
 
-    <!-- a hypermedia control for returning contacts -->
-    <descriptor id="collection" type="safe" rt="contact">
-        <doc> 
-          A simple link/form for getting a list of contacts.
-        </doc>
-        <descriptor id="nameSearch" type="semantic">
-            <doc>Input for a search form.</doc>
-        </descriptor>
+  <!-- a hypermedia control for returning contacts -->
+  <descriptor id="collection" type="safe" rt="contact">
+    <doc> 
+      A simple link/form for getting a list of contacts.
+    </doc>
+    <descriptor id="nameSearch" type="semantic">
+      <doc>Input for a search form.</doc>
     </descriptor>
+  </descriptor>
 
-    <!--  a contact: one or more of these may be returned -->
-    <descriptor id="contact" type="semantic">
-        <descriptor id="item" type="safe">
-            <doc>A link to an individual contact.</doc>
-        </descriptor>
-        <descriptor id="fullName" type="semantic" />
-        <descriptor id="email"    type="semantic" />
-        <descriptor id="phone"    type="semantic" />
+  <!--  a contact: one or more of these may be returned -->
+  <descriptor id="contact" type="semantic">
+    <descriptor id="item" type="safe">
+      <doc>A link to an individual contact.</doc>
     </descriptor>
+    <descriptor id="fullName" type="semantic" />
+    <descriptor id="email"    type="semantic" />
+    <descriptor id="phone"    type="semantic" />
+  </descriptor>
 </alps>
                ]]></artwork>
         </figure>
@@ -225,53 +225,53 @@
         <figure title="HTML ALPS Contact Representation">
           <artwork><![CDATA[
 <html>
-    <head>
-        <link href="http://alps.io/profiles/contact" 
-          rel="profile" />
-        <link href="http://alps.io/profiles/contact#contact" 
-          rel="type" />
-    </head>
-    <body>
-        <form class="collection"
-            method="get" 
-            action="http://example.org/contacts/">
-            <label>Name:</label>
-            <input name="nameSearch" value="" />
-            <input type="submit" value="Search" />
-        </form>
+  <head>
+    <link href="http://alps.io/profiles/contact" 
+      rel="profile" />
+    <link href="http://alps.io/profiles/contact#contact" 
+      rel="type" />
+  </head>
+  <body>
+    <form class="collection"
+      method="get" 
+      action="http://example.org/contacts/">
+      <label>Name:</label>
+      <input name="nameSearch" value="" />
+      <input type="submit" value="Search" />
+    </form>
 
-        <table>
-            <tr class="contact">
-                <td>
-                    <a href="http://example.org/contacts/1" 
-                      rel="item">
-                        <span class="fullName">Ann Arbuckle</span>
-                    </a>
-                </td>
-                <td>
-                    <span class="email">aa@example.org</span>
-                </td>
-                <td>
-                    <span class="phone">123.456.7890</span>
-                </td>
-            </tr>
+    <table>
+      <tr class="contact">
+        <td>
+          <a href="http://example.org/contacts/1" 
+            rel="item">
+            <span class="fullName">Ann Arbuckle</span>
+          </a>
+        </td>
+        <td>
+          <span class="email">aa@example.org</span>
+        </td>
+        <td>
+          <span class="phone">123.456.7890</span>
+        </td>
+      </tr>
             
-            <tr>
-                <td>
-                    <a href="http://example.org/contacts/100" 
-                      rel="item">
-                        <span class="fullName">Zelda Zackney</span>
-                    </a>
-                </td>
-                <td>
-                    <span class="email">zz@example.org</span>
-                </td>
-                <td>
-                    <span class="phone">098.765.4321</span>
-                </td>
-            </tr>
-        </table>
-    </body>
+      <tr>
+        <td>
+          <a href="http://example.org/contacts/100" 
+            rel="item">
+            <span class="fullName">Zelda Zackney</span>
+          </a>
+        </td>
+        <td>
+          <span class="email">zz@example.org</span>
+        </td>
+        <td>
+          <span class="phone">098.765.4321</span>
+        </td>
+      </tr>
+    </table>
+  </body>
 </html>
               ]]></artwork>
         </figure>
@@ -289,25 +289,25 @@
         <figure title="HAL XML Contacts Representation">
           <artwork><![CDATA[
 <resource href="http://example.org/contacts/">
+  <link href="http://alps.io/profiles/contacts#contact" 
+    rel="type" />
+  <link rel="collection" 
+    href="http://example.org/contacts/{?nameSearch}"
+    templated="true" />
+  <resource rel="item" href="http://example.org/contacts/1">
     <link href="http://alps.io/profiles/contacts#contact" 
       rel="type" />
-    <link rel="collection" 
-        href="http://example.org/contacts/{?nameSearch}"
-        templated="true" />
-    <resource rel="item" href="http://example.org/contacts/1">
-        <link href="http://alps.io/profiles/contacts#contact" 
-          rel="type" />
-        <fullName>Ann Arbuckle</fullName>
-        <email>aa@example.org</email>
-        <phone>123.456.7890</phone>
-    </resource>
-    <resource rel="item" href="http://example.org/contacts/100">
-        <link href="http://alps.io/profiles/contacts#contact" 
-          rel="type" />
-        <fullName>Zelda Zackney</fullName>
-        <email>zz@example.org</email>
-        <phone>987.664.3210</phone>
-    </resource>
+    <fullName>Ann Arbuckle</fullName>
+    <email>aa@example.org</email>
+    <phone>123.456.7890</phone>
+  </resource>
+  <resource rel="item" href="http://example.org/contacts/100">
+    <link href="http://alps.io/profiles/contacts#contact" 
+      rel="type" />
+    <fullName>Zelda Zackney</fullName>
+    <email>zz@example.org</email>
+    <phone>987.664.3210</phone>
+  </resource>
 </resource>
                     ]]></artwork>
         </figure>
@@ -324,79 +324,80 @@
         <figure title="Collection+JSON Contacts Representation">
           <artwork><![CDATA[
 {
-    "collection" : {
-        "version" : "1.0",
+  "collection" : {
+    "version" : "1.0",
+    "href" : "http://example.org/contacts/",
+
+    "links" : [
+      {
+        "rel" : "profile", 
+        "href" : "http://alps.io/profiles/contacts"
+      },
+      {
+        "rel" : "type", 
+        "href" : "http://alps.io/profiles/contacts#contact"
+      }
+    ],
+
+    "queries" : [
+      {
+        "rel" : "collection", 
+        "rt" : "contact", 
         "href" : "http://example.org/contacts/",
-
-        "links" : [
-            {
-                "rel" : "profile", 
-                "href" : "http://alps.io/profiles/contacts"
-            },
-            {
-                "rel" : "type", 
-                "href" : "http://alps.io/profiles/contacts#contact"
-            }
-        ],
-
-        "queries" : [
-            {
-                "rel" : "collection", 
-                "rt" : "contact", 
-                "href" : "http://example.org/contacts/",
-                "data" : [
-                    {
-                        "name" : "nameSearch", 
-                        "value" : "", 
-                        "prompt" :  "Search Name"
-                    }
-                ]
-            }
-        ],
-
-        "items" : [
-            {
-                "href" : "http://example.org/contacts/1",
-                "rel" : "item",
-                "rt" : "contact",
-                "data" : [
-                    { "name" : "fullName", "value" : "Ann Arbuckle" },
-                    { "name" : "email", "value" : "aa@example.org" },
-                    { "name" : "phone", "value" : "123.456.7890" }
-                ],
-                "links" : [
-                    {
-                        "rel" : "type", 
-                        "href" : 
-                          "http://alps.io/profiles/contacts#contact"
-                    }
-                ]
-            },
-            {
-                "href" : "http://example.org/contacts/100",
-                "rel" : "item",
-                "rt" : "contact",
-                "data" : [
-                    {"name" : "fullName", 
-                     "value" : "Zelda Zackney" 
-                    },
-                    {"name" : "email", 
-                     "value" : "zz@example.org" 
-                    },
-                    {"name" : "phone", 
-                     "value" : "987.654.3210" 
-                    }
-                ],
-                 "links" : [
-                    {
-                        "rel" : "type", 
-                        "href" : 
-                          "http://alps.io/profiles/contacts#contact"
-                    }
-                ]
-            }
+        "data" : [
+          {
+            "name" : "nameSearch", 
+            "value" : "", 
+            "prompt" :  "Search Name"
+          }
         ]
-    }
+      }
+    ],
+
+    "items" : [
+      {
+        "href" : "http://example.org/contacts/1",
+        "rel" : "item",
+        "rt" : "contact",
+        "data" : [
+          {"name" : "fullName", "value" : "Ann Arbuckle"},
+          {"name" : "email", "value" : "aa@example.org"},
+          {"name" : "phone", "value" : "123.456.7890"}
+        ],
+        "links" : [
+          {
+            "rel" : "type", 
+            "href" : "http://alps.io/profiles/contacts#contact"
+          }
+        ]
+      },
+      {
+        "href" : "http://example.org/contacts/100",
+        "rel" : "item",
+        "rt" : "contact",
+        "data" : [
+          {
+            "name" : "fullName", 
+            "value" : "Zelda Zackney" 
+          },
+          {
+            "name" : "email", 
+            "value" : "zz@example.org" 
+          },
+          {
+            "name" : "phone", 
+            "value" : "987.654.3210" 
+          }
+        ],
+        "links" : [
+          {
+            "rel" : "type", 
+            "href" : "http://alps.io/profiles/contacts#contact"
+          }
+        ]
+      }
+    ]
+  }
 }
                 
                ]]></artwork>
