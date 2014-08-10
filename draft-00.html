@@ -12,28 +12,6 @@
 	  a {
 	  text-decoration: none;
 	  }
-      /* info code from SantaKlauss at http://www.madaboutstyle.com/tooltip2.html */
-      a.info {
-          /* This is the key. */
-          position: relative;
-          z-index: 24;
-          text-decoration: none;
-      }
-      a.info:hover {
-          z-index: 25;
-          color: #FFF; background-color: #900;
-      }
-      a.info span { display: none; }
-      a.info:hover span.info {
-          /* The span will display just on :hover state. */
-          display: block;
-          position: absolute;
-          font-size: smaller;
-          top: 2em; left: -5em; width: 15em;
-          padding: 2px; border: 1px solid #333;
-          color: #900; background-color: #EEE;
-          text-align: left;
-      }
 	  a.smpl {
 	  color: black;
 	  }
@@ -419,12 +397,12 @@
 <link href="#rfc.appendix.A.3" rel="Chapter" title="A.3 Why is there no way to indicate ranges for semantic descriptors?"/>
 
 
-  <meta name="generator" content="xml2rfc version 2.4.8 - http://tools.ietf.org/tools/xml2rfc" />
+  <meta name="generator" content="xml2rfc version 2.4.3 - http://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Amundsen, M., Richardson, L., and M. Foster" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-amundsen-richardson-foster-alps-00.J" />
-  <meta name="dct.issued" scheme="ISO8601" content="2014-8-2" />
+  <meta name="dct.issued" scheme="ISO8601" content="2014-8-10" />
   <meta name="dct.abstract" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, or Siren). This increases the reusability of profile documents across media types.  " />
   <meta name="description" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, or Siren). This increases the reusability of profile documents across media types.  " />
 
@@ -444,7 +422,7 @@
   <td class="right">Layer 7 Technologies</td>
 </tr>
 <tr>
-  <td class="left">Expires: February 3, 2015</td>
+  <td class="left">Expires: February 11, 2015</td>
   <td class="right">L. Richardson</td>
 </tr>
 <tr>
@@ -461,7 +439,7 @@
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">August 2, 2014</td>
+  <td class="right">August 10, 2014</td>
 </tr>
 
     	
@@ -485,7 +463,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on February 3, 2015.</p>
+<p>This Internet-Draft will expire on February 11, 2015.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -603,8 +581,8 @@
             &lt;input type="submit" value="Search" /&gt;
         &lt;/form&gt;
 
-        &lt;table class="contact"&gt;
-            &lt;tr&gt;
+        &lt;table&gt;
+            &lt;tr class="contact"&gt;
                 &lt;td&gt;
                     &lt;a href="http://example.org/contacts/1" rel="item"&gt;
                         &lt;span class="fullName"&gt;Ann Arbuckle&lt;/span&gt;
@@ -636,7 +614,7 @@
 &lt;/html&gt;
               </pre>
 <p class="figure">HTML ALPS Contact Representation</p>
-<p id="rfc.section.1.3.p.4">HTML representations implement most ALPS elements using HTML's "class" attribute. The "collection" ID has become the CSS class of an HTML form's submit button.  The "contact" ID has become the CSS class of an HTML table.  The subordinate descriptors "fullname","email", and "phone" </p>
+<p id="rfc.section.1.3.p.4">HTML representations implement most ALPS elements using HTML's "class" attribute. The "collection" ID has become the CSS class of an HTML form's submit button.  The "contact" ID has become the CSS class of the TR elements in an HTML table.  The subordinate descriptors "fullname","email", and "phone" </p>
 <p id="rfc.section.1.3.p.5">This HAL document uses the same profile to express the same application-level semantics as the HTML document.  </p>
 <pre>
 &lt;resource href="http://example.org/contacts/"&gt;
@@ -946,7 +924,7 @@
 <h1 id="rfc.section.2.2.13"><a href="#rfc.section.2.2.13">2.2.13.</a> <a href="#prop-value" id="prop-value">'value'</a></h1>
 <p id="rfc.section.2.2.13.p.1">Contains a string value. It MAY appear as an attribute of the <a href="#prop-doc">'doc'</a> <cite title="NONE">[prop-doc]</cite> and the <a href="#prop-ext">'ext'</a> <cite title="NONE">[prop-ext]</cite> elements.  </p>
 <h1 id="rfc.section.2.2.14"><a href="#rfc.section.2.2.14">2.2.14.</a> <a href="#prop-version" id="prop-version">'version'</a></h1>
-<p id="rfc.section.2.2.14.p.1">Indicates the version of the ALPS specification used in the document. This SHOULD appear as a property of the <a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite> property.  Currently the only valid value is "1.0". If no value appears, then 'version="1.0"' is implied.  </p>
+<p id="rfc.section.2.2.14.p.1">Indicates the version of the ALPS specification used in the document. This SHOULD appear as a property of the <a href="#prop-alps">'alps'</a> <cite title="NONE">[prop-alps]</cite> element.  Currently the only valid value is "1.0". If no value appears, then 'version="1.0"' is implied.  </p>
 <h1 id="rfc.section.2.3"><a href="#rfc.section.2.3">2.3.</a> <a href="#representations" id="representations">ALPS Representations</a></h1>
 <p id="rfc.section.2.3.p.1">An ALPS document may be represented in either XML or JSON format. This section contains notes on how the ALPS elements and attributes appear in each format, along with examples to guide ALPS document authors.  </p>
 <h1 id="rfc.section.2.3.1"><a href="#rfc.section.2.3.1">2.3.1.</a> <a href="#html-representation" id="html-representation">Sample HTML</a></h1>
@@ -1070,11 +1048,11 @@
                           </pre>
 <p class="figure">Complete ALPS+JSON Representation</p>
 <h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> <a href="#instructions" id="instructions">Applying ALPS documents to Existing Media Types</a></h1>
-<p id="rfc.section.3.p.1">An ALPS document can be applied to many existing media types as long as there exists an agreed mapping between ALPS and the target media type.  <a href="#example">Section 1.3</a> gave some informative examples of this. Normative, up-to-date guidance on applying ALPS documents to existing media types are available at the official ALPS Web site (http://alps.io). [I implied earlier there would be a formal registry. -leonardr] </p>
+<p id="rfc.section.3.p.1">An ALPS document can be applied to many existing media types as long as there exists an agreed mapping between ALPS and the target media type.  <a href="#example">Section 1.3</a> gave some informative examples of this. Normative, up-to-date guidance on applying ALPS documents to existing media types are available at the official ALPS Web site at (http://alps.io/docs/mapping). [TK : this page does not yet exist. -mamund] </p>
 <p/>
 <p id="rfc.section.3.p.3">Not all media types can faithfully represent all ALPS descriptors. For instance, the 'application/json' media type has no standard way of representing hyperlinks. The [details?] of how to apply ALPS to such a media type will necesarily be incomplete, and it will not be possible to represent some aspects of an ALPS profile in documents in that media type.  </p>
 <h1 id="rfc.section.3.1"><a href="#rfc.section.3.1">3.1.</a> <a href="#linking-to-alps-documents" id="linking-to-alps-documents">Linking to ALPS Documents</a></h1>
-<p id="rfc.section.3.1.p.1">To indicate that an ALPS profile describes the semantics of some representation document, the representation document SHOULD be linked to the ALPS document using the "profile" link relation (found in the IANA registry of link relations).  If the media type of the representation document has no native ability to link to other resources, or no ability to express link relations, the HTTP header 'Link' <a href="#RFC5988">[RFC5988]</a> MAY be used to connect the representation document and the ALPS profile. If the media type of the representation document defines a parameter for linking the document to a profile, that parameter MAY be used to connect the representation document and the ALPS profile.  </p>
+<p id="rfc.section.3.1.p.1">To indicate that an ALPS profile describes the semantics of some representation document, the representation document SHOULD be linked to the ALPS document. The "profile" link relation <a href="#RFC6906">[RFC6906]</a> MUST be used when creating this link.  If the media type of the representation document has no native ability to link to other resources, or no ability to express link relations, the HTTP header 'Link' <a href="#RFC5988">[RFC5988]</a> MAY be used to connect the representation document and the ALPS profile. If the media type of the representation document defines a parameter for linking the document to a profile, that parameter MAY be used to connect the representation document and the ALPS profile.  </p>
 <p id="rfc.section.3.1.p.2">A single representation document may be described by more than one ALPS profile. If two ALPS profiles give conflicting semantics for the same element, the document linked to earlier in the representation SHOULD take precedence. A profile linked to using the 'Link' header takes precedence over a profile linked to within the representation document itself. A profile linked to using a media type parameter takes precedence over a profile linked to using the 'Link' header and a profile linked to within the representation document itself.  </p>
 <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a></h1>
 <p id="rfc.section.4.p.1">This specification establishes two media types: 'application/alps+xml' and 'application/alps+json' </p>
@@ -1206,7 +1184,7 @@
 <p> </p>
 <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#internationalization" id="internationalization">Internationalization Considerations</a></h1>
 <p id="rfc.section.5.p.1">[TK]</p>
-<p><a id="CREF1" class="info">[CREF1]<span class="info">insert text (consider rfc 5987)</span></a> </p>
+<p/>
 <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> Acknowledgements</h1>
 <p id="rfc.section.6.p.1">The following people made contributions to this specification: </p>
 <h1 id="rfc.references"><a href="#rfc.references">7.</a> References</h1>
@@ -1236,6 +1214,12 @@
         <b id="RFC5988">[RFC5988]</b>
       </td>
       <td class="top"><a>Nottingham, M.</a>, "<a href="http://tools.ietf.org/html/rfc5988">Web Linking</a>", RFC 5988, October 2010.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC6906">[RFC6906]</b>
+      </td>
+      <td class="top"><a>Wilde, E.</a>, "<a href="http://tools.ietf.org/html/rfc6906">The 'profile' Link Relation Type</a>", RFC 6906, March 2013.</td>
     </tr>
   </tbody>
 </table>

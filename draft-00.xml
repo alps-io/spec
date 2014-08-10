@@ -6,6 +6,7 @@
         <!ENTITY rfc3023 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3023.xml">
         <!ENTITY rfc4627 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4627.xml">
         <!ENTITY rfc5988 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5988.xml">
+        <!ENTITY rfc6906 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6906.xml">
         ]>
 <!-- ref commands -->
 <?rfc comments="yes"?>
@@ -187,7 +188,6 @@
           control has one input value ("nameSearch"). When
           executed, the response will contain one or more
           "contact" type items.
-          <!--[TK Does rt mean one or more? I thought it meant one. -LR] -->
         </t>
         <figure title="ALPS Contact Profile document">
           <artwork><![CDATA[
@@ -238,8 +238,8 @@
             <input type="submit" value="Search" />
         </form>
 
-        <table class="contact">
-            <tr>
+        <table>
+            <tr class="contact">
                 <td>
                     <a href="http://example.org/contacts/1" rel="item">
                         <span class="fullName">Ann Arbuckle</span>
@@ -275,13 +275,8 @@
           HTML representations implement most ALPS elements using
           HTML's "class" attribute. The "collection" ID has become the
           CSS class of an HTML form's submit button.
-          <!-- [TK needs to go on the submit button, not the form. -leonardr]-->
           The "contact"
-          ID has become the CSS class of an HTML table.
-          <!-- [TK again there seems to be a confusion between singular and
-                    plural. The "contact" table contains all the contacts,
-                    implying that this is one person with multiple names and
-                    emails. -leonardr] -->
+          ID has become the CSS class of the TR elements in an HTML table.
           The subordinate descriptors "fullname","email", and "phone"
         </t>
         <t>This HAL document uses the same profile to express the same
@@ -928,15 +923,6 @@
           <t>
             Appears as a property of<xref target="prop-link">link</xref>.
           </t>
-          <!--           <t>
-                            A link relation type defined within an ALPS document MAY
-                            NOT be used as a registered link relation within the
-                            same ALPS document.
-          [TK MAY NOT or SHOULD NOT? -mca:: I think MAY NOT. I don't want an ALPS document to
-                            be used to describe itself. But I had to think for a
-                            while to remember the rationale for this. -leonardr]
-                            :: Don't understand, let's drop. Mark
-                </t>-->
         </section>
         <section anchor="prop-rt" title="'rt'">
           <t>
@@ -1005,8 +991,7 @@
             in the document. This SHOULD appear as a property of
             the
             <xref target="prop-alps">'alps'</xref>
-            property.
-            <!-- [TK property of the property? -LR]-->
+            element.
             Currently
             the only valid value is "1.0". If no value appears,
             then 'version="1.0"' is implied.
@@ -1201,8 +1186,8 @@
         gave some informative
         examples of this. Normative, up-to-date guidance on applying
         ALPS documents to existing media types are available at the
-        official ALPS Web site (http://alps.io). [I implied earlier
-        there would be a formal registry. -leonardr]
+        official ALPS Web site at (http://alps.io/docs/mapping). [TK : this 
+        page does not yet exist. -mamund]
       </t>
       <t>
         <!--
@@ -1270,14 +1255,8 @@
         <t>
           To indicate that an ALPS profile describes the semantics of
           some representation document, the representation document
-          SHOULD be linked to the ALPS document using the "profile"
-          link relation (found in the IANA registry of link
-          relations).
-          <!-- [TK I changed should to must. -leonardr :: Which
-                    means no one can EVER use Link header or media-type
-                    "profile" methods. is that what we want? -mca :: I see your
-                    point. I meant that no other link relation is
-                    acceptable. -LR] -->
+          SHOULD be linked to the ALPS document. The "profile"
+          link relation <xref target="RFC6906" /> MUST be used when creating this link.
           If the media type of the representation
           document has no native ability to link to other resources,
           or no ability to express link relations, the HTTP header
@@ -1301,7 +1280,6 @@
           takes precedence over a profile linked to using the 'Link'
           header and a profile linked to within the representation
           document itself.
-          <!-- [TK I added that, it seems right. -leonardr] -->
         </t>
       </section>
     </section>
@@ -1508,6 +1486,7 @@
       &rfc3023;
       &rfc4627;
       &rfc5988;
+      &rfc6906;
     </references>
     <references title="Informative References">
       <reference anchor="draft-ietf-appsawg-uri-get-off-my-lawn-00">
