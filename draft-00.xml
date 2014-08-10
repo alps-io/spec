@@ -6,6 +6,7 @@
         <!ENTITY rfc3023 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3023.xml">
         <!ENTITY rfc4627 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4627.xml">
         <!ENTITY rfc5988 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5988.xml">
+        <!ENTITY rfc6906 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6906.xml">
         ]>
 <!-- ref commands -->
 <?rfc comments="yes"?>
@@ -36,7 +37,7 @@
       </address>
     </author>
     <author fullname="Mark W. Foster" surname="Foster" initials="M.">
-      <organization>Medidata Solutions</organization>
+      <organization>Fingi, Inc.</organization>
       <address>
         <email>mwf@fosrias.com</email>
       </address>
@@ -50,7 +51,7 @@
         microformats. An ALPS document can be used as a
         profile to explain the application semantics of a
         document with an application-agnostic media type (such
-        as HTML, HAL, Collection+JSON, or Siren). This
+        as HTML, HAL, Collection+JSON, Siren, etc.). This
         increases the reusability of profile documents across
         media types.
       </t>
@@ -72,12 +73,10 @@
         similar in complexity to HTML microformats. These
         descriptions contain both human-readable and
         machine-readable explanations of the semantics.
-      </t>
-      <t>
         An ALPS document can be used as a profile to explain the
         application semantics of a document with an
         application-agnostic media type (such as HTML, HAL,
-        Collection+JSON, or Siren).
+        Collection+JSON, Siren. etc.).
       </t>
       <t>
         This document identifies a registry for ALPS documents,
@@ -187,47 +186,31 @@
           control has one input value ("nameSearch"). When
           executed, the response will contain one or more
           "contact" type items.
-          <!--[TK Does rt mean one or more? I thought it meant one. -LR] -->
         </t>
         <figure title="ALPS Contact Profile document">
           <artwork><![CDATA[
  <alps version="1.0">
-    <doc format="text">
-        A list of contacts
+  <doc format="text">A contact list.</doc>
+
+  <!-- a hypermedia control for returning contacts -->
+  <descriptor id="collection" type="safe" rt="contact">
+    <doc> 
+      A simple link/form for getting a list of contacts.
     </doc>
-
-    <!-- a hypermedia control for returning contacts -->
-    <descriptor id="collection"
-        type="safe"
-        rt="contact">
-        <doc>
-            simple link/form for getting a list of contacts
-        </doc>
-        <descriptor id="nameSearch"
-            type="semantic"
-            <doc>
-                input for search form
-            </doc>
-        </descriptor>
+    <descriptor id="nameSearch" type="semantic">
+      <doc>Input for a search form.</doc>
     </descriptor>
+  </descriptor>
 
-    <!--  a contact: one or more of these may be returned -->
-    <descriptor id="contact" 
-        type="semantic">
-        <descriptor id="item"
-            type="safe">
-            <doc>
-                link to individual contact
-            </doc>
-        </descriptor>
-        <descriptor id="fullName" 
-            type="semantic"" />
-        <descriptor id="email"
-            type="semantic" />
-        <descriptor id="phone"
-            type="semantic"/>
+  <!--  a contact: one or more of these may be returned -->
+  <descriptor id="contact" type="semantic">
+    <descriptor id="item" type="safe">
+      <doc>A link to an individual contact.</doc>
     </descriptor>
-
+    <descriptor id="fullName" type="semantic" />
+    <descriptor id="email"    type="semantic" />
+    <descriptor id="phone"    type="semantic" />
+  </descriptor>
 </alps>
                ]]></artwork>
         </figure>
@@ -242,49 +225,53 @@
         <figure title="HTML ALPS Contact Representation">
           <artwork><![CDATA[
 <html>
-    <head>
-        <link rel="profile" href="http://alps.io/profiles/contact" />
-        <link rel="type" href="http://alps.io/profiles/contact#contact" />
-    </head>
-    <body>
-        <form class="collection"
-            method="get" 
-            action="http://example.org/contacts/">
-            <label>Name:</label>
-            <input name="nameSearch" value="" />
-            <input type="submit" value="Search" />
-        </form>
+  <head>
+    <link href="http://alps.io/profiles/contact" 
+      rel="profile" />
+    <link href="http://alps.io/profiles/contact#contact" 
+      rel="type" />
+  </head>
+  <body>
+    <form class="collection"
+      method="get" 
+      action="http://example.org/contacts/">
+      <label>Name:</label>
+      <input name="nameSearch" value="" />
+      <input type="submit" value="Search" />
+    </form>
 
-        <table class="contact">
-            <tr>
-                <td>
-                    <a href="http://example.org/contacts/1" rel="item">
-                        <span class="fullName">Ann Arbuckle</span>
-                    </a>
-                </td>
-                <td>
-                    <span class="email">aa@example.org</span>
-                </td>
-                <td>
-                    <span class="phone">123.456.7890</span>
-                </td>
-            </tr>
+    <table>
+      <tr class="contact">
+        <td>
+          <a href="http://example.org/contacts/1" 
+            rel="item">
+            <span class="fullName">Ann Arbuckle</span>
+          </a>
+        </td>
+        <td>
+          <span class="email">aa@example.org</span>
+        </td>
+        <td>
+          <span class="phone">123.456.7890</span>
+        </td>
+      </tr>
             
-            <tr>
-                <td>
-                    <a href="http://example.org/contacts/100" rel="item">
-                        <span class="fullName">Zelda Zackney</span>
-                    </a>
-                </td>
-                <td>
-                    <span class="email">zz@example.org</span>
-                </td>
-                <td>
-                    <span class="phone">098.765.4321</span>
-                </td>
-            </tr>
-        </table>
-    </body>
+      <tr>
+        <td>
+          <a href="http://example.org/contacts/100" 
+            rel="item">
+            <span class="fullName">Zelda Zackney</span>
+          </a>
+        </td>
+        <td>
+          <span class="email">zz@example.org</span>
+        </td>
+        <td>
+          <span class="phone">098.765.4321</span>
+        </td>
+      </tr>
+    </table>
+  </body>
 </html>
               ]]></artwork>
         </figure>
@@ -292,14 +279,9 @@
           HTML representations implement most ALPS elements using
           HTML's "class" attribute. The "collection" ID has become the
           CSS class of an HTML form's submit button.
-          <!-- [TK needs to go on the submit button, not the form. -leonardr]-->
-          The "contact"
-          ID has become the CSS class of an HTML table.
-          <!-- [TK again there seems to be a confusion between singular and
-                    plural. The "contact" table contains all the contacts,
-                    implying that this is one person with multiple names and
-                    emails. -leonardr] -->
-          The subordinate descriptors "fullname","email", and "phone"
+          The "contact" ID has become the CSS class of the TR elements in an 
+          HTML table. The subordinate descriptors "fullname","email", and 
+          "phone" are rendered as the TD elements of each TR.
         </t>
         <t>This HAL document uses the same profile to express the same
           application-level semantics as the HTML document.
@@ -307,22 +289,25 @@
         <figure title="HAL XML Contacts Representation">
           <artwork><![CDATA[
 <resource href="http://example.org/contacts/">
-    <link rel="type" href="http://alps.io/profiles/contacts#contact" />
-    <link rel="collection" 
-        href="http://example.org/contacts/{?nameSearch}"
-        templated="true" />
-    <resource rel="item" href="http://example.org/contacts/1">
-        <link rel="type" href="http://alps.io/profiles/contacts#contact" />
-        <fullName>Ann Arbuckle</fullName>
-        <email>aa@example.org</email>
-        <phone>123.456.7890</phone>
-    </resource>
-    <resource rel="item" href="http://example.org/contacts/100">
-        <link rel="type" href="http://alps.io/profiles/contacts#contact" />
-        <fullName>Zelda Zackney</fullName>
-        <email>zz@example.org</email>
-        <phone>987.664.3210</phone>
-    </resource>
+  <link href="http://alps.io/profiles/contacts#contact" 
+    rel="type" />
+  <link rel="collection" 
+    href="http://example.org/contacts/{?nameSearch}"
+    templated="true" />
+  <resource rel="item" href="http://example.org/contacts/1">
+    <link href="http://alps.io/profiles/contacts#contact" 
+      rel="type" />
+    <fullName>Ann Arbuckle</fullName>
+    <email>aa@example.org</email>
+    <phone>123.456.7890</phone>
+  </resource>
+  <resource rel="item" href="http://example.org/contacts/100">
+    <link href="http://alps.io/profiles/contacts#contact" 
+      rel="type" />
+    <fullName>Zelda Zackney</fullName>
+    <email>zz@example.org</email>
+    <phone>987.664.3210</phone>
+  </resource>
 </resource>
                     ]]></artwork>
         </figure>
@@ -339,71 +324,80 @@
         <figure title="Collection+JSON Contacts Representation">
           <artwork><![CDATA[
 {
-    "collection" : {
-        "version" : "1.0",
+  "collection" : {
+    "version" : "1.0",
+    "href" : "http://example.org/contacts/",
+
+    "links" : [
+      {
+        "rel" : "profile", 
+        "href" : "http://alps.io/profiles/contacts"
+      },
+      {
+        "rel" : "type", 
+        "href" : "http://alps.io/profiles/contacts#contact"
+      }
+    ],
+
+    "queries" : [
+      {
+        "rel" : "collection", 
+        "rt" : "contact", 
         "href" : "http://example.org/contacts/",
-
-        "links" : [
-            {
-                "rel" : "profile", 
-                "href" : "http://alps.io/profiles/contacts"
-            },
-            {
-                "rel" : "type", 
-                "href" : "http://alps.io/profiles/contacts#contact"
-            }
-        ],
-
-        "queries" : [
-            {
-                "rel" : "collection", 
-                "rt" : "contact", 
-                "href" : "http://example.org/contacts/",
-                "data" : [
-                    {
-                        "name" : "nameSearch", 
-                        "value" : "", 
-                        "prompt" :  "Search Name"
-                    }
-                ]
-            }
-        ],
-
-        "items" : [
-            {
-                "href" : "http://example.org/contacts/1",
-                "rel" : "item",
-                "rt" : "contact",
-                "data" : [
-                    {"name" : "fullName", "value" : "Ann Arbuckle" },
-                    {"name" : "email", "value" : "aa@example.org" },
-                    {"name" : "phone", "value" : "123.456.7890" }
-                ],
-                "links" : [
-                    {
-                        "rel" : "type", 
-                        "href" : "http://alps.io/profiles/contacts#contact"
-                    }
-                ]
-            },
-            {
-                "href" : "http://example.org/contacts/100",
-                "rel" : "item",
-                "rt" : "contact",
-                "data" : [
-                    {"name" : "fullName", "value" : "Zelda Zackney" },
-                    {"name" : "email", "value" : "zz@example.org" },
-                    {"name" : "phone", "value" : "987.654.3210" }
-                ],
-                 "links" : [
-                    {
-                        "rel" : "type", 
-                        "href" : "http://alps.io/profiles/contacts#contact"
-                    }
-                ]
-            }
+        "data" : [
+          {
+            "name" : "nameSearch", 
+            "value" : "", 
+            "prompt" :  "Search Name"
+          }
         ]
-    }
+      }
+    ],
+
+    "items" : [
+      {
+        "href" : "http://example.org/contacts/1",
+        "rel" : "item",
+        "rt" : "contact",
+        "data" : [
+          {"name" : "fullName", "value" : "Ann Arbuckle"},
+          {"name" : "email", "value" : "aa@example.org"},
+          {"name" : "phone", "value" : "123.456.7890"}
+        ],
+        "links" : [
+          {
+            "rel" : "type", 
+            "href" : "http://alps.io/profiles/contacts#contact"
+          }
+        ]
+      },
+      {
+        "href" : "http://example.org/contacts/100",
+        "rel" : "item",
+        "rt" : "contact",
+        "data" : [
+          {
+            "name" : "fullName", 
+            "value" : "Zelda Zackney" 
+          },
+          {
+            "name" : "email", 
+            "value" : "zz@example.org" 
+          },
+          {
+            "name" : "phone", 
+            "value" : "987.654.3210" 
+          }
+        ],
+        "links" : [
+          {
+            "rel" : "type", 
+            "href" : "http://alps.io/profiles/contacts#contact"
+          }
+        ]
+      }
+    ]
+  }
 }
                 
                ]]></artwork>
@@ -420,8 +414,9 @@
           An ALPS vocabulary is identified by a unique URL.
           This URL SHOULD be assumed to be dereferencable.
           All ALPS URLs MUST be unique and all ALPS documents
-          intended for public consumption SHOULD be registered
-          with the ALPS Registry located at (to be specified).
+          intended for public consumption SHOULD be registered in
+          an ALPS Registry [TK: add text on where/how to find
+          registries -mamund].
         </t>
         <t>
           In order to reduce load on servers responding to
@@ -480,7 +475,7 @@
                 &lt;alps&gt;...&lt;/alps&gt;
               </t>
               <t hangText="JSON:">
-                {"alps" : ... }
+                { "alps" : ... }
               </t>
             </list>
           </t>
@@ -517,8 +512,8 @@
 </doc>
                         ]]></t>
               <t hangText="JSON:"><![CDATA[
-{"doc" : 
-    {"format" : "text" : "value" : "Date of Birth ..."}
+{ "doc" :
+  { "format" : "text" : "value" : "Date of Birth ..." }
 }
                         ]]></t>
             </list>
@@ -531,30 +526,32 @@
             <list style="hanging">
               <t hangText="XML:"><![CDATA[
 <descriptor ... >
-    <doc>...</doc>
+  <doc>...</doc>
 </descriptor>
                         ]]></t>
               <t hangText="JSON:"><![CDATA[
-{"descriptor" : {...}
-    {"doc" : {"value" : "..."}
+{ "descriptor" : {
+  { "doc" : { "value" : "..." }
+    ...
+  }
 }
                         ]]></t>
             </list>
           </t>
           <t>
-            The 'doc' element MAY appear as a child of<xref target="prop-alps">'alps'</xref>. When present, it
+            The 'doc' element MAY appear as a child of <xref target="prop-alps">'alps'</xref>. When present, it
             describes the purpose of the ALPS document as a
             whole.
             <list style="hanging">
               <t hangText="XML:"><![CDATA[
 <alps>
-    <doc>...</doc>
-    ...
+  <doc>...</doc>
+  ...
 </apls>
                         ]]></t>
               <t hangText="JSON:"><![CDATA[
-{"alps :
-   "doc" : { "value" : "..."},
+{ "alps :
+  "doc" : { "value" : "..." },
    ...
 }
                         ]]></t>
@@ -568,7 +565,7 @@
           </t>
           <t>
             One or more 'descriptor' elements
-            SHOULD appear as children of<xref target="prop-alps">'alps'</xref>. It may also appear
+            SHOULD appear as children of <xref target="prop-alps">'alps'</xref>. It may also appear
             as a child of itself; that is, the 'descriptor'
             property may be nested.
           </t>
@@ -616,21 +613,21 @@
             them.
           </t>
           <t>
-            If descriptor is declared at a top level of ALPS document,
-            then a client SHOULD assume that descriptor can appear anywhere
-            in runtime message.
+            If 'descriptor' is declared at the top level of an ALPS document,
+            then a client SHOULD assume that 'descriptor' can appear anywhere
+            in a runtime message.
           </t>
-          <t>If descriptor is nested, i.e. declared
+          <t>If 'descriptor' is nested, i.e. declared
             as a child of another descriptor, then:
             <list style="numbers">
-              <t>a client SHOULD assume them to appear in any
-                sibling 'descriptor' element and recursively in their child descriptors
+              <t>A client SHOULD assume them to appear in any
+                sibling 'descriptor' element and recursively in their child descriptors.
               </t>
-              <t>a client SHOULD NOT
+              <t>A client SHOULD NOT
                 assume that it can appear anywhere outside of parent descriptor,
                 unless it was explicitly referenced by another descriptor
                 in 'href' attribute. In that case the same rules are applied to
-                'descriptor' containing 'href' attribute
+                'descriptor' containing 'href' attribute.
               </t>
             </list>
           </t>
@@ -639,19 +636,24 @@
               When a representation is generated that includes state transitions, valid values for link relation types are:
             </t>
             <t>
-              1. A registered IANA link relation type (e.g. rel="edit").
-            </t>
-            <t>
-              2. An extension link relation type as defined by <xref target="RFC5988"/>
-              whose value is the fully-qualified URI of an associated document describing the
-              relation type. This includes URI fragment identifiers of ALPS descriptors
-              (e.g. rel="http://alps.io/profiles/item#purchased-by")
-              per the conventions of section 2.2.7.2.
-            </t>
-            <t>
-              3. The 'id' property of a state transition descriptor of an associated
-              ALPS document (e.g. rel="purchased-by") per the conventions of section
-              2.2.7.1 and section 2.2.7.3 if the representation includes an ALPS profile.
+              <list style="numbers">
+                <t>
+                  A registered IANA link relation type (e.g. rel="edit", a short string).
+                </t>
+                <t>
+                  An extension link relation type as defined by <xref target="RFC5988"/>
+                  whose value is the fully-qualified URI of an associated document describing the
+                  relation type. This includes URI fragment identifiers of ALPS descriptors
+                  (e.g. rel="http://alps.io/profiles/item#purchased-by", a URI)
+                  per the conventions of <xref target="prop-id-frag"/>.
+                </t>
+                <t>
+                  The 'id' property of a state transition descriptor of an associated
+                  ALPS document (e.g. rel="purchased-by", a short string) per the conventions
+                  of section <xref target="prop-id-name"/> and <xref target="prop-id-rels"/>
+                  if the representation includes an ALPS profile.
+                </t>
+              </list>
             </t>
           </section>
         </section>
@@ -704,9 +706,9 @@
                 value="north south east west" &gt;
               </t>
               <t hangText="JSON:">
-                {"ext" : {" id" : "directions", "href"
+                { "ext" : { "id" : "directions", "href"
                 : "http://alps.io/ext/directions",
-                value="north south east west"}}
+                value="north south east west" } }
               </t>
             </list>
           </t>
@@ -748,18 +750,18 @@
             Contains a resolvable URL.
           </t>
           <t>
-            When it appears as an attribute of<xref target="prop-descriptor">'descriptor'</xref>, 'href'
+            When it appears as an attribute of <xref target="prop-descriptor">'descriptor'</xref>, 'href'
             points to another 'descriptor' either within the
             existing ALPS document or in another ALPS document.
           </t>
           <t>
-            When it appears as an attribute of<xref target="prop-ext">'ext'</xref>, 'href' points to an
+            When it appears as an attribute of <xref target="prop-ext">'ext'</xref>, 'href' points to an
             external document which provides the defintion of
             the extension.
           </t>
           <t>
             When it appears as an attribute of
-            <xref target="prop-link">'link'</xref>
+            <xref target="prop-link">'link'</xref>,
             'href' points to an
             external document whose relationship to the current
             document or 'descriptor' is described by
@@ -777,7 +779,7 @@
         <section anchor="prop-id" title="'id'">
           <t>
             A document-wide unique identifier for the related
-            element. This SHOULD appear as an attribute of an
+            element. This SHOULD appear as an attribute of a
             <xref target="prop-descriptor">'descriptor'</xref>.
           </t>
           <t>
@@ -793,14 +795,14 @@
 
             <list style="hanging">
               <t hangText="...becomes the 'class' in HTML"><![CDATA[
-<input name="q" type="text" value="" />
+<input class="q" type="text" value="" />
                         ]]></t>
             </list>
           </t>
           <t>
             It should be noted that the exact mapping from ALPS elements (e.g. 'id')
             to elements within a particular media type (HTML, Collection+JSON, etc.)
-            is covered in separate documents (to be speficied).
+            is covered in separate documents (to be specified).
           </t>
           <section anchor="prop-id-name" title="ALPS 'id' and 'name' Properties">
             <t>
@@ -813,9 +815,9 @@
             <t>
               To avoid this, ALPS document designers can add the
               <xref target="prop-name">name</xref>
-              property to the descriptor to hold the common value ("search") while still using the
+              property to a 'descriptor' to hold the common value ("search") while still using the
               <xref target="prop-id">id</xref>
-              property to hold a document-wide unqiue value. For example:
+              property to hold a document-wide unique value. For example:
             </t>
             <figure title="HTML Representation of a Search Transition">
               <artwork><![CDATA[
@@ -831,7 +833,7 @@
             <figure title="ALPS Description of the same Search Transition">
               <artwork><![CDATA[
 <!-- ALPS -->
-<descriptor id="search-block" type="semantic name="search">
+<descriptor id="search-block" type="semantic" name="search">
   <descriptor id="search-form" type="safe" name="search">
     <descriptor id="search-data" type="semantic" name="search" />
   </descriptor>
@@ -842,8 +844,8 @@
           <section anchor="prop-id-frag" title="Fragment Identifiers and 'id'">
             <t>
               When applied to an ALPS document, a URI fragment
-              identifier points to the 'descriptor' with the
-              appropriate 'id'. For example, the fragment
+              identifier points to the 'descriptor' whose
+              'id' is the value of the fragment. For example, the fragment
               identifier "customer" in the URI
               http://example.com/my-alps-document#customer refers to an ALPS
               'descriptor' with 'id' set to "customer".
@@ -855,11 +857,11 @@
             </t>
             <t>
               The complete URI to an ALPS 'descriptor' (including the
-              fragement) forms an "abstract semantic type"
+              fragment) forms an "abstract semantic type"
               identifier. This is a resolvable URI (URL) that can
               be used to indicate the type of a resource; for
               instance, it can be used as the value of the
-              IANA-registered Link Relation Type.
+              IANA-registered relation type 'type'.
             </t>
           </section>
           <section anchor="prop-id-rels" title="Link Relation Values and 'id' or 'name'">
@@ -868,12 +870,13 @@
               it is important to avoid creating conflicts with existing IANA-registered
               values. If the resulting link relation type is the same as a
               registered relation type, the descriptor MUST not change the meaning of the
-              IANA type.
+              IANA relation type.
             </t>
             <t>
-              Further, since the 'id' of a descriptor may define a link relation value per section
-              2.2.3.1, if a conflict exists in defining such a descriptor's document unique 'id' with
-              another descriptor, the conflicting descriptor MUST define a unique 'id' and MAY specify a
+              Further, since the 'id' of a 'descriptor' may define a link relation value per
+              <xref target="prop-descriptor-link-relations"/>, if a conflict exists in defining
+              such a descriptor's document-wide unique 'id' with
+              another 'descriptor', the conflicting 'descriptor' MUST define a unique 'id' and MAY specify a
               'name' property to resolve the conflict.
             </t>
             <t>
@@ -885,15 +888,15 @@
         </section>
         <section anchor="prop-link" title="'link'">
           <t>
-            Identifies a link between the current ALPS element and some
-            other (possibly external) resource. Can be applied to the
+            An element that identifies a link between the current ALPS element and some
+            other (possibly external) resource. MAY be a child element of the
             <xref target="prop-alps">'alps'</xref>
             and the
             <xref target="prop-descriptor">'descriptor'</xref>
             elements.
           </t>
           <t>
-            The 'link' property MUST define the two attributes
+            The 'link' element MUST define the two attributes
             <xref target="prop-href">'href'</xref>
             and
             <xref target="prop-rel">'rel'</xref>.
@@ -915,7 +918,7 @@
             ALPS document. For instance, if a single ALPS
             document defines a semantic descriptor (data element) called
             "customer" and a safe descriptor (transition element) also called
-            "customer", they can't both have 'id="customer"' in
+            "customer", they cannot both have 'id="customer"' in
             the ALPS document. One of them needs to have some
             other 'id', and to set 'name="customer"'.
           </t>
@@ -937,39 +940,32 @@
           <t>
             Appears as a property of<xref target="prop-link">link</xref>.
           </t>
-          <!--           <t>
-                            A link relation type defined within an ALPS document MAY
-                            NOT be used as a registered link relation within the
-                            same ALPS document.
-          [TK MAY NOT or SHOULD NOT? -mca:: I think MAY NOT. I don't want an ALPS document to
-                            be used to describe itself. But I had to think for a
-                            while to remember the rationale for this. -leonardr]
-                            :: Don't understand, let's drop. Mark
-                </t>-->
         </section>
         <section anchor="prop-rt" title="'rt'">
           <t>
             Indicates the resource type that will be returned when
             executing the specified network request. The 'rt' attribute
             SHOULD appear only on a
-            <xref target="prop-descriptor">descriptor</xref>
+            <xref target="prop-descriptor">'descriptor'</xref>
             with a
-            <xref target="prop-type">type</xref>
+            <xref target="prop-type">'type'</xref>
             value of
             'safe', 'unsafe', or 'idempotent.'
           </t>
           <t>
             The 'rt' attribute is OPTIONAL and is an opaque string and MAY match the
-            <xref target="prop-id">id</xref>
+            <xref target="prop-id">'id'</xref>
             of an
-            existing<xref target="prop-descriptor">descriptor</xref>.
+            existing<xref target="prop-descriptor">'descriptor'</xref>.
           </t>
         </section>
         <section anchor="prop-type" title="'type'">
           <t>
-            Indicates the type of representation control to which
-            the element is applied. This MUST appear for each
-            element. Four valid values are defined:
+            Indicates the type of hypermedia control to which
+            the element is applied within the resulting representation. 
+            This SHOULD appear for each 
+            <xref target="prop-descriptor">'descriptor'</xref> element. 
+            The four valid values are:
 
             <list style="hanging">
               <t hangText="&quot;semantic&quot;">
@@ -992,8 +988,8 @@
               </t>
             </list>
 
-            If no 'type' attribute is associated with the element
-            then the 'type="semantic"' is implied.
+            If no 'type' attribute is associated with the
+            element, then 'type="semantic"' is implied.
           </t>
         </section>
         <section anchor="prop-value" title="'value'">
@@ -1012,8 +1008,7 @@
             in the document. This SHOULD appear as a property of
             the
             <xref target="prop-alps">'alps'</xref>
-            property.
-            <!-- [TK property of the property? -LR]-->
+            element.
             Currently
             the only valid value is "1.0". If no value appears,
             then 'version="1.0"' is implied.
@@ -1039,177 +1034,152 @@
               <artwork><![CDATA[
 <!-- sample HTML document -->                    
 <html>
-    <head>
-        <link rel="profile" href="http://alps.io/documents/search" />
-    </head>
-    <body>
-        <form class="search" action="..." method="get">
-            <input type="text" name="search" value="..." />
-            <select name="resultType">
-                <option value="summary" />
-                <option value="detailed" />
-            </select>
-            <input type="submit" />
-        </form>
-    </body>
+  <head>
+    <link rel="profile" href="http://alps.io/documents/search" />
+  </head>
+  <body>
+    <form class="search" action="..." method="get">
+      <input type="text" name="search" value="..." />
+        <select name="resultType">
+          <option value="summary" />
+          <option value="detailed" />
+        </select>
+      <input type="submit" />
+    </form>
+  </body>
 </html>                           
                         ]]></artwork>
             </figure>
           </t>
         </section>
-        <section anchor="xml-representation" title="XML Representation">
-          <section title="XML Representation Notes">
-            <t>
-              In the XML version of an ALPS document, the following
-              ALPS properties always appear as XML elements:<xref target="prop-alps">'alps'</xref>,<xref
-                    target="prop-doc">'doc'</xref>,<xref target="prop-descriptor">'descriptor'</xref>, and<xref
-                    target="prop-ext">'ext'</xref>. All other ALPS
-              properties appear as XML attributes.
-            </t>
-          </section>
+        <section anchor="xml-representation" title="XML Representation Example">
+          <t>
+            In the XML version of an ALPS document, the following
+            ALPS properties always appear as XML elements: <xref target="prop-alps">'alps'</xref>, <xref
+                  target="prop-doc">'doc'</xref>, <xref target="prop-descriptor">'descriptor'</xref>, and <xref
+                  target="prop-ext">'ext'</xref>. All other ALPS
+            properties appear as XML attributes.
+          </t>
           <section title="Complete XML Representation">
             <t>
-              Below is an example of an applcation/alps+xml
+              Below is an example of an application/alps+xml
               representation.
-              <figure title="Complete XML Representation">
-                <artwork><![CDATA[
+            </t>
+            <figure title="Complete XML Representation">
+              <artwork><![CDATA[
 <?xml version="1.0"?>
 <alps version="1.0">
-    <doc href="http://example.org/samples/full/doc.html" />
+  <doc href="http://example.org/samples/full/doc.html" />
 
-    <descriptor id="search" 
-        type="safe">
-        <doc format="text">
-            A search form with two inputs.
-        </doc>
-        <descriptor href="#resultType" />
-        <descriptor id="value"
-            name="search" 
-            type="semantic">
-            <doc>input for search</doc>
-        </descriptor>
+  <descriptor id="search" type="safe">
+    <doc format="text">A search form with two inputs.</doc>
+    <descriptor href="#resultType" />
+    <descriptor id="value" name="search" type="semantic">
+      <doc>input for search</doc>
     </descriptor>
+  </descriptor>
 
-    <descriptor id="resultType"
-        type="semantic">
-        <doc>results format</doc>
-        <ext 
-            href="http://alps.io/ext/range" 
-            value="summary,detail" />
-    </descriptor>
+  <descriptor id="resultType" type="semantic">
+    <doc>results format</doc>
+    <ext 
+      href="http://alps.io/ext/range" 
+      value="summary,detail" />
+  </descriptor>
 </alps>
-                            ]]></artwork>
-              </figure>
-            </t>
+                          ]]></artwork>
+            </figure>
           </section>
         </section>
-        <section anchor="json-representation" title="JSON Representation">
-          <section title="JSON Representation Notes">
-            <t>
-              When representing ALPS documents in JSON format,
-              the
-              <xref target="prop-descriptor">'descriptor'</xref>
-              and
-              <xref target="prop-ext">'ext'</xref>
-              properties are
-              always expressed as arrays of anonymous objects - even
-              when there is only one member in the array.
+        <section anchor="json-representation" title="JSON Representation Example">
+          <t>
+            When representing ALPS documents in JSON format,
+            the
+            <xref target="prop-descriptor">'descriptor'</xref>
+            and
+            <xref target="prop-ext">'ext'</xref>
+            properties are
+            always expressed as arrays of anonymous objects - even
+            when there is only one member in the array.
 
-              <figure title="Arrays in ALPS+JSON">
-                <preamble>For example:</preamble>
-                <artwork>
-                  "descriptor" : [
-                  {
-                  "id" : "search",
-                  "type" : "safe"
-                  "descriptor" : [
-                  {"href" : "#value"},
-                  {
-                  "id" : "resultType",
-                  "type" : "semantic",
-                  "ext" : [
-                  {
-                  "href" : "http://alps.io/ext/range",
-                  "value" : "summary,detail"
-                  }
-                  ]
-                  }
-                  ]
-                  },
-                  {
-                  "id" : "#value",
-                  "type" : "semantic"
-                  }
-                  ]
-                </artwork>
-              </figure>
-            </t>
-            <t>
-              The
-              <xref target="prop-doc">'doc'</xref>
-              property is always expressed as a named object.
-            </t>
-            <t>
-              <figure title="Descriptions in ALPS+JSON">
-                <preamble>For example:</preamble>
-                <artwork>
-                  {
-                  "doc" : {
-                  "format" : "text",
-                  "value" : "Rules are imporant"
-                  }
-                  }
-                </artwork>
-              </figure>
-            </t>
-          </section>
-          <section title="Complete Representation">
+            <figure title="Arrays in ALPS+JSON">
+              <preamble>For example:</preamble>
+              <artwork><![CDATA[
+"descriptor" : [
+  {
+    "id" : "value",
+    "name" : "search",
+    "type" : "descriptor",
+    "doc" : { "value" : "input for search" }
+  },
+  { "href" : "#resultType" }
+]
+              ]]></artwork>
+            </figure>
+          </t>
+          <t>
+            The
+            <xref target="prop-doc">'doc'</xref>
+            property is always expressed as a named object.
+          </t>
+          <t>
+            <figure title="Descriptions in ALPS+JSON">
+              <preamble>For example:</preamble>
+              <artwork><![CDATA[
+{
+  "doc" : {
+    "format" : "text",
+    "value" : "Rules are important"
+  }
+}
+              ]]></artwork>
+            </figure>
+          </t>
+          <section title="Complete JSON Representation">
             <t>
               Below is a example of the application/alps+json
               representation of an ALPS document.
-              <figure title="Complete ALPS+JSON Representation">
-                <artwork><![CDATA[
-// http://alps.io/documents/search
+            </t>
+            <figure title="Complete ALPS+JSON Representation">
+              <artwork><![CDATA[
 { 
-    "alps" : {
-        "version" : "1.0",
-        "doc" : {
-            "href" : "http://example.org/samples/full/doc.html"
+  "alps" : {
+    "version" : "1.0",
+    "doc" : {
+      "href" : "http://example.org/samples/full/doc.html"
+    },
+    "descriptor" : [
+      {
+        "id" : "search", 
+        "type" : "safe",
+        "doc" : {"value" : 
+          "A search form with a two inputs"
         },
         "descriptor" : [
-            {
-                "id" : "search", 
-                "type" : "safe",
-                "doc" : {"value" : 
-                    "A search form with a two inputs"
-                },
-                "descriptor" : [
-                    {
-                        "id" : "value",
-                        "name" : "search",
-                        "type" : "descriptor",
-                        "doc" : {"value" : "input for search"}
-                    },
-                    {"href" : "#resultType"}
-                ]
-            },
-           {
-                "id" : "resultType",
-                "type" : "descriptor",
-                "description" : {"value" : "results format"},
-                "ext" : [
-                    {
-                        "href" : "http://alps.io/ext/range", 
-                        "value" : "summary,detail"
-                    }
-                ]
-            }
-        ]  
-    }
+          {
+            "id" : "value",
+            "name" : "search",
+            "type" : "descriptor",
+            "doc" : { "value" : "input for search" }
+          },
+          { "href" : "#resultType" }
+        ]
+      },
+      {
+        "id" : "resultType",
+        "type" : "descriptor",
+        "description" : {"value" : "results format"},
+        "ext" : [
+          {
+            "href" : "http://alps.io/ext/range", 
+            "value" : "summary,detail"
+          }
+        ]
+      }
+    ]  
+  }
 }
-                            ]]></artwork>
-              </figure>
-            </t>
+                          ]]></artwork>
+            </figure>
           </section>
         </section>
       </section>
@@ -1224,8 +1194,8 @@
         gave some informative
         examples of this. Normative, up-to-date guidance on applying
         ALPS documents to existing media types are available at the
-        official ALPS Web site (http://alps.io). [I implied earlier
-        there would be a formal registry. -leonardr]
+        official ALPS Web site at (http://alps.io/docs/mapping). [TK : this 
+        page does not yet exist. -mamund]
       </t>
       <t>
         <!--
@@ -1275,7 +1245,7 @@
       <t>
         Not all media types can faithfully represent all ALPS
         descriptors. For instance, the 'application/json' media type
-        has no standard way of representing hyperlinks. The [details?] of how to
+        has no standard way of representing hyperlinks. The [details of how to
         apply ALPS to such a media type will necesarily be incomplete,
         and it will not be possible to represent some aspects of an
         ALPS profile in documents in that media type.
@@ -1293,14 +1263,8 @@
         <t>
           To indicate that an ALPS profile describes the semantics of
           some representation document, the representation document
-          SHOULD be linked to the ALPS document using the "profile"
-          link relation (found in the IANA registry of link
-          relations).
-          <!-- [TK I changed should to must. -leonardr :: Which
-                    means no one can EVER use Link header or media-type
-                    "profile" methods. is that what we want? -mca :: I see your
-                    point. I meant that no other link relation is
-                    acceptable. -LR] -->
+          SHOULD be linked to the ALPS document. The "profile"
+          link relation <xref target="RFC6906" /> MUST be used when creating this link.
           If the media type of the representation
           document has no native ability to link to other resources,
           or no ability to express link relations, the HTTP header
@@ -1324,7 +1288,6 @@
           takes precedence over a profile linked to using the 'Link'
           header and a profile linked to within the representation
           document itself.
-          <!-- [TK I added that, it seems right. -leonardr] -->
         </t>
       </section>
     </section>
@@ -1531,6 +1494,7 @@
       &rfc3023;
       &rfc4627;
       &rfc5988;
+      &rfc6906;
     </references>
     <references title="Informative References">
       <reference anchor="draft-ietf-appsawg-uri-get-off-my-lawn-00">
@@ -1559,17 +1523,17 @@
           All that is required is that implementors use the same ALPS profile descriptor 'id' and 'name'
           properties in the representations. When implementing ALPS-compliant client applications, the
           URLs will be supplied at runtime by the server represetentations. Client apps only need to
-          recognize the descriptor 'id' and 'name' values from the referenced ALP profile document.
+          recognize the descriptor 'id' and 'name' values from the referenced ALPS profile document.
         </t>
       </section>
       <section title="Why is there no workflow component in the ALPS specification?">
         <t>
-          ALPS is not designed to describe workflows or execution paths for a process. Instead, ALPS
+          ALPS is not designed to describe workflows or execution paths for a service. Instead, ALPS
           is designed to describe a shared set of data and actions elements that server MAY implement
           in order to create a service. Each action descriptor (where the descriptor's type property is set to
-          "safe", "unsafe", or "idemponent") SHOULD describe a stateless state transition that a
+          "safe", "unsafe", or "idemponent") SHOULD describe a state transition that a
           ALPS-compliant client application can invoke when it is available. Servers are free to
-          implement on the transitions they find useful and to arrange them in any order they wish.
+          implement the transitions they find useful and to arrange them in any order they wish.
           ALPS-compliant client applications SHOULD be able to recognize these descriptors when they appear
           and are free to act upon them directly, render them for humans to invoke, or ignore/hide them
           completely.
@@ -1586,8 +1550,8 @@
         </t>
         <t>
           Since ALPS is meant to provide a single description that can be used by multiple services,
-          establishing ranges in the ALPS description is usually over-constraining existing (and future)
-          service implementations. Services are still free to supply this information within representations
+          establishing ranges within the ALPS description is considered over-constraining
+          service implementations. Services are free to supply this information within representations
           at run time. But including them in the global ALPS profile is discouraged.
         </t>
       </section>
