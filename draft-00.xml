@@ -193,7 +193,9 @@
 
     <!-- a hypermedia control for returning contacts -->
     <descriptor id="collection" type="safe" rt="contact">
-        <doc> A simple link/form for getting a list of contacts.</doc>
+        <doc> 
+          A simple link/form for getting a list of contacts.
+        </doc>
         <descriptor id="nameSearch" type="semantic">
             <doc>Input for a search form.</doc>
         </descriptor>
@@ -223,8 +225,10 @@
           <artwork><![CDATA[
 <html>
     <head>
-        <link rel="profile" href="http://alps.io/profiles/contact" />
-        <link rel="type" href="http://alps.io/profiles/contact#contact" />
+        <link href="http://alps.io/profiles/contact" 
+          rel="profile" />
+        <link href="http://alps.io/profiles/contact#contact" 
+          rel="type" />
     </head>
     <body>
         <form class="collection"
@@ -238,7 +242,8 @@
         <table>
             <tr class="contact">
                 <td>
-                    <a href="http://example.org/contacts/1" rel="item">
+                    <a href="http://example.org/contacts/1" 
+                      rel="item">
                         <span class="fullName">Ann Arbuckle</span>
                     </a>
                 </td>
@@ -252,7 +257,8 @@
             
             <tr>
                 <td>
-                    <a href="http://example.org/contacts/100" rel="item">
+                    <a href="http://example.org/contacts/100" 
+                      rel="item">
                         <span class="fullName">Zelda Zackney</span>
                     </a>
                 </td>
@@ -282,18 +288,21 @@
         <figure title="HAL XML Contacts Representation">
           <artwork><![CDATA[
 <resource href="http://example.org/contacts/">
-    <link rel="type" href="http://alps.io/profiles/contacts#contact" />
+    <link href="http://alps.io/profiles/contacts#contact" 
+      rel="type" />
     <link rel="collection" 
         href="http://example.org/contacts/{?nameSearch}"
         templated="true" />
     <resource rel="item" href="http://example.org/contacts/1">
-        <link rel="type" href="http://alps.io/profiles/contacts#contact" />
+        <link href="http://alps.io/profiles/contacts#contact" 
+          rel="type" />
         <fullName>Ann Arbuckle</fullName>
         <email>aa@example.org</email>
         <phone>123.456.7890</phone>
     </resource>
     <resource rel="item" href="http://example.org/contacts/100">
-        <link rel="type" href="http://alps.io/profiles/contacts#contact" />
+        <link href="http://alps.io/profiles/contacts#contact" 
+          rel="type" />
         <fullName>Zelda Zackney</fullName>
         <email>zz@example.org</email>
         <phone>987.664.3210</phone>
@@ -357,7 +366,8 @@
                 "links" : [
                     {
                         "rel" : "type", 
-                        "href" : "http://alps.io/profiles/contacts#contact"
+                        "href" : 
+                          "http://alps.io/profiles/contacts#contact"
                     }
                 ]
             },
@@ -366,14 +376,21 @@
                 "rel" : "item",
                 "rt" : "contact",
                 "data" : [
-                    {"name" : "fullName", "value" : "Zelda Zackney" },
-                    {"name" : "email", "value" : "zz@example.org" },
-                    {"name" : "phone", "value" : "987.654.3210" }
+                    {"name" : "fullName", 
+                     "value" : "Zelda Zackney" 
+                    },
+                    {"name" : "email", 
+                     "value" : "zz@example.org" 
+                    },
+                    {"name" : "phone", 
+                     "value" : "987.654.3210" 
+                    }
                 ],
                  "links" : [
                     {
                         "rel" : "type", 
-                        "href" : "http://alps.io/profiles/contacts#contact"
+                        "href" : 
+                          "http://alps.io/profiles/contacts#contact"
                     }
                 ]
             }

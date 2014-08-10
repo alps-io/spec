@@ -546,7 +546,9 @@
 
     &lt;!-- a hypermedia control for returning contacts --&gt;
     &lt;descriptor id="collection" type="safe" rt="contact"&gt;
-        &lt;doc&gt; A simple link/form for getting a list of contacts.&lt;/doc&gt;
+        &lt;doc&gt; 
+          A simple link/form for getting a list of contacts.
+        &lt;/doc&gt;
         &lt;descriptor id="nameSearch" type="semantic"&gt;
             &lt;doc&gt;Input for a search form.&lt;/doc&gt;
         &lt;/descriptor&gt;
@@ -568,8 +570,10 @@
 <pre>
 &lt;html&gt;
     &lt;head&gt;
-        &lt;link rel="profile" href="http://alps.io/profiles/contact" /&gt;
-        &lt;link rel="type" href="http://alps.io/profiles/contact#contact" /&gt;
+        &lt;link href="http://alps.io/profiles/contact" 
+          rel="profile" /&gt;
+        &lt;link href="http://alps.io/profiles/contact#contact" 
+          rel="type" /&gt;
     &lt;/head&gt;
     &lt;body&gt;
         &lt;form class="collection"
@@ -583,7 +587,8 @@
         &lt;table&gt;
             &lt;tr class="contact"&gt;
                 &lt;td&gt;
-                    &lt;a href="http://example.org/contacts/1" rel="item"&gt;
+                    &lt;a href="http://example.org/contacts/1" 
+                      rel="item"&gt;
                         &lt;span class="fullName"&gt;Ann Arbuckle&lt;/span&gt;
                     &lt;/a&gt;
                 &lt;/td&gt;
@@ -597,7 +602,8 @@
             
             &lt;tr&gt;
                 &lt;td&gt;
-                    &lt;a href="http://example.org/contacts/100" rel="item"&gt;
+                    &lt;a href="http://example.org/contacts/100" 
+                      rel="item"&gt;
                         &lt;span class="fullName"&gt;Zelda Zackney&lt;/span&gt;
                     &lt;/a&gt;
                 &lt;/td&gt;
@@ -617,18 +623,21 @@
 <p id="rfc.section.1.3.p.5">This HAL document uses the same profile to express the same application-level semantics as the HTML document.  </p>
 <pre>
 &lt;resource href="http://example.org/contacts/"&gt;
-    &lt;link rel="type" href="http://alps.io/profiles/contacts#contact" /&gt;
+    &lt;link href="http://alps.io/profiles/contacts#contact" 
+      rel="type" /&gt;
     &lt;link rel="collection" 
         href="http://example.org/contacts/{?nameSearch}"
         templated="true" /&gt;
     &lt;resource rel="item" href="http://example.org/contacts/1"&gt;
-        &lt;link rel="type" href="http://alps.io/profiles/contacts#contact" /&gt;
+        &lt;link href="http://alps.io/profiles/contacts#contact" 
+          rel="type" /&gt;
         &lt;fullName&gt;Ann Arbuckle&lt;/fullName&gt;
         &lt;email&gt;aa@example.org&lt;/email&gt;
         &lt;phone&gt;123.456.7890&lt;/phone&gt;
     &lt;/resource&gt;
     &lt;resource rel="item" href="http://example.org/contacts/100"&gt;
-        &lt;link rel="type" href="http://alps.io/profiles/contacts#contact" /&gt;
+        &lt;link href="http://alps.io/profiles/contacts#contact" 
+          rel="type" /&gt;
         &lt;fullName&gt;Zelda Zackney&lt;/fullName&gt;
         &lt;email&gt;zz@example.org&lt;/email&gt;
         &lt;phone&gt;987.664.3210&lt;/phone&gt;
@@ -683,7 +692,8 @@
                 "links" : [
                     {
                         "rel" : "type", 
-                        "href" : "http://alps.io/profiles/contacts#contact"
+                        "href" : 
+                          "http://alps.io/profiles/contacts#contact"
                     }
                 ]
             },
@@ -692,14 +702,21 @@
                 "rel" : "item",
                 "rt" : "contact",
                 "data" : [
-                    {"name" : "fullName", "value" : "Zelda Zackney" },
-                    {"name" : "email", "value" : "zz@example.org" },
-                    {"name" : "phone", "value" : "987.654.3210" }
+                    {"name" : "fullName", 
+                     "value" : "Zelda Zackney" 
+                    },
+                    {"name" : "email", 
+                     "value" : "zz@example.org" 
+                    },
+                    {"name" : "phone", 
+                     "value" : "987.654.3210" 
+                    }
                 ],
                  "links" : [
                     {
                         "rel" : "type", 
-                        "href" : "http://alps.io/profiles/contacts#contact"
+                        "href" : 
+                          "http://alps.io/profiles/contacts#contact"
                     }
                 ]
             }
