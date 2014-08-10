@@ -24,7 +24,6 @@
       Application-Level Profile Semantics (ALPS)
     </title>
     <author fullname="Mike Amundsen" surname="Amundsen" initials="M.">
-      <organization>Layer 7 Technologies</organization>
       <address>
         <email>mca@amundsen.com</email>
         <uri>http://amundsen.com</uri>
@@ -51,7 +50,7 @@
         microformats. An ALPS document can be used as a
         profile to explain the application semantics of a
         document with an application-agnostic media type (such
-        as HTML, HAL, Collection+JSON, or Siren). This
+        as HTML, HAL, Collection+JSON, Siren, etc.). This
         increases the reusability of profile documents across
         media types.
       </t>
@@ -73,12 +72,10 @@
         similar in complexity to HTML microformats. These
         descriptions contain both human-readable and
         machine-readable explanations of the semantics.
-      </t>
-      <t>
         An ALPS document can be used as a profile to explain the
         application semantics of a document with an
         application-agnostic media type (such as HTML, HAL,
-        Collection+JSON, or Siren).
+        Collection+JSON, Siren. etc.).
       </t>
       <t>
         This document identifies a registry for ALPS documents,
@@ -275,9 +272,9 @@
           HTML representations implement most ALPS elements using
           HTML's "class" attribute. The "collection" ID has become the
           CSS class of an HTML form's submit button.
-          The "contact"
-          ID has become the CSS class of the TR elements in an HTML table.
-          The subordinate descriptors "fullname","email", and "phone"
+          The "contact" ID has become the CSS class of the TR elements in an 
+          HTML table. The subordinate descriptors "fullname","email", and 
+          "phone" are rendered as the TD elements of each TR.
         </t>
         <t>This HAL document uses the same profile to express the same
           application-level semantics as the HTML document.
@@ -399,7 +396,8 @@
           This URL SHOULD be assumed to be dereferencable.
           All ALPS URLs MUST be unique and all ALPS documents
           intended for public consumption SHOULD be registered
-          with the ALPS Registry located at (to be specified).
+          an the ALPS Registry [TK: add text on where/how to find 
+          registries -mamund].
         </t>
         <t>
           In order to reduce load on servers responding to
@@ -871,15 +869,15 @@
         </section>
         <section anchor="prop-link" title="'link'">
           <t>
-            Identifies a link between the current ALPS element and some
-            other (possibly external) resource. Can be applied to the
+            An element that identifies a link between the current ALPS element and some
+            other (possibly external) resource. MAY be a child element of the
             <xref target="prop-alps">'alps'</xref>
             and the
             <xref target="prop-descriptor">'descriptor'</xref>
             elements.
           </t>
           <t>
-            The 'link' property MUST define the two attributes
+            The 'link' element MUST define the two attributes
             <xref target="prop-href">'href'</xref>
             and
             <xref target="prop-rel">'rel'</xref>.
@@ -944,9 +942,11 @@
         </section>
         <section anchor="prop-type" title="'type'">
           <t>
-            Indicates the type of representation control to which
-            the element is applied. This MUST appear for each
-            element. Four valid values are defined:
+            Indicates the type of hypermedia control to which
+            the element is applied within the resulting representation. 
+            This SHOULD appear for each 
+            <xref target="prop-descriptor">'descriptor'</xref> element. 
+            The four valid values are:
 
             <list style="hanging">
               <t hangText="&quot;semantic&quot;">
@@ -1035,21 +1035,14 @@
             </figure>
           </t>
         </section>
-        <section anchor="xml-representation" title="XML Representation">
-          <section title="XML Representation Notes">
-            <!-- [I don't seen any reason for having this "Notes" section. This content is perfectly
-            appropriate (and actually more appropriate since it gives directives) for the
-            "XML Represesentation" section above it that has no descriptive content
-            and is just topical cruft IMO. I recommend we bump the notes into the parent section
-            and call notes "XML Representation Examples". Ditto on JSON section. - Mark] -->
-            <t>
-              In the XML version of an ALPS document, the following
-              ALPS properties always appear as XML elements: <xref target="prop-alps">'alps'</xref>, <xref
-                    target="prop-doc">'doc'</xref>, <xref target="prop-descriptor">'descriptor'</xref>, and <xref
-                    target="prop-ext">'ext'</xref>. All other ALPS
-              properties appear as XML attributes.
-            </t>
-          </section>
+        <section anchor="xml-representation" title="XML Representation Example">
+          <t>
+            In the XML version of an ALPS document, the following
+            ALPS properties always appear as XML elements: <xref target="prop-alps">'alps'</xref>, <xref
+                  target="prop-doc">'doc'</xref>, <xref target="prop-descriptor">'descriptor'</xref>, and <xref
+                  target="prop-ext">'ext'</xref>. All other ALPS
+            properties appear as XML attributes.
+          </t>
           <section title="Complete XML Representation">
             <t>
               Below is an example of an application/alps+xml
@@ -1080,53 +1073,51 @@
             </figure>
           </section>
         </section>
-        <section anchor="json-representation" title="JSON Representation">
-          <section title="JSON Representation Notes">
-            <t>
-              When representing ALPS documents in JSON format,
-              the
-              <xref target="prop-descriptor">'descriptor'</xref>
-              and
-              <xref target="prop-ext">'ext'</xref>
-              properties are
-              always expressed as arrays of anonymous objects - even
-              when there is only one member in the array.
+        <section anchor="json-representation" title="JSON Representation Example">
+          <t>
+            When representing ALPS documents in JSON format,
+            the
+            <xref target="prop-descriptor">'descriptor'</xref>
+            and
+            <xref target="prop-ext">'ext'</xref>
+            properties are
+            always expressed as arrays of anonymous objects - even
+            when there is only one member in the array.
 
-              <figure title="Arrays in ALPS+JSON">
-                <preamble>For example:</preamble>
-                <artwork><![CDATA[
+            <figure title="Arrays in ALPS+JSON">
+              <preamble>For example:</preamble>
+              <artwork><![CDATA[
 "descriptor" : [
-    {
-        "id" : "value",
-        "name" : "search",
-        "type" : "descriptor",
-        "doc" : {"value" : "input for search"}
-    },
-    {"href" : "#resultType"}
+  {
+      "id" : "value",
+      "name" : "search",
+      "type" : "descriptor",
+      "doc" : {"value" : "input for search"}
+  },
+  {"href" : "#resultType"}
 ]
-                ]]></artwork>
-              </figure>
-            </t>
-            <t>
-              The
-              <xref target="prop-doc">'doc'</xref>
-              property is always expressed as a named object.
-            </t>
-            <t>
-              <figure title="Descriptions in ALPS+JSON">
-                <preamble>For example:</preamble>
-                <artwork><![CDATA[
+              ]]></artwork>
+            </figure>
+          </t>
+          <t>
+            The
+            <xref target="prop-doc">'doc'</xref>
+            property is always expressed as a named object.
+          </t>
+          <t>
+            <figure title="Descriptions in ALPS+JSON">
+              <preamble>For example:</preamble>
+              <artwork><![CDATA[
 {
-    "doc" : {
-        "format" : "text",
-        "value" : "Rules are important"
-    }
+  "doc" : {
+      "format" : "text",
+      "value" : "Rules are important"
+  }
 }
-                ]]></artwork>
-              </figure>
-            </t>
-          </section>
-          <section title="Complete Representation">
+              ]]></artwork>
+            </figure>
+          </t>
+          <section title="Complete JSON Representation">
             <t>
               Below is a example of the application/alps+json
               representation of an ALPS document.
@@ -1237,7 +1228,7 @@
       <t>
         Not all media types can faithfully represent all ALPS
         descriptors. For instance, the 'application/json' media type
-        has no standard way of representing hyperlinks. The [details?] of how to
+        has no standard way of representing hyperlinks. The [details of how to
         apply ALPS to such a media type will necesarily be incomplete,
         and it will not be possible to represent some aspects of an
         ALPS profile in documents in that media type.
@@ -1515,17 +1506,17 @@
           All that is required is that implementors use the same ALPS profile descriptor 'id' and 'name'
           properties in the representations. When implementing ALPS-compliant client applications, the
           URLs will be supplied at runtime by the server represetentations. Client apps only need to
-          recognize the descriptor 'id' and 'name' values from the referenced ALP profile document.
+          recognize the descriptor 'id' and 'name' values from the referenced ALPS profile document.
         </t>
       </section>
       <section title="Why is there no workflow component in the ALPS specification?">
         <t>
-          ALPS is not designed to describe workflows or execution paths for a process. Instead, ALPS
+          ALPS is not designed to describe workflows or execution paths for a service. Instead, ALPS
           is designed to describe a shared set of data and actions elements that server MAY implement
           in order to create a service. Each action descriptor (where the descriptor's type property is set to
-          "safe", "unsafe", or "idemponent") SHOULD describe a stateless state transition that a
+          "safe", "unsafe", or "idemponent") SHOULD describe a state transition that a
           ALPS-compliant client application can invoke when it is available. Servers are free to
-          implement on the transitions they find useful and to arrange them in any order they wish.
+          implement the transitions they find useful and to arrange them in any order they wish.
           ALPS-compliant client applications SHOULD be able to recognize these descriptors when they appear
           and are free to act upon them directly, render them for humans to invoke, or ignore/hide them
           completely.
@@ -1542,8 +1533,8 @@
         </t>
         <t>
           Since ALPS is meant to provide a single description that can be used by multiple services,
-          establishing ranges in the ALPS description is usually over-constraining existing (and future)
-          service implementations. Services are still free to supply this information within representations
+          establishing ranges within the ALPS description is considered over-constraining
+          service implementations. Services are free to supply this information within representations
           at run time. But including them in the global ALPS profile is discouraged.
         </t>
       </section>
