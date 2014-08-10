@@ -511,7 +511,7 @@
                         ]]></t>
               <t hangText="JSON:"><![CDATA[
 { "doc" :
-    { "format" : "text" : "value" : "Date of Birth ..." }
+  { "format" : "text" : "value" : "Date of Birth ..." }
 }
                         ]]></t>
             </list>
@@ -524,14 +524,14 @@
             <list style="hanging">
               <t hangText="XML:"><![CDATA[
 <descriptor ... >
-    <doc>...</doc>
+  <doc>...</doc>
 </descriptor>
                         ]]></t>
               <t hangText="JSON:"><![CDATA[
 { "descriptor" : {
-    { "doc" : { "value" : "..." }
+  { "doc" : { "value" : "..." }
     ...
-    }
+  }
 }
                         ]]></t>
             </list>
@@ -543,13 +543,13 @@
             <list style="hanging">
               <t hangText="XML:"><![CDATA[
 <alps>
-    <doc>...</doc>
-    ...
+  <doc>...</doc>
+  ...
 </apls>
                         ]]></t>
               <t hangText="JSON:"><![CDATA[
 { "alps :
-   "doc" : { "value" : "..." },
+  "doc" : { "value" : "..." },
    ...
 }
                         ]]></t>
@@ -1034,19 +1034,19 @@
               <artwork><![CDATA[
 <!-- sample HTML document -->                    
 <html>
-    <head>
-        <link rel="profile" href="http://alps.io/documents/search" />
-    </head>
-    <body>
-        <form class="search" action="..." method="get">
-            <input type="text" name="search" value="..." />
-            <select name="resultType">
-                <option value="summary" />
-                <option value="detailed" />
-            </select>
-            <input type="submit" />
-        </form>
-    </body>
+  <head>
+    <link rel="profile" href="http://alps.io/documents/search" />
+  </head>
+  <body>
+    <form class="search" action="..." method="get">
+      <input type="text" name="search" value="..." />
+        <select name="resultType">
+          <option value="summary" />
+          <option value="detailed" />
+        </select>
+      <input type="submit" />
+    </form>
+  </body>
 </html>                           
                         ]]></artwork>
             </figure>
@@ -1069,22 +1069,22 @@
               <artwork><![CDATA[
 <?xml version="1.0"?>
 <alps version="1.0">
-    <doc href="http://example.org/samples/full/doc.html" />
+  <doc href="http://example.org/samples/full/doc.html" />
 
-    <descriptor id="search" type="safe">
-        <doc format="text">A search form with two inputs.</doc>
-        <descriptor href="#resultType" />
-        <descriptor id="value" name="search" type="semantic">
-            <doc>input for search</doc>
-        </descriptor>
+  <descriptor id="search" type="safe">
+    <doc format="text">A search form with two inputs.</doc>
+    <descriptor href="#resultType" />
+    <descriptor id="value" name="search" type="semantic">
+      <doc>input for search</doc>
     </descriptor>
+  </descriptor>
 
-    <descriptor id="resultType" type="semantic">
-        <doc>results format</doc>
-        <ext 
-            href="http://alps.io/ext/range" 
-            value="summary,detail" />
-    </descriptor>
+  <descriptor id="resultType" type="semantic">
+    <doc>results format</doc>
+    <ext 
+      href="http://alps.io/ext/range" 
+      value="summary,detail" />
+  </descriptor>
 </alps>
                           ]]></artwork>
             </figure>
@@ -1106,10 +1106,10 @@
               <artwork><![CDATA[
 "descriptor" : [
   {
-      "id" : "value",
-      "name" : "search",
-      "type" : "descriptor",
-      "doc" : {"value" : "input for search"}
+    "id" : "value",
+    "name" : "search",
+    "type" : "descriptor",
+    "doc" : {"value" : "input for search"}
   },
   {"href" : "#resultType"}
 ]
@@ -1127,8 +1127,8 @@
               <artwork><![CDATA[
 {
   "doc" : {
-      "format" : "text",
-      "value" : "Rules are important"
+    "format" : "text",
+    "value" : "Rules are important"
   }
 }
               ]]></artwork>
@@ -1142,41 +1142,41 @@
             <figure title="Complete ALPS+JSON Representation">
               <artwork><![CDATA[
 { 
-    "alps" : {
-        "version" : "1.0",
-        "doc" : {
-            "href" : "http://example.org/samples/full/doc.html"
+  "alps" : {
+    "version" : "1.0",
+    "doc" : {
+      "href" : "http://example.org/samples/full/doc.html"
+    },
+    "descriptor" : [
+      {
+        "id" : "search", 
+        "type" : "safe",
+        "doc" : {"value" : 
+          "A search form with a two inputs"
         },
         "descriptor" : [
-            {
-                "id" : "search", 
-                "type" : "safe",
-                "doc" : {"value" : 
-                    "A search form with a two inputs"
-                },
-                "descriptor" : [
-                    {
-                        "id" : "value",
-                        "name" : "search",
-                        "type" : "descriptor",
-                        "doc" : {"value" : "input for search"}
-                    },
-                    {"href" : "#resultType"}
-                ]
-            },
-           {
-                "id" : "resultType",
-                "type" : "descriptor",
-                "description" : {"value" : "results format"},
-                "ext" : [
-                    {
-                        "href" : "http://alps.io/ext/range", 
-                        "value" : "summary,detail"
-                    }
-                ]
-            }
-        ]  
-    }
+          {
+            "id" : "value",
+            "name" : "search",
+            "type" : "descriptor",
+            "doc" : {"value" : "input for search"}
+          },
+          {"href" : "#resultType"}
+        ]
+      },
+      {
+        "id" : "resultType",
+        "type" : "descriptor",
+        "description" : {"value" : "results format"},
+        "ext" : [
+          {
+            "href" : "http://alps.io/ext/range", 
+            "value" : "summary,detail"
+          }
+        ]
+      }
+    ]  
+  }
 }
                           ]]></artwork>
             </figure>

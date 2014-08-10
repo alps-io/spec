@@ -947,19 +947,19 @@
 <pre>
 &lt;!-- sample HTML document --&gt;                    
 &lt;html&gt;
-    &lt;head&gt;
-        &lt;link rel="profile" href="http://alps.io/documents/search" /&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;form class="search" action="..." method="get"&gt;
-            &lt;input type="text" name="search" value="..." /&gt;
-            &lt;select name="resultType"&gt;
-                &lt;option value="summary" /&gt;
-                &lt;option value="detailed" /&gt;
-            &lt;/select&gt;
-            &lt;input type="submit" /&gt;
-        &lt;/form&gt;
-    &lt;/body&gt;
+  &lt;head&gt;
+    &lt;link rel="profile" href="http://alps.io/documents/search" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;form class="search" action="..." method="get"&gt;
+      &lt;input type="text" name="search" value="..." /&gt;
+        &lt;select name="resultType"&gt;
+          &lt;option value="summary" /&gt;
+          &lt;option value="detailed" /&gt;
+        &lt;/select&gt;
+      &lt;input type="submit" /&gt;
+    &lt;/form&gt;
+  &lt;/body&gt;
 &lt;/html&gt;                           
                         </pre>
 <p class="figure">HTML Sample</p>
@@ -971,22 +971,22 @@
 <pre>
 &lt;?xml version="1.0"?&gt;
 &lt;alps version="1.0"&gt;
-    &lt;doc href="http://example.org/samples/full/doc.html" /&gt;
+  &lt;doc href="http://example.org/samples/full/doc.html" /&gt;
 
-    &lt;descriptor id="search" type="safe"&gt;
-        &lt;doc format="text"&gt;A search form with two inputs.&lt;/doc&gt;
-        &lt;descriptor href="#resultType" /&gt;
-        &lt;descriptor id="value" name="search" type="semantic"&gt;
-            &lt;doc&gt;input for search&lt;/doc&gt;
-        &lt;/descriptor&gt;
+  &lt;descriptor id="search" type="safe"&gt;
+    &lt;doc format="text"&gt;A search form with two inputs.&lt;/doc&gt;
+    &lt;descriptor href="#resultType" /&gt;
+    &lt;descriptor id="value" name="search" type="semantic"&gt;
+      &lt;doc&gt;input for search&lt;/doc&gt;
     &lt;/descriptor&gt;
+  &lt;/descriptor&gt;
 
-    &lt;descriptor id="resultType" type="semantic"&gt;
-        &lt;doc&gt;results format&lt;/doc&gt;
-        &lt;ext 
-            href="http://alps.io/ext/range" 
-            value="summary,detail" /&gt;
-    &lt;/descriptor&gt;
+  &lt;descriptor id="resultType" type="semantic"&gt;
+    &lt;doc&gt;results format&lt;/doc&gt;
+    &lt;ext 
+      href="http://alps.io/ext/range" 
+      value="summary,detail" /&gt;
+  &lt;/descriptor&gt;
 &lt;/alps&gt;
                           </pre>
 <p class="figure">Complete XML Representation</p>
@@ -997,10 +997,10 @@
 <pre>
 "descriptor" : [
   {
-      "id" : "value",
-      "name" : "search",
-      "type" : "descriptor",
-      "doc" : {"value" : "input for search"}
+    "id" : "value",
+    "name" : "search",
+    "type" : "descriptor",
+    "doc" : {"value" : "input for search"}
   },
   {"href" : "#resultType"}
 ]
@@ -1013,8 +1013,8 @@
 <pre>
 {
   "doc" : {
-      "format" : "text",
-      "value" : "Rules are important"
+    "format" : "text",
+    "value" : "Rules are important"
   }
 }
               </pre>
@@ -1023,41 +1023,41 @@
 <p id="rfc.section.2.3.3.1.p.1">Below is a example of the application/alps+json representation of an ALPS document.  </p>
 <pre>
 { 
-    "alps" : {
-        "version" : "1.0",
-        "doc" : {
-            "href" : "http://example.org/samples/full/doc.html"
+  "alps" : {
+    "version" : "1.0",
+    "doc" : {
+      "href" : "http://example.org/samples/full/doc.html"
+    },
+    "descriptor" : [
+      {
+        "id" : "search", 
+        "type" : "safe",
+        "doc" : {"value" : 
+          "A search form with a two inputs"
         },
         "descriptor" : [
-            {
-                "id" : "search", 
-                "type" : "safe",
-                "doc" : {"value" : 
-                    "A search form with a two inputs"
-                },
-                "descriptor" : [
-                    {
-                        "id" : "value",
-                        "name" : "search",
-                        "type" : "descriptor",
-                        "doc" : {"value" : "input for search"}
-                    },
-                    {"href" : "#resultType"}
-                ]
-            },
-           {
-                "id" : "resultType",
-                "type" : "descriptor",
-                "description" : {"value" : "results format"},
-                "ext" : [
-                    {
-                        "href" : "http://alps.io/ext/range", 
-                        "value" : "summary,detail"
-                    }
-                ]
-            }
-        ]  
-    }
+          {
+            "id" : "value",
+            "name" : "search",
+            "type" : "descriptor",
+            "doc" : {"value" : "input for search"}
+          },
+          {"href" : "#resultType"}
+        ]
+      },
+      {
+        "id" : "resultType",
+        "type" : "descriptor",
+        "description" : {"value" : "results format"},
+        "ext" : [
+          {
+            "href" : "http://alps.io/ext/range", 
+            "value" : "summary,detail"
+          }
+        ]
+      }
+    ]  
+  }
 }
                           </pre>
 <p class="figure">Complete ALPS+JSON Representation</p>
