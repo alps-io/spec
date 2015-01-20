@@ -484,8 +484,6 @@
           <t>
             A text field that contains free-form, usually
             human-readable, text.
-          </t>
-          <t>
             The 'doc' element MAY have two properties:
             <xref target="prop-href">'href'</xref>
             and
@@ -499,19 +497,13 @@
               <t>"html"</t>
               <t>"asciidoc"</t>
             </list>
-          </t>
-          <t>
             Any program processing "doc" elements SHOULD honor the
             "format" directive and parse/render the content
             appropriately. If the value in the "format" property is
             not recognized and/or supported, the processing program
             MUST treat the content as plain text. If no 'format' property is
             present, the content SHOULD be treated as plain
-            text. Support for additional formats, such as
-            <xref target="draft-ietf-appsawg-text-markdown-05">Markdown</xref>,
-            MAY be considered in the future.
-          </t>
-          <t>
+            text.
             <list style="hanging">
               <t hangText="XML:"><![CDATA[
 <doc format="html">
@@ -747,10 +739,7 @@
             undefined and SHOULD be treated as plain text. If the
             program does not recognize the value of the "format"
             property and/or the "format" property is missing, the
-            content SHOULD be treated as plain text. Support for
-            additional formats MAY be considered in the future.
-          </t>
-          <t>
+            content SHOULD be treated as plain text.
             This property MAY appear as an attribute of the
             <xref target="prop-doc">'doc'</xref>
             element.
@@ -1517,16 +1506,6 @@
         </front>
         <seriesInfo name="I-D" value="draft-ietf-appsawg-uri-get-off-my-lawn-00"/>
         <format type="HTML" target="http://tools.ietf.org/html/draft-ietf-appsawg-uri-get-off-my-lawn-00"/>
-      </reference>
-      <reference anchor="draft-ietf-appsawg-text-markdown-05">
-        <front>
-          <title>The text/markdown Media Type</title>
-          <author initials="S." surname="Leonard" fullname="Sean Leonard">
-          </author>
-          <date month="December" year="2014"/>
-        </front>
-        <seriesInfo name="I-D" value="draft-ietf-appsawg-text-markdown-05"/>
-        <format type="HTML" target="https://tools.ietf.org/html/draft-ietf-appsawg-text-markdown-05"/>
       </reference>
     </references>
     <section title="Frequently Asked Questions">
