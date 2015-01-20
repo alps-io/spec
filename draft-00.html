@@ -12,6 +12,28 @@
 	  a {
 	  text-decoration: none;
 	  }
+      /* info code from SantaKlauss at http://www.madaboutstyle.com/tooltip2.html */
+      a.info {
+          /* This is the key. */
+          position: relative;
+          z-index: 24;
+          text-decoration: none;
+      }
+      a.info:hover {
+          z-index: 25;
+          color: #FFF; background-color: #900;
+      }
+      a.info span { display: none; }
+      a.info:hover span.info {
+          /* The span will display just on :hover state. */
+          display: block;
+          position: absolute;
+          font-size: smaller;
+          top: 2em; left: -5em; width: 15em;
+          padding: 2px; border: 1px solid #333;
+          color: #900; background-color: #EEE;
+          text-align: left;
+      }
 	  a.smpl {
 	  color: black;
 	  }
@@ -397,12 +419,12 @@
 <link href="#rfc.appendix.A.3" rel="Chapter" title="A.3 Why is there no way to indicate ranges for semantic descriptors?"/>
 
 
-  <meta name="generator" content="xml2rfc version 2.4.3 - http://tools.ietf.org/tools/xml2rfc" />
+  <meta name="generator" content="xml2rfc version 2.4.8 - http://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Amundsen, M., Richardson, L., and M. Foster" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-amundsen-richardson-foster-alps-00.J" />
-  <meta name="dct.issued" scheme="ISO8601" content="2014-8-10" />
+  <meta name="dct.issued" scheme="ISO8601" content="2015-1-20" />
   <meta name="dct.abstract" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.  " />
   <meta name="description" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.  " />
 
@@ -422,7 +444,7 @@
   <td class="right">CA Technologies, Inc.</td>
 </tr>
 <tr>
-  <td class="left">Expires: February 11, 2015</td>
+  <td class="left">Expires: July 24, 2015</td>
   <td class="right">L. Richardson</td>
 </tr>
 <tr>
@@ -439,7 +461,7 @@
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">August 10, 2014</td>
+  <td class="right">January 20, 2015</td>
 </tr>
 
     	
@@ -463,11 +485,11 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on February 11, 2015.</p>
+<p>This Internet-Draft will expire on July 24, 2015.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
-<p>Copyright (c) 2014 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
+<p>Copyright (c) 2015 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
 
   
@@ -750,15 +772,7 @@
 
 <p> </p>
 <h1 id="rfc.section.2.2.2"><a href="#rfc.section.2.2.2">2.2.2.</a> <a href="#prop-doc" id="prop-doc">'doc'</a></h1>
-<p id="rfc.section.2.2.2.p.1">A text field that contains free-form, usually human-readable, text.  The 'doc' element MAY have two properties: <a href="#prop-href">'href'</a> <cite title="NONE">[prop-href]</cite> and <a href="#prop-format">'format'</a> <cite title="NONE">[prop-format]</cite>.  If the 'href' property appears it SHOULD contain a dereferencable URL that points to human-readable text. If the 'format' property appears it SHOULD contain one of the following values: </p>
-
-<ol>
-  <li>"text"</li>
-  <li>"html"</li>
-  <li>"asciidoc"</li>
-</ol>
-
-<p> Any program processing "doc" elements SHOULD honor the "format" directive and parse/render the content appropriately. If the value in the "format" property is not recognized and/or supported, the processing program MUST treat the content as plain text. If no 'format' property is present, the content SHOULD be treated as plain text.  </p>
+<p id="rfc.section.2.2.2.p.1">A text field that contains free-form, usually human-readable, text.  The 'doc' element MAY have two properties: <a href="#prop-href">'href'</a> <cite title="NONE">[prop-href]</cite> and <a href="#prop-format">'format'</a> <cite title="NONE">[prop-format]</cite>.  If the 'href' property appears it SHOULD contain a dereferencable URL that points to human-readable text. If the 'format' property appears it SHOULD contain one of the following values: "text", "html", "asciidoc", or "markdown".  Any program processing "doc" elements SHOULD honor the "format" directive and parse/render the content appropriately. If the value in the "format" property is not recognized and/or supported, the processing program MUST treat the content as plain text. If no 'format' property is present, the content SHOULD be treated as plain text.  </p>
 
 <dl>
   <dt>XML:</dt>
@@ -855,7 +869,17 @@
 <p> </p>
 <p id="rfc.section.2.2.4.p.6">Since the 'ext' element has no specific meaning within this specification, it MUST be ignored by any application that does not understand its meaning.  </p>
 <h1 id="rfc.section.2.2.5"><a href="#rfc.section.2.2.5">2.2.5.</a> <a href="#prop-format" id="prop-format">'format'</a></h1>
-<p id="rfc.section.2.2.5.p.1">Indicates how the text content should be parsed and/or rendered. This version of the spec identifies three possible values for "format": "text", "html", and "asciidoc." Any other values for this attribute are undefined and SHOULD be treated as plain text. If the program does not recognize the value of the "format" property and/or the "format" property is missing, the content SHOULD be treated as plain text.  This property MAY appear as an attribute of the <a href="#prop-doc">'doc'</a> <cite title="NONE">[prop-doc]</cite> element.  </p>
+<p id="rfc.section.2.2.5.p.1">Indicates how the text content should be parsed and/or rendered. This specification identifies a range of possible values for "format": </p>
+
+<ul>
+  <li>"text", for plain text, MUST be supported.</li>
+  <li>"html", for HTML, SHOULD be supported.</li>
+  <li>"asciidoc", for AsciiDoc, MAY be supported.</li>
+  <li>"markdown", per <a href="#draft-ietf-appsawg-text-markdown-05">The text/markdown Media Type</a> <cite title="NONE">[draft-ietf-appsawg-text-markdown-05]</cite>, MAY be supported.</li>
+</ul>
+
+<p> Any other values for this attribute are undefined and SHOULD be treated as plain text. If the program does not recognize the value of the "format" property and/or the "format" property is missing, the content SHOULD be treated as plain text.  </p>
+<p id="rfc.section.2.2.5.p.2">This property MAY appear as an attribute of the <a href="#prop-doc">'doc'</a> <cite title="NONE">[prop-doc]</cite> element.  </p>
 <h1 id="rfc.section.2.2.6"><a href="#rfc.section.2.2.6">2.2.6.</a> <a href="#prop-href" id="prop-href">'href'</a></h1>
 <p id="rfc.section.2.2.6.p.1">Contains a resolvable URL.  </p>
 <p id="rfc.section.2.2.6.p.2">When it appears as an attribute of <a href="#prop-descriptor">'descriptor'</a> <cite title="NONE">[prop-descriptor]</cite>, 'href' points to another 'descriptor' either within the existing ALPS document or in another ALPS document.  </p>
@@ -1199,7 +1223,7 @@
 <p> </p>
 <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#internationalization" id="internationalization">Internationalization Considerations</a></h1>
 <p id="rfc.section.5.p.1">[TK]</p>
-<p/>
+<p><a id="CREF1" class="info">[CREF1]<span class="info">insert text (consider rfc 5987)</span></a> </p>
 <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> Acknowledgements</h1>
 <p id="rfc.section.6.p.1">The following people made contributions to this specification: </p>
 <h1 id="rfc.references"><a href="#rfc.references">7.</a> References</h1>
@@ -1246,6 +1270,12 @@
         <b id="draft-ietf-appsawg-uri-get-off-my-lawn-00">[draft-ietf-appsawg-uri-get-off-my-lawn-00]</b>
       </td>
       <td class="top"><a>Nottingham, M.</a>, "<a>Standardising Structure in URIs</a>", I-D draft-ietf-appsawg-uri-get-off-my-lawn-00, September 2013.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="draft-ietf-appsawg-text-markdown-05">[draft-ietf-appsawg-text-markdown-05]</b>
+      </td>
+      <td class="top"><a>Leonard, S.</a>, "<a>The text/markdown Media Type</a>", I-D draft-ietf-appsawg-text-markdown-05, December 2014.</td>
     </tr>
   </tbody>
 </table>
