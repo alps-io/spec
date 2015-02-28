@@ -424,7 +424,7 @@
 
   <meta name="dct.creator" content="Amundsen, M., Richardson, L., and M. Foster" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-amundsen-richardson-foster-alps-00.J" />
-  <meta name="dct.issued" scheme="ISO8601" content="2015-1-20" />
+  <meta name="dct.issued" scheme="ISO8601" content="2015-2-28" />
   <meta name="dct.abstract" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.  " />
   <meta name="description" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.  " />
 
@@ -444,7 +444,7 @@
   <td class="right">CA Technologies, Inc.</td>
 </tr>
 <tr>
-  <td class="left">Expires: July 24, 2015</td>
+  <td class="left">Expires: September 1, 2015</td>
   <td class="right">L. Richardson</td>
 </tr>
 <tr>
@@ -457,11 +457,11 @@
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">Fingi, Inc.</td>
+  <td class="right">Apiary</td>
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">January 20, 2015</td>
+  <td class="right">February 28, 2015</td>
 </tr>
 
     	
@@ -485,7 +485,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on July 24, 2015.</p>
+<p>This Internet-Draft will expire on September 1, 2015.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -882,7 +882,7 @@
 <p id="rfc.section.2.2.5.p.2">This property MAY appear as an attribute of the <a href="#prop-doc">'doc'</a> <cite title="NONE">[prop-doc]</cite> element.  </p>
 <h1 id="rfc.section.2.2.6"><a href="#rfc.section.2.2.6">2.2.6.</a> <a href="#prop-href" id="prop-href">'href'</a></h1>
 <p id="rfc.section.2.2.6.p.1">Contains a resolvable URL.  </p>
-<p id="rfc.section.2.2.6.p.2">When it appears as an attribute of <a href="#prop-descriptor">'descriptor'</a> <cite title="NONE">[prop-descriptor]</cite>, 'href' points to another 'descriptor' either within the existing ALPS document or in another ALPS document.  </p>
+<p id="rfc.section.2.2.6.p.2">When it appears as an attribute of a <a href="#prop-descriptor">'descriptor'</a> <cite title="NONE">[prop-descriptor]</cite>, 'href' points to another 'descriptor' either within the existing ALPS document as a fragment or in another ALPS document as an absolute URL. The URL MUST contain a <a href="#prop-id-frag">fragment</a> <cite title="NONE">[prop-id-frag]</cite> referencing the related 'descriptor'.  </p>
 <p id="rfc.section.2.2.6.p.3">When it appears as an attribute of <a href="#prop-ext">'ext'</a> <cite title="NONE">[prop-ext]</cite>, 'href' points to an external document which provides the defintion of the extension.  </p>
 <p id="rfc.section.2.2.6.p.4">When it appears as an attribute of <a href="#prop-link">'link'</a> <cite title="NONE">[prop-link]</cite>, 'href' points to an external document whose relationship to the current document or 'descriptor' is described by the associated <a href="#prop-rel">'rel'</a> <cite title="NONE">[prop-rel]</cite> property.  </p>
 <p id="rfc.section.2.2.6.p.5">When it appears as an attribute of <a href="#prop-doc">'doc'</a> <cite title="NONE">[prop-doc]</cite>, 'href' points to a document that contains human-readable text that describes the associated 'descriptor' or ALPS document.  </p>
@@ -928,7 +928,7 @@
 <p class="figure">ALPS Description of the same Search Transition</p>
 <h1 id="rfc.section.2.2.7.2"><a href="#rfc.section.2.2.7.2">2.2.7.2.</a> <a href="#prop-id-frag" id="prop-id-frag">Fragment Identifiers and 'id'</a></h1>
 <p id="rfc.section.2.2.7.2.p.1">When applied to an ALPS document, a URI fragment identifier points to the 'descriptor' whose 'id' is the value of the fragment. For example, the fragment identifier "customer" in the URI http://example.com/my-alps-document#customer refers to an ALPS 'descriptor' with 'id' set to "customer".  </p>
-<p id="rfc.section.2.2.7.2.p.2">A relative URL with a fragment identifier (e.g. "#customer") refers to a 'descriptor' within the ALPS document containing the reference.  </p>
+<p id="rfc.section.2.2.7.2.p.2">A relative URL with a fragment identifier within an ALPS document (e.g. href="#customer") refers to a local 'descriptor' within the document containing the reference.  </p>
 <p id="rfc.section.2.2.7.2.p.3">The complete URI to an ALPS 'descriptor' (including the fragment) forms an "abstract semantic type" identifier. This is a resolvable URI (URL) that can be used to indicate the type of a resource; for instance, it can be used as the value of the IANA-registered relation type 'type'.  </p>
 <h1 id="rfc.section.2.2.7.3"><a href="#rfc.section.2.2.7.3">2.2.7.3.</a> <a href="#prop-id-rels" id="prop-id-rels">Link Relation Values and 'id' or 'name'</a></h1>
 <p id="rfc.section.2.2.7.3.p.1">Since a state transition 'descriptor' may define a relation type value, it is important to avoid creating conflicts with existing IANA-registered values. If the resulting link relation type is the same as a registered relation type, the descriptor MUST not change the meaning of the IANA relation type.  </p>
@@ -1345,7 +1345,7 @@
 		<span class="family-name">Foster</span>
 	  </span>
 	</span>
-	<span class="org vcardline">Fingi, Inc.</span>
+	<span class="org vcardline">Apiary</span>
 	<span class="adr">
 	  
 	  <span class="vcardline">

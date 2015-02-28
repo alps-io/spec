@@ -37,7 +37,7 @@
       </address>
     </author>
     <author fullname="Mark W. Foster" surname="Foster" initials="M.">
-      <organization>Fingi, Inc.</organization>
+      <organization>Apiary</organization>
       <address>
         <email>mwf@fosrias.com</email>
       </address>
@@ -753,9 +753,10 @@
             Contains a resolvable URL.
           </t>
           <t>
-            When it appears as an attribute of <xref target="prop-descriptor">'descriptor'</xref>, 'href'
+            When it appears as an attribute of a <xref target="prop-descriptor">'descriptor'</xref>, 'href'
             points to another 'descriptor' either within the
-            existing ALPS document or in another ALPS document.
+            existing ALPS document as a fragment or in another ALPS document as an absolute URL. The URL MUST contain
+            a <xref target="prop-id-frag">fragment</xref> referencing the related 'descriptor'.
           </t>
           <t>
             When it appears as an attribute of <xref target="prop-ext">'ext'</xref>, 'href' points to an
@@ -792,7 +793,7 @@
             used to identify an HTML input element:
             <list style="hanging">
               <t hangText="'id' in ALPS..."><![CDATA[
-<descriptor id="q" type="semantic" /> 
+<descriptor id="q" type="semantic" />
                         ]]></t>
             </list>
 
@@ -854,9 +855,9 @@
               'descriptor' with 'id' set to "customer".
             </t>
             <t>
-              A relative URL with a fragment identifier
-              (e.g. "#customer") refers to a 'descriptor' within the
-              ALPS document containing the reference.
+              A relative URL with a fragment identifier within an ALPS document
+              (e.g. href="#customer") refers to a local 'descriptor' within the
+              document containing the reference.
             </t>
             <t>
               The complete URI to an ALPS 'descriptor' (including the
