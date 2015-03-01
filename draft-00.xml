@@ -7,6 +7,7 @@
         <!ENTITY rfc4627 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4627.xml">
         <!ENTITY rfc5988 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5988.xml">
         <!ENTITY rfc6906 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6906.xml">
+        <!ENTITY rfc7320 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7320.xml">
         ]>
 <!-- ref commands -->
 <?rfc comments="yes"?>
@@ -465,7 +466,7 @@
           <t>
             Indicates the root of the ALPS document. This
             property is REQUIRED, and it SHOULD have one or more
-            <xref target="prop-descriptor">'descriptor'</xref>
+            <xref target="prop-descriptor" format="title"/>
             child properties.
           </t>
           <t>
@@ -485,9 +486,9 @@
             A text field that contains free-form, usually
             human-readable, text.
             The 'doc' element MAY have two properties:
-            <xref target="prop-href">'href'</xref>
+            <xref target="prop-href" format="title"/>
             and
-            <xref target="prop-format">'format'</xref>.
+            <xref target="prop-format" format="title"/>.
             If the 'href' property appears it SHOULD contain a
             dereferencable URL that points to human-readable text. If
             the 'format' property appears it SHOULD contain one of the
@@ -514,7 +515,7 @@
           </t>
           <t>
             A 'doc' element SHOULD appear as a child of
-            <xref target="prop-descriptor">'descriptor'</xref>. When
+            <xref target="prop-descriptor" format="title"/>. When
             present, it describes the meaning and use of the
             related 'descriptor'.
             <list style="hanging">
@@ -533,7 +534,7 @@
             </list>
           </t>
           <t>
-            The 'doc' element MAY appear as a child of <xref target="prop-alps">'alps'</xref>. When present, it
+            The 'doc' element MAY appear as a child of <xref target="prop-alps" format="title"/>. When present, it
             describes the purpose of the ALPS document as a
             whole.
             <list style="hanging">
@@ -559,30 +560,30 @@
           </t>
           <t>
             One or more 'descriptor' elements
-            SHOULD appear as children of <xref target="prop-alps">'alps'</xref>. It may also appear
+            SHOULD appear as children of <xref target="prop-alps" format="title"/>. It may also appear
             as a child of itself; that is, the 'descriptor'
             property may be nested.
           </t>
           <t>
             The 'descriptor' property SHOULD have either an
-            <xref target="prop-id">'id'</xref>
+            <xref target="prop-id" format="title"/>
             or
-            <xref target="prop-href">'href'</xref>
+            <xref target="prop-href" format="title"/>
             attribute. It MAY
             have both. Additionally, the 'descriptor' MAY have any
             of the following attributes:
             <list style="numbers">
               <t>
-                <xref target="prop-doc">'doc'</xref>
+                <xref target="prop-doc" format="title"/>
               </t>
               <t>
-                <xref target="prop-ext">'ext'</xref>
+                <xref target="prop-ext" format="title"/>
               </t>
               <t>
-                <xref target="prop-name">'name'</xref>
+                <xref target="prop-name" format="title"/>
               </t>
               <t>
-                <xref target="prop-type">'type'</xref>
+                <xref target="prop-type" format="title"/>
               </t>
             </list>
           </t>
@@ -663,33 +664,33 @@
             The 'ext' element has the following properties.
             <list style="numbers">
               <t>
-                <xref target="prop-id">id</xref>
+                <xref target="prop-id" format="title"/>
               </t>
               <t>
-                <xref target="prop-href">href</xref>
+                <xref target="prop-href" format="title"/>
               </t>
               <t>
-                <xref target="prop-value">value</xref>
+                <xref target="prop-value" format="title"/>
               </t>
             </list>
           </t>
           <t>
             The
-            <xref target="prop-id">id</xref>
+            <xref target="prop-id" format="title"/>
             property is REQUIRED.
             The
-            <xref target="prop-href">href</xref>
+            <xref target="prop-href" format="title"/>
             is RECOMMENDED and
             it SHOULD point to documentation that explains the
             use and meaning of this
-            <xref target="prop-ext">ext</xref>
+            <xref target="prop-ext" format="title"/>
             element.
             The
-            <xref target="prop-value">value</xref>
+            <xref target="prop-value" format="title"/>
             property is OPTIONAL. The content is undetermined; its
             meaning and use SHOULD be explained by the document found
             by de-referencing the
-            <xref target="prop-href">href</xref>
+            <xref target="prop-href" format="title"/>
             property.
           </t>
           <t>
@@ -711,10 +712,10 @@
             elements:
             <list style="numbers">
               <t>
-                <xref target="prop-alps">'alps'</xref>
+                <xref target="prop-alps" format="title"/>
               </t>
               <t>
-                <xref target="prop-descriptor">'descriptor'</xref>
+                <xref target="prop-descriptor" format="title"/>
               </t>
             </list>
           </t>
@@ -734,7 +735,7 @@
               <t>"html", for HTML, SHOULD be supported.</t>
               <t>"asciidoc", for AsciiDoc, MAY be supported.</t>
               <t>"markdown", per
-              <xref target="draft-ietf-appsawg-text-markdown-05">The text/markdown Media Type</xref>,
+              <xref target="I-D.ietf-appsawg-text-markdown">The text/markdown Media Type</xref>,
               MAY be supported.</t>
             </list>
             Any other values for this attribute are undefined and SHOULD
@@ -745,7 +746,7 @@
           </t>
           <t>
             This property MAY appear as an attribute of the
-            <xref target="prop-doc">'doc'</xref> element.
+            <xref target="prop-doc" format="title"/> element.
           </t>
         </section>
         <section anchor="prop-href" title="'href'">
@@ -753,29 +754,29 @@
             Contains a resolvable URL.
           </t>
           <t>
-            When it appears as an attribute of a <xref target="prop-descriptor">'descriptor'</xref>, 'href'
+            When it appears as an attribute of a <xref target="prop-descriptor" format="title"/>, 'href'
             points to another 'descriptor' either within the
             existing ALPS document as a fragment or in another ALPS document as an absolute URL. The URL MUST contain
-            a <xref target="prop-id-frag">fragment</xref> referencing the related 'descriptor'.
+            a fragment per <xref target="prop-id-frag"/> referencing the related 'descriptor'.
           </t>
           <t>
-            When it appears as an attribute of <xref target="prop-ext">'ext'</xref>, 'href' points to an
+            When it appears as an attribute of <xref target="prop-ext" format="title"/>, 'href' points to an
             external document which provides the defintion of
             the extension.
           </t>
           <t>
             When it appears as an attribute of
-            <xref target="prop-link">'link'</xref>,
+            <xref target="prop-link" format="title"/>,
             'href' points to an
             external document whose relationship to the current
             document or 'descriptor' is described by
             the associated
-            <xref target="prop-rel">'rel'</xref>
+            <xref target="prop-rel" format="title"/>
             property.
           </t>
           <t>
             When it appears as an attribute of
-            <xref target="prop-doc">'doc'</xref>, 'href' points to a
+            <xref target="prop-doc" format="title"/>, 'href' points to a
             document that contains human-readable text that describes
             the associated 'descriptor' or ALPS document.
           </t>
@@ -784,7 +785,7 @@
           <t>
             A document-wide unique identifier for the related
             element. This SHOULD appear as an attribute of a
-            <xref target="prop-descriptor">'descriptor'</xref>.
+            <xref target="prop-descriptor" format="title"/>.
           </t>
           <t>
             The value of this attribute MAY be used as an identifier
@@ -818,9 +819,9 @@
             </t>
             <t>
               To avoid this, ALPS document designers can add the
-              <xref target="prop-name">name</xref>
+              <xref target="prop-name" format="title"/>
               property to a 'descriptor' to hold the common value ("search") while still using the
-              <xref target="prop-id">id</xref>
+              <xref target="prop-id" format="title"/>
               property to hold a document-wide unique value. For example:
             </t>
             <figure title="HTML Representation of a Search Transition">
@@ -894,22 +895,22 @@
           <t>
             An element that identifies a link between the current ALPS element and some
             other (possibly external) resource. MAY be a child element of the
-            <xref target="prop-alps">'alps'</xref>
+            <xref target="prop-alps" format="title"/>
             and the
-            <xref target="prop-descriptor">'descriptor'</xref>
+            <xref target="prop-descriptor" format="title"/>
             elements.
           </t>
           <t>
             The 'link' element MUST define the two attributes
-            <xref target="prop-href">'href'</xref>
+            <xref target="prop-href" format="title"/>
             and
-            <xref target="prop-rel">'rel'</xref>.
+            <xref target="prop-rel" format="title"/>.
           </t>
         </section>
         <section anchor="prop-name" title="'name'">
           <t>
             Indicates the name of the
-            <xref target="prop-descriptor">'descriptor'</xref>
+            <xref target="prop-descriptor" format="title"/>
             as
             found in generic representations. It MAY appear as a
             property of 'descriptor'.
@@ -917,7 +918,7 @@
           <t>
             This is used when the name of the 'descriptor'
             is used as an
-            <xref target="prop-id">'id'</xref>
+            <xref target="prop-id" format="title"/>
             value elsewhere in the
             ALPS document. For instance, if a single ALPS
             document defines a semantic descriptor (data element) called
@@ -942,7 +943,7 @@
             or a registered relation type (a short string).
           </t>
           <t>
-            Appears as a property of<xref target="prop-link">link</xref>.
+            Appears as a property of<xref target="prop-link" format="title"/>.
           </t>
         </section>
         <section anchor="prop-rt" title="'rt'">
@@ -950,17 +951,17 @@
             Indicates the resource type that will be returned when
             executing the specified network request. The 'rt' attribute
             SHOULD appear only on a
-            <xref target="prop-descriptor">'descriptor'</xref>
+            <xref target="prop-descriptor" format="title"/>
             with a
-            <xref target="prop-type">'type'</xref>
+            <xref target="prop-type" format="title"/>
             value of
             'safe', 'unsafe', or 'idempotent.'
           </t>
           <t>
             The 'rt' attribute is OPTIONAL and is an opaque string and MAY match the
-            <xref target="prop-id">'id'</xref>
+            <xref target="prop-id" format="title"/>
             of an
-            existing<xref target="prop-descriptor">'descriptor'</xref>.
+            existing<xref target="prop-descriptor" format="title"/>.
           </t>
         </section>
         <section anchor="prop-type" title="'type'">
@@ -968,7 +969,7 @@
             Indicates the type of hypermedia control to which
             the element is applied within the resulting representation. 
             This SHOULD appear for each 
-            <xref target="prop-descriptor">'descriptor'</xref> element. 
+            <xref target="prop-descriptor" format="title"/> element. 
             The four valid values are:
 
             <list style="hanging">
@@ -1000,9 +1001,9 @@
           <t>
             Contains a string value. It MAY appear as an attribute
             of the
-            <xref target="prop-doc">'doc'</xref>
+            <xref target="prop-doc" format="title"/>
             and the
-            <xref target="prop-ext">'ext'</xref>
+            <xref target="prop-ext" format="title"/>
             elements.
           </t>
         </section>
@@ -1011,7 +1012,7 @@
             Indicates the version of the ALPS specification used
             in the document. This SHOULD appear as a property of
             the
-            <xref target="prop-alps">'alps'</xref>
+            <xref target="prop-alps" format="title"/>
             element.
             Currently
             the only valid value is "1.0". If no value appears,
@@ -1059,9 +1060,9 @@
         <section anchor="xml-representation" title="XML Representation Example">
           <t>
             In the XML version of an ALPS document, the following
-            ALPS properties always appear as XML elements: <xref target="prop-alps">'alps'</xref>, <xref
-                  target="prop-doc">'doc'</xref>, <xref target="prop-descriptor">'descriptor'</xref>, and <xref
-                  target="prop-ext">'ext'</xref>. All other ALPS
+            ALPS properties always appear as XML elements: <xref target="prop-alps" format="title"/>, <xref
+                  target="prop-doc" format="title"/>, <xref target="prop-descriptor" format="title"/>, and <xref
+                  target="prop-ext" format="title"/>. All other ALPS
             properties appear as XML attributes.
           </t>
           <section title="Complete XML Representation">
@@ -1098,9 +1099,9 @@
           <t>
             When representing ALPS documents in JSON format,
             the
-            <xref target="prop-descriptor">'descriptor'</xref>
+            <xref target="prop-descriptor" format="title"/>
             and
-            <xref target="prop-ext">'ext'</xref>
+            <xref target="prop-ext" format="title"/>
             properties are
             always expressed as arrays of anonymous objects - even
             when there is only one member in the array.
@@ -1122,7 +1123,7 @@
           </t>
           <t>
             The
-            <xref target="prop-doc">'doc'</xref>
+            <xref target="prop-doc" format="title"/>
             property is always expressed as a named object.
           </t>
           <t>
@@ -1499,28 +1500,10 @@
       &rfc4627;
       &rfc5988;
       &rfc6906;
+      &rfc7320;
     </references>
     <references title="Informative References">
-      <reference anchor="draft-ietf-appsawg-uri-get-off-my-lawn-00">
-        <front>
-          <title>Standardising Structure in URIs</title>
-          <author initials="M." surname="Nottingham" fullname="Mark Nottingham Postel">
-          </author>
-          <date month="September" year="2013"/>
-        </front>
-        <seriesInfo name="I-D" value="draft-ietf-appsawg-uri-get-off-my-lawn-00"/>
-        <format type="HTML" target="http://tools.ietf.org/html/draft-ietf-appsawg-uri-get-off-my-lawn-00"/>
-      </reference>
-      <reference anchor="draft-ietf-appsawg-text-markdown-05">
-        <front>
-          <title>The text/markdown Media Type</title>
-          <author initials="S." surname="Leonard" fullname="Sean Leonard">
-          </author>
-          <date month="December" year="2014"/>
-        </front>
-        <seriesInfo name="I-D" value="draft-ietf-appsawg-text-markdown-05"/>
-        <format type="HTML" target="http://tools.ietf.org/html/draft-ietf-appsawg-text-markdown-05"/>
-      </reference>
+      <?rfc include="reference.I-D.ietf-appsawg-text-markdown.xml"?>
     </references>
     <section title="Frequently Asked Questions">
       <section title="Why are there no URLs in ALPS?">
@@ -1529,7 +1512,7 @@
           can be used by many ALPS-compliant servers. Since each service implementation is in charge
           of their own URL space, ALPS descriptions do not include URLs.
           See
-          <xref target="draft-ietf-appsawg-uri-get-off-my-lawn-00">Standardising Structure in URIs</xref>
+          <xref target="RFC7320">URI Design and Ownership</xref>
           for more on this principle.
         </t>
         <t>
