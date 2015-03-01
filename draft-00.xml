@@ -7,6 +7,7 @@
         <!ENTITY rfc4627 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4627.xml">
         <!ENTITY rfc5988 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5988.xml">
         <!ENTITY rfc6906 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6906.xml">
+        <!ENTITY rfc7320 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7320.xml">
         ]>
 <!-- ref commands -->
 <?rfc comments="yes"?>
@@ -94,8 +95,8 @@
       </t>
       <t>
         This document registers two media-type identifiers with
-        the IANA: 'application/alps+xml' ("ALPS+XML") and
-        'application/alps+json' ("ALPS+JSON").
+        the IANA: 'application/alps+xml' ('ALPS+XML') and
+        'application/alps+json' ('ALPS+JSON').
       </t>
       <section title="Notational Conventions">
         <t>
@@ -124,7 +125,7 @@
             entirely new media type
             (i.e. 'application/accounting'),
             representation authors can create an ALPS
-            document that describes a "profile" of the
+            document that describes a 'profile' of the
             target domain; one that explains the vital
             domain-specific semantic descriptors and state
             transitions. This profile can then be
@@ -162,7 +163,7 @@
             applications can associate the ALPS descriptor 'id' and/or
             'name' attribute values with the appropriate
             elements within the document.
-            Client applications can "code for the profile"
+            Client applications can 'code for the profile'
             and better adjust to detailed changes to the
             response layout, or even the wholesale
             replacement of one media type with another.
@@ -174,18 +175,18 @@
           Below is an ALPS document that describes elements
           of a simple request/response interaction in a
           contact management application. The profile
-          defines a semantic descriptor called "contact",
-          and three subordinate descriptors ("fullName",
-          "email", and "phone").
+          defines a semantic descriptor called 'contact',
+          and three subordinate descriptors ('fullName',
+          'email', and 'phone').
         </t>
         <t>
           The ALPS document also defines a single, safe
           state transition, to be represented by a
           hypermedia control (e.g. HTML.GET form) with the
-          'id' value of "collection." This hypermedia
-          control has one input value ("nameSearch"). When
+          'id' value of 'collection.' This hypermedia
+          control has one input value ('nameSearch'). When
           executed, the response will contain one or more
-          "contact" type items.
+          'contact' type items.
         </t>
         <figure title="ALPS Contact Profile document">
           <artwork><![CDATA[
@@ -217,9 +218,9 @@
         <t>
           Implementing the ALPS profile above requires implementing
           the descriptors defined by the ALPS document. In this case,
-          there are two "top level" descriptors: the safe state
-          transition ("collection") and the semantic descriptor
-          "contact". Below is a single HTML document that shows both
+          there are two 'top level' descriptors: the safe state
+          transition ('collection') and the semantic descriptor
+          'contact'. Below is a single HTML document that shows both
           these elements in a representation.
         </t>
         <figure title="HTML ALPS Contact Representation">
@@ -277,11 +278,11 @@
         </figure>
         <t>
           HTML representations implement most ALPS elements using
-          HTML's "class" attribute. The "collection" ID has become the
+          HTML's 'class' attribute. The 'collection' ID has become the
           CSS class of an HTML form's submit button.
-          The "contact" ID has become the CSS class of the TR elements in an 
-          HTML table. The subordinate descriptors "fullname","email", and 
-          "phone" are rendered as the TD elements of each TR.
+          The 'contact' ID has become the CSS class of the TR elements in an 
+          HTML table. The subordinate descriptors 'fullname','email', and 
+          'phone' are rendered as the TD elements of each TR.
         </t>
         <t>This HAL document uses the same profile to express the same
           application-level semantics as the HTML document.
@@ -312,9 +313,9 @@
                     ]]></artwork>
         </figure>
         <t>In a HAL representation, all state transitions
-          ("collection" and "item", in this case) are represented as
-          link relations. All data descriptors ("fullName", "email",
-          and "phone") are represented as XML tags named after the
+          ('collection' and 'item', in this case) are represented as
+          link relations. All data descriptors ('fullName', 'email',
+          and 'phone') are represented as XML tags named after the
           descriptors.
         </t>
         <t>This Collection+JSON document uses the ALPS profile to
@@ -402,9 +403,9 @@
                 
                ]]></artwork>
         </figure>
-        <t>The descriptor "collection" has become the link
+        <t>The descriptor 'collection' has become the link
           relation associated with a Collection+JSON query. The
-          descriptors "fullName", "email", and "phone" have become
+          descriptors 'fullName', 'email', and 'phone' have become
           the names of key-value pairs in the items in a
           Collection+JSON collection.
         </t>
@@ -448,10 +449,10 @@
           satisfy one or more of the MUST or REQUIRED level
           requirements. An implementation that satisfies all
           the MUST or REQUIRED level and all the SHOULD level
-          requirements is said to be "unconditionally
-          compliant"; one that satisfies all the MUST level
+          requirements is said to be 'unconditionally
+          compliant'; one that satisfies all the MUST level
           requirements but not all the SHOULD level requirements
-          is said to be "conditionally compliant."
+          is said to be 'conditionally compliant.'
         </t>
       </section>
       <section title="ALPS Document Properties">
@@ -465,7 +466,7 @@
           <t>
             Indicates the root of the ALPS document. This
             property is REQUIRED, and it SHOULD have one or more
-            <xref target="prop-descriptor">'descriptor'</xref>
+            <xref target="prop-descriptor" format="title"/>
             child properties.
           </t>
           <t>
@@ -485,16 +486,16 @@
             A text field that contains free-form, usually
             human-readable, text.
             The 'doc' element MAY have two properties:
-            <xref target="prop-href">'href'</xref>
+            <xref target="prop-href" format="title"/>
             and
-            <xref target="prop-format">'format'</xref>.
+            <xref target="prop-format" format="title"/>.
             If the 'href' property appears it SHOULD contain a
             dereferencable URL that points to human-readable text. If
             the 'format' property appears it SHOULD contain one of the
-            following values: "text", "html", "asciidoc", or "markdown".
-            Any program processing "doc" elements SHOULD honor the
-            "format" directive and parse/render the content
-            appropriately. If the value in the "format" property is not
+            following values: 'text', 'html', 'asciidoc', or 'markdown'.
+            Any program processing 'doc' elements SHOULD honor the
+            'format' directive and parse/render the content
+            appropriately. If the value in the 'format' property is not
             recognized and/or supported, the processing program MUST
             treat the content as plain text. If no 'format' property is
             present, the content SHOULD be treated as plain text.
@@ -514,7 +515,7 @@
           </t>
           <t>
             A 'doc' element SHOULD appear as a child of
-            <xref target="prop-descriptor">'descriptor'</xref>. When
+            <xref target="prop-descriptor" format="title"/>. When
             present, it describes the meaning and use of the
             related 'descriptor'.
             <list style="hanging">
@@ -533,7 +534,7 @@
             </list>
           </t>
           <t>
-            The 'doc' element MAY appear as a child of <xref target="prop-alps">'alps'</xref>. When present, it
+            The 'doc' element MAY appear as a child of <xref target="prop-alps" format="title"/>. When present, it
             describes the purpose of the ALPS document as a
             whole.
             <list style="hanging">
@@ -559,30 +560,30 @@
           </t>
           <t>
             One or more 'descriptor' elements
-            SHOULD appear as children of <xref target="prop-alps">'alps'</xref>. It may also appear
+            SHOULD appear as children of <xref target="prop-alps" format="title"/>. It may also appear
             as a child of itself; that is, the 'descriptor'
             property may be nested.
           </t>
           <t>
             The 'descriptor' property SHOULD have either an
-            <xref target="prop-id">'id'</xref>
+            <xref target="prop-id" format="title"/>
             or
-            <xref target="prop-href">'href'</xref>
+            <xref target="prop-href" format="title"/>
             attribute. It MAY
             have both. Additionally, the 'descriptor' MAY have any
             of the following attributes:
             <list style="numbers">
               <t>
-                <xref target="prop-doc">'doc'</xref>
+                <xref target="prop-doc" format="title"/>
               </t>
               <t>
-                <xref target="prop-ext">'ext'</xref>
+                <xref target="prop-ext" format="title"/>
               </t>
               <t>
-                <xref target="prop-name">'name'</xref>
+                <xref target="prop-name" format="title"/>
               </t>
               <t>
-                <xref target="prop-type">'type'</xref>
+                <xref target="prop-type" format="title"/>
               </t>
             </list>
           </t>
@@ -663,33 +664,33 @@
             The 'ext' element has the following properties.
             <list style="numbers">
               <t>
-                <xref target="prop-id">id</xref>
+                <xref target="prop-id" format="title"/>
               </t>
               <t>
-                <xref target="prop-href">href</xref>
+                <xref target="prop-href" format="title"/>
               </t>
               <t>
-                <xref target="prop-value">value</xref>
+                <xref target="prop-value" format="title"/>
               </t>
             </list>
           </t>
           <t>
             The
-            <xref target="prop-id">id</xref>
+            <xref target="prop-id" format="title"/>
             property is REQUIRED.
             The
-            <xref target="prop-href">href</xref>
+            <xref target="prop-href" format="title"/>
             is RECOMMENDED and
             it SHOULD point to documentation that explains the
             use and meaning of this
-            <xref target="prop-ext">ext</xref>
+            <xref target="prop-ext" format="title"/>
             element.
             The
-            <xref target="prop-value">value</xref>
+            <xref target="prop-value" format="title"/>
             property is OPTIONAL. The content is undetermined; its
             meaning and use SHOULD be explained by the document found
             by de-referencing the
-            <xref target="prop-href">href</xref>
+            <xref target="prop-href" format="title"/>
             property.
           </t>
           <t>
@@ -711,10 +712,10 @@
             elements:
             <list style="numbers">
               <t>
-                <xref target="prop-alps">'alps'</xref>
+                <xref target="prop-alps" format="title"/>
               </t>
               <t>
-                <xref target="prop-descriptor">'descriptor'</xref>
+                <xref target="prop-descriptor" format="title"/>
               </t>
             </list>
           </t>
@@ -728,24 +729,24 @@
           <t>
             Indicates how the text content should be parsed and/or
             rendered. This specification identifies a range of possible
-            values for "format":
+            values for 'format':
             <list style="symbols">
-              <t>"text", for plain text, MUST be supported.</t>
-              <t>"html", for HTML, SHOULD be supported.</t>
-              <t>"asciidoc", for AsciiDoc, MAY be supported.</t>
-              <t>"markdown", per
-              <xref target="draft-ietf-appsawg-text-markdown-05">The text/markdown Media Type</xref>,
+              <t>'text', for plain text, MUST be supported.</t>
+              <t>'html', for HTML, SHOULD be supported.</t>
+              <t>'asciidoc', for AsciiDoc, MAY be supported.</t>
+              <t>'markdown', per
+              <xref target="I-D.ietf-appsawg-text-markdown">The text/markdown Media Type</xref>,
               MAY be supported.</t>
             </list>
             Any other values for this attribute are undefined and SHOULD
             be treated as plain text. If the program does not recognize
-            the value of the "format" property and/or the "format"
+            the value of the 'format' property and/or the 'format'
             property is missing, the content SHOULD be treated as plain
             text.
           </t>
           <t>
             This property MAY appear as an attribute of the
-            <xref target="prop-doc">'doc'</xref> element.
+            <xref target="prop-doc" format="title"/> element.
           </t>
         </section>
         <section anchor="prop-href" title="'href'">
@@ -753,29 +754,29 @@
             Contains a resolvable URL.
           </t>
           <t>
-            When it appears as an attribute of a <xref target="prop-descriptor">'descriptor'</xref>, 'href'
+            When it appears as an attribute of a <xref target="prop-descriptor" format="title"/>, 'href'
             points to another 'descriptor' either within the
             existing ALPS document as a fragment or in another ALPS document as an absolute URL. The URL MUST contain
-            a <xref target="prop-id-frag">fragment</xref> referencing the related 'descriptor'.
+            a fragment per <xref target="prop-id-frag"/> referencing the related 'descriptor'.
           </t>
           <t>
-            When it appears as an attribute of <xref target="prop-ext">'ext'</xref>, 'href' points to an
+            When it appears as an attribute of <xref target="prop-ext" format="title"/>, 'href' points to an
             external document which provides the defintion of
             the extension.
           </t>
           <t>
             When it appears as an attribute of
-            <xref target="prop-link">'link'</xref>,
+            <xref target="prop-link" format="title"/>,
             'href' points to an
             external document whose relationship to the current
             document or 'descriptor' is described by
             the associated
-            <xref target="prop-rel">'rel'</xref>
+            <xref target="prop-rel" format="title"/>
             property.
           </t>
           <t>
             When it appears as an attribute of
-            <xref target="prop-doc">'doc'</xref>, 'href' points to a
+            <xref target="prop-doc" format="title"/>, 'href' points to a
             document that contains human-readable text that describes
             the associated 'descriptor' or ALPS document.
           </t>
@@ -784,12 +785,12 @@
           <t>
             A document-wide unique identifier for the related
             element. This SHOULD appear as an attribute of a
-            <xref target="prop-descriptor">'descriptor'</xref>.
+            <xref target="prop-descriptor" format="title"/>.
           </t>
           <t>
             The value of this attribute MAY be used as an identifier
             in the related runtime hypermedia representation. In the
-            example below the ALPS descriptor with an 'id' of "q" is
+            example below the ALPS descriptor with an 'id' of 'q' is
             used to identify an HTML input element:
             <list style="hanging">
               <t hangText="'id' in ALPS..."><![CDATA[
@@ -818,9 +819,9 @@
             </t>
             <t>
               To avoid this, ALPS document designers can add the
-              <xref target="prop-name">name</xref>
-              property to a 'descriptor' to hold the common value ("search") while still using the
-              <xref target="prop-id">id</xref>
+              <xref target="prop-name" format="title"/>
+              property to a 'descriptor' to hold the common value ('search') while still using the
+              <xref target="prop-id" format="title"/>
               property to hold a document-wide unique value. For example:
             </t>
             <figure title="HTML Representation of a Search Transition">
@@ -850,9 +851,9 @@
               When applied to an ALPS document, a URI fragment
               identifier points to the 'descriptor' whose
               'id' is the value of the fragment. For example, the fragment
-              identifier "customer" in the URI
+              identifier 'customer' in the URI
               http://example.com/my-alps-document#customer refers to an ALPS
-              'descriptor' with 'id' set to "customer".
+              'descriptor' with 'id' set to 'customer'.
             </t>
             <t>
               A relative URL with a fragment identifier within an ALPS document
@@ -861,7 +862,7 @@
             </t>
             <t>
               The complete URI to an ALPS 'descriptor' (including the
-              fragment) forms an "abstract semantic type"
+              fragment) forms an 'abstract semantic type'
               identifier. This is a resolvable URI (URL) that can
               be used to indicate the type of a resource; for
               instance, it can be used as the value of the
@@ -894,22 +895,22 @@
           <t>
             An element that identifies a link between the current ALPS element and some
             other (possibly external) resource. MAY be a child element of the
-            <xref target="prop-alps">'alps'</xref>
+            <xref target="prop-alps" format="title"/>
             and the
-            <xref target="prop-descriptor">'descriptor'</xref>
+            <xref target="prop-descriptor" format="title"/>
             elements.
           </t>
           <t>
             The 'link' element MUST define the two attributes
-            <xref target="prop-href">'href'</xref>
+            <xref target="prop-href" format="title"/>
             and
-            <xref target="prop-rel">'rel'</xref>.
+            <xref target="prop-rel" format="title"/>.
           </t>
         </section>
         <section anchor="prop-name" title="'name'">
           <t>
             Indicates the name of the
-            <xref target="prop-descriptor">'descriptor'</xref>
+            <xref target="prop-descriptor" format="title"/>
             as
             found in generic representations. It MAY appear as a
             property of 'descriptor'.
@@ -917,12 +918,12 @@
           <t>
             This is used when the name of the 'descriptor'
             is used as an
-            <xref target="prop-id">'id'</xref>
+            <xref target="prop-id" format="title"/>
             value elsewhere in the
             ALPS document. For instance, if a single ALPS
             document defines a semantic descriptor (data element) called
-            "customer" and a safe descriptor (transition element) also called
-            "customer", they cannot both have 'id="customer"' in
+            'customer' and a safe descriptor (transition element) also called
+            'customer', they cannot both have 'id="customer"' in
             the ALPS document. One of them needs to have some
             other 'id', and to set 'name="customer"'.
           </t>
@@ -942,7 +943,7 @@
             or a registered relation type (a short string).
           </t>
           <t>
-            Appears as a property of<xref target="prop-link">link</xref>.
+            Appears as a property of<xref target="prop-link" format="title"/>.
           </t>
         </section>
         <section anchor="prop-rt" title="'rt'">
@@ -950,17 +951,17 @@
             Indicates the resource type that will be returned when
             executing the specified network request. The 'rt' attribute
             SHOULD appear only on a
-            <xref target="prop-descriptor">'descriptor'</xref>
+            <xref target="prop-descriptor" format="title"/>
             with a
-            <xref target="prop-type">'type'</xref>
+            <xref target="prop-type" format="title"/>
             value of
             'safe', 'unsafe', or 'idempotent.'
           </t>
           <t>
             The 'rt' attribute is OPTIONAL and is an opaque string and MAY match the
-            <xref target="prop-id">'id'</xref>
+            <xref target="prop-id" format="title"/>
             of an
-            existing<xref target="prop-descriptor">'descriptor'</xref>.
+            existing<xref target="prop-descriptor" format="title"/>.
           </t>
         </section>
         <section anchor="prop-type" title="'type'">
@@ -968,25 +969,25 @@
             Indicates the type of hypermedia control to which
             the element is applied within the resulting representation. 
             This SHOULD appear for each 
-            <xref target="prop-descriptor">'descriptor'</xref> element. 
+            <xref target="prop-descriptor" format="title"/> element. 
             The four valid values are:
 
             <list style="hanging">
-              <t hangText="&quot;semantic&quot;">
+              <t hangText="'semantic'">
                 A state element (e.g. HTML.SPAN, HTML.INPUT,
                 etc.).
               </t>
-              <t hangText="&quot;safe&quot;">
+              <t hangText="'safe'">
                 A hypermedia control that triggers a safe,
                 idempotent state transition (e.g. HTTP.GET or
                 HTTP.HEAD).
               </t>
-              <t hangText="&quot;idempotent&quot;">
+              <t hangText="'idempotent'">
                 A hypermedia control that triggers an unsafe,
                 idempotent state transition (e.g. HTTP.PUT or
                 HTTP.DELETE).
               </t>
-              <t hangText="&quot;unsafe&quot;">
+              <t hangText="'unsafe'">
                 A hypermedia control that triggers an unsafe,
                 non-idempotent state transition (e.g. HTTP.POST).
               </t>
@@ -1000,9 +1001,9 @@
           <t>
             Contains a string value. It MAY appear as an attribute
             of the
-            <xref target="prop-doc">'doc'</xref>
+            <xref target="prop-doc" format="title"/>
             and the
-            <xref target="prop-ext">'ext'</xref>
+            <xref target="prop-ext" format="title"/>
             elements.
           </t>
         </section>
@@ -1011,10 +1012,10 @@
             Indicates the version of the ALPS specification used
             in the document. This SHOULD appear as a property of
             the
-            <xref target="prop-alps">'alps'</xref>
+            <xref target="prop-alps" format="title"/>
             element.
             Currently
-            the only valid value is "1.0". If no value appears,
+            the only valid value is '1.0'. If no value appears,
             then 'version="1.0"' is implied.
           </t>
         </section>
@@ -1059,9 +1060,9 @@
         <section anchor="xml-representation" title="XML Representation Example">
           <t>
             In the XML version of an ALPS document, the following
-            ALPS properties always appear as XML elements: <xref target="prop-alps">'alps'</xref>, <xref
-                  target="prop-doc">'doc'</xref>, <xref target="prop-descriptor">'descriptor'</xref>, and <xref
-                  target="prop-ext">'ext'</xref>. All other ALPS
+            ALPS properties always appear as XML elements: <xref target="prop-alps" format="title"/>, <xref
+                  target="prop-doc" format="title"/>, <xref target="prop-descriptor" format="title"/>, and <xref
+                  target="prop-ext" format="title"/>. All other ALPS
             properties appear as XML attributes.
           </t>
           <section title="Complete XML Representation">
@@ -1098,9 +1099,9 @@
           <t>
             When representing ALPS documents in JSON format,
             the
-            <xref target="prop-descriptor">'descriptor'</xref>
+            <xref target="prop-descriptor" format="title"/>
             and
-            <xref target="prop-ext">'ext'</xref>
+            <xref target="prop-ext" format="title"/>
             properties are
             always expressed as arrays of anonymous objects - even
             when there is only one member in the array.
@@ -1122,7 +1123,7 @@
           </t>
           <t>
             The
-            <xref target="prop-doc">'doc'</xref>
+            <xref target="prop-doc" format="title"/>
             property is always expressed as a named object.
           </t>
           <t>
@@ -1267,7 +1268,7 @@
         <t>
           To indicate that an ALPS profile describes the semantics of
           some representation document, the representation document
-          SHOULD be linked to the ALPS document. The "profile"
+          SHOULD be linked to the ALPS document. The 'profile'
           link relation <xref target="RFC6906" /> MUST be used when creating this link.
           If the media type of the representation
           document has no native ability to link to other resources,
@@ -1499,28 +1500,10 @@
       &rfc4627;
       &rfc5988;
       &rfc6906;
+      &rfc7320;
     </references>
     <references title="Informative References">
-      <reference anchor="draft-ietf-appsawg-uri-get-off-my-lawn-00">
-        <front>
-          <title>Standardising Structure in URIs</title>
-          <author initials="M." surname="Nottingham" fullname="Mark Nottingham Postel">
-          </author>
-          <date month="September" year="2013"/>
-        </front>
-        <seriesInfo name="I-D" value="draft-ietf-appsawg-uri-get-off-my-lawn-00"/>
-        <format type="HTML" target="http://tools.ietf.org/html/draft-ietf-appsawg-uri-get-off-my-lawn-00"/>
-      </reference>
-      <reference anchor="draft-ietf-appsawg-text-markdown-05">
-        <front>
-          <title>The text/markdown Media Type</title>
-          <author initials="S." surname="Leonard" fullname="Sean Leonard">
-          </author>
-          <date month="December" year="2014"/>
-        </front>
-        <seriesInfo name="I-D" value="draft-ietf-appsawg-text-markdown-05"/>
-        <format type="HTML" target="http://tools.ietf.org/html/draft-ietf-appsawg-text-markdown-05"/>
-      </reference>
+      <?rfc include="reference.I-D.ietf-appsawg-text-markdown.xml"?>
     </references>
     <section title="Frequently Asked Questions">
       <section title="Why are there no URLs in ALPS?">
@@ -1529,7 +1512,7 @@
           can be used by many ALPS-compliant servers. Since each service implementation is in charge
           of their own URL space, ALPS descriptions do not include URLs.
           See
-          <xref target="draft-ietf-appsawg-uri-get-off-my-lawn-00">Standardising Structure in URIs</xref>
+          <xref target="RFC7320">URI Design and Ownership</xref>
           for more on this principle.
         </t>
         <t>
@@ -1545,7 +1528,7 @@
           ALPS is not designed to describe workflows or execution paths for a service. Instead, ALPS
           is designed to describe a shared set of data and actions elements that server MAY implement
           in order to create a service. Each action descriptor (where the descriptor's type property is set to
-          "safe", "unsafe", or "idemponent") SHOULD describe a state transition that a
+          'safe', 'unsafe', or 'idemponent') SHOULD describe a state transition that a
           ALPS-compliant client application can invoke when it is available. Servers are free to
           implement the transitions they find useful and to arrange them in any order they wish.
           ALPS-compliant client applications SHOULD be able to recognize these descriptors when they appear
@@ -1558,9 +1541,9 @@
           For most all service implementations, there are cases where it would be helpful to document
           a range of possible values for a semantic element. For example, when implementing the descriptor
           {"id":"size", ...}, one service might want to indicate the list of supported values such as:
-          "small", "meduim", "large", etc. However, another service might have a very different list of
-          possible values such as "standard", "oversized", "undersized", etc. And there may be a service
-          that only supports a single value here and will always supply it ("onesie").
+          'small', 'meduim', 'large', etc. However, another service might have a very different list of
+          possible values such as 'standard', 'oversized', 'undersized', etc. And there may be a service
+          that only supports a single value here and will always supply it ('onesize').
         </t>
         <t>
           Since ALPS is meant to provide a single description that can be used by multiple services,
