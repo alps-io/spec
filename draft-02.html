@@ -401,8 +401,8 @@
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Amundsen, M., Richardson, L., and M. Foster" />
-  <meta name="dct.identifier" content="urn:ietf:id:draft-amundsen-richardson-foster-alps-01" />
-  <meta name="dct.issued" scheme="ISO8601" content="2015-3-3" />
+  <meta name="dct.identifier" content="urn:ietf:id:draft-amundsen-richardson-foster-alps-02" />
+  <meta name="dct.issued" scheme="ISO8601" content="2015-3-7" />
   <meta name="dct.abstract" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.  " />
   <meta name="description" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.  " />
 
@@ -422,7 +422,7 @@
   <td class="right">CA Technologies, Inc.</td>
 </tr>
 <tr>
-  <td class="left">Expires: September 4, 2015</td>
+  <td class="left">Expires: September 8, 2015</td>
   <td class="right">L. Richardson</td>
 </tr>
 <tr>
@@ -439,7 +439,7 @@
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">March 3, 2015</td>
+  <td class="right">March 7, 2015</td>
 </tr>
 
     	
@@ -447,7 +447,7 @@
   </table>
 
   <p class="title">Application-Level Profile Semantics (ALPS) <br />
-  <span class="filename">draft-amundsen-richardson-foster-alps-01</span></p>
+  <span class="filename">draft-amundsen-richardson-foster-alps-02</span></p>
   
   <h1 id="rfc.abstract">
   <a href="#rfc.abstract">Abstract</a>
@@ -463,7 +463,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on September 4, 2015.</p>
+<p>This Internet-Draft will expire on September 8, 2015.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -543,10 +543,11 @@
 <pre>
  &lt;alps version="1.0"&gt;
   &lt;doc format="text"&gt;A contact list.&lt;/doc&gt;
+  &lt;link rel="help" href="http://example.org/help/contacts.html" /&gt;
 
   &lt;!-- a hypermedia control for returning contacts --&gt;
   &lt;descriptor id="collection" type="safe" rt="contact"&gt;
-    &lt;doc&gt; 
+    &lt;doc&gt;
       A simple link/form for getting a list of contacts.
     &lt;/doc&gt;
     &lt;descriptor id="nameSearch" type="semantic"&gt;
@@ -570,14 +571,16 @@
 <pre>
 &lt;html&gt;
   &lt;head&gt;
-    &lt;link href="http://alps.io/profiles/contact" 
+    &lt;link href="http://alps.io/profiles/contact"
       rel="profile" /&gt;
-    &lt;link href="http://alps.io/profiles/contact#contact" 
+    &lt;link href="http://alps.io/profiles/contact#contact"
       rel="type" /&gt;
+    &lt;link href="http://example.org/help/contacts.html"
+      rel="help" /&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;form class="collection"
-      method="get" 
+      method="get"
       action="http://example.org/contacts/"&gt;
       &lt;label&gt;Name:&lt;/label&gt;
       &lt;input name="nameSearch" value="" /&gt;
@@ -587,7 +590,7 @@
     &lt;table&gt;
       &lt;tr class="contact"&gt;
         &lt;td&gt;
-          &lt;a href="http://example.org/contacts/1" 
+          &lt;a href="http://example.org/contacts/1"
             rel="item"&gt;
             &lt;span class="fullName"&gt;Ann Arbuckle&lt;/span&gt;
           &lt;/a&gt;
@@ -602,7 +605,7 @@
             
       &lt;tr&gt;
         &lt;td&gt;
-          &lt;a href="http://example.org/contacts/100" 
+          &lt;a href="http://example.org/contacts/100"
             rel="item"&gt;
             &lt;span class="fullName"&gt;Zelda Zackney&lt;/span&gt;
           &lt;/a&gt;
@@ -623,20 +626,22 @@
 <p id="rfc.section.1.3.p.5">This HAL document uses the same profile to express the same application-level semantics as the HTML document.  </p>
 <pre>
 &lt;resource href="http://example.org/contacts/"&gt;
-  &lt;link href="http://alps.io/profiles/contacts#contact" 
+  &lt;link href="http://alps.io/profiles/contacts#contact"
     rel="type" /&gt;
-  &lt;link rel="collection" 
+  &lt;link href="http://example.org/help-file/contacts.html"
+    rel="help" /&gt;
+  &lt;link rel="collection"
     href="http://example.org/contacts/{?nameSearch}"
     templated="true" /&gt;
   &lt;resource rel="item" href="http://example.org/contacts/1"&gt;
-    &lt;link href="http://alps.io/profiles/contacts#contact" 
+    &lt;link href="http://alps.io/profiles/contacts#contact"
       rel="type" /&gt;
     &lt;fullName&gt;Ann Arbuckle&lt;/fullName&gt;
     &lt;email&gt;aa@example.org&lt;/email&gt;
     &lt;phone&gt;123.456.7890&lt;/phone&gt;
   &lt;/resource&gt;
   &lt;resource rel="item" href="http://example.org/contacts/100"&gt;
-    &lt;link href="http://alps.io/profiles/contacts#contact" 
+    &lt;link href="http://alps.io/profiles/contacts#contact"
       rel="type" /&gt;
     &lt;fullName&gt;Zelda Zackney&lt;/fullName&gt;
     &lt;email&gt;zz@example.org&lt;/email&gt;
@@ -655,24 +660,28 @@
 
     "links" : [
       {
-        "rel" : "profile", 
+        "rel" : "profile",
         "href" : "http://alps.io/profiles/contacts"
       },
       {
-        "rel" : "type", 
+        "rel" : "help",
+        "href" : "http://example.org/help/contacts.html"
+      },
+      {
+        "rel" : "type",
         "href" : "http://alps.io/profiles/contacts#contact"
       }
     ],
 
     "queries" : [
       {
-        "rel" : "collection", 
-        "rt" : "contact", 
+        "rel" : "collection",
+        "rt" : "contact",
         "href" : "http://example.org/contacts/",
         "data" : [
           {
-            "name" : "nameSearch", 
-            "value" : "", 
+            "name" : "nameSearch",
+            "value" : "",
             "prompt" :  "Search Name"
           }
         ]
@@ -691,7 +700,7 @@
         ],
         "links" : [
           {
-            "rel" : "type", 
+            "rel" : "type",
             "href" : "http://alps.io/profiles/contacts#contact"
           }
         ]
@@ -702,21 +711,21 @@
         "rt" : "contact",
         "data" : [
           {
-            "name" : "fullName", 
-            "value" : "Zelda Zackney" 
+            "name" : "fullName",
+            "value" : "Zelda Zackney"
           },
           {
-            "name" : "email", 
-            "value" : "zz@example.org" 
+            "name" : "email",
+            "value" : "zz@example.org"
           },
           {
-            "name" : "phone", 
-            "value" : "987.654.3210" 
+            "name" : "phone",
+            "value" : "987.654.3210"
           }
         ],
         "links" : [
           {
-            "rel" : "type", 
+            "rel" : "type",
             "href" : "http://alps.io/profiles/contacts#contact"
           }
         ]
@@ -948,7 +957,7 @@
 <p id="rfc.section.2.3.p.1">An ALPS document may be represented in either XML or JSON format. This section contains notes on how the ALPS elements and attributes appear in each format, along with examples to guide ALPS document authors.  </p>
 <h1 id="rfc.section.2.3.1"><a href="#rfc.section.2.3.1">2.3.1.</a> <a href="#html-representation" id="html-representation">Sample HTML</a></h1>
 <pre>
-&lt;!-- sample HTML document --&gt;                    
+&lt;!-- sample HTML document --&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;link rel="profile" href="http://alps.io/documents/search" /&gt;
@@ -963,7 +972,7 @@
       &lt;input type="submit" /&gt;
     &lt;/form&gt;
   &lt;/body&gt;
-&lt;/html&gt;                           
+&lt;/html&gt;
                         </pre>
 <p class="figure">HTML Sample</p>
 <p id="rfc.section.2.3.1.p.1">Below is a simple HTML document that contains a handful of semantic descriptors and transition instructions.  This document was generated from the XML and JSON ALPS documents that follow. Use this HTML document as a guide when evaluating the XML and JSON examples.  </p>
@@ -986,8 +995,8 @@
 
   &lt;descriptor id="resultType" type="semantic"&gt;
     &lt;doc&gt;results format&lt;/doc&gt;
-    &lt;ext 
-      href="http://alps.io/ext/range" 
+    &lt;ext
+      href="http://alps.io/ext/range"
       value="summary,detail" /&gt;
   &lt;/descriptor&gt;
 &lt;/alps&gt;
@@ -1025,7 +1034,7 @@
 <h1 id="rfc.section.2.3.3.1"><a href="#rfc.section.2.3.3.1">2.3.3.1.</a> Complete JSON Representation</h1>
 <p id="rfc.section.2.3.3.1.p.1">Below is a example of the application/alps+json representation of an ALPS document.  </p>
 <pre>
-{ 
+{
   "alps" : {
     "version" : "1.0",
     "doc" : {
@@ -1033,9 +1042,9 @@
     },
     "descriptor" : [
       {
-        "id" : "search", 
+        "id" : "search",
         "type" : "safe",
-        "doc" : {"value" : 
+        "doc" : {"value" :
           "A search form with a two inputs"
         },
         "descriptor" : [
@@ -1054,12 +1063,12 @@
         "description" : {"value" : "results format"},
         "ext" : [
           {
-            "href" : "http://alps.io/ext/range", 
+            "href" : "http://alps.io/ext/range",
             "value" : "summary,detail"
           }
         ]
       }
-    ]  
+    ]
   }
 }
                           </pre>
@@ -1204,7 +1213,7 @@
 <p/>
 <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> Acknowledgements</h1>
 <p id="rfc.section.6.p.1">The authors gratefully acknowledge the following people who made contributions to this specification: </p>
-<p id="rfc.section.6.p.2">Christopher Harrison, Steve Klabnik, Graham Klyne, Dmitry Pavlov, R&#233;mon (Ray) Sinnema.  </p>
+<p id="rfc.section.6.p.2">Glenn Block, Christopher Harrison, Steve Klabnik, Graham Klyne, Dmitry Pavlov, R&#233;mon (Ray) Sinnema.  </p>
 <h1 id="rfc.references"><a href="#rfc.references">7.</a> References</h1>
 <h1 id="rfc.references.1"><a href="#rfc.references.1">7.1.</a> Normative References</h1>
 <table>
