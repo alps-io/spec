@@ -18,7 +18,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 <!-- the actual document! -->
-<rfc docName="draft-amundsen-richardson-foster-alps-01" ipr="trust200902">
+<rfc docName="draft-amundsen-richardson-foster-alps-02" ipr="trust200902">
   <!-- front matter -->
   <front>
     <title abbrev="Application-Level Profile Semantics">
@@ -192,10 +192,11 @@
           <artwork><![CDATA[
  <alps version="1.0">
   <doc format="text">A contact list.</doc>
+  <link rel="help" href="http://example.org/help/contacts.html" />
 
   <!-- a hypermedia control for returning contacts -->
   <descriptor id="collection" type="safe" rt="contact">
-    <doc> 
+    <doc>
       A simple link/form for getting a list of contacts.
     </doc>
     <descriptor id="nameSearch" type="semantic">
@@ -227,14 +228,16 @@
           <artwork><![CDATA[
 <html>
   <head>
-    <link href="http://alps.io/profiles/contact" 
+    <link href="http://alps.io/profiles/contact"
       rel="profile" />
-    <link href="http://alps.io/profiles/contact#contact" 
+    <link href="http://alps.io/profiles/contact#contact"
       rel="type" />
+    <link href="http://example.org/help/contacts.html"
+      rel="help" />
   </head>
   <body>
     <form class="collection"
-      method="get" 
+      method="get"
       action="http://example.org/contacts/">
       <label>Name:</label>
       <input name="nameSearch" value="" />
@@ -244,7 +247,7 @@
     <table>
       <tr class="contact">
         <td>
-          <a href="http://example.org/contacts/1" 
+          <a href="http://example.org/contacts/1"
             rel="item">
             <span class="fullName">Ann Arbuckle</span>
           </a>
@@ -259,7 +262,7 @@
             
       <tr>
         <td>
-          <a href="http://example.org/contacts/100" 
+          <a href="http://example.org/contacts/100"
             rel="item">
             <span class="fullName">Zelda Zackney</span>
           </a>
@@ -280,8 +283,8 @@
           HTML representations implement most ALPS elements using
           HTML's 'class' attribute. The 'collection' ID has become the
           CSS class of an HTML form's submit button.
-          The 'contact' ID has become the CSS class of the TR elements in an 
-          HTML table. The subordinate descriptors 'fullname','email', and 
+          The 'contact' ID has become the CSS class of the TR elements in an
+          HTML table. The subordinate descriptors 'fullname','email', and
           'phone' are rendered as the TD elements of each TR.
         </t>
         <t>This HAL document uses the same profile to express the same
@@ -290,20 +293,22 @@
         <figure title="HAL XML Contacts Representation">
           <artwork><![CDATA[
 <resource href="http://example.org/contacts/">
-  <link href="http://alps.io/profiles/contacts#contact" 
+  <link href="http://alps.io/profiles/contacts#contact"
     rel="type" />
-  <link rel="collection" 
+  <link href="http://example.org/help-file/contacts.html"
+    rel="help" />
+  <link rel="collection"
     href="http://example.org/contacts/{?nameSearch}"
     templated="true" />
   <resource rel="item" href="http://example.org/contacts/1">
-    <link href="http://alps.io/profiles/contacts#contact" 
+    <link href="http://alps.io/profiles/contacts#contact"
       rel="type" />
     <fullName>Ann Arbuckle</fullName>
     <email>aa@example.org</email>
     <phone>123.456.7890</phone>
   </resource>
   <resource rel="item" href="http://example.org/contacts/100">
-    <link href="http://alps.io/profiles/contacts#contact" 
+    <link href="http://alps.io/profiles/contacts#contact"
       rel="type" />
     <fullName>Zelda Zackney</fullName>
     <email>zz@example.org</email>
@@ -331,24 +336,28 @@
 
     "links" : [
       {
-        "rel" : "profile", 
+        "rel" : "profile",
         "href" : "http://alps.io/profiles/contacts"
       },
       {
-        "rel" : "type", 
+        "rel" : "help",
+        "href" : "http://example.org/help/contacts.html"
+      },
+      {
+        "rel" : "type",
         "href" : "http://alps.io/profiles/contacts#contact"
       }
     ],
 
     "queries" : [
       {
-        "rel" : "collection", 
-        "rt" : "contact", 
+        "rel" : "collection",
+        "rt" : "contact",
         "href" : "http://example.org/contacts/",
         "data" : [
           {
-            "name" : "nameSearch", 
-            "value" : "", 
+            "name" : "nameSearch",
+            "value" : "",
             "prompt" :  "Search Name"
           }
         ]
@@ -367,7 +376,7 @@
         ],
         "links" : [
           {
-            "rel" : "type", 
+            "rel" : "type",
             "href" : "http://alps.io/profiles/contacts#contact"
           }
         ]
@@ -378,21 +387,21 @@
         "rt" : "contact",
         "data" : [
           {
-            "name" : "fullName", 
-            "value" : "Zelda Zackney" 
+            "name" : "fullName",
+            "value" : "Zelda Zackney"
           },
           {
-            "name" : "email", 
-            "value" : "zz@example.org" 
+            "name" : "email",
+            "value" : "zz@example.org"
           },
           {
-            "name" : "phone", 
-            "value" : "987.654.3210" 
+            "name" : "phone",
+            "value" : "987.654.3210"
           }
         ],
         "links" : [
           {
-            "rel" : "type", 
+            "rel" : "type",
             "href" : "http://alps.io/profiles/contacts#contact"
           }
         ]
@@ -545,7 +554,7 @@
 </apls>
                         ]]></t>
               <t hangText="JSON:"><![CDATA[
-{ 
+{
   "alps : {
 	"doc" : { "value" : "..." },
    	...
@@ -969,9 +978,9 @@
         <section anchor="prop-type" title="'type'">
           <t>
             Indicates the type of hypermedia control to which
-            the element is applied within the resulting representation. 
-            This SHOULD appear for each 
-            <xref target="prop-descriptor" format="title"/> element. 
+            the element is applied within the resulting representation.
+            This SHOULD appear for each
+            <xref target="prop-descriptor" format="title"/> element.
             The four valid values are:
 
             <list style="hanging">
@@ -1039,7 +1048,7 @@
 
             <figure title="HTML Sample">
               <artwork><![CDATA[
-<!-- sample HTML document -->                    
+<!-- sample HTML document -->
 <html>
   <head>
     <link rel="profile" href="http://alps.io/documents/search" />
@@ -1054,7 +1063,7 @@
       <input type="submit" />
     </form>
   </body>
-</html>                           
+</html>
                         ]]></artwork>
             </figure>
           </t>
@@ -1088,8 +1097,8 @@
 
   <descriptor id="resultType" type="semantic">
     <doc>results format</doc>
-    <ext 
-      href="http://alps.io/ext/range" 
+    <ext
+      href="http://alps.io/ext/range"
       value="summary,detail" />
   </descriptor>
 </alps>
@@ -1148,7 +1157,7 @@
             </t>
             <figure title="Complete ALPS+JSON Representation">
               <artwork><![CDATA[
-{ 
+{
   "alps" : {
     "version" : "1.0",
     "doc" : {
@@ -1156,9 +1165,9 @@
     },
     "descriptor" : [
       {
-        "id" : "search", 
+        "id" : "search",
         "type" : "safe",
-        "doc" : {"value" : 
+        "doc" : {"value" :
           "A search form with a two inputs"
         },
         "descriptor" : [
@@ -1177,12 +1186,12 @@
         "description" : {"value" : "results format"},
         "ext" : [
           {
-            "href" : "http://alps.io/ext/range", 
+            "href" : "http://alps.io/ext/range",
             "value" : "summary,detail"
           }
         ]
       }
-    ]  
+    ]
   }
 }
                           ]]></artwork>
@@ -1201,7 +1210,7 @@
         gave some informative
         examples of this. Normative, up-to-date guidance on applying
         ALPS documents to existing media types are available at the
-        official ALPS Web site at (http://alps.io/docs/mapping). [TK : this 
+        official ALPS Web site at (http://alps.io/docs/mapping). [TK : this
         page does not yet exist. -mamund]
       </t>
       <t>
@@ -1492,11 +1501,12 @@
       <t>
         The authors gratefully acknowledge the following people who made contributions to this specification:
       </t>
-      <t>  
-        Christopher Harrison, 
-	    Steve Klabnik, 
-	    Graham Klyne, 
-	    Dmitry Pavlov, 
+      <t>
+        Glenn Block,
+        Christopher Harrison,
+	      Steve Klabnik,
+	      Graham Klyne,
+	      Dmitry Pavlov,
         Rémon (Ray) Sinnema.
       </t>
     </section>
