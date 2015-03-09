@@ -969,10 +969,25 @@
             'safe', 'unsafe', or 'idempotent.'
           </t>
           <t>
-            The 'rt' attribute is OPTIONAL and is an opaque string and MAY match the
-            <xref target="prop-id" format="title"/>
-            of an
-            existing<xref target="prop-descriptor" format="title"/>.
+            The 'rt' attribute is OPTIONAL and SHOULD be one of the following:
+            <list style="numbers">
+              <t>
+                A fragment identifier (e.g. rt="#user") which points
+                to the <xref target="prop-id" format="title"/>
+                of an existing <xref target="prop-descriptor" format="title"/>
+                in the current ALPS document.
+              </t>
+              <t>
+                A resolvable URL (e.g. rt="http://example.org/profiles/user")
+                which points to a valid ALPS document.
+              </t>
+              <t>
+                A resolvable URL with a fragment identifier (e.g. rt="http://example.org/profiles/user#record")
+                which points to the <xref target="prop-id" format="title"/>
+                of an existing <xref target="prop-descriptor" format="title"/> in a
+                valid ALPS document.
+              </t>
+            </list>
           </t>
         </section>
         <section anchor="prop-type" title="'type'">
