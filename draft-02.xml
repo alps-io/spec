@@ -959,7 +959,7 @@
         </section>
         <section anchor="prop-rt" title="'rt'">
           <t>
-            Indicates the resource type that will be returned when
+            Indicates the kind of resource that will be returned when
             executing the specified network request. The 'rt' attribute
             SHOULD appear only on a
             <xref target="prop-descriptor" format="title"/>
@@ -969,10 +969,23 @@
             'safe', 'unsafe', or 'idempotent.'
           </t>
           <t>
-            The 'rt' attribute is OPTIONAL and is an opaque string and MAY match the
-            <xref target="prop-id" format="title"/>
-            of an
-            existing<xref target="prop-descriptor" format="title"/>.
+            The 'rt' attribute is OPTIONAL and, when it appears, it MUST point to
+            the <xref target="prop-id" format="title" /> of an existing
+            <xref target="prop-descriptor" format="title" /> using one of two methods:
+            <list style="numbers">
+              <t>
+                A fragment identifier (e.g. rt="#friend") which points
+                to the <xref target="prop-id" format="title"/>
+                of an existing <xref target="prop-descriptor" format="title"/>
+                in the current ALPS document.
+              </t>
+              <t>
+                A resolvable URL with a fragment identifier (e.g. rt="http://example.org/profiles/people#friend")
+                which points to the <xref target="prop-id" format="title"/>
+                of an existing <xref target="prop-descriptor" format="title"/> in any
+                valid ALPS document.
+              </t>
+            </list>
           </t>
         </section>
         <section anchor="prop-type" title="'type'">
