@@ -4,11 +4,11 @@
 
 Network Working Group                                        M. Amundsen
 Internet-Draft                                     CA Technologies, Inc.
-Expires: September 11, 2015                                L. Richardson
+Expires: September 13, 2015                                L. Richardson
 
                                                                M. Foster
                                                                   Apiary
-                                                          March 10, 2015
+                                                          March 12, 2015
 
 
                Application-Level Profile Semantics (ALPS)
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 11, 2015.
+   This Internet-Draft will expire on September 13, 2015.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Amundsen, et al.       Expires September 11, 2015               [Page 1]
+Amundsen, et al.       Expires September 13, 2015               [Page 1]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
@@ -103,22 +103,22 @@ Table of Contents
      3.1.  Linking to ALPS Documents . . . . . . . . . . . . . . . .  21
    4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  22
      4.1.  application/alps+xml  . . . . . . . . . . . . . . . . . .  22
-     4.2.  application/alps+json . . . . . . . . . . . . . . . . . .  23
+     4.2.  application/alps+json . . . . . . . . . . . . . . . . . .  24
    5.  Internationalization Considerations . . . . . . . . . . . . .  25
    6.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  25
 
 
 
-Amundsen, et al.       Expires September 11, 2015               [Page 2]
+Amundsen, et al.       Expires September 13, 2015               [Page 2]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  25
      7.1.  Normative References  . . . . . . . . . . . . . . . . . .  25
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .  25
-   Appendix A.  Frequently Asked Questions . . . . . . . . . . . . .  25
-     A.1.  Why are there no URLs in ALPS?  . . . . . . . . . . . . .  25
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .  26
+   Appendix A.  Frequently Asked Questions . . . . . . . . . . . . .  26
+     A.1.  Why are there no URLs in ALPS?  . . . . . . . . . . . . .  26
      A.2.  Why is there no workflow component in the ALPS
            specification?  . . . . . . . . . . . . . . . . . . . . .  26
      A.3.  Why is there no way to indicate ranges for semantic
@@ -165,7 +165,7 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
 
-Amundsen, et al.       Expires September 11, 2015               [Page 3]
+Amundsen, et al.       Expires September 13, 2015               [Page 3]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
@@ -221,7 +221,7 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
 
-Amundsen, et al.       Expires September 11, 2015               [Page 4]
+Amundsen, et al.       Expires September 13, 2015               [Page 4]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
@@ -277,7 +277,7 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
 
-Amundsen, et al.       Expires September 11, 2015               [Page 5]
+Amundsen, et al.       Expires September 13, 2015               [Page 5]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
@@ -333,7 +333,7 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
 
-Amundsen, et al.       Expires September 11, 2015               [Page 6]
+Amundsen, et al.       Expires September 13, 2015               [Page 6]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
@@ -389,7 +389,7 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
 
-Amundsen, et al.       Expires September 11, 2015               [Page 7]
+Amundsen, et al.       Expires September 13, 2015               [Page 7]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
@@ -445,7 +445,7 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
 
-Amundsen, et al.       Expires September 11, 2015               [Page 8]
+Amundsen, et al.       Expires September 13, 2015               [Page 8]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
@@ -501,7 +501,7 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
 
-Amundsen, et al.       Expires September 11, 2015               [Page 9]
+Amundsen, et al.       Expires September 13, 2015               [Page 9]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
@@ -557,7 +557,7 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
 
-Amundsen, et al.       Expires September 11, 2015              [Page 10]
+Amundsen, et al.       Expires September 13, 2015              [Page 10]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
@@ -613,7 +613,7 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
 
-Amundsen, et al.       Expires September 11, 2015              [Page 11]
+Amundsen, et al.       Expires September 13, 2015              [Page 11]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
@@ -669,7 +669,7 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
 
-Amundsen, et al.       Expires September 11, 2015              [Page 12]
+Amundsen, et al.       Expires September 13, 2015              [Page 12]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
@@ -725,7 +725,7 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
 
-Amundsen, et al.       Expires September 11, 2015              [Page 13]
+Amundsen, et al.       Expires September 13, 2015              [Page 13]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
@@ -781,7 +781,7 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
 
-Amundsen, et al.       Expires September 11, 2015              [Page 14]
+Amundsen, et al.       Expires September 13, 2015              [Page 14]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
@@ -837,7 +837,7 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
 
-Amundsen, et al.       Expires September 11, 2015              [Page 15]
+Amundsen, et al.       Expires September 13, 2015              [Page 15]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
@@ -893,7 +893,7 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
 
-Amundsen, et al.       Expires September 11, 2015              [Page 16]
+Amundsen, et al.       Expires September 13, 2015              [Page 16]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
@@ -949,7 +949,7 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
 
-Amundsen, et al.       Expires September 11, 2015              [Page 17]
+Amundsen, et al.       Expires September 13, 2015              [Page 17]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
@@ -1005,7 +1005,7 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
 
-Amundsen, et al.       Expires September 11, 2015              [Page 18]
+Amundsen, et al.       Expires September 13, 2015              [Page 18]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
@@ -1061,7 +1061,7 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
 
-Amundsen, et al.       Expires September 11, 2015              [Page 19]
+Amundsen, et al.       Expires September 13, 2015              [Page 19]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
@@ -1117,7 +1117,7 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
 
-Amundsen, et al.       Expires September 11, 2015              [Page 20]
+Amundsen, et al.       Expires September 13, 2015              [Page 20]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
@@ -1173,7 +1173,7 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
 
-Amundsen, et al.       Expires September 11, 2015              [Page 21]
+Amundsen, et al.       Expires September 13, 2015              [Page 21]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
@@ -1229,7 +1229,7 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
 
-Amundsen, et al.       Expires September 11, 2015              [Page 22]
+Amundsen, et al.       Expires September 13, 2015              [Page 22]
 
 Internet-Draft     Application-Level Profile Semantics        March 2015
 
@@ -1251,6 +1251,12 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
    Interoperability considerations:  ALPS is not described by a DTD and
       applies only the well-formedness rules of XML.  It should only be
       parsed by a non-validating parser.
+
+   Fragment identifier considerations:  Fragment identifiers used with
+      application/alps+xml resources are simple, opaque strings that
+      match the 'id' in an existing 'descriptor' in the document.  For
+      example, the fragment identifier "#user" refers to a descriptor in
+      the document with an id value set to "user."
 
    Published specification:  This Document
 
@@ -1276,19 +1282,19 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
    Author/change controller:  Mike Amundsen
 
+
+
+
+Amundsen, et al.       Expires September 13, 2015              [Page 23]
+
+Internet-Draft     Application-Level Profile Semantics        March 2015
+
+
 4.2.  application/alps+json
 
    Type name:  application
 
    Subtype name:  alps+json
-
-
-
-
-Amundsen, et al.       Expires September 11, 2015              [Page 23]
-
-Internet-Draft     Application-Level Profile Semantics        March 2015
-
 
    Required parameters:  None
 
@@ -1315,6 +1321,12 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
    Interoperability considerations:  None
 
+   Fragment identifier considerations:  Fragment identifiers used with
+      application/alps+json resources are simple, opaque strings that
+      match the 'id' in an existing 'descriptor' in the document.  For
+      example, the fragment identifier "#user" refers to a descriptor in
+      the document with an id value set to "user."
+
    Published specification:  This Document
 
    Applications that use this media type:  Various
@@ -1327,6 +1339,13 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
       macintosh type file code:  TEXT
 
+
+
+Amundsen, et al.       Expires September 13, 2015              [Page 24]
+
+Internet-Draft     Application-Level Profile Semantics        March 2015
+
+
       object idenfiers:  none
 
    person to contact for further information:
@@ -1338,13 +1357,6 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
    Intended usage:  Common
 
    Author/change controller:  Mike Amundsen
-
-
-
-Amundsen, et al.       Expires September 11, 2015              [Page 24]
-
-Internet-Draft     Application-Level Profile Semantics        March 2015
-
 
 5.  Internationalization Considerations
 
@@ -1381,6 +1393,15 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
    [RFC7320]  Nottingham, M., "URI Design and Ownership", BCP 190, RFC
               7320, July 2014.
 
+
+
+
+
+Amundsen, et al.       Expires September 13, 2015              [Page 25]
+
+Internet-Draft     Application-Level Profile Semantics        March 2015
+
+
 7.2.  Informative References
 
    [I-D.ietf-appsawg-text-markdown]
@@ -1394,14 +1415,6 @@ A.1.  Why are there no URLs in ALPS?
 
    ALPS is meant to describe a service in a universal way.  The same
    ALPS description document can be used by many ALPS-compliant servers.
-
-
-
-Amundsen, et al.       Expires September 11, 2015              [Page 25]
-
-Internet-Draft     Application-Level Profile Semantics        March 2015
-
-
    Since each service implementation is in charge of their own URL
    space, ALPS descriptions do not include URLs.  See URI Design and
    Ownership [RFC7320] for more on this principle.
@@ -1437,6 +1450,14 @@ A.3.  Why is there no way to indicate ranges for semantic descriptors?
    element.  For example, when implementing the descriptor {"id":"size",
    ...}, one service might want to indicate the list of supported values
    such as: 'small', 'meduim', 'large', etc.  However, another service
+
+
+
+Amundsen, et al.       Expires September 13, 2015              [Page 26]
+
+Internet-Draft     Application-Level Profile Semantics        March 2015
+
+
    might have a very different list of possible values such as
    'standard', 'oversized', 'undersized', etc.  And there may be a
    service that only supports a single value here and will always supply
@@ -1449,14 +1470,6 @@ A.3.  Why is there no way to indicate ranges for semantic descriptors?
    time.  But including them in the global ALPS profile is discouraged.
 
 Authors' Addresses
-
-
-
-
-Amundsen, et al.       Expires September 11, 2015              [Page 26]
-
-Internet-Draft     Application-Level Profile Semantics        March 2015
-
 
    Mike Amundsen
    CA Technologies, Inc.
@@ -1496,17 +1509,4 @@ Internet-Draft     Application-Level Profile Semantics        March 2015
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-Amundsen, et al.       Expires September 11, 2015              [Page 27]
+Amundsen, et al.       Expires September 13, 2015              [Page 27]

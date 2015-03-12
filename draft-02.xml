@@ -1377,6 +1377,13 @@
               the well-formedness rules of XML. It should only
               be parsed by a non-validating parser.
             </t>
+            <t hangText="Fragment identifier considerations:">
+              Fragment identifiers used with application/alps+xml resources are simple, opaque strings
+              that match the <xref target="prop-id" format="title" /> in an existing
+              <xref target="prop-descriptor" format="title" /> in the document. For example, the
+              fragment identifier "#user" refers to a descriptor in the document with an id value
+              set to "user."
+            </t>
             <t hangText="Published specification:">
               This Document
             </t>
@@ -1461,6 +1468,13 @@
             </t>
             <t hangText="Interoperability considerations:">
               None
+            </t>
+            <t hangText="Fragment identifier considerations:">
+              Fragment identifiers used with application/alps+json resources are simple, opaque strings
+              that match the <xref target="prop-id" format="title" /> in an existing
+              <xref target="prop-descriptor" format="title" /> in the document. For example, the
+              fragment identifier "#user" refers to a descriptor in the document with an id value
+              set to "user."
             </t>
             <t hangText="Published specification:">
               This Document
