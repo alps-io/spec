@@ -245,6 +245,19 @@ Content-Type: application/vnd.siren+json
           </figure>
         </t>
         <t>
+          While ALPS documents defines a complete set of domain-specific information,
+          not all media-types have the capacity to express all aspects of this information.
+          For example, the plain JSON (application/json) has no standardized serializatsion of 
+          hypermedia links or forms and, in the above example, the 'publish' descriptor is 
+          missing from the JSON representation. However, the Siren mesdia type has an 'action' 
+          element that can be used to express the detaiuls of the 'publish' state transition.
+        </t>
+        <t>
+          This illustrates a key principle of the ALPS format. ALPS document define the domain 
+          semantics in the abstract and the mapping of these details to a message is defined
+          separately through a standardized set of ALPS-to-[media type] mapping documents.
+        </t>
+        <t>
           Because https://github.com/kevinswiber/siren[Siren] is a Hypermedia 
           media type, the transition-related descriptor 
           (<![CDATA[<descriptor id="publish" . . ./>]]>) can map directly to 
