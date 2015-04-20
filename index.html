@@ -12,6 +12,28 @@
 	  a {
 	  text-decoration: none;
 	  }
+      /* info code from SantaKlauss at http://www.madaboutstyle.com/tooltip2.html */
+      a.info {
+          /* This is the key. */
+          position: relative;
+          z-index: 24;
+          text-decoration: none;
+      }
+      a.info:hover {
+          z-index: 25;
+          color: #FFF; background-color: #900;
+      }
+      a.info span { display: none; }
+      a.info:hover span.info {
+          /* The span will display just on :hover state. */
+          display: block;
+          position: absolute;
+          font-size: smaller;
+          top: 2em; left: -5em; width: 15em;
+          padding: 2px; border: 1px solid #333;
+          color: #900; background-color: #EEE;
+          text-align: left;
+      }
 	  a.smpl {
 	  color: black;
 	  }
@@ -397,12 +419,12 @@
 <link href="#rfc.appendix.A.3" rel="Chapter" title="A.3 Why is there no way to indicate ranges for semantic descriptors?"/>
 
 
-  <meta name="generator" content="xml2rfc version 2.4.3 - http://tools.ietf.org/tools/xml2rfc" />
+  <meta name="generator" content="xml2rfc version 2.4.8 - http://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Amundsen, M., Richardson, L., and M. Foster" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-amundsen-richardson-foster-alps-02" />
-  <meta name="dct.issued" scheme="ISO8601" content="2015-3-10" />
+  <meta name="dct.issued" scheme="ISO8601" content="2015-4-19" />
   <meta name="dct.abstract" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.  " />
   <meta name="description" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.  " />
 
@@ -422,7 +444,7 @@
   <td class="right">CA Technologies, Inc.</td>
 </tr>
 <tr>
-  <td class="left">Expires: September 11, 2015</td>
+  <td class="left">Expires: October 21, 2015</td>
   <td class="right">L. Richardson</td>
 </tr>
 <tr>
@@ -439,7 +461,7 @@
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">March 10, 2015</td>
+  <td class="right">April 19, 2015</td>
 </tr>
 
     	
@@ -463,7 +485,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on September 11, 2015.</p>
+<p>This Internet-Draft will expire on October 21, 2015.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -874,7 +896,7 @@
 <p id="rfc.section.2.2.6.p.4">When it appears as an attribute of <a href="#prop-link">'link'</a>, 'href' points to an external document whose relationship to the current document or 'descriptor' is described by the associated <a href="#prop-rel">'rel'</a> property.  </p>
 <p id="rfc.section.2.2.6.p.5">When it appears as an attribute of <a href="#prop-doc">'doc'</a>, 'href' points to a document that contains human-readable text that describes the associated 'descriptor' or ALPS document.  </p>
 <h1 id="rfc.section.2.2.7"><a href="#rfc.section.2.2.7">2.2.7.</a> <a href="#prop-id" id="prop-id">'id'</a></h1>
-<p id="rfc.section.2.2.7.p.1">A document-wide unique identifier for the related element. This SHOULD appear as an attribute of a <a href="#prop-descriptor">'descriptor'</a>.  </p>
+<p id="rfc.section.2.2.7.p.1">A document-wide unique identifier for the related element. This SHOULD appear as an attribute of a <a href="#prop-descriptor">'descriptor'</a>. It SHOULD be an opaque string that does not contain any URL unsafe characters per <a href="#RFC1738">[RFC1738]</a>.  </p>
 <p id="rfc.section.2.2.7.p.2">The value of this attribute MAY be used as an identifier in the related runtime hypermedia representation. In the example below the ALPS descriptor with an 'id' of 'q' is used to identify an HTML input element: </p>
 
 <dl>
@@ -914,7 +936,7 @@
           </pre>
 <p class="figure">ALPS Description of the same Search Transition</p>
 <h1 id="rfc.section.2.2.7.2"><a href="#rfc.section.2.2.7.2">2.2.7.2.</a> <a href="#prop-id-frag" id="prop-id-frag">Fragment Identifiers and 'id'</a></h1>
-<p id="rfc.section.2.2.7.2.p.1">When applied to an ALPS document, a URI fragment identifier points to the 'descriptor' whose 'id' is the value of the fragment. For example, the fragment identifier 'customer' in the URI http://example.com/my-alps-document#customer refers to an ALPS 'descriptor' with 'id' set to 'customer'.  </p>
+<p id="rfc.section.2.2.7.2.p.1">When applied to an ALPS document, a URI fragment identifier points to the 'descriptor' whose 'id' is the value of the fragment. For example, the fragment identifier 'customer' in the URI http://example.com/my-alps-document#customer refers to an ALPS 'descriptor' with 'id' set to 'customer'. If the <a href="#prop-id">'id'</a> contains URL unsafe characters per <a href="#RFC1738">[RFC1738]</a>, the fragment referencing the 'id' MUST be URL escaped.  </p>
 <p id="rfc.section.2.2.7.2.p.2">A relative URL with a fragment identifier within an ALPS document (e.g. href="#customer") refers to a local 'descriptor' within the document containing the reference.  </p>
 <p id="rfc.section.2.2.7.2.p.3">The complete URI to an ALPS 'descriptor' (including the fragment) forms an 'abstract semantic type' identifier. This is a resolvable URI (URL) that can be used to indicate the type of a resource; for instance, it can be used as the value of the IANA-registered relation type 'type'.  </p>
 <h1 id="rfc.section.2.2.7.3"><a href="#rfc.section.2.2.7.3">2.2.7.3.</a> <a href="#prop-id-rels" id="prop-id-rels">Link Relation Values and 'id' or 'name'</a></h1>
@@ -1121,6 +1143,8 @@
   <dd style="margin-left: 8">This format shares security issues common to all XML content types. It does not provide executable content.  Information contained in ALPS documents do not require privacy or integrity services.  </dd>
   <dt>Interoperability considerations:</dt>
   <dd style="margin-left: 8">ALPS is not described by a DTD and applies only the well-formedness rules of XML. It should only be parsed by a non-validating parser.  </dd>
+  <dt>Fragment identifier considerations:</dt>
+  <dd style="margin-left: 8">Fragment identifiers used with application/alps+xml resources are simple, opaque strings that do not contain any URL unsafe characters per <a href="#RFC1738">[RFC1738]</a> which match the <a href="#prop-id">'id'</a> in an existing <a href="#prop-descriptor">'descriptor'</a> in the document. For example, the fragment identifier "#user" refers to a descriptor in the document with an id value set to "user." </dd>
   <dt>Published specification:</dt>
   <dd style="margin-left: 8">This Document </dd>
   <dt>Applications that use this media type:</dt>
@@ -1180,6 +1204,8 @@
   <dd style="margin-left: 8">This media type shares security issues common to all JSON content types. See <a href="#RFC4627">[RFC4627]</a> Section #6 for additional information. ALPS+JSON does not provide executable content. Information contained in ALPS+JSON documents do not require privacy or integrity services.  </dd>
   <dt>Interoperability considerations:</dt>
   <dd style="margin-left: 8">None </dd>
+  <dt>Fragment identifier considerations:</dt>
+  <dd style="margin-left: 8">Fragment identifiers used with application/alps+json resources are simple, opaque strings that do not contain any URL unsafe characters per <a href="#RFC1738">[RFC1738]</a> which match the <a href="#prop-id">'id'</a> in an existing <a href="#prop-descriptor">'descriptor'</a> in the document. For example, the fragment identifier "#user" refers to a descriptor in the document with an id value set to "user." </dd>
   <dt>Published specification:</dt>
   <dd style="margin-left: 8">This Document </dd>
   <dt>Applications that use this media type:</dt>
@@ -1217,7 +1243,7 @@
 <p> </p>
 <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#internationalization" id="internationalization">Internationalization Considerations</a></h1>
 <p id="rfc.section.5.p.1">[TK]</p>
-<p/>
+<p><a id="CREF1" class="info">[CREF1]<span class="info">insert text (consider rfc 5987)</span></a> </p>
 <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> Acknowledgements</h1>
 <p id="rfc.section.6.p.1">The authors gratefully acknowledge the following people who made contributions to this specification: </p>
 <p id="rfc.section.6.p.2">Glenn Block, Christopher Harrison, Steve Klabnik, Graham Klyne, Dmitry Pavlov, R&#233;mon (Ray) Sinnema.  </p>
@@ -1225,6 +1251,12 @@
 <h1 id="rfc.references.1"><a href="#rfc.references.1">7.1.</a> Normative References</h1>
 <table>
   <tbody>
+    <tr>
+      <td class="reference">
+        <b id="RFC1738">[RFC1738]</b>
+      </td>
+      <td class="top"><a href="mailto:timbl@info.cern.ch" title="CERN, World-Wide Web project">Berners-Lee, T.</a>, <a href="mailto:masinter@parc.xerox.com" title="Xerox PARC">Masinter, L.</a> and <a href="mailto:mpm@boombox.micro.umn.edu" title="University of Minnesota, Computer and Information Services">M. McCahill</a>, "<a href="http://tools.ietf.org/html/rfc1738">Uniform Resource Locators (URL)</a>", RFC 1738, December 1994.</td>
+    </tr>
     <tr>
       <td class="reference">
         <b id="RFC2119">[RFC2119]</b>
