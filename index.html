@@ -562,9 +562,8 @@
 <h1 id="rfc.section.1.2.3"><a href="#rfc.section.1.2.3">1.2.3.</a> ALPS-based Client Implementations</h1>
 <p id="rfc.section.1.2.3.p.1">Armed with a document's ALPS profile, client applications can associate the ALPS descriptor 'id' and/or 'name' attribute values with the appropriate elements within the document.  Client applications can 'code for the profile' and better adjust to detailed changes to the response layout, or even the wholesale replacement of one media type with another.  </p>
 <h1 id="rfc.section.1.3"><a href="#rfc.section.1.3">1.3.</a> A Short Hike in the ALPS</h1>
-<p id="rfc.section.1.3.p.1">ALPS decouples semantic description from messages or their format since it allows you to separate the semantics from the message itself.  </p>
-<p id="rfc.section.1.3.p.2">In its simplest form ALPS describes semantics by specifying a semantically rich <a href="#prop-id">'id'</a> to name a descriptor together with a <a href="#prop-type">'type'</a>.  The 'type' attribute can be 'semantic', corresponding to a data element description or 'safe', 'idempotent', or 'unsafe', corresponding to transition descriptions. Transition 'type' descriptors also allow for the definition of custom relation types.  </p>
-<p id="rfc.section.1.3.p.3">Take the following example ALPS profile located at: http://example.com/alps/works </p>
+<p id="rfc.section.1.3.p.1">ALPS documents allow you to express domain semantics independent of message media type and/or protocol. ALPS documents specify <a href="#prop-descriptor">'descriptor'</a> elements that define domain-specific semantic information. Each 'descriptor' has an <a href="#prop-id">'id'</a> property that defines a domain-specific name and a <a href="#prop-type">'type'</a> property that indicates whether the information being described is a simple data element (type="semantic) or a state transition element (type="safe", type="unsafe", type="idempontent").  By combining multiple data and transition descriptors in a single document, ALPS authors are able to sufficently describe all the related data and action semantics in an application domain.  </p>
+<p id="rfc.section.1.3.p.2">Take the following example ALPS profile located at: http://example.com/alps/works </p>
 <pre>
 &lt;alps version="1.0"&gt;
   &lt;descriptor id="content" type="semantic"&gt;
@@ -575,9 +574,9 @@
   &lt;/descriptor&gt;
 &lt;/alps&gt;
             </pre>
-<p class="figure">Sample User ALPS</p>
+<p class="figure">Sample Works Domain ALPS Document</p>
 <p/>
-<p id="rfc.section.1.3.p.5">For an +application/json+ message, this would correspond to: </p>
+<p id="rfc.section.1.3.p.4">For an 'application/json' message, this would map to: </p>
 <pre>
 GET /works/1 HTTP/1.1
 Host: example.io
@@ -588,9 +587,9 @@ Content-Type: application/json
   "content" : "The ships hung in the sky in much the same way that bricks don't."
 }
            </pre>
-<p class="figure">Sample User JSON</p>
+<p class="figure">Sample Works JSON Message</p>
 <p/>
-<p id="rfc.section.1.3.p.7">For an +application/vnd.siren+json+ message, this would correspond to: </p>
+<p id="rfc.section.1.3.p.6">For an 'application/vnd.siren+json' message, this would map to: </p>
 <pre>
 GET /works/1 HTTP/1.1
 Host: example.io
@@ -608,9 +607,9 @@ Content-Type: application/vnd.siren+json
   }
 } 
           </pre>
-<p class="figure">Sample User Siren</p>
+<p class="figure">Sample Works Siren Message</p>
 <p/>
-<p id="rfc.section.1.3.p.9">Because https://github.com/kevinswiber/siren[Siren] is a Hypermedia media type, the transition-related descriptor (&lt;descriptor id="publish" . . ./&gt;) can map directly to the message (e.g. Siren's +actions+ element). Plain JSON, on the other hand, has no concept of hypermedia links or forms, and thus the +publish+ descriptor is missing from the JSON representation. To me, this illuminates the simplicity and power for re-use of ALPS profiles. You define the semantics for your API _independent_ of representation media types and then clients can map the semantic details according to the representations they receive.  </p>
+<p id="rfc.section.1.3.p.8">Because https://github.com/kevinswiber/siren[Siren] is a Hypermedia media type, the transition-related descriptor (&lt;descriptor id="publish" . . ./&gt;) can map directly to the message (e.g. Siren's +actions+ element). Plain JSON, on the other hand, has no concept of hypermedia links or forms, and thus the +publish+ descriptor is missing from the JSON representation. To me, this illuminates the simplicity and power for re-use of ALPS profiles. You define the semantics for your API _independent_ of representation media types and then clients can map the semantic details according to the representations they receive.  </p>
 <h1 id="rfc.section.1.4"><a href="#rfc.section.1.4">1.4.</a> <a href="#example" id="example">A Simple ALPS Example</a></h1>
 <p id="rfc.section.1.4.p.1">Below is an ALPS document that describes elements of a simple request/response interaction in a contact management application. The profile defines a semantic descriptor called 'contact', and three subordinate descriptors ('fullName', 'email', and 'phone').  </p>
 <p id="rfc.section.1.4.p.2">The ALPS document also defines a single, safe state transition, to be represented by a hypermedia control (e.g. HTML.GET form) with the 'id' value of 'collection.' This hypermedia control has one input value ('nameSearch'). When executed, the response will contain one or more 'contact' type items.  </p>

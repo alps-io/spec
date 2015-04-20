@@ -228,16 +228,17 @@ Internet-Draft     Application-Level Profile Semantics        April 2015
 
 1.3.  A Short Hike in the ALPS
 
-   ALPS decouples semantic description from messages or their format
-   since it allows you to separate the semantics from the message
-   itself.
-
-   In its simplest form ALPS describes semantics by specifying a
-   semantically rich 'id' to name a descriptor together with a 'type'.
-   The 'type' attribute can be 'semantic', corresponding to a data
-   element description or 'safe', 'idempotent', or 'unsafe',
-   corresponding to transition descriptions.  Transition 'type'
-   descriptors also allow for the definition of custom relation types.
+   ALPS documents allow you to express domain semantics independent of
+   message media type and/or protocol.  ALPS documents specify
+   'descriptor' elements that define domain-specific semantic
+   information.  Each 'descriptor' has an 'id' property that defines a
+   domain-specific name and a 'type' property that indicates whether the
+   information being described is a simple data element (type="semantic)
+   or a state transition element (type="safe", type="unsafe",
+   type="idempontent").  By combining multiple data and transition
+   descriptors in a single document, ALPS authors are able to
+   sufficently describe all the related data and action semantics in an
+   application domain.
 
    Take the following example ALPS profile located at:
    http://example.com/alps/works
@@ -251,9 +252,9 @@ Internet-Draft     Application-Level Profile Semantics        April 2015
      </descriptor>
    </alps>
 
-                             Sample User ALPS
+                     Sample Works Domain ALPS Document
 
-   For an +application/json+ message, this would correspond to:
+   For an 'application/json' message, this would map to:
 
 GET /works/1 HTTP/1.1
 Host: example.io
@@ -264,10 +265,9 @@ Content-Type: application/json
   "content" : "The ships hung in the sky in much the same way that bricks don't."
 }
 
-                             Sample User JSON
+                         Sample Works JSON Message
 
-   For an +application/vnd.siren+json+ message, this would correspond
-   to:
+   For an 'application/vnd.siren+json' message, this would map to:
 
 
 
@@ -298,7 +298,7 @@ Content-Type: application/vnd.siren+json
   }
 }
 
-                             Sample User Siren
+                        Sample Works Siren Message
 
    Because https://github.com/kevinswiber/siren[Siren] is a Hypermedia
    media type, the transition-related descriptor (<descriptor

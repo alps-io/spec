@@ -173,32 +173,24 @@
       </section>
       <section title="A Short Hike in the ALPS">
         <t>
-          ALPS ddocuments allow you to express domain semantics independent of the 
-          message format nad protocol. ALPS documents contain 
-          <xref target="prop-descriptor" format="title"/> elements that describe
-          domain-specific semantic informaytion. Each 'descriptor' has a 
-          <xref target="prop-type" format="title"/> property that indicates whether
-          the information being desribed is a simple data element (type="semantic) or
+          ALPS documents allow you to express domain semantics independent of 
+          message media type and/or protocol. ALPS documents specify 
+          <xref target="prop-descriptor" format="title"/> elements that define
+          domain-specific semantic information. Each 'descriptor' has an 
+          <xref target="prop-id" format="title"/> property that defines a
+          domain-specific name and a <xref target="prop-type" format="title"/> 
+          property that indicates whether the information being described is a 
+          simple data element (type="semantic) or
           a state transition element (type="safe", type="unsafe", type="idempontent").
           By combining multiple data and transition descriptors in a single document,
           ALPS authors are able to sufficently describe all the related data and action
           semantics in an application domain.
         </t>
         <t>
-          In its simplest form ALPS allows you to 
-          describes semantics by specifying a 
-          semantically rich <xref target="prop-id" format="title"/> to name 
-          a descriptor together with a <xref target="prop-type" format="title"/>. 
-          The 'type' attribute can be 'semantic', corresponding to a data element 
-          description or 'safe', 'idempotent', or 'unsafe', corresponding to 
-          transition descriptions. Transition 'type' descriptors also allow for 
-          the definition of custom relation types.
-        </t>
-        <t>
           Take the following example ALPS profile located at: http://example.com/alps/works
         </t>
         <t>
-          <figure title="Sample User ALPS">
+          <figure title="Sample Works Domain ALPS Document">
             <artwork><![CDATA[
 <alps version="1.0">
   <descriptor id="content" type="semantic">
@@ -212,10 +204,10 @@
           </figure>
         </t>
         <t>
-          For an +application/json+ message, this would correspond to:
+          For an 'application/json' message, this would map to:
         </t>  
         <t>
-          <figure title="Sample User JSON">
+          <figure title="Sample Works JSON Message">
             <artwork><![CDATA[
 GET /works/1 HTTP/1.1
 Host: example.io
@@ -229,10 +221,10 @@ Content-Type: application/json
           </figure>
         </t>
         <t>
-          For an +application/vnd.siren+json+ message, this would correspond to:
+          For an 'application/vnd.siren+json' message, this would map to:
         </t>
         <t>
-          <figure title="Sample User Siren">
+          <figure title="Sample Works Siren Message">
             <artwork><![CDATA[
 GET /works/1 HTTP/1.1
 Host: example.io
