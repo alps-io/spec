@@ -173,12 +173,20 @@
       </section>
       <section title="A Short Hike in the ALPS">
         <t>
-          ALPS decouples semantic description from messages or their 
-          format since it allows you to separate the semantics from the message 
-          itself.
+          ALPS ddocuments allow you to express domain semantics independent of the 
+          message format nad protocol. ALPS documents contain 
+          <xref target="prop-descriptor" format="title"/> elements that describe
+          domain-specific semantic informaytion. Each 'descriptor' has a 
+          <xref target="prop-type" format="title"/> property that indicates whether
+          the information being desribed is a simple data element (type="semantic) or
+          a state transition element (type="safe", type="unsafe", type="idempontent").
+          By combining multiple data and transition descriptors in a single document,
+          ALPS authors are able to sufficently describe all the related data and action
+          semantics in an application domain.
         </t>
         <t>
-          In its simplest form ALPS describes semantics by specifying a 
+          In its simplest form ALPS allows you to 
+          describes semantics by specifying a 
           semantically rich <xref target="prop-id" format="title"/> to name 
           a descriptor together with a <xref target="prop-type" format="title"/>. 
           The 'type' attribute can be 'semantic', corresponding to a data element 
