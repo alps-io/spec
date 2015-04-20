@@ -380,8 +380,9 @@
 <link href="#rfc.section.1.2.1" rel="Chapter" title="1.2.1 Describing Domain-Specific Semantics"/>
 <link href="#rfc.section.1.2.2" rel="Chapter" title="1.2.2 ALPS-based Server Implementations"/>
 <link href="#rfc.section.1.2.3" rel="Chapter" title="1.2.3 ALPS-based Client Implementations"/>
-<link href="#rfc.section.1.3" rel="Chapter" title="1.3 A Simple ALPS Example"/>
-<link href="#rfc.section.1.4" rel="Chapter" title="1.4 Identifying an ALPS Document"/>
+<link href="#rfc.section.1.3" rel="Chapter" title="1.3 A Short Hike in the ALPS"/>
+<link href="#rfc.section.1.4" rel="Chapter" title="1.4 A Simple ALPS Example"/>
+<link href="#rfc.section.1.5" rel="Chapter" title="1.5 Identifying an ALPS Document"/>
 <link href="#rfc.section.2" rel="Chapter" title="2 ALPS Documents"/>
 <link href="#rfc.section.2.1" rel="Chapter" title="2.1 Compliance"/>
 <link href="#rfc.section.2.2" rel="Chapter" title="2.2 ALPS Document Properties"/>
@@ -503,8 +504,9 @@
 <li>1.2.1.   <a href="#rfc.section.1.2.1">Describing Domain-Specific Semantics</a></li>
 <li>1.2.2.   <a href="#rfc.section.1.2.2">ALPS-based Server Implementations</a></li>
 <li>1.2.3.   <a href="#rfc.section.1.2.3">ALPS-based Client Implementations</a></li>
-<li>1.3.   <a href="#rfc.section.1.3">A Simple ALPS Example</a></li>
-<li>1.4.   <a href="#rfc.section.1.4">Identifying an ALPS Document</a></li>
+<li>1.3.   <a href="#rfc.section.1.3">A Short Hike in the ALPS</a></li>
+<li>1.4.   <a href="#rfc.section.1.4">A Simple ALPS Example</a></li>
+<li>1.5.   <a href="#rfc.section.1.5">Identifying an ALPS Document</a></li>
 <li>2.   <a href="#rfc.section.2">ALPS Documents</a></li>
 <li>2.1.   <a href="#rfc.section.2.1">Compliance</a></li>
 <li>2.2.   <a href="#rfc.section.2.2">ALPS Document Properties</a></li>
@@ -559,9 +561,59 @@
 <p id="rfc.section.1.2.2.p.1">Server implementors can use ALPS documents as a basis for building domain-specific solutions without having to create their own custom media type or re-invent the vocabulary and transition set for a common domain (e.g.  accounting, microblogging, etc.). Using a preexisting ALPS profile as a guide, servers can map internal data to commonly-understood semantic descriptors and state transitions, increasing the likelihood that existing client applications (those who share the same understanding of the ALPS document) will be able to successfully interact with that server.  </p>
 <h1 id="rfc.section.1.2.3"><a href="#rfc.section.1.2.3">1.2.3.</a> ALPS-based Client Implementations</h1>
 <p id="rfc.section.1.2.3.p.1">Armed with a document's ALPS profile, client applications can associate the ALPS descriptor 'id' and/or 'name' attribute values with the appropriate elements within the document.  Client applications can 'code for the profile' and better adjust to detailed changes to the response layout, or even the wholesale replacement of one media type with another.  </p>
-<h1 id="rfc.section.1.3"><a href="#rfc.section.1.3">1.3.</a> <a href="#example" id="example">A Simple ALPS Example</a></h1>
-<p id="rfc.section.1.3.p.1">Below is an ALPS document that describes elements of a simple request/response interaction in a contact management application. The profile defines a semantic descriptor called 'contact', and three subordinate descriptors ('fullName', 'email', and 'phone').  </p>
-<p id="rfc.section.1.3.p.2">The ALPS document also defines a single, safe state transition, to be represented by a hypermedia control (e.g. HTML.GET form) with the 'id' value of 'collection.' This hypermedia control has one input value ('nameSearch'). When executed, the response will contain one or more 'contact' type items.  </p>
+<h1 id="rfc.section.1.3"><a href="#rfc.section.1.3">1.3.</a> A Short Hike in the ALPS</h1>
+<p id="rfc.section.1.3.p.1">ALPS decouples semantic description from messages or their format since it allows you to separate the semantics from the message itself.  </p>
+<p id="rfc.section.1.3.p.2">In its simplest form ALPS describes semantics by specifying a semantically rich <a href="#prop-id">'id'</a> to name a descriptor together with a <a href="#prop-type">'type'</a>.  The 'type' attribute can be 'semantic', corresponding to a data element description or 'safe', 'idempotent', or 'unsafe', corresponding to transition descriptions. Transition 'type' descriptors also allow for the definition of custom relation types.  </p>
+<p id="rfc.section.1.3.p.3">Take the following example ALPS profile located at: http://example.com/alps/works </p>
+<pre>
+&lt;alps version="1.0"&gt;
+  &lt;descriptor id="content" type="semantic"&gt;
+    &lt;doc&gt;The content of a work.&lt;/doc&gt;
+  &lt;/descriptor&gt;
+  &lt;descriptor id="publish" type="idempotent"&gt;
+    &lt;doc&gt;Release a work for distribution.&lt;/doc&gt;
+  &lt;/descriptor&gt;
+&lt;/alps&gt;
+            </pre>
+<p class="figure">Sample User ALPS</p>
+<p/>
+<p id="rfc.section.1.3.p.5">For an +application/json+ message, this would correspond to: </p>
+<pre>
+GET /works/1 HTTP/1.1
+Host: example.io
+Links: profile="http://example.com/alps/works&#8221;
+Content-Type: application/json
+
+{
+  "content" : "The ships hung in the sky in much the same way that bricks don't."
+}
+           </pre>
+<p class="figure">Sample User JSON</p>
+<p/>
+<p id="rfc.section.1.3.p.7">For an +application/vnd.siren+json+ message, this would correspond to: </p>
+<pre>
+GET /works/1 HTTP/1.1
+Host: example.io
+Links: profile="http://example.com/alps/works&#8221;
+Content-Type: application/vnd.siren+json
+ 
+{
+  "properties" { 
+    "content" : "The ships hung in the sky in much the same way that bricks don't."
+  },
+  "actions" : {
+    "name" : "publish",
+    "method" : "PUT",
+    "href" : "..."
+  }
+} 
+          </pre>
+<p class="figure">Sample User Siren</p>
+<p/>
+<p id="rfc.section.1.3.p.9">Because https://github.com/kevinswiber/siren[Siren] is a Hypermedia media type, the transition-related descriptor (&lt;descriptor id="publish" . . ./&gt;) can map directly to the message (e.g. Siren's +actions+ element). Plain JSON, on the other hand, has no concept of hypermedia links or forms, and thus the +publish+ descriptor is missing from the JSON representation. To me, this illuminates the simplicity and power for re-use of ALPS profiles. You define the semantics for your API _independent_ of representation media types and then clients can map the semantic details according to the representations they receive.  </p>
+<h1 id="rfc.section.1.4"><a href="#rfc.section.1.4">1.4.</a> <a href="#example" id="example">A Simple ALPS Example</a></h1>
+<p id="rfc.section.1.4.p.1">Below is an ALPS document that describes elements of a simple request/response interaction in a contact management application. The profile defines a semantic descriptor called 'contact', and three subordinate descriptors ('fullName', 'email', and 'phone').  </p>
+<p id="rfc.section.1.4.p.2">The ALPS document also defines a single, safe state transition, to be represented by a hypermedia control (e.g. HTML.GET form) with the 'id' value of 'collection.' This hypermedia control has one input value ('nameSearch'). When executed, the response will contain one or more 'contact' type items.  </p>
 <pre>
  &lt;alps version="1.0"&gt;
   &lt;doc format="text"&gt;A contact list.&lt;/doc&gt;
@@ -589,7 +641,7 @@
 &lt;/alps&gt;
                </pre>
 <p class="figure">ALPS Contact Profile document</p>
-<p id="rfc.section.1.3.p.3">Implementing the ALPS profile above requires implementing the descriptors defined by the ALPS document. In this case, there are two 'top level' descriptors: the safe state transition ('collection') and the semantic descriptor 'contact'. Below is a single HTML document that shows both these elements in a representation.  </p>
+<p id="rfc.section.1.4.p.3">Implementing the ALPS profile above requires implementing the descriptors defined by the ALPS document. In this case, there are two 'top level' descriptors: the safe state transition ('collection') and the semantic descriptor 'contact'. Below is a single HTML document that shows both these elements in a representation.  </p>
 <pre>
 &lt;html&gt;
   &lt;head&gt;
@@ -644,8 +696,8 @@
 &lt;/html&gt;
               </pre>
 <p class="figure">HTML ALPS Contact Representation</p>
-<p id="rfc.section.1.3.p.4">HTML representations implement most ALPS elements using HTML's 'class' attribute. The 'collection' ID has become the CSS class of an HTML form's submit button.  The 'contact' ID has become the CSS class of the TR elements in an HTML table. The subordinate descriptors 'fullname','email', and 'phone' are rendered as the TD elements of each TR.  </p>
-<p id="rfc.section.1.3.p.5">This HAL document uses the same profile to express the same application-level semantics as the HTML document.  </p>
+<p id="rfc.section.1.4.p.4">HTML representations implement most ALPS elements using HTML's 'class' attribute. The 'collection' ID has become the CSS class of an HTML form's submit button.  The 'contact' ID has become the CSS class of the TR elements in an HTML table. The subordinate descriptors 'fullname','email', and 'phone' are rendered as the TD elements of each TR.  </p>
+<p id="rfc.section.1.4.p.5">This HAL document uses the same profile to express the same application-level semantics as the HTML document.  </p>
 <pre>
 &lt;resource href="http://example.org/contacts/"&gt;
   &lt;link href="http://alps.io/profiles/contacts#contact"
@@ -672,8 +724,8 @@
 &lt;/resource&gt;
                     </pre>
 <p class="figure">HAL XML Contacts Representation</p>
-<p id="rfc.section.1.3.p.6">In a HAL representation, all state transitions ('collection' and 'item', in this case) are represented as link relations. All data descriptors ('fullName', 'email', and 'phone') are represented as XML tags named after the descriptors.  </p>
-<p id="rfc.section.1.3.p.7">This Collection+JSON document uses the ALPS profile to express the same application-level semantics as the HTML and HAL documents.  </p>
+<p id="rfc.section.1.4.p.6">In a HAL representation, all state transitions ('collection' and 'item', in this case) are represented as link relations. All data descriptors ('fullName', 'email', and 'phone') are represented as XML tags named after the descriptors.  </p>
+<p id="rfc.section.1.4.p.7">This Collection+JSON document uses the ALPS profile to express the same application-level semantics as the HTML and HAL documents.  </p>
 <pre>
 {
   "collection" : {
@@ -758,10 +810,10 @@
                 
                </pre>
 <p class="figure">Collection+JSON Contacts Representation</p>
-<p id="rfc.section.1.3.p.8">The descriptor 'collection' has become the link relation associated with a Collection+JSON query. The descriptors 'fullName', 'email', and 'phone' have become the names of key-value pairs in the items in a Collection+JSON collection.  </p>
-<h1 id="rfc.section.1.4"><a href="#rfc.section.1.4">1.4.</a> Identifying an ALPS Document</h1>
-<p id="rfc.section.1.4.p.1">An ALPS vocabulary is identified by a unique URL.  This URL SHOULD be dereferencable.  All ALPS URLs MUST be unique and all ALPS documents intended for public consumption SHOULD be registered in an ALPS Registry [TK: add text on where/how to find registries -mamund].  </p>
-<p id="rfc.section.1.4.p.2">In order to reduce load on servers responding to ALPS document requests, it is RECOMMENDED that servers use cache control directives that instruct client apps to locally cache the results. Clients making these ALPS document requests SHOULD honor the server's caching directives.  </p>
+<p id="rfc.section.1.4.p.8">The descriptor 'collection' has become the link relation associated with a Collection+JSON query. The descriptors 'fullName', 'email', and 'phone' have become the names of key-value pairs in the items in a Collection+JSON collection.  </p>
+<h1 id="rfc.section.1.5"><a href="#rfc.section.1.5">1.5.</a> Identifying an ALPS Document</h1>
+<p id="rfc.section.1.5.p.1">An ALPS vocabulary is identified by a unique URL.  This URL SHOULD be dereferencable.  All ALPS URLs MUST be unique and all ALPS documents intended for public consumption SHOULD be registered in an ALPS Registry [TK: add text on where/how to find registries -mamund].  </p>
+<p id="rfc.section.1.5.p.2">In order to reduce load on servers responding to ALPS document requests, it is RECOMMENDED that servers use cache control directives that instruct client apps to locally cache the results. Clients making these ALPS document requests SHOULD honor the server's caching directives.  </p>
 <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> ALPS Documents</h1>
 <p id="rfc.section.2.p.1">An ALPS document contains a machine-readable collection of identifying strings and their human-readable explanations. An ALPS document can be represented in either XML or JSON format. This section identifies the general elements and properties of an ALPS document, their meaning, and their use, independent of how the document is represented.  <a href="#representations">Section 2.3</a> provides specific details on constructing a valid ALPS document in XML and in JSON format.  </p>
 <h1 id="rfc.section.2.1"><a href="#rfc.section.2.1">2.1.</a> Compliance</h1>
@@ -1103,7 +1155,7 @@
                           </pre>
 <p class="figure">Complete ALPS+JSON Representation</p>
 <h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> <a href="#instructions" id="instructions">Applying ALPS documents to Existing Media Types</a></h1>
-<p id="rfc.section.3.p.1">An ALPS document can be applied to many existing media types as long as there exists an agreed mapping between ALPS and the target media type.  <a href="#example">Section 1.3</a> gave some informative examples of this. Normative, up-to-date guidance on applying ALPS documents to existing media types are available at the official ALPS Web site at (http://alps.io/docs/mapping). [TK : this page does not yet exist. -mamund] </p>
+<p id="rfc.section.3.p.1">An ALPS document can be applied to many existing media types as long as there exists an agreed mapping between ALPS and the target media type.  <a href="#example">Section 1.4</a> gave some informative examples of this. Normative, up-to-date guidance on applying ALPS documents to existing media types are available at the official ALPS Web site at (http://alps.io/docs/mapping). [TK : this page does not yet exist. -mamund] </p>
 <p/>
 <p id="rfc.section.3.p.3">Not all media types can faithfully represent all ALPS descriptors. For instance, the 'application/json' media type has no standard way of representing hyperlinks. The details of how to apply ALPS to such a media type will necesarily be incomplete, and it will not be possible to represent some aspects of an ALPS profile in documents in that media type.  </p>
 <h1 id="rfc.section.3.1"><a href="#rfc.section.3.1">3.1.</a> <a href="#linking-to-alps-documents" id="linking-to-alps-documents">Linking to ALPS Documents</a></h1>

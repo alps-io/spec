@@ -171,6 +171,93 @@
           </t>
         </section>
       </section>
+      <section title="A Short Hike in the ALPS">
+        <t>
+          ALPS decouples semantic description from messages or their 
+          format since it allows you to separate the semantics from the message 
+          itself.
+        </t>
+        <t>
+          In its simplest form ALPS describes semantics by specifying a 
+          semantically rich <xref target="prop-id" format="title"/> to name 
+          a descriptor together with a <xref target="prop-type" format="title"/>. 
+          The 'type' attribute can be 'semantic', corresponding to a data element 
+          description or 'safe', 'idempotent', or 'unsafe', corresponding to 
+          transition descriptions. Transition 'type' descriptors also allow for 
+          the definition of custom relation types.
+        </t>
+        <t>
+          Take the following example ALPS profile located at: http://example.com/alps/works
+        </t>
+        <t>
+          <figure title="Sample User ALPS">
+            <artwork><![CDATA[
+<alps version="1.0">
+  <descriptor id="content" type="semantic">
+    <doc>The content of a work.</doc>
+  </descriptor>
+  <descriptor id="publish" type="idempotent">
+    <doc>Release a work for distribution.</doc>
+  </descriptor>
+</alps>
+            ]]></artwork>
+          </figure>
+        </t>
+        <t>
+          For an +application/json+ message, this would correspond to:
+        </t>  
+        <t>
+          <figure title="Sample User JSON">
+            <artwork><![CDATA[
+GET /works/1 HTTP/1.1
+Host: example.io
+Links: profile="http://example.com/alps/works”
+Content-Type: application/json
+
+{
+  "content" : "The ships hung in the sky in much the same way that bricks don't."
+}
+           ]]></artwork>
+          </figure>
+        </t>
+        <t>
+          For an +application/vnd.siren+json+ message, this would correspond to:
+        </t>
+        <t>
+          <figure title="Sample User Siren">
+            <artwork><![CDATA[
+GET /works/1 HTTP/1.1
+Host: example.io
+Links: profile="http://example.com/alps/works”
+Content-Type: application/vnd.siren+json
+ 
+{
+  "properties" { 
+    "content" : "The ships hung in the sky in much the same way that bricks don't."
+  },
+  "actions" : {
+    "name" : "publish",
+    "method" : "PUT",
+    "href" : "..."
+  }
+} 
+          ]]></artwork>
+          </figure>
+        </t>
+        <t>
+          Because https://github.com/kevinswiber/siren[Siren] is a Hypermedia 
+          media type, the transition-related descriptor 
+          (<![CDATA[<descriptor id="publish" . . ./>]]>) can map directly to 
+          the message (e.g. Siren's +actions+ element). Plain JSON, on 
+          the other hand, has no concept of hypermedia links or forms, and 
+          thus the +publish+ descriptor is missing from the JSON 
+          representation. To me, this illuminates the simplicity and power 
+          for re-use of ALPS profiles. You define the semantics for your 
+          API _independent_ of representation media types and then clients 
+          can map the semantic details according to the representations 
+          they receive.
+        </t>
+      </section>
       <section title="A Simple ALPS Example" anchor="example">
         <t>
           Below is an ALPS document that describes elements
