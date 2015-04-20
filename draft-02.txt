@@ -300,16 +300,19 @@ Content-Type: application/vnd.siren+json
 
                         Sample Works Siren Message
 
-   Because https://github.com/kevinswiber/siren[Siren] is a Hypermedia
-   media type, the transition-related descriptor (<descriptor
-   id="publish" . . ./>) can map directly to the message (e.g.  Siren's
-   +actions+ element).  Plain JSON, on the other hand, has no concept of
-   hypermedia links or forms, and thus the +publish+ descriptor is
-   missing from the JSON representation.  To me, this illuminates the
-   simplicity and power for re-use of ALPS profiles.  You define the
-   semantics for your API _independent_ of representation media types
-   and then clients can map the semantic details according to the
-   representations they receive.
+   While ALPS documents define a entire set of domain-specific
+   information, not all media types can completely represent this
+   information.  For example, plain JSON (application/json) has no
+   standardized definition of hypermedia links or forms.  Thus, in the
+   above example, the 'publish' descriptor has no corresponding element
+   in the JSON representation.  However, the Siren media type has an
+   'action' hypermedia element that can be used to express the details
+   of the 'publish' state transition.
+
+   This illustrates a key principle of the ALPS format.  ALPS documents
+   define the domain semantics in the abstract and the mapping of these
+   details to a message is defined separately through a standardized set
+   of ALPS-to-[media type] mapping documents.
 
 1.4.  A Simple ALPS Example
 
@@ -323,9 +326,6 @@ Content-Type: application/vnd.siren+json
    'id' value of 'collection.'  This hypermedia control has one input
    value ('nameSearch').  When executed, the response will contain one
    or more 'contact' type items.
-
-
-
 
 
 
