@@ -2,6 +2,7 @@
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt'?>
 <!-- external references as entities -->
 <!DOCTYPE rfc SYSTEM "http://xml.resource.org/authoring/rfc2629.dtd" [
+        <!ENTITY rfc1738 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1738.xml">
         <!ENTITY rfc2119 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
         <!ENTITY rfc3023 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3023.xml">
         <!ENTITY rfc4627 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4627.xml">
@@ -796,7 +797,9 @@
           <t>
             A document-wide unique identifier for the related
             element. This SHOULD appear as an attribute of a
-            <xref target="prop-descriptor" format="title"/>.
+            <xref target="prop-descriptor" format="title"/>. It SHOULD be an 
+            opaque string that does not contain any URL unsafe characters 
+            per <xref target="RFC1738"/>.
           </t>
           <t>
             The value of this attribute MAY be used as an identifier
@@ -864,7 +867,9 @@
               'id' is the value of the fragment. For example, the fragment
               identifier 'customer' in the URI
               http://example.com/my-alps-document#customer refers to an ALPS
-              'descriptor' with 'id' set to 'customer'.
+              'descriptor' with 'id' set to 'customer'. If the <xref target="prop-id" format="title"/> 
+              contains URL unsafe characters per <xref target="RFC1738"/>, the 
+              fragment referencing the 'id' MUST be URL escaped.
             </t>
             <t>
               A relative URL with a fragment identifier within an ALPS document
@@ -1378,8 +1383,9 @@
               be parsed by a non-validating parser.
             </t>
             <t hangText="Fragment identifier considerations:">
-              Fragment identifiers used with application/alps+xml resources are simple, opaque strings
-              that match the <xref target="prop-id" format="title" /> in an existing
+              Fragment identifiers used with application/alps+xml resources are simple, opaque strings 
+              that do not contain any URL unsafe characters per <xref target="RFC1738"/> 
+              which match the <xref target="prop-id" format="title" /> in an existing
               <xref target="prop-descriptor" format="title" /> in the document. For example, the
               fragment identifier "#user" refers to a descriptor in the document with an id value
               set to "user."
@@ -1470,8 +1476,9 @@
               None
             </t>
             <t hangText="Fragment identifier considerations:">
-              Fragment identifiers used with application/alps+json resources are simple, opaque strings
-              that match the <xref target="prop-id" format="title" /> in an existing
+              Fragment identifiers used with application/alps+json resources are simple, opaque strings 
+              that do not contain any URL unsafe characters per <xref target="RFC1738"/> 
+              which match the <xref target="prop-id" format="title" /> in an existing
               <xref target="prop-descriptor" format="title" /> in the document. For example, the
               fragment identifier "#user" refers to a descriptor in the document with an id value
               set to "user."
@@ -1541,6 +1548,7 @@
   <!-- back matter -->
   <back>
     <references title="Normative References">
+      &rfc1738;
       &rfc2119;
       &rfc3023;
       &rfc4627;
