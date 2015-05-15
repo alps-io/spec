@@ -256,7 +256,8 @@ Content-Type: application/vnd.siren+json
         <t>
           This illustrates a key principle of the ALPS format. ALPS documents define the domain 
           semantics in the abstract and the mapping of these details to a message is defined
-          separately through a standardized set of ALPS-to-[media type] mapping documents.
+          separately through a standardized set of ALPS-to-[media type] mapping documents 
+          (See <xref target="instructions" format="title"/>).
         </t>
       </section>
       <section title="A Simple ALPS Example" anchor="example">

@@ -425,7 +425,7 @@
 
   <meta name="dct.creator" content="Amundsen, M., Richardson, L., and M. Foster" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-amundsen-richardson-foster-alps-02" />
-  <meta name="dct.issued" scheme="ISO8601" content="2015-4-19" />
+  <meta name="dct.issued" scheme="ISO8601" content="2015-5-15" />
   <meta name="dct.abstract" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.  " />
   <meta name="description" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.  " />
 
@@ -445,7 +445,7 @@
   <td class="right">CA Technologies, Inc.</td>
 </tr>
 <tr>
-  <td class="left">Expires: October 21, 2015</td>
+  <td class="left">Expires: November 16, 2015</td>
   <td class="right">L. Richardson</td>
 </tr>
 <tr>
@@ -462,7 +462,7 @@
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">April 19, 2015</td>
+  <td class="right">May 15, 2015</td>
 </tr>
 
     	
@@ -486,7 +486,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on October 21, 2015.</p>
+<p>This Internet-Draft will expire on November 16, 2015.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -609,8 +609,8 @@ Content-Type: application/vnd.siren+json
           </pre>
 <p class="figure">Sample Works Siren Message</p>
 <p/>
-<p id="rfc.section.1.3.p.8">While ALPS documents define a entire set of domain-specific information, not all media types can completely represent this information.  For example, plain JSON (application/json) has no standardized definition of hypermedia links or forms. Thus, in the above example, the 'publish' descriptor has no corresponding element in the JSON representation. However, the Siren media type has an 'action' hypermedia element that can be used to express the details of the 'publish' state transition.  </p>
-<p id="rfc.section.1.3.p.9">This illustrates a key principle of the ALPS format. ALPS documents define the domain semantics in the abstract and the mapping of these details to a message is defined separately through a standardized set of ALPS-to-[media type] mapping documents.  </p>
+<p id="rfc.section.1.3.p.8">While an ALPS document defines an entire set of domain-specific information, not all media types can completely represent this information.  For example, plain JSON (application/json) has no standardized definition of hypermedia links or forms. Thus, in the above example, the 'publish' descriptor has no corresponding element in the JSON representation. However, the Siren media type has an 'action' hypermedia element that can be used to express the details of the 'publish' state transition.  </p>
+<p id="rfc.section.1.3.p.9">This illustrates a key principle of the ALPS format. ALPS documents define the domain semantics in the abstract and the mapping of these details to a message is defined separately through a standardized set of ALPS-to-[media type] mapping documents (See <a href="#instructions">Applying ALPS documents to Existing Media Types</a>).  </p>
 <h1 id="rfc.section.1.4"><a href="#rfc.section.1.4">1.4.</a> <a href="#example" id="example">A Simple ALPS Example</a></h1>
 <p id="rfc.section.1.4.p.1">Below is an ALPS document that describes elements of a simple request/response interaction in a contact management application. The profile defines a semantic descriptor called 'contact', and three subordinate descriptors ('fullName', 'email', and 'phone').  </p>
 <p id="rfc.section.1.4.p.2">The ALPS document also defines a single, safe state transition, to be represented by a hypermedia control (e.g. HTML.GET form) with the 'id' value of 'collection.' This hypermedia control has one input value ('nameSearch'). When executed, the response will contain one or more 'contact' type items.  </p>
