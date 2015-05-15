@@ -171,6 +171,95 @@
           </t>
         </section>
       </section>
+      <section title="A Short Hike in the ALPS">
+        <t>
+          ALPS documents allow you to express domain semantics independent of 
+          message media type and/or protocol. ALPS documents specify 
+          <xref target="prop-descriptor" format="title"/> elements that define
+          domain-specific semantic information. Each 'descriptor' has an 
+          <xref target="prop-id" format="title"/> property that defines a
+          domain-specific name and a <xref target="prop-type" format="title"/> 
+          property that indicates whether the information being described is a 
+          simple data element (type="semantic) or
+          a state transition element (type="safe", type="unsafe", type="idempontent").
+          By combining multiple data and transition descriptors in a single document,
+          ALPS authors are able to sufficently describe all the related data and action
+          semantics in an application domain.
+        </t>
+        <t>
+          Take the following example ALPS profile located at: http://example.com/alps/works
+        </t>
+        <t>
+          <figure title="Sample Works Domain ALPS Document">
+            <artwork><![CDATA[
+<alps version="1.0">
+  <descriptor id="content" type="semantic">
+    <doc>The content of a work.</doc>
+  </descriptor>
+  <descriptor id="publish" type="idempotent">
+    <doc>Release a work for distribution.</doc>
+  </descriptor>
+</alps>
+            ]]></artwork>
+          </figure>
+        </t>
+        <t>
+          For an 'application/json' message, this would map to:
+        </t>  
+        <t>
+          <figure title="Sample Works JSON Message">
+            <artwork><![CDATA[
+GET /works/1 HTTP/1.1
+Host: example.io
+Links: profile="http://example.com/alps/works”
+Content-Type: application/json
+
+{
+  "content" : "The ships hung in the sky in much the same way that bricks don't."
+}
+           ]]></artwork>
+          </figure>
+        </t>
+        <t>
+          For an 'application/vnd.siren+json' message, this would map to:
+        </t>
+        <t>
+          <figure title="Sample Works Siren Message">
+            <artwork><![CDATA[
+GET /works/1 HTTP/1.1
+Host: example.io
+Links: profile="http://example.com/alps/works”
+Content-Type: application/vnd.siren+json
+ 
+{
+  "properties" { 
+    "content" : "The ships hung in the sky in much the same way that bricks don't."
+  },
+  "actions" : {
+    "name" : "publish",
+    "method" : "PUT",
+    "href" : "..."
+  }
+} 
+          ]]></artwork>
+          </figure>
+        </t>
+        <t>
+          While an ALPS document defines an entire set of domain-specific information,
+          not all media types can completely represent this information.
+          For example, plain JSON (application/json) has no standardized definition of 
+          hypermedia links or forms. Thus, in the above example, the 'publish' descriptor 
+          has no corresponding element in the JSON representation. However, the Siren 
+          media type has an 'action' hypermedia element that can be used to 
+          express the details of the 'publish' state transition.
+        </t>
+        <t>
+          This illustrates a key principle of the ALPS format. ALPS documents define the domain 
+          semantics in the abstract and the mapping of these details to a message is defined
+          separately through a standardized set of ALPS-to-[media type] mapping documents 
+          (See <xref target="instructions" format="title"/>).
+        </t>
+      </section>
       <section title="A Simple ALPS Example" anchor="example">
         <t>
           Below is an ALPS document that describes elements
