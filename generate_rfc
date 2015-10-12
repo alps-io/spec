@@ -1,4 +1,4 @@
 #!/bin/bash
 
-xml2rfc draft-02.xml  --basename=draft-02  --text --html
-cp draft-02.html index.html
+xml2rfc draft-03.xml  --basename=draft-03  --text --html
+cp draft-03.html index.html
