@@ -1392,6 +1392,12 @@
               ALPS is not described by a DTD and applies only
               the well-formedness rules of XML. It should only
               be parsed by a non-validating parser.
+
+              Be advised that some implementations might
+              generate representations (such as the &lt;doc&gt;
+              element) that contain unescaped HTML or XML content as value. 
+              In such cases the parser MAY reject the content as it does not
+              comply with the specification.
             </t>
             <t hangText="Fragment identifier considerations:">
               Fragment identifiers used with application/alps+xml resources are simple, opaque strings 
