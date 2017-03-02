@@ -503,7 +503,7 @@
             dereferencable URL that points to human-readable text. If
             the 'format' property appears it SHOULD contain one of the
             following values: 'text', 'html', 'asciidoc', or 'markdown'.
-            Independently of the format specified, the contained text
+            Independent of the format specified, the contained text
             SHALL be a plain string. This implies the need to escape
             special characters of the serialisation format in use.
             Any program processing 'doc' elements SHOULD honor the
@@ -749,7 +749,7 @@
         <section anchor="prop-format" title="'format'">
           <t>
             Indicates how the text content should be parsed and/or
-            rendered. Independently of the format chosen, the
+            rendered. Independent of the format chosen, the
             text content SHALL be plain text.
             This specification identifies a range of possible
             values for 'format':
@@ -1395,7 +1395,7 @@
 
               Be advised that some implementations might
               generate representations (such as the &lt;doc&gt;
-              element) that contain unescaped HTML or XML content as value. 
+              element) that contain unescaped HTML or XML content as the value. 
               In such cases the parser MAY reject the content as it does not
               comply with the specification.
             </t>
