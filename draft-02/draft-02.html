@@ -417,15 +417,14 @@
 <link href="#rfc.appendix.A.1" rel="Chapter" title="A.1 Why are there no URLs in ALPS?"/>
 <link href="#rfc.appendix.A.2" rel="Chapter" title="A.2 Why is there no workflow component in the ALPS specification?"/>
 <link href="#rfc.appendix.A.3" rel="Chapter" title="A.3 Why is there no way to indicate ranges for semantic descriptors?"/>
-<link href="#rfc.authors" rel="Chapter"/>
 
 
-  <meta name="generator" content="xml2rfc version 2.5.0 - http://tools.ietf.org/tools/xml2rfc" />
+  <meta name="generator" content="xml2rfc version 2.4.8 - http://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Amundsen, M., Richardson, L., and M. Foster" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-amundsen-richardson-foster-alps-02" />
-  <meta name="dct.issued" scheme="ISO8601" content="2015-10-12" />
+  <meta name="dct.issued" scheme="ISO8601" content="2015-4-19" />
   <meta name="dct.abstract" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.  " />
   <meta name="description" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.  " />
 
@@ -445,7 +444,7 @@
   <td class="right">CA Technologies, Inc.</td>
 </tr>
 <tr>
-  <td class="left">Expires: April 14, 2016</td>
+  <td class="left">Expires: October 21, 2015</td>
   <td class="right">L. Richardson</td>
 </tr>
 <tr>
@@ -462,7 +461,7 @@
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">October 12, 2015</td>
+  <td class="right">April 19, 2015</td>
 </tr>
 
     	
@@ -479,14 +478,14 @@
 <h1>
   <a>Editorial Note (To be removed by RFC Editor)</a>
 </h1>
-<p>Distribution of this document is unlimited. Comments should be sent to the IETF Media-Types mailing list (see <span>&lt;</span><a href="https://www.ietf.org/mailman/listinfo/media-types">https://www.ietf.org/mailman/listinfo/media-types</a><span>&gt;</span>).  </p>
+<p>Distribution of this document is unlimited. Comments should be sent to the IETF Media-Types mailing list (see <a href="https://www.ietf.org/mailman/listinfo/media-types">https://www.ietf.org/mailman/listinfo/media-types</a>).  </p>
 <h1 id="rfc.status">
   <a href="#rfc.status">Status of This Memo</a>
 </h1>
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on April 14, 2016.</p>
+<p>This Internet-Draft will expire on October 21, 2015.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -499,17 +498,17 @@
   <ul class="toc">
 
   	<li>1.   <a href="#rfc.section.1">Introduction</a></li>
-<ul><li>1.1.   <a href="#rfc.section.1.1">Notational Conventions</a></li>
+<li>1.1.   <a href="#rfc.section.1.1">Notational Conventions</a></li>
 <li>1.2.   <a href="#rfc.section.1.2">Motivation</a></li>
-<ul><li>1.2.1.   <a href="#rfc.section.1.2.1">Describing Domain-Specific Semantics</a></li>
+<li>1.2.1.   <a href="#rfc.section.1.2.1">Describing Domain-Specific Semantics</a></li>
 <li>1.2.2.   <a href="#rfc.section.1.2.2">ALPS-based Server Implementations</a></li>
 <li>1.2.3.   <a href="#rfc.section.1.2.3">ALPS-based Client Implementations</a></li>
-</ul><li>1.3.   <a href="#rfc.section.1.3">A Simple ALPS Example</a></li>
+<li>1.3.   <a href="#rfc.section.1.3">A Simple ALPS Example</a></li>
 <li>1.4.   <a href="#rfc.section.1.4">Identifying an ALPS Document</a></li>
-</ul><li>2.   <a href="#rfc.section.2">ALPS Documents</a></li>
-<ul><li>2.1.   <a href="#rfc.section.2.1">Compliance</a></li>
+<li>2.   <a href="#rfc.section.2">ALPS Documents</a></li>
+<li>2.1.   <a href="#rfc.section.2.1">Compliance</a></li>
 <li>2.2.   <a href="#rfc.section.2.2">ALPS Document Properties</a></li>
-<ul><li>2.2.1.   <a href="#rfc.section.2.2.1">'alps'</a></li>
+<li>2.2.1.   <a href="#rfc.section.2.2.1">'alps'</a></li>
 <li>2.2.2.   <a href="#rfc.section.2.2.2">'doc'</a></li>
 <li>2.2.3.   <a href="#rfc.section.2.2.3">'descriptor'</a></li>
 <li>2.2.4.   <a href="#rfc.section.2.2.4">'ext'</a></li>
@@ -523,25 +522,24 @@
 <li>2.2.12.   <a href="#rfc.section.2.2.12">'type'</a></li>
 <li>2.2.13.   <a href="#rfc.section.2.2.13">'value'</a></li>
 <li>2.2.14.   <a href="#rfc.section.2.2.14">'version'</a></li>
-</ul><li>2.3.   <a href="#rfc.section.2.3">ALPS Representations</a></li>
-<ul><li>2.3.1.   <a href="#rfc.section.2.3.1">Sample HTML</a></li>
+<li>2.3.   <a href="#rfc.section.2.3">ALPS Representations</a></li>
+<li>2.3.1.   <a href="#rfc.section.2.3.1">Sample HTML</a></li>
 <li>2.3.2.   <a href="#rfc.section.2.3.2">XML Representation Example</a></li>
 <li>2.3.3.   <a href="#rfc.section.2.3.3">JSON Representation Example</a></li>
-</ul></ul><li>3.   <a href="#rfc.section.3">Applying ALPS documents to Existing Media Types</a></li>
-<ul><li>3.1.   <a href="#rfc.section.3.1">Linking to ALPS Documents</a></li>
-</ul><li>4.   <a href="#rfc.section.4">IANA Considerations</a></li>
-<ul><li>4.1.   <a href="#rfc.section.4.1">application/alps+xml</a></li>
+<li>3.   <a href="#rfc.section.3">Applying ALPS documents to Existing Media Types</a></li>
+<li>3.1.   <a href="#rfc.section.3.1">Linking to ALPS Documents</a></li>
+<li>4.   <a href="#rfc.section.4">IANA Considerations</a></li>
+<li>4.1.   <a href="#rfc.section.4.1">application/alps+xml</a></li>
 <li>4.2.   <a href="#rfc.section.4.2">application/alps+json</a></li>
-</ul><li>5.   <a href="#rfc.section.5">Internationalization Considerations</a></li>
+<li>5.   <a href="#rfc.section.5">Internationalization Considerations</a></li>
 <li>6.   <a href="#rfc.section.6">Acknowledgements</a></li>
 <li>7.   <a href="#rfc.references">References</a></li>
-<ul><li>7.1.   <a href="#rfc.references.1">Normative References</a></li>
+<li>7.1.   <a href="#rfc.references.1">Normative References</a></li>
 <li>7.2.   <a href="#rfc.references.2">Informative References</a></li>
-</ul><li>Appendix A.   <a href="#rfc.appendix.A">Frequently Asked Questions</a></li>
-<ul><li>A.1.   <a href="#rfc.appendix.A.1">Why are there no URLs in ALPS?</a></li>
+<li>Appendix A.   <a href="#rfc.appendix.A">Frequently Asked Questions</a></li>
+<li>A.1.   <a href="#rfc.appendix.A.1">Why are there no URLs in ALPS?</a></li>
 <li>A.2.   <a href="#rfc.appendix.A.2">Why is there no workflow component in the ALPS specification?</a></li>
 <li>A.3.   <a href="#rfc.appendix.A.3">Why is there no way to indicate ranges for semantic descriptors?</a></li>
-</ul><li><a href="#rfc.authors">Authors' Addresses</a></li>
 
 
   </ul>
@@ -626,7 +624,7 @@
           &lt;span class="phone"&gt;123.456.7890&lt;/span&gt;
         &lt;/td&gt;
       &lt;/tr&gt;
-
+            
       &lt;tr&gt;
         &lt;td&gt;
           &lt;a href="http://example.org/contacts/100"
@@ -757,7 +755,7 @@
     ]
   }
 }
-
+                
                </pre>
 <p class="figure">Collection+JSON Contacts Representation</p>
 <p id="rfc.section.1.3.p.8">The descriptor 'collection' has become the link relation associated with a Collection+JSON query. The descriptors 'fullName', 'email', and 'phone' have become the names of key-value pairs in the items in a Collection+JSON collection.  </p>
@@ -1042,7 +1040,7 @@
   {
     "id" : "value",
     "name" : "search",
-    "type" : "semantic",
+    "type" : "descriptor",
     "doc" : { "value" : "input for search" }
   },
   { "href" : "#resultType" }
@@ -1075,14 +1073,14 @@
       {
         "id" : "search",
         "type" : "safe",
-        "doc" : { "value" :
+        "doc" : {"value" :
           "A search form with a two inputs"
         },
         "descriptor" : [
           {
             "id" : "value",
             "name" : "search",
-            "type" : "semantic",
+            "type" : "descriptor",
             "doc" : { "value" : "input for search" }
           },
           { "href" : "#resultType" }
@@ -1090,8 +1088,8 @@
       },
       {
         "id" : "resultType",
-        "type" : "semantic",
-        "doc" : { "value" : "results format"},
+        "type" : "descriptor",
+        "description" : {"value" : "results format"},
         "ext" : [
           {
             "href" : "http://alps.io/ext/range",
@@ -1257,43 +1255,43 @@
       <td class="reference">
         <b id="RFC1738">[RFC1738]</b>
       </td>
-      <td class="top"><a>Berners-Lee, T.</a>, <a>Masinter, L.</a> and <a>M. McCahill</a>, "<a href="http://tools.ietf.org/html/rfc1738">Uniform Resource Locators (URL)</a>", RFC 1738, DOI 10.17487/RFC1738, December 1994.</td>
+      <td class="top"><a href="mailto:timbl@info.cern.ch" title="CERN, World-Wide Web project">Berners-Lee, T.</a>, <a href="mailto:masinter@parc.xerox.com" title="Xerox PARC">Masinter, L.</a> and <a href="mailto:mpm@boombox.micro.umn.edu" title="University of Minnesota, Computer and Information Services">M. McCahill</a>, "<a href="http://tools.ietf.org/html/rfc1738">Uniform Resource Locators (URL)</a>", RFC 1738, December 1994.</td>
     </tr>
     <tr>
       <td class="reference">
         <b id="RFC2119">[RFC2119]</b>
       </td>
-      <td class="top"><a>Bradner, S.</a>, "<a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997.</td>
+      <td class="top"><a href="mailto:sob@harvard.edu" title="Harvard University">Bradner, S.</a>, "<a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>", BCP 14, RFC 2119, March 1997.</td>
     </tr>
     <tr>
       <td class="reference">
         <b id="RFC3023">[RFC3023]</b>
       </td>
-      <td class="top"><a>Murata, M.</a>, <a>St. Laurent, S.</a> and <a>D. Kohn</a>, "<a href="http://tools.ietf.org/html/rfc3023">XML Media Types</a>", RFC 3023, DOI 10.17487/RFC3023, January 2001.</td>
+      <td class="top"><a>Murata, M.</a>, <a>St. Laurent, S.</a> and <a>D. Kohn</a>, "<a href="http://tools.ietf.org/html/rfc3023">XML Media Types</a>", RFC 3023, January 2001.</td>
     </tr>
     <tr>
       <td class="reference">
         <b id="RFC4627">[RFC4627]</b>
       </td>
-      <td class="top"><a>Crockford, D.</a>, "<a href="http://tools.ietf.org/html/rfc4627">The application/json Media Type for JavaScript Object Notation (JSON)</a>", RFC 4627, DOI 10.17487/RFC4627, July 2006.</td>
+      <td class="top"><a>Crockford, D.</a>, "<a href="http://tools.ietf.org/html/rfc4627">The application/json Media Type for JavaScript Object Notation (JSON)</a>", RFC 4627, July 2006.</td>
     </tr>
     <tr>
       <td class="reference">
         <b id="RFC5988">[RFC5988]</b>
       </td>
-      <td class="top"><a>Nottingham, M.</a>, "<a href="http://tools.ietf.org/html/rfc5988">Web Linking</a>", RFC 5988, DOI 10.17487/RFC5988, October 2010.</td>
+      <td class="top"><a>Nottingham, M.</a>, "<a href="http://tools.ietf.org/html/rfc5988">Web Linking</a>", RFC 5988, October 2010.</td>
     </tr>
     <tr>
       <td class="reference">
         <b id="RFC6906">[RFC6906]</b>
       </td>
-      <td class="top"><a>Wilde, E.</a>, "<a href="http://tools.ietf.org/html/rfc6906">The 'profile' Link Relation Type</a>", RFC 6906, DOI 10.17487/RFC6906, March 2013.</td>
+      <td class="top"><a>Wilde, E.</a>, "<a href="http://tools.ietf.org/html/rfc6906">The 'profile' Link Relation Type</a>", RFC 6906, March 2013.</td>
     </tr>
     <tr>
       <td class="reference">
         <b id="RFC7320">[RFC7320]</b>
       </td>
-      <td class="top"><a>Nottingham, M.</a>, "<a href="http://tools.ietf.org/html/rfc7320">URI Design and Ownership</a>", BCP 190, RFC 7320, DOI 10.17487/RFC7320, July 2014.</td>
+      <td class="top"><a>Nottingham, M.</a>, "<a href="http://tools.ietf.org/html/rfc7320">URI Design and Ownership</a>", BCP 190, RFC 7320, July 2014.</td>
     </tr>
   </tbody>
 </table>
@@ -1304,7 +1302,7 @@
       <td class="reference">
         <b id="I-D.ietf-appsawg-text-markdown">[I-D.ietf-appsawg-text-markdown]</b>
       </td>
-      <td class="top"><a>Leonard, S.</a>, "<a href="http://tools.ietf.org/html/draft-ietf-appsawg-text-markdown-11">The text/markdown Media Type</a>", Internet-Draft draft-ietf-appsawg-text-markdown-11, September 2015.</td>
+      <td class="top"><a>Leonard, S.</a>, "<a href="http://tools.ietf.org/html/draft-ietf-appsawg-text-markdown-05">The text/markdown Media Type</a>", Internet-Draft draft-ietf-appsawg-text-markdown-05, December 2014.</td>
     </tr>
   </tbody>
 </table>
