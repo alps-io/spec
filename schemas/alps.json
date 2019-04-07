@@ -86,6 +86,9 @@
           },
           "rt": {
             "$ref": "#/definitions/rt"
+          },
+          "descriptor": {
+            "$ref": "#/definitions/descriptor"
           }
         }
       },
