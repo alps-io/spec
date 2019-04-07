@@ -1,5 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://alps.io/schemas/alps.json",
+  "title": "ALPS schema",
   "type": "object",
   "required": [
     "alps"
