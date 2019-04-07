@@ -22,6 +22,9 @@
           "$ref": "#/definitions/descriptor"
         }
       },
+      "link": {
+        "$ref": "#/definitions/link"
+      },
       "additionalProperties": false
     }
   },
@@ -140,6 +143,22 @@
     "name": {
       "type": "string",
       "description": "Indicates the name of the 'descriptor' as found in generic representations."
+    },
+    "rel": {
+      "type": "string",
+      "description": "Contains a RFC5988 approved value"
+    },
+    "link": {
+      "type": "object",
+      "description": "An element that identifies a link between the current ALPS element and some other (possibly external) resource.",
+      "properties": {
+        "rel": {
+          "$ref": "#/definitions/rel"
+        },
+        "href": {
+          "$ref": "#/definitions/href"
+        }
+      }
     }
   }
 }
