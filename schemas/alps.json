@@ -60,6 +60,11 @@
       "type": "string",
       "description": "Indicates the resource type that will be returned when executing the specified network request. The 'rt' attribute SHOULD appear only on a 'descriptor' with a 'type' value of 'safe', 'unsafe', or 'idempotent.'"
     },
+    "def": {
+      "type": "string",
+      "format": "uri",
+      "description": "Indicatesa the base-level defintiion of each descriptor (schema.org, GS1, IANA link rels, etc.)."
+    },
     "descriptor": {
       "type": "array",
       "description": "A collection of descriptors",
@@ -91,6 +96,9 @@
           },
           "descriptor": {
             "$ref": "#/definitions/descriptor"
+          },
+          "def": {
+            "$ref": "#/definitions/def"
           }
         }
       },
