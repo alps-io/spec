@@ -19,14 +19,13 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 <!-- the actual document! -->
-<rfc docName="draft-amundsen-richardson-foster-alps-02" ipr="trust200902">
+<rfc docName="draft-amundsen-richardson-foster-alps-03" ipr="trust200902">
   <!-- front matter -->
   <front>
     <title abbrev="Application-Level Profile Semantics">
       Application-Level Profile Semantics (ALPS)
     </title>
     <author fullname="Mike Amundsen" surname="Amundsen" initials="M.">
-      <organization>CA Technologies, Inc.</organization>
       <address>
         <email>mca@amundsen.com</email>
         <uri>http://amundsen.com</uri>
@@ -39,7 +38,6 @@
       </address>
     </author>
     <author fullname="Mark W. Foster" surname="Foster" initials="M.">
-      <organization>Apiary</organization>
       <address>
         <email>mwf@fosrias.com</email>
       </address>

@@ -3,16 +3,15 @@
 
 
 Network Working Group                                        M. Amundsen
-Internet-Draft                                     CA Technologies, Inc.
-Expires: October 8, 2019                                   L. Richardson
+Internet-Draft
+Expires: February 24, 2021                                 L. Richardson
 
                                                                M. Foster
-                                                                  Apiary
-                                                           April 6, 2019
+                                                         August 23, 2020
 
 
                Application-Level Profile Semantics (ALPS)
-                draft-amundsen-richardson-foster-alps-02
+                draft-amundsen-richardson-foster-alps-03
 
 Abstract
 
@@ -27,7 +26,8 @@ Abstract
 Editorial Note (To be removed by RFC Editor)
 
    Distribution of this document is unlimited.  Comments should be sent
-   to the IETF Media-Types mailing list (see [1]).
+   to the IETF Media-Types mailing list (see
+   <https://www.ietf.org/mailman/listinfo/media-types>).
 
 Status of This Memo
 
@@ -37,14 +37,14 @@ Status of This Memo
    Internet-Drafts are working documents of the Internet Engineering
    Task Force (IETF).  Note that other groups may also distribute
    working documents as Internet-Drafts.  The list of current Internet-
-   Drafts is at http://datatracker.ietf.org/drafts/current/.
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
 
    Internet-Drafts are draft documents valid for a maximum of six months
    and may be updated, replaced, or obsoleted by other documents at any
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 8, 2019.
+   This Internet-Draft will expire on February 24, 2021.
 
 
 
@@ -53,19 +53,19 @@ Status of This Memo
 
 
 
-Amundsen, et al.         Expires October 8, 2019                [Page 1]
+Amundsen, et al.        Expires February 24, 2021               [Page 1]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 Copyright Notice
 
-   Copyright (c) 2019 IETF Trust and the persons identified as the
+   Copyright (c) 2020 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
-   (http://trustee.ietf.org/license-info) in effect on the date of
+   (https://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Amundsen, et al.         Expires October 8, 2019                [Page 2]
+Amundsen, et al.        Expires February 24, 2021               [Page 2]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
    4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  23
@@ -128,6 +128,7 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
            specification?  . . . . . . . . . . . . . . . . . . . . .  28
      A.3.  Why is there no way to indicate ranges for semantic
            descriptors?  . . . . . . . . . . . . . . . . . . . . . .  28
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  29
 
 1.  Introduction
 
@@ -164,10 +165,9 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
 
 
-
-Amundsen, et al.         Expires October 8, 2019                [Page 3]
+Amundsen, et al.        Expires February 24, 2021               [Page 3]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 1.2.  Motivation
@@ -221,9 +221,9 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
 
 
-Amundsen, et al.         Expires October 8, 2019                [Page 4]
+Amundsen, et al.        Expires February 24, 2021               [Page 4]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 1.3.  A Simple ALPS Example
@@ -277,9 +277,9 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
 
 
-Amundsen, et al.         Expires October 8, 2019                [Page 5]
+Amundsen, et al.        Expires February 24, 2021               [Page 5]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
        <link href="http://alps.io/profiles/contact"
@@ -333,9 +333,9 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
 
 
-Amundsen, et al.         Expires October 8, 2019                [Page 6]
+Amundsen, et al.        Expires February 24, 2021               [Page 6]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
    </html>
@@ -389,9 +389,9 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
 
 
-Amundsen, et al.         Expires October 8, 2019                [Page 7]
+Amundsen, et al.        Expires February 24, 2021               [Page 7]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
    {
@@ -445,9 +445,9 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
 
 
-Amundsen, et al.         Expires October 8, 2019                [Page 8]
+Amundsen, et al.        Expires February 24, 2021               [Page 8]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
                "href" : "http://alps.io/profiles/contacts#contact"
@@ -501,9 +501,9 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
 
 
-Amundsen, et al.         Expires October 8, 2019                [Page 9]
+Amundsen, et al.        Expires February 24, 2021               [Page 9]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
    In order to reduce load on servers responding to ALPS document
@@ -557,9 +557,9 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
 
 
-Amundsen, et al.         Expires October 8, 2019               [Page 10]
+Amundsen, et al.        Expires February 24, 2021              [Page 10]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
    it SHOULD contain one of the following values: 'text', 'html',
@@ -613,9 +613,9 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
 
 
-Amundsen, et al.         Expires October 8, 2019               [Page 11]
+Amundsen, et al.        Expires February 24, 2021              [Page 11]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
    4.  'type'
@@ -660,18 +660,18 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
    2.  An extension link relation type as defined by [RFC5988] whose
        value is the fully-qualified URI of an associated document
        describing the relation type.  This includes URI fragment
-       identifiers of ALPS descriptors (e.g. rel="http://alps.io/
-       profiles/item#purchased-by", a URI) per the conventions of
-       Section 2.2.7.2.
+       identifiers of ALPS descriptors (e.g.
+       rel="http://alps.io/profiles/item#purchased-by", a URI) per the
+       conventions of Section 2.2.7.2.
 
    3.  The 'id' property of a state transition descriptor of an
        associated ALPS document (e.g. rel="purchased-by", a short
 
 
 
-Amundsen, et al.         Expires October 8, 2019               [Page 12]
+Amundsen, et al.        Expires February 24, 2021              [Page 12]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
        string) per the conventions of section Section 2.2.7.1 and
@@ -725,9 +725,9 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
 
 
-Amundsen, et al.         Expires October 8, 2019               [Page 13]
+Amundsen, et al.        Expires February 24, 2021              [Page 13]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
    o  'text', for plain text, MUST be supported.
@@ -781,9 +781,9 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
 
 
-Amundsen, et al.         Expires October 8, 2019               [Page 14]
+Amundsen, et al.        Expires February 24, 2021              [Page 14]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
    'id' in ALPS...  <descriptor id="q" type="semantic" />
@@ -833,18 +833,19 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
    When applied to an ALPS document, a URI fragment identifier points to
    the 'descriptor' whose 'id' is the value of the fragment.  For
-   example, the fragment identifier 'customer' in the URI http://example
+   example, the fragment identifier 'customer' in the URI
 
 
 
-Amundsen, et al.         Expires October 8, 2019               [Page 15]
+Amundsen, et al.        Expires February 24, 2021              [Page 15]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
-   .com/my-alps-document#customer refers to an ALPS 'descriptor' with
-   'id' set to 'customer'.  If the 'id' contains URL unsafe characters
-   per [RFC1738], the fragment referencing the 'id' MUST be URL escaped.
+   http://example.com/my-alps-document#customer refers to an ALPS
+   'descriptor' with 'id' set to 'customer'.  If the 'id' contains URL
+   unsafe characters per [RFC1738], the fragment referencing the 'id'
+   MUST be URL escaped.
 
    A relative URL with a fragment identifier within an ALPS document
    (e.g. href="#customer") refers to a local 'descriptor' within the
@@ -888,16 +889,17 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
    Indicates the name of the 'descriptor' as found in generic
    representations.  It MAY appear as a property of 'descriptor'.
 
+
+
+
+
+Amundsen, et al.        Expires February 24, 2021              [Page 16]
+
+Internet-Draft     Application-Level Profile Semantics       August 2020
+
+
    This is used when the name of the 'descriptor' is used as an 'id'
    value elsewhere in the ALPS document.  For instance, if a single ALPS
-
-
-
-Amundsen, et al.         Expires October 8, 2019               [Page 16]
-
-Internet-Draft     Application-Level Profile Semantics        April 2019
-
-
    document defines a semantic descriptor (data element) called
    'customer' and a safe descriptor (transition element) also called
    'customer', they cannot both have 'id="customer"' in the ALPS
@@ -943,16 +945,17 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
    'safe'  A hypermedia control that triggers a safe, idempotent state
       transition (e.g.  HTTP.GET or HTTP.HEAD).
 
+
+
+
+
+Amundsen, et al.        Expires February 24, 2021              [Page 17]
+
+Internet-Draft     Application-Level Profile Semantics       August 2020
+
+
    'idempotent'  A hypermedia control that triggers an unsafe,
       idempotent state transition (e.g.  HTTP.PUT or HTTP.DELETE).
-
-
-
-
-Amundsen, et al.         Expires October 8, 2019               [Page 17]
-
-Internet-Draft     Application-Level Profile Semantics        April 2019
-
 
    'unsafe'  A hypermedia control that triggers an unsafe, non-
       idempotent state transition (e.g.  HTTP.POST).
@@ -1002,12 +1005,9 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
 
 
-
-
-
-Amundsen, et al.         Expires October 8, 2019               [Page 18]
+Amundsen, et al.        Expires February 24, 2021              [Page 18]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
    <!-- sample HTML document -->
@@ -1061,9 +1061,9 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
 
 
-Amundsen, et al.         Expires October 8, 2019               [Page 19]
+Amundsen, et al.        Expires February 24, 2021              [Page 19]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
    <?xml version="1.0"?>
@@ -1117,9 +1117,9 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
 
 
-Amundsen, et al.         Expires October 8, 2019               [Page 20]
+Amundsen, et al.        Expires February 24, 2021              [Page 20]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
    For example:
@@ -1173,9 +1173,9 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
 
 
-Amundsen, et al.         Expires October 8, 2019               [Page 21]
+Amundsen, et al.        Expires February 24, 2021              [Page 21]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
    {
@@ -1229,9 +1229,9 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
 
 
-Amundsen, et al.         Expires October 8, 2019               [Page 22]
+Amundsen, et al.        Expires February 24, 2021              [Page 22]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
    (http://alps.io/docs/mapping).  [TK : this page does not yet exist.
@@ -1285,9 +1285,9 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
 
 
-Amundsen, et al.         Expires October 8, 2019               [Page 23]
+Amundsen, et al.        Expires February 24, 2021              [Page 23]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
       charset  This parameter has identical semantics to the charset
@@ -1341,9 +1341,9 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
 
 
-Amundsen, et al.         Expires October 8, 2019               [Page 24]
+Amundsen, et al.        Expires February 24, 2021              [Page 24]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
       object idenfiers:  none
@@ -1397,9 +1397,9 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
 
 
-Amundsen, et al.         Expires October 8, 2019               [Page 25]
+Amundsen, et al.        Expires February 24, 2021              [Page 25]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
       example, the fragment identifier "#user" refers to a descriptor in
@@ -1453,34 +1453,42 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
 
 
-Amundsen, et al.         Expires October 8, 2019               [Page 26]
+Amundsen, et al.        Expires February 24, 2021              [Page 26]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119, March 1997.
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
 
    [RFC3023]  Murata, M., St. Laurent, S., and D. Kohn, "XML Media
-              Types", RFC 3023, January 2001.
+              Types", RFC 3023, DOI 10.17487/RFC3023, January 2001,
+              <https://www.rfc-editor.org/info/rfc3023>.
 
    [RFC4627]  Crockford, D., "The application/json Media Type for
-              JavaScript Object Notation (JSON)", RFC 4627, July 2006.
+              JavaScript Object Notation (JSON)", RFC 4627,
+              DOI 10.17487/RFC4627, July 2006,
+              <https://www.rfc-editor.org/info/rfc4627>.
 
-   [RFC5988]  Nottingham, M., "Web Linking", RFC 5988, October 2010.
+   [RFC5988]  Nottingham, M., "Web Linking", RFC 5988,
+              DOI 10.17487/RFC5988, October 2010,
+              <https://www.rfc-editor.org/info/rfc5988>.
 
    [RFC6906]  Wilde, E., "The 'profile' Link Relation Type", RFC 6906,
-              March 2013.
+              DOI 10.17487/RFC6906, March 2013,
+              <https://www.rfc-editor.org/info/rfc6906>.
 
-   [RFC7320]  Nottingham, M., "URI Design and Ownership", BCP 190, RFC
-              7320, July 2014.
+   [RFC7320]  Nottingham, M., "URI Design and Ownership", RFC 7320,
+              DOI 10.17487/RFC7320, July 2014,
+              <https://www.rfc-editor.org/info/rfc7320>.
 
 7.2.  Informative References
 
    [I-D.ietf-appsawg-text-markdown]
               Leonard, S., "The text/markdown Media Type", draft-ietf-
-              appsawg-text-markdown-05 (work in progress), December
-              2014.
+              appsawg-text-markdown-12 (work in progress), October 2015.
 
 
 
@@ -1501,17 +1509,9 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 
 
 
-
-
-
-
-
-
-
-
-Amundsen, et al.         Expires October 8, 2019               [Page 27]
+Amundsen, et al.        Expires February 24, 2021              [Page 27]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 Appendix A.  Frequently Asked Questions
@@ -1565,9 +1565,9 @@ A.3.  Why is there no way to indicate ranges for semantic descriptors?
 
 
 
-Amundsen, et al.         Expires October 8, 2019               [Page 28]
+Amundsen, et al.        Expires February 24, 2021              [Page 28]
 
-Internet-Draft     Application-Level Profile Semantics        April 2019
+Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
    is considered over-constraining service implementations.  Services
@@ -1577,7 +1577,6 @@ Internet-Draft     Application-Level Profile Semantics        April 2019
 Authors' Addresses
 
    Mike Amundsen
-   CA Technologies, Inc.
 
    EMail: mca@amundsen.com
    URI:   http://amundsen.com
@@ -1590,7 +1589,6 @@ Authors' Addresses
 
 
    Mark W. Foster
-   Apiary
 
    EMail: mwf@fosrias.com
 
@@ -1621,4 +1619,6 @@ Authors' Addresses
 
 
 
-Amundsen, et al.         Expires October 8, 2019               [Page 29]
+
+
+Amundsen, et al.        Expires February 24, 2021              [Page 29]

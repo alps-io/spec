@@ -1,4 +1,17 @@
 #!/bin/bash
 
-xml2rfc draft-03.xml  --basename=draft-03  --text --html
-cp draft-03.html index.html
+# check for arg
+if [ -z "$1" ]
+  then
+    echo "No argument supplied"
+    exit
+fi
+
+# do the processing
+xml2rfc $1/$1.xml  --basename=$1  --text --html --verbose
+cp $1/$1.html $1/index.html
+cp $1/index.html .
+
+echo "job completed."
+
+# EOF
