@@ -419,12 +419,12 @@
 <link href="#rfc.appendix.A.3" rel="Chapter" title="A.3 Why is there no way to indicate ranges for semantic descriptors?"/>
 
 
-  <meta name="generator" content="xml2rfc version 2.4.8 - http://tools.ietf.org/tools/xml2rfc" />
+  <meta name="generator" content="xml2rfc version 2.4.7 - http://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Amundsen, M., Richardson, L., and M. Foster" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-amundsen-richardson-foster-alps-02" />
-  <meta name="dct.issued" scheme="ISO8601" content="2015-4-19" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-4-6" />
   <meta name="dct.abstract" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.  " />
   <meta name="description" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.  " />
 
@@ -444,7 +444,7 @@
   <td class="right">CA Technologies, Inc.</td>
 </tr>
 <tr>
-  <td class="left">Expires: October 21, 2015</td>
+  <td class="left">Expires: October 8, 2019</td>
   <td class="right">L. Richardson</td>
 </tr>
 <tr>
@@ -461,7 +461,7 @@
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">April 19, 2015</td>
+  <td class="right">April 6, 2019</td>
 </tr>
 
     	
@@ -485,11 +485,11 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on October 21, 2015.</p>
+<p>This Internet-Draft will expire on October 8, 2019.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
-<p>Copyright (c) 2015 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
+<p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
 
   
@@ -781,13 +781,15 @@
 
 <p> </p>
 <h1 id="rfc.section.2.2.2"><a href="#rfc.section.2.2.2">2.2.2.</a> <a href="#prop-doc" id="prop-doc">'doc'</a></h1>
-<p id="rfc.section.2.2.2.p.1">A text field that contains free-form, usually human-readable, text.  The 'doc' element MAY have two properties: <a href="#prop-href">'href'</a> and <a href="#prop-format">'format'</a>.  If the 'href' property appears it SHOULD contain a dereferencable URL that points to human-readable text. If the 'format' property appears it SHOULD contain one of the following values: 'text', 'html', 'asciidoc', or 'markdown'.  Any program processing 'doc' elements SHOULD honor the 'format' directive and parse/render the content appropriately. If the value in the 'format' property is not recognized and/or supported, the processing program MUST treat the content as plain text. If no 'format' property is present, the content SHOULD be treated as plain text.  </p>
+<p id="rfc.section.2.2.2.p.1">A text field that contains free-form, usually human-readable, text.  The 'doc' element MAY have two properties: <a href="#prop-href">'href'</a> and <a href="#prop-format">'format'</a>.  If the 'href' property appears it SHOULD contain a dereferencable URL that points to human-readable text. If the 'format' property appears it SHOULD contain one of the following values: 'text', 'html', 'asciidoc', or 'markdown'.  Independent of the format specified, the contained text SHALL be a plain string. This implies the need to escape special characters of the serialisation format in use.  Any program processing 'doc' elements SHOULD honor the 'format' directive and parse/render the content appropriately. If the value in the 'format' property is not recognized and/or supported, the processing program MUST treat the content as plain text. If no 'format' property is present, the content SHOULD be treated as plain text.  </p>
 
 <dl>
-  <dt>XML:</dt>
-  <dd style="margin-left: 8">&lt;doc format="html"&gt; &lt;h1&gt;Date of Birth&lt;/h1&gt; &lt;p&gt;...&lt;/p&gt; &lt;/doc&gt; </dd>
+  <dt>XML (escaped characters):</dt>
+  <dd style="margin-left: 8">&lt;doc format="html"&gt; &amp;lt;h1&amp;gt;Date of Birth for "Peter"&amp;lt;/h1&amp;gt; &amp;lt;p&amp;gt;...&amp;lt;/p&amp;gt; &lt;/doc&gt; </dd>
+  <dt>XML (in CDATA block):</dt>
+  <dd style="margin-left: 8">&lt;doc format="html"&gt;&lt;![CDATA[ &lt;h1&gt;Date of Birth for "Peter"&lt;/h1&gt; &lt;p&gt;...&lt;/p&gt; ]]&lt;/doc&gt; </dd>
   <dt>JSON:</dt>
-  <dd style="margin-left: 8">{ "doc" : { "format" : "text" : "value" : "Date of Birth ..." } } </dd>
+  <dd style="margin-left: 8">{ "doc" : { "format" : "text" : "value" : "Date of Birth for \&#8221;Peter\&#8221; ..." } } </dd>
 </dl>
 
 <p> </p>
@@ -817,10 +819,18 @@
 <p id="rfc.section.2.2.3.p.3">The 'descriptor' property SHOULD have either an <a href="#prop-id">'id'</a> or <a href="#prop-href">'href'</a> attribute. It MAY have both. Additionally, the 'descriptor' MAY have any of the following attributes: </p>
 
 <ol>
-  <li><a href="#prop-doc">'doc'</a> </li>
-  <li><a href="#prop-ext">'ext'</a> </li>
-  <li><a href="#prop-name">'name'</a> </li>
-  <li><a href="#prop-type">'type'</a> </li>
+  <li>
+    <a href="#prop-doc">'doc'</a>
+  </li>
+  <li>
+    <a href="#prop-ext">'ext'</a>
+  </li>
+  <li>
+    <a href="#prop-name">'name'</a>
+  </li>
+  <li>
+    <a href="#prop-type">'type'</a>
+  </li>
 </ol>
 
 <p> </p>
@@ -844,16 +854,20 @@
   <li>An extension link relation type as defined by <a href="#RFC5988">[RFC5988]</a> whose value is the fully-qualified URI of an associated document describing the relation type. This includes URI fragment identifiers of ALPS descriptors (e.g. rel="http://alps.io/profiles/item#purchased-by", a URI) per the conventions of <a href="#prop-id-frag">Section 2.2.7.2</a>.  </li>
   <li>The 'id' property of a state transition descriptor of an associated ALPS document (e.g. rel="purchased-by", a short string) per the conventions of section <a href="#prop-id-name">Section 2.2.7.1</a> and <a href="#prop-id-rels">Section 2.2.7.3</a> if the representation includes an ALPS profile.  </li>
 </ol>
-
-<p> </p>
 <h1 id="rfc.section.2.2.4"><a href="#rfc.section.2.2.4">2.2.4.</a> <a href="#prop-ext" id="prop-ext">'ext'</a></h1>
 <p id="rfc.section.2.2.4.p.1">The 'ext' element can be used to extend the ALPS document with author-specific information. It provides a way to customize ALPS documents with additional properties not covered in this specification. This is an OPTIONAL element.  </p>
 <p id="rfc.section.2.2.4.p.2">The 'ext' element has the following properties.  </p>
 
 <ol>
-  <li><a href="#prop-id">'id'</a> </li>
-  <li><a href="#prop-href">'href'</a> </li>
-  <li><a href="#prop-value">'value'</a> </li>
+  <li>
+    <a href="#prop-id">'id'</a>
+  </li>
+  <li>
+    <a href="#prop-href">'href'</a>
+  </li>
+  <li>
+    <a href="#prop-value">'value'</a>
+  </li>
 </ol>
 
 <p> </p>
@@ -871,14 +885,18 @@
 <p id="rfc.section.2.2.4.p.5">The 'ext' element MAY appear as a child of the following elements: </p>
 
 <ol>
-  <li><a href="#prop-alps">'alps'</a> </li>
-  <li><a href="#prop-descriptor">'descriptor'</a> </li>
+  <li>
+    <a href="#prop-alps">'alps'</a>
+  </li>
+  <li>
+    <a href="#prop-descriptor">'descriptor'</a>
+  </li>
 </ol>
 
 <p> </p>
 <p id="rfc.section.2.2.4.p.6">Since the 'ext' element has no specific meaning within this specification, it MUST be ignored by any application that does not understand its meaning.  </p>
 <h1 id="rfc.section.2.2.5"><a href="#rfc.section.2.2.5">2.2.5.</a> <a href="#prop-format" id="prop-format">'format'</a></h1>
-<p id="rfc.section.2.2.5.p.1">Indicates how the text content should be parsed and/or rendered. This specification identifies a range of possible values for 'format': </p>
+<p id="rfc.section.2.2.5.p.1">Indicates how the text content should be parsed and/or rendered. Independent of the format chosen, the text content SHALL be plain text.  This specification identifies a range of possible values for 'format': </p>
 
 <ul>
   <li>'text', for plain text, MUST be supported.</li>
@@ -1129,7 +1147,6 @@
       <dt>profile</dt>
       <dd style="margin-left: 8">A whitespace-separated list of IRIs identifying specific constraints or conventions that apply to an ALPS document.  A profile must not change the semantics of the resource representation when processed without profile knowledge, so that clients both with and without knowledge of a profiled resource can safely use the same representation. The profile parameter may also be used by clients to express their preferences in the content negotiation process. It is recommended that profile IRIs are dereferenceable and provide useful documentation at that IRI.  </dd>
     </dl>
-    <p> </p>
   </dd>
   <dt>Encoding considerations:</dt>
   <dd style="margin-left: 8">
@@ -1137,12 +1154,11 @@
       <dt>binary</dt>
       <dd style="margin-left: 8">Same as encoding considerations of application/xml as specified in<a href="#RFC3023">[RFC3023]</a>.  </dd>
     </dl>
-    <p> </p>
   </dd>
   <dt>Security considerations:</dt>
   <dd style="margin-left: 8">This format shares security issues common to all XML content types. It does not provide executable content.  Information contained in ALPS documents do not require privacy or integrity services.  </dd>
   <dt>Interoperability considerations:</dt>
-  <dd style="margin-left: 8">ALPS is not described by a DTD and applies only the well-formedness rules of XML. It should only be parsed by a non-validating parser.  </dd>
+  <dd style="margin-left: 8">ALPS is not described by a DTD and applies only the well-formedness rules of XML. It should only be parsed by a non-validating parser.  Be advised that some implementations might generate representations (such as the &lt;doc&gt; element) that contain unescaped HTML or XML content as the value.  In such cases the parser MAY reject the content as it does not comply with the specification.  </dd>
   <dt>Fragment identifier considerations:</dt>
   <dd style="margin-left: 8">Fragment identifiers used with application/alps+xml resources are simple, opaque strings that do not contain any URL unsafe characters per <a href="#RFC1738">[RFC1738]</a> which match the <a href="#prop-id">'id'</a> in an existing <a href="#prop-descriptor">'descriptor'</a> in the document. For example, the fragment identifier "#user" refers to a descriptor in the document with an id value set to "user." </dd>
   <dt>Published specification:</dt>
@@ -1161,7 +1177,6 @@
       <dt>object idenfiers:</dt>
       <dd style="margin-left: 8">none </dd>
     </dl>
-    <p> </p>
   </dd>
   <dt>person to contact for further information:</dt>
   <dd style="margin-left: 8">
@@ -1171,15 +1186,12 @@
       <dt>Email:</dt>
       <dd style="margin-left: 8">mca@amundsen.com </dd>
     </dl>
-    <p> </p>
   </dd>
   <dt>Intended usage:</dt>
   <dd style="margin-left: 8">Common </dd>
   <dt>Author/change controller:</dt>
   <dd style="margin-left: 8">Mike Amundsen </dd>
 </dl>
-
-<p> </p>
 <h1 id="rfc.section.4.2"><a href="#rfc.section.4.2">4.2.</a> <a href="#iana-alps-json" id="iana-alps-json">application/alps+json</a></h1>
 <p/>
 
@@ -1196,7 +1208,6 @@
       <dt>profile</dt>
       <dd style="margin-left: 8">A whitespace-separated list of IRIs identifying specific constraints or conventions that apply to an ALPS document.  A profile must not change the semantics of the resource representation when processed without profile knowledge, so that clients both with and without knowledge of a profiled resource can safely use the same representation. The profile parameter may also be used by clients to express their preferences in the content negotiation process. It is recommended that profile IRIs are dereferenceable and provide useful documentation at that IRI.  </dd>
     </dl>
-    <p> </p>
   </dd>
   <dt>Encoding considerations:</dt>
   <dd style="margin-left: 8">binary </dd>
@@ -1222,7 +1233,6 @@
       <dt>object idenfiers:</dt>
       <dd style="margin-left: 8">none </dd>
     </dl>
-    <p> </p>
   </dd>
   <dt>person to contact for further information:</dt>
   <dd style="margin-left: 8">
@@ -1232,18 +1242,17 @@
       <dt>Email:</dt>
       <dd style="margin-left: 8">mca@amundsen.com </dd>
     </dl>
-    <p> </p>
   </dd>
   <dt>Intended usage:</dt>
   <dd style="margin-left: 8">Common </dd>
   <dt>Author/change controller:</dt>
   <dd style="margin-left: 8">Mike Amundsen </dd>
 </dl>
-
-<p> </p>
 <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#internationalization" id="internationalization">Internationalization Considerations</a></h1>
 <p id="rfc.section.5.p.1">[TK]</p>
-<p><a id="CREF1" class="info">[CREF1]<span class="info">insert text (consider rfc 5987)</span></a> </p>
+<p>
+  <a id="CREF1" class="info">[CREF1]<span class="info">insert text (consider rfc 5987)</span></a>
+</p>
 <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> Acknowledgements</h1>
 <p id="rfc.section.6.p.1">The authors gratefully acknowledge the following people who made contributions to this specification: </p>
 <p id="rfc.section.6.p.2">Glenn Block, Christopher Harrison, Steve Klabnik, Graham Klyne, Dmitry Pavlov, R&#233;mon (Ray) Sinnema.  </p>
@@ -1255,7 +1264,7 @@
       <td class="reference">
         <b id="RFC1738">[RFC1738]</b>
       </td>
-      <td class="top"><a href="mailto:timbl@info.cern.ch" title="CERN, World-Wide Web project">Berners-Lee, T.</a>, <a href="mailto:masinter@parc.xerox.com" title="Xerox PARC">Masinter, L.</a> and <a href="mailto:mpm@boombox.micro.umn.edu" title="University of Minnesota, Computer and Information Services">M. McCahill</a>, "<a href="http://tools.ietf.org/html/rfc1738">Uniform Resource Locators (URL)</a>", RFC 1738, December 1994.</td>
+      <td class="top"><a>Berners-Lee, T.</a>, <a>Masinter, L.</a> and <a>M. McCahill</a>, "<a href="http://tools.ietf.org/html/rfc1738">Uniform Resource Locators (URL)</a>", RFC 1738, DOI 10.17487/RFC1738, December 1994.</td>
     </tr>
     <tr>
       <td class="reference">
