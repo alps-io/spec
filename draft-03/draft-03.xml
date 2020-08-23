@@ -18,8 +18,13 @@
 <?rfc symrefs="yes"?>
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
+
 <!-- the actual document! -->
-<rfc docName="draft-amundsen-richardson-foster-alps-03" ipr="trust200902">
+<rfc 
+  docName="draft-amundsen-richardson-foster-alps-03" 
+  ipr="trust200902" 
+  category="info"
+  submissionType="IETF">
   <!-- front matter -->
   <front>
     <title abbrev="Application-Level Profile Semantics">

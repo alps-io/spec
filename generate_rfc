@@ -8,7 +8,7 @@ if [ -z "$1" ]
 fi
 
 # do the processing
-xml2rfc $1/$1.xml  --basename=$1  --text --html --verbose
+xml2rfc $1/$1.xml  --basename=$1  --text --html
 cp $1/$1.html $1/index.html
 cp $1/index.html .
 
