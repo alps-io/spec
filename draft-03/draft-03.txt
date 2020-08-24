@@ -5,9 +5,9 @@
 Network Working Group                                        M. Amundsen
 Internet-Draft
 Intended status: Informational                             L. Richardson
-Expires: February 24, 2021
+Expires: February 25, 2021
                                                                M. Foster
-                                                         August 23, 2020
+                                                         August 24, 2020
 
 
                Application-Level Profile Semantics (ALPS)
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on February 24, 2021.
+   This Internet-Draft will expire on February 25, 2021.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Amundsen, et al.        Expires February 24, 2021               [Page 1]
+Amundsen, et al.        Expires February 25, 2021               [Page 1]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Amundsen, et al.        Expires February 24, 2021               [Page 2]
+Amundsen, et al.        Expires February 25, 2021               [Page 2]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -165,7 +165,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021               [Page 3]
+Amundsen, et al.        Expires February 25, 2021               [Page 3]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -221,7 +221,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021               [Page 4]
+Amundsen, et al.        Expires February 25, 2021               [Page 4]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -277,7 +277,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021               [Page 5]
+Amundsen, et al.        Expires February 25, 2021               [Page 5]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -333,7 +333,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021               [Page 6]
+Amundsen, et al.        Expires February 25, 2021               [Page 6]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -389,7 +389,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021               [Page 7]
+Amundsen, et al.        Expires February 25, 2021               [Page 7]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -445,7 +445,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021               [Page 8]
+Amundsen, et al.        Expires February 25, 2021               [Page 8]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -501,7 +501,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021               [Page 9]
+Amundsen, et al.        Expires February 25, 2021               [Page 9]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -557,7 +557,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021              [Page 10]
+Amundsen, et al.        Expires February 25, 2021              [Page 10]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -613,7 +613,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021              [Page 11]
+Amundsen, et al.        Expires February 25, 2021              [Page 11]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -669,7 +669,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021              [Page 12]
+Amundsen, et al.        Expires February 25, 2021              [Page 12]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -725,7 +725,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021              [Page 13]
+Amundsen, et al.        Expires February 25, 2021              [Page 13]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -781,7 +781,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021              [Page 14]
+Amundsen, et al.        Expires February 25, 2021              [Page 14]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -837,7 +837,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021              [Page 15]
+Amundsen, et al.        Expires February 25, 2021              [Page 15]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -893,7 +893,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021              [Page 16]
+Amundsen, et al.        Expires February 25, 2021              [Page 16]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -949,7 +949,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021              [Page 17]
+Amundsen, et al.        Expires February 25, 2021              [Page 17]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -1005,7 +1005,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021              [Page 18]
+Amundsen, et al.        Expires February 25, 2021              [Page 18]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -1061,7 +1061,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021              [Page 19]
+Amundsen, et al.        Expires February 25, 2021              [Page 19]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -1117,7 +1117,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021              [Page 20]
+Amundsen, et al.        Expires February 25, 2021              [Page 20]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -1173,7 +1173,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021              [Page 21]
+Amundsen, et al.        Expires February 25, 2021              [Page 21]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -1229,7 +1229,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021              [Page 22]
+Amundsen, et al.        Expires February 25, 2021              [Page 22]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -1285,7 +1285,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021              [Page 23]
+Amundsen, et al.        Expires February 25, 2021              [Page 23]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -1341,7 +1341,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021              [Page 24]
+Amundsen, et al.        Expires February 25, 2021              [Page 24]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -1397,7 +1397,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021              [Page 25]
+Amundsen, et al.        Expires February 25, 2021              [Page 25]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -1453,7 +1453,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021              [Page 26]
+Amundsen, et al.        Expires February 25, 2021              [Page 26]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -1509,7 +1509,7 @@ Internet-Draft     Application-Level Profile Semantics       August 2020
 
 
 
-Amundsen, et al.        Expires February 24, 2021              [Page 27]
+Amundsen, et al.        Expires February 25, 2021              [Page 27]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -1565,7 +1565,7 @@ A.3.  Why is there no way to indicate ranges for semantic descriptors?
 
 
 
-Amundsen, et al.        Expires February 24, 2021              [Page 28]
+Amundsen, et al.        Expires February 25, 2021              [Page 28]
 
 Internet-Draft     Application-Level Profile Semantics       August 2020
 
@@ -1621,4 +1621,4 @@ Authors' Addresses
 
 
 
-Amundsen, et al.        Expires February 24, 2021              [Page 29]
+Amundsen, et al.        Expires February 25, 2021              [Page 29]

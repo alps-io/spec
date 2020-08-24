@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# check for args
+if [ -z "$1" ]
+  then
+    echo "No document supplied"
+    echo "$0 <folder> <user>"
+    exit
+fi
+
+if [ -z "$2" ]
+  then
+    echo "No user supplied"
+    echo "$0 <folder> <user>"
+    exit
+fi
+
+
+# do the processing
+echo "user=$2"
+echo "xml=$1/$1.xml"
+
+curl -S -F "user=$2" -F "xml=@$1/$1.xml" https://datatracker.ietf.org/api/submit 
+echo "job completed."
+
+# EOF
