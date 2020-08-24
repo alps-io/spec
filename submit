@@ -1,6 +1,17 @@
 #!/bin/bash
 
-# check for args
+##################################################
+# submit working draft to IETF via API
+# from https://datatracker.ietf.org/api/submit/
+# 2020-08 : @mamund
+##################################################
+
+# local args
+url="https://datatracker.ietf.org/api/submit "
+
+# check for folder/doc
+# arg is draft-02 where
+# the subfolder/file is draft-02/draft-02.xml
 if [ -z "$1" ]
   then
     echo "No document supplied"
@@ -8,6 +19,8 @@ if [ -z "$1" ]
     exit
 fi
 
+# check for username
+# MUST be a valid IETF datatracker account
 if [ -z "$2" ]
   then
     echo "No user supplied"
@@ -15,12 +28,13 @@ if [ -z "$2" ]
     exit
 fi
 
-
-# do the processing
+# do the work
 echo "user=$2"
 echo "xml=$1/$1.xml"
-
-curl -S -F "user=$2" -F "xml=@$1/$1.xml" https://datatracker.ietf.org/api/submit 
+echo "posting to $url..."
+curl -S -F "user=$2" -F "xml=@$1/$1.xml" 
 echo "job completed."
 
+#
 # EOF
+#
