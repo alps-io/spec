@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+           vc:minVersion="1.1">
+    <xs:annotation>
+        <xs:documentation source="http://alps.io/spec/index.html">
+            A data format for defining simple descriptions of application-level semantics
+        </xs:documentation>
+        <xs:appinfo source="http://alps.io/spec/index.html"/>
+    </xs:annotation>
+    <xs:element name="alps" type="alpsType" />
+    <xs:complexType name="alpsType">
+        <xs:annotation>
+            <xs:documentation>
+                A data format for defining simple descriptions of application-level semantics
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="xs:string" name="version" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        Indicates the version of the ALPS specification used in the document.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element type="xs:string" name="doc" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        A text field that contains free-form, usually human-readable, text.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element type="descriptorType" name="descriptor">
+                <xs:annotation>
+                    <xs:documentation>
+                        Defines the semantics of specific data elements or state transitions that MAY exist in an associated representation.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <!-- undocumented element -->
+            <xs:element type="xs:string" name="title"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="descriptorType" mixed="true">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element type="descriptorType" name="descriptor"/>
+        </xs:sequence>
+        <!-- documented attribute -->
+        <xs:attribute type="xs:anyURI" name="href"/>
+        <xs:attribute type="xs:string" name="id"/>
+        <xs:attribute name="type">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="semantic" />
+                    <xs:enumeration value="safe" />
+                    <xs:enumeration value="unsafe" />
+                    <xs:enumeration value="idempotent" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute type="xs:string" name="doc"/>
+        <xs:attribute type="xs:string" name="ext"/>
+        <xs:attribute type="xs:string" name="name"/>
+        <xs:attribute type="xs:element" name="rt"/>
+        <!-- undocumented attribute -->
+        <xs:attribute type="xs:anyURI" name="ref"/>
+        <xs:attribute type="xs:anyURI" name="src"/>
+        <xs:attribute type="xs:string" name="text"/>
+        <xs:attribute type="xs:element" name="rtn"/>
+        <xs:attribute type="xs:element" name="hint"/>
+    </xs:complexType>
+</xs:schema>
