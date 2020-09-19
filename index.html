@@ -425,7 +425,7 @@
 
   <meta name="dct.creator" content="Amundsen, M., Richardson, L., and M. Foster" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-amundsen-richardson-foster-alps-03" />
-  <meta name="dct.issued" scheme="ISO8601" content="2020-24" />
+  <meta name="dct.issued" scheme="ISO8601" content="2020-19" />
   <meta name="dct.abstract" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.   " />
   <meta name="description" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.   " />
 
@@ -449,7 +449,7 @@
 <td class="right">L. Richardson</td>
 </tr>
 <tr>
-<td class="left">Expires: February 25, 2021</td>
+<td class="left">Expires: March 23, 2021</td>
 <td class="right"></td>
 </tr>
 <tr>
@@ -458,7 +458,7 @@
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">August 24, 2020</td>
+<td class="right">September 19, 2020</td>
 </tr>
 
     	
@@ -476,7 +476,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on February 25, 2021.</p>
+<p>This Internet-Draft will expire on March 23, 2021.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2020 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -837,7 +837,7 @@
 <dt>XML:</dt>
 <dd style="margin-left: 8">&lt;doc format="html"&gt; &lt;h1&gt;Date of Birth&lt;/h1&gt; &lt;p&gt;...&lt;/p&gt; &lt;/doc&gt; </dd>
 <dt>JSON:</dt>
-<dd style="margin-left: 8">{ "doc" : { "format" : "text" : "value" : "Date of Birth ..." } } </dd>
+<dd style="margin-left: 8">{ "doc" : { "format" : "text" , "value" : "Date of Birth ..." } } </dd>
 </dl>
 
 <p> </p>
@@ -847,7 +847,7 @@
 <dt>XML:</dt>
 <dd style="margin-left: 8">&lt;descriptor ... &gt; &lt;doc&gt;...&lt;/doc&gt; &lt;/descriptor&gt; </dd>
 <dt>JSON:</dt>
-<dd style="margin-left: 8">{ "descriptor" : { { "doc" : { "value" : "..." } ...  } } </dd>
+<dd style="margin-left: 8">{ "descriptor" : [ { "doc" : { "value" : "..." } ...  ] } </dd>
 </dl>
 
 <p> </p>
@@ -857,7 +857,7 @@
 <dt>XML:</dt>
 <dd style="margin-left: 8">&lt;alps&gt; &lt;doc&gt;...&lt;/doc&gt; ...  &lt;/apls&gt; </dd>
 <dt>JSON:</dt>
-<dd style="margin-left: 8">{ "alps : { "doc" : { "value" : "..." }, ...  } } </dd>
+<dd style="margin-left: 8">{ "alps : { "doc" : { "value" : "..." } } ...  } </dd>
 </dl>
 
 <p> </p>
@@ -871,8 +871,6 @@
 <ol>
 <li>
 <a href="#prop-doc" class="xref">'doc'</a> </li>
-<li>
-<a href="#prop-ext" class="xref">'ext'</a> </li>
 <li>
 <a href="#prop-name" class="xref">'name'</a> </li>
 <li>
@@ -1072,7 +1070,7 @@
 <h1 id="rfc.section.2.2.14">
 <a href="#rfc.section.2.2.14">2.2.14.</a> <a href="#prop-version" id="prop-version">'version'</a>
 </h1>
-<p id="rfc.section.2.2.14.p.1">Indicates the version of the ALPS specification used in the document. This SHOULD appear as a property of the <a href="#prop-alps" class="xref">'alps'</a> element.  Currently the only valid value is '1.0'. If no value appears, then 'version="1.0"' is implied.  </p>
+<p id="rfc.section.2.2.14.p.1">Indicates the version of the ALPS specification used in the document. This SHOULD appear as a property of the <a href="#prop-alps" class="xref">'alps'</a> element.  Currently the only valid value is '1.0'. If no value appears, then '1.0' is implied.  </p>
 <h1 id="rfc.section.2.3">
 <a href="#rfc.section.2.3">2.3.</a> <a href="#representations" id="representations">ALPS Representations</a>
 </h1>
@@ -1441,7 +1439,7 @@
 	  </span>
 	  <span class="country-name vcardline"></span>
 	</span>
-	<span class="vcardline">EMail: <a href="mailto:mca@amundsen.com">mca@amundsen.com</a></span>
+	<span class="vcardline">EMail: <a href="mailto:mamund@yahoo.com">mamund@yahoo.com</a></span>
 
 <span class="vcardline">URI: <a href="http://amundsen.com">http://amundsen.com</a></span>
 
