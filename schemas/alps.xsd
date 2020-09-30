@@ -37,6 +37,7 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
+            <xs:any />
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="descriptorType" mixed="true">
@@ -66,11 +67,13 @@
         <xs:attribute type="xs:anyURI" name="text"/>
         <xs:attribute type="xs:anyURI" name="ref"/>
         <xs:attribute type="xs:anyURI" name="tags"/>
+        <xs:anyAttribute/>
     </xs:complexType>
     <xs:complexType name="extType">
         <xs:attribute type="xs:string" name="id" />
         <xs:attribute type="xs:string" name="href" />
         <xs:attribute type="xs:string" name="value" />
+        <xs:anyAttribute />
     </xs:complexType>
     <!-- proposed element -->
     <xs:element type="xs:string" name="title"/>
