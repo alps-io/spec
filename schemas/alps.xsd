@@ -37,13 +37,13 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <!-- undocumented element -->
-            <xs:element type="xs:string" name="title"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="descriptorType" mixed="true">
         <xs:sequence minOccurs="0" maxOccurs="unbounded">
             <xs:element type="descriptorType" name="descriptor"/>
+            <xs:element type="xs:string" name="doc" minOccurs="0" />
+            <xs:element type="extType" name="ext" />
         </xs:sequence>
         <!-- documented attribute -->
         <xs:attribute type="xs:anyURI" name="href"/>
@@ -62,11 +62,16 @@
         <xs:attribute type="xs:string" name="ext"/>
         <xs:attribute type="xs:string" name="name"/>
         <xs:attribute type="xs:element" name="rt"/>
-        <!-- undocumented attribute -->
+        <!-- proposed attribute, @see https://groups.google.com/g/alps-io/c/xYgRcCpg8ks -->
+        <xs:attribute type="xs:anyURI" name="text"/>
         <xs:attribute type="xs:anyURI" name="ref"/>
-        <xs:attribute type="xs:anyURI" name="src"/>
-        <xs:attribute type="xs:string" name="text"/>
-        <xs:attribute type="xs:element" name="rtn"/>
-        <xs:attribute type="xs:element" name="hint"/>
+        <xs:attribute type="xs:anyURI" name="tags"/>
     </xs:complexType>
+    <xs:complexType name="extType">
+        <xs:attribute type="xs:string" name="id" />
+        <xs:attribute type="xs:string" name="href" />
+        <xs:attribute type="xs:string" name="value" />
+    </xs:complexType>
+    <!-- proposed element -->
+    <xs:element type="xs:string" name="title"/>
 </xs:schema>
