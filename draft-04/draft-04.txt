@@ -97,15 +97,15 @@ Table of Contents
        2.2.9.  'name'  . . . . . . . . . . . . . . . . . . . . . . .  16
        2.2.10. 'rel' . . . . . . . . . . . . . . . . . . . . . . . .  17
        2.2.11. 'rt'  . . . . . . . . . . . . . . . . . . . . . . . .  17
-       2.2.12. 'type'  . . . . . . . . . . . . . . . . . . . . . . .  17
-       2.2.13. 'value' . . . . . . . . . . . . . . . . . . . . . . .  18
-       2.2.14. 'version' . . . . . . . . . . . . . . . . . . . . . .  18
-     2.3.  ALPS Representations  . . . . . . . . . . . . . . . . . .  18
-       2.3.1.  Sample HTML . . . . . . . . . . . . . . . . . . . . .  18
+       2.2.12. 'title' . . . . . . . . . . . . . . . . . . . . . . .  17
+       2.2.13. 'type'  . . . . . . . . . . . . . . . . . . . . . . .  18
+       2.2.14. 'value' . . . . . . . . . . . . . . . . . . . . . . .  18
+       2.2.15. 'version' . . . . . . . . . . . . . . . . . . . . . .  18
+     2.3.  ALPS Representations  . . . . . . . . . . . . . . . . . .  19
+       2.3.1.  Sample HTML . . . . . . . . . . . . . . . . . . . . .  19
        2.3.2.  XML Representation Example  . . . . . . . . . . . . .  19
        2.3.3.  JSON Representation Example . . . . . . . . . . . . .  20
    3.  Applying ALPS documents to Existing Media Types . . . . . . .  22
-     3.1.  Linking to ALPS Documents . . . . . . . . . . . . . . . .  23
 
 
 
@@ -114,6 +114,7 @@ Amundsen, et al.         Expires April 18, 2021                 [Page 2]
 Internet-Draft     Application-Level Profile Semantics      October 2020
 
 
+     3.1.  Linking to ALPS Documents . . . . . . . . . . . . . . . .  23
    4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  23
      4.1.  application/alps+xml  . . . . . . . . . . . . . . . . . .  23
      4.2.  application/alps+json . . . . . . . . . . . . . . . . . .  25
@@ -159,7 +160,6 @@ Internet-Draft     Application-Level Profile Semantics      October 2020
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in[RFC2119].
-
 
 
 
@@ -934,16 +934,16 @@ Internet-Draft     Application-Level Profile Semantics      October 2020
        rt="http://example.org/profiles/people#friend") which points to
        the 'id' of an existing 'descriptor' in any valid ALPS document.
 
-2.2.12.  'type'
+2.2.12.  'title'
 
-   Indicates the type of hypermedia control to which the element is
-   applied within the resulting representation.  This SHOULD appear for
-   each 'descriptor' element.  The four valid values are:
+   Contains a single text string that represents the title of this
+   document.  This element SHOULD appear only once in a document as a
+   child of the 'alps' element.
 
-   'semantic'  A state element (e.g.  HTML.SPAN, HTML.INPUT, etc.).
 
-   'safe'  A hypermedia control that triggers a safe, idempotent state
-      transition (e.g.  HTTP.GET or HTTP.HEAD).
+
+
+
 
 
 
@@ -954,6 +954,29 @@ Amundsen, et al.         Expires April 18, 2021                [Page 17]
 Internet-Draft     Application-Level Profile Semantics      October 2020
 
 
+   <?xml version="1.0"?>
+     <alps version="1.0">
+     <title>Search Profile</title>
+     <doc href="http://example.org/samples/full/doc.html" />
+
+     <descriptor id="search" type="safe">
+       ...
+     </descriptor>
+   </alps>
+
+                                XML Example
+
+2.2.13.  'type'
+
+   Indicates the type of hypermedia control to which the element is
+   applied within the resulting representation.  This SHOULD appear for
+   each 'descriptor' element.  The four valid values are:
+
+   'semantic'  A state element (e.g.  HTML.SPAN, HTML.INPUT, etc.).
+
+   'safe'  A hypermedia control that triggers a safe, idempotent state
+      transition (e.g.  HTTP.GET or HTTP.HEAD).
+
    'idempotent'  A hypermedia control that triggers an unsafe,
       idempotent state transition (e.g.  HTTP.PUT or HTTP.DELETE).
 
@@ -963,17 +986,29 @@ Internet-Draft     Application-Level Profile Semantics      October 2020
    If no 'type' attribute is associated with the element, then
    'type="semantic"' is implied.
 
-2.2.13.  'value'
+2.2.14.  'value'
 
    Contains a string value.  It MAY appear as an attribute of the 'doc'
    and the 'ext' elements.
 
-2.2.14.  'version'
+2.2.15.  'version'
 
    Indicates the version of the ALPS specification used in the document.
    This SHOULD appear as a property of the 'alps' element.  Currently
    the only valid value is '1.0'.  If no value appears, then '1.0' is
    implied.
+
+
+
+
+
+
+
+
+Amundsen, et al.         Expires April 18, 2021                [Page 18]
+
+Internet-Draft     Application-Level Profile Semantics      October 2020
+
 
 2.3.  ALPS Representations
 
@@ -988,27 +1023,6 @@ Internet-Draft     Application-Level Profile Semantics      October 2020
    descriptors and transition instructions.  This document was generated
    from the XML and JSON ALPS documents that follow.  Use this HTML
    document as a guide when evaluating the XML and JSON examples.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Amundsen, et al.         Expires April 18, 2021                [Page 18]
-
-Internet-Draft     Application-Level Profile Semantics      October 2020
-
 
    <!-- sample HTML document -->
    <html>
@@ -1038,20 +1052,6 @@ Internet-Draft     Application-Level Profile Semantics      October 2020
 2.3.2.1.  Complete XML Representation
 
    Below is an example of an application/alps+xml representation.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -396,9 +396,10 @@
 <link href="#rfc.section.2.2.9" rel="Chapter" title="2.2.9 'name'">
 <link href="#rfc.section.2.2.10" rel="Chapter" title="2.2.10 'rel'">
 <link href="#rfc.section.2.2.11" rel="Chapter" title="2.2.11 'rt'">
-<link href="#rfc.section.2.2.12" rel="Chapter" title="2.2.12 'type'">
-<link href="#rfc.section.2.2.13" rel="Chapter" title="2.2.13 'value'">
-<link href="#rfc.section.2.2.14" rel="Chapter" title="2.2.14 'version'">
+<link href="#rfc.section.2.2.12" rel="Chapter" title="2.2.12 'title'">
+<link href="#rfc.section.2.2.13" rel="Chapter" title="2.2.13 'type'">
+<link href="#rfc.section.2.2.14" rel="Chapter" title="2.2.14 'value'">
+<link href="#rfc.section.2.2.15" rel="Chapter" title="2.2.15 'version'">
 <link href="#rfc.section.2.3" rel="Chapter" title="2.3 ALPS Representations">
 <link href="#rfc.section.2.3.1" rel="Chapter" title="2.3.1 Sample HTML">
 <link href="#rfc.section.2.3.2" rel="Chapter" title="2.3.2 XML Representation Example">
@@ -530,11 +531,13 @@
 </li>
 <li>2.2.11.   <a href="#rfc.section.2.2.11">'rt'</a>
 </li>
-<li>2.2.12.   <a href="#rfc.section.2.2.12">'type'</a>
+<li>2.2.12.   <a href="#rfc.section.2.2.12">'title'</a>
 </li>
-<li>2.2.13.   <a href="#rfc.section.2.2.13">'value'</a>
+<li>2.2.13.   <a href="#rfc.section.2.2.13">'type'</a>
 </li>
-<li>2.2.14.   <a href="#rfc.section.2.2.14">'version'</a>
+<li>2.2.14.   <a href="#rfc.section.2.2.14">'value'</a>
+</li>
+<li>2.2.15.   <a href="#rfc.section.2.2.15">'version'</a>
 </li>
 </ul><li>2.3.   <a href="#rfc.section.2.3">ALPS Representations</a>
 </li>
@@ -1049,9 +1052,25 @@
 
 <p> </p>
 <h1 id="rfc.section.2.2.12">
-<a href="#rfc.section.2.2.12">2.2.12.</a> <a href="#prop-type" id="prop-type">'type'</a>
+<a href="#rfc.section.2.2.12">2.2.12.</a> <a href="#prop-title" id="prop-title">'title'</a>
 </h1>
-<p id="rfc.section.2.2.12.p.1">Indicates the type of hypermedia control to which the element is applied within the resulting representation.  This SHOULD appear for each <a href="#prop-descriptor" class="xref">'descriptor'</a> element.  The four valid values are: </p>
+<p id="rfc.section.2.2.12.p.1">Contains a single text string that represents the title of this document.  This element SHOULD appear only once in a document as a child of the <a href="#prop-alps" class="xref">'alps'</a> element.  </p>
+<pre>
+&lt;?xml version="1.0"?&gt;
+  &lt;alps version="1.0"&gt;
+  &lt;title&gt;Search Profile&lt;/title&gt;
+  &lt;doc href="http://example.org/samples/full/doc.html" /&gt;
+
+  &lt;descriptor id="search" type="safe"&gt;
+    ...
+  &lt;/descriptor&gt;
+&lt;/alps&gt;
+         </pre>
+<p class="figure">XML Example</p>
+<h1 id="rfc.section.2.2.13">
+<a href="#rfc.section.2.2.13">2.2.13.</a> <a href="#prop-type" id="prop-type">'type'</a>
+</h1>
+<p id="rfc.section.2.2.13.p.1">Indicates the type of hypermedia control to which the element is applied within the resulting representation.  This SHOULD appear for each <a href="#prop-descriptor" class="xref">'descriptor'</a> element.  The four valid values are: </p>
 
 <dl>
 <dt>'semantic'</dt>
@@ -1065,14 +1084,14 @@
 </dl>
 
 <p> If no 'type' attribute is associated with the element, then 'type="semantic"' is implied.  </p>
-<h1 id="rfc.section.2.2.13">
-<a href="#rfc.section.2.2.13">2.2.13.</a> <a href="#prop-value" id="prop-value">'value'</a>
-</h1>
-<p id="rfc.section.2.2.13.p.1">Contains a string value. It MAY appear as an attribute of the <a href="#prop-doc" class="xref">'doc'</a> and the <a href="#prop-ext" class="xref">'ext'</a> elements.  </p>
 <h1 id="rfc.section.2.2.14">
-<a href="#rfc.section.2.2.14">2.2.14.</a> <a href="#prop-version" id="prop-version">'version'</a>
+<a href="#rfc.section.2.2.14">2.2.14.</a> <a href="#prop-value" id="prop-value">'value'</a>
 </h1>
-<p id="rfc.section.2.2.14.p.1">Indicates the version of the ALPS specification used in the document. This SHOULD appear as a property of the <a href="#prop-alps" class="xref">'alps'</a> element.  Currently the only valid value is '1.0'. If no value appears, then '1.0' is implied.  </p>
+<p id="rfc.section.2.2.14.p.1">Contains a string value. It MAY appear as an attribute of the <a href="#prop-doc" class="xref">'doc'</a> and the <a href="#prop-ext" class="xref">'ext'</a> elements.  </p>
+<h1 id="rfc.section.2.2.15">
+<a href="#rfc.section.2.2.15">2.2.15.</a> <a href="#prop-version" id="prop-version">'version'</a>
+</h1>
+<p id="rfc.section.2.2.15.p.1">Indicates the version of the ALPS specification used in the document. This SHOULD appear as a property of the <a href="#prop-alps" class="xref">'alps'</a> element.  Currently the only valid value is '1.0'. If no value appears, then '1.0' is implied.  </p>
 <h1 id="rfc.section.2.3">
 <a href="#rfc.section.2.3">2.3.</a> <a href="#representations" id="representations">ALPS Representations</a>
 </h1>

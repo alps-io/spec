@@ -1002,6 +1002,26 @@
             </list>
           </t>
         </section>
+        <section anchor="prop-title" title="'title'">
+          <t>
+            Contains a single text string that represents the title of this document.
+            This element SHOULD appear only once in a document as a child of the 
+            <xref target="prop-alps" format="title" /> element.
+          </t>
+          <figure title="XML Example">
+            <artwork><![CDATA[
+<?xml version="1.0"?>
+  <alps version="1.0">
+  <title>Search Profile</title>
+  <doc href="http://example.org/samples/full/doc.html" />
+
+  <descriptor id="search" type="safe">
+    ...
+  </descriptor>
+</alps>
+         ]]></artwork>
+          </figure>
+        </section>
         <section anchor="prop-type" title="'type'">
           <t>
             Indicates the type of hypermedia control to which
