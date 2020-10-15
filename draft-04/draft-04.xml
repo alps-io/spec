@@ -602,6 +602,9 @@
               <t>
                 <xref target="prop-type" format="title"/>
               </t>
+              <t>
+                <xref target="prop-rel" format="title" />
+              </t>
             </list>
           </t>
           <t>
@@ -964,7 +967,8 @@
             or a registered relation type (a short string).
           </t>
           <t>
-            Appears as a property of<xref target="prop-link" format="title"/>.
+              Appears as a property of <xref target="prop-link" format="title"/> and 
+              <xref target="prop-descriptor" format="title" />.
           </t>
         </section>
         <section anchor="prop-rt" title="'rt'">
