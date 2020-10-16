@@ -1,177 +1,28 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://alps.io/schemas/alps.json",
-  "title": "ALPS schema",
+  "title": "ALPS Schema",
   "type": "object",
+  "readOnly": true,
   "required": [
     "alps"
   ],
   "properties": {
     "alps": {
-      "description": "A data format for defining simple descriptions of application-level semantics",
-      "type": "object",
-      "required": [
-        "descriptor"
-      ],
-      "properties": {
-        "version": {
-          "$ref": "#/definitions/version"
-        },
-        "doc": {
-          "$ref": "#/definitions/doc"
-        },
-        "descriptor": {
-          "$ref": "#/definitions/descriptor"
-        }
-      },
-      "link": {
-        "$ref": "#/definitions/link"
-      },
-      "additionalProperties": false
-    }
-  },
-  "definitions": {
-    "version": {
-      "type": "string",
-      "description": "Indicates the version of the ALPS specification used in the document"
-    },
-    "doc": {
-      "type": "object",
-      "description": "A text field that contains free-form, usually human-readable, text.",
-      "properties": {
-        "href": {
-          "$ref": "#/definitions/href"
-        },
-        "format": {
-          "$ref": "#/definitions/format"
-        },
-        "value": {
-          "$ref": "#/definitions/value"
-        }
-      },
-      "additionalProperties": false
-    },
-    "href": {
-      "type": "string",
-      "description": "Dereferenceable URL",
-      "format": "uri"
-    },
-    "rt": {
-      "type": "string",
-      "description": "Indicates the resource type that will be returned when executing the specified network request. The 'rt' attribute SHOULD appear only on a 'descriptor' with a 'type' value of 'safe', 'unsafe', or 'idempotent.'"
-    },
-    "def": {
-      "type": "string",
-      "format": "uri",
-      "description": "Indicatesa the base-level defintiion of each descriptor (schema.org, GS1, IANA link rels, etc.)."
-    },
-    "descriptor": {
-      "type": "array",
-      "description": "A collection of descriptors",
-      "$comment": "The 'descriptor' property SHOULD have either an 'id' or 'href' attribute.",
-      "items": {
-        "type": "object",
-        "description": "Defines the semantics of specific data elements or state transitions that MAY exist in an associated representation.",
-        "properties": {
-          "id": {
-            "$ref": "#/definitions/id"
-          },
-          "href": {
-            "$ref": "#/definitions/href"
-          },
-          "doc": {
-            "$ref": "#/definitions/doc"
-          },
-          "ext": {
-            "$ref": "#/definitions/ext"
-          },
-          "name": {
-            "$ref": "#/definitions/name"
-          },
-          "type": {
-            "$ref": "#/definitions/type"
-          },
-          "rt": {
-            "$ref": "#/definitions/rt"
-          },
-          "descriptor": {
-            "$ref": "#/definitions/descriptor"
-          },
-          "def": {
-            "$ref": "#/definitions/def"
+      "allOf": [
+        {"$ref": "ext_alps.json"},
+        {
+          "properties": {
+            "descriptor": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "allOf": [{"$ref": "ext_alps.json#/definitions/descriptor"}]
+                }
+              }
+            }
           }
         }
-      },
-      "additionalProperties": false
-    },
-    "id": {
-      "type": "string",
-      "description": "A document-wide unique identifier for the related element."
-    },
-    "format": {
-      "type": "string",
-      "description": "Indicates how the text content should be parsed and/or rendered.",
-      "enum": [
-        "text",
-        "html",
-        "asciidoc",
-        "markdown"
       ]
-    },
-    "value": {
-      "type": "string",
-      "description": "A document text"
-    },
-    "ext": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": [
-          "id"
-        ],
-        "properties": {
-          "id": {
-            "$ref": "#/definitions/id"
-          },
-          "href": {
-            "$ref": "#/definitions/href"
-          },
-          "value": {
-            "$ref": "#/definitions/value"
-          }
-        },
-        "additionalProperties": false
-      }
-    },
-    "type": {
-      "type": "string",
-      "description": "Indicates the type of hypermedia control to which the element is applied within the resulting representation.",
-      "enum": [
-        "semantic",
-        "safe",
-        "idempotent",
-        "unsafe"
-      ]
-    },
-    "name": {
-      "type": "string",
-      "description": "Indicates the name of the 'descriptor' as found in generic representations."
-    },
-    "rel": {
-      "type": "string",
-      "description": "Contains a RFC5988 approved value"
-    },
-    "link": {
-      "type": "object",
-      "description": "An element that identifies a link between the current ALPS element and some other (possibly external) resource.",
-      "properties": {
-        "rel": {
-          "$ref": "#/definitions/rel"
-        },
-        "href": {
-          "$ref": "#/definitions/href"
-        }
-      }
     }
   }
 }
