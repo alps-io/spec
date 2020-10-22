@@ -32,7 +32,7 @@ fi
 echo "user=$2"
 echo "xml=$1/$1.xml"
 echo "posting to $url..."
-curl -S -F "user=$2" -F "xml=@$1/$1.xml" 
+curl -S -F "user=$2" -F "xml=@$1/$1.xml" $url 
 echo "job completed."
 
 #
