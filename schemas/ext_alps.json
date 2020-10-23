@@ -141,7 +141,7 @@
       "type": "string",
       "description": "Contains a RFC5988 approved value"
     },
-    "link": {
+    "link_item": {
       "type": "object",
       "description": "An element that identifies a link between the current ALPS element and some other (possibly external) resource.",
       "properties": {
@@ -152,6 +152,19 @@
           "$ref": "#/definitions/href"
         }
       }
+    },
+    "link": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/link_item"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/link_item"
+          }
+        }
+      ]
     }
   }
 }
