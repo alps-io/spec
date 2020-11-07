@@ -11,6 +11,9 @@
     "doc": {
       "$ref": "#/definitions/doc"
     },
+    "title": {
+      "$ref": "#/definitions/title"
+    },
     "ext": {
       "$ref": "#/definitions/ext"
     },
@@ -38,6 +41,10 @@
         }
       },
       "additionalProperties": false
+    },
+    "title": {
+      "type": "string",
+      "description": "Contains a single text string that represents the title of this document."
     },
     "href": {
       "type": "string",
