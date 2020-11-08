@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+           vc:minVersion="1.1">
+    <xs:annotation>
+        <xs:documentation source="http://alps.io/spec/index.html">
+            A data format for defining simple descriptions of application-level semantics
+        </xs:documentation>
+        <xs:appinfo source="http://alps.io/spec/index.html"/>
+    </xs:annotation>
+    <xs:element name="alps" type="alpsType"/>
+    <xs:complexType name="alpsType">
+        <xs:annotation>
+            <xs:documentation>
+                A data format for defining simple descriptions of application-level semantics
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="version" minOccurs="0"/>
+                <xs:element ref="doc" minOccurs="0"/>
+                <xs:element ref="link" minOccurs="0"/>
+                <xs:element ref="title" minOccurs="0"/>
+                <xs:element ref="ext" minOccurs="0"/>
+                <xs:element ref="descriptor"/>
+                <xs:any />
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="version" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                Indicates the version of the ALPS specification used in the document.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="doc" type="docType">
+        <xs:annotation>
+            <xs:documentation>
+                A text field that contains free-form, usually human-readable, text.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="title" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                Defines the semantics of specific data elements or state transitions that MAY exist in an associated
+                representation.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="descriptor" type="descriptorType">
+        <xs:annotation>
+            <xs:documentation>
+                Defines the semantics of specific data elements or state transitions that MAY exist in an associated
+                representation.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="link" type="linkType">
+        <xs:annotation>
+            <xs:documentation>
+                An element that identifies a link between the current ALPS element
+                and some other (possibly external) resource.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ext" type="extType">
+        <xs:annotation>
+            <xs:documentation>
+                The 'ext' element can be used to extend the ALPS document with author-specific information.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="descriptorType" mixed="true">
+        <xs:sequence>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="descriptor" type="descriptorType" minOccurs="0"/>
+                <xs:element name="doc" type="docType" minOccurs="0"/>
+            </xs:choice>
+        </xs:sequence>
+        <!-- documented attribute -->
+        <xs:attribute name="href" type="xs:anyURI"/>
+        <xs:attribute name="id" type="xs:string"/>
+        <xs:attribute name="type">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="semantic"/>
+                    <xs:enumeration value="safe"/>
+                    <xs:enumeration value="unsafe"/>
+                    <xs:enumeration value="idempotent"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="doc" type="xs:string"/>
+        <xs:attribute name="ext" type="xs:string"/>
+        <xs:attribute name="name" type="xs:string"/>
+        <xs:attribute name="rt" type="xs:element"/>
+        <!-- proposed attribute, @see https://groups.google.com/g/alps-io/c/xYgRcCpg8ks -->
+        <xs:attribute name="text" type="xs:anyURI"/>
+        <xs:attribute name="def" type="xs:anyURI"/>
+        <xs:attribute name="tags" type="xs:anyURI"/>
+        <xs:attribute name="rel" type="xs:string"/>
+        <xs:anyAttribute/>
+    </xs:complexType>
+    <xs:complexType name="extType">
+        <xs:attribute name="id" type="xs:string" >
+            <xs:annotation>
+                <xs:documentation>
+                    `ext` element extends the ALPS document with author-specific information.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="href" type="xs:string"/>
+        <xs:attribute name="value" type="xs:string"/>
+        <xs:anyAttribute/>
+    </xs:complexType>
+    <xs:complexType name="linkType">
+        <xs:attribute name="rel" type="xs:string"/>
+        <xs:attribute name="href" type="xs:anyURI"/>
+        <xs:anyAttribute/>
+    </xs:complexType>
+    <xs:complexType name="docType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="format">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="text"/>
+                            <xs:enumeration value="html"/>
+                            <xs:enumeration value="asciidoc"/>
+                            <xs:enumeration value="markdown"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:schema>
