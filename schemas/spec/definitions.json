@@ -1,0 +1,126 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "readOnly": true,
+    "definitions": {
+        "version": {
+            "type": "string",
+            "description": "Indicates the version of the ALPS specification used in the document"
+        },
+        "doc": {
+            "type": "object",
+            "description": "A text field that contains free-form, usually human-readable, text.",
+            "properties": {
+                "href": {
+                    "$ref": "#/definitions/href"
+                },
+                "format": {
+                    "$ref": "#/definitions/format"
+                },
+                "value": {
+                    "$ref": "#/definitions/value"
+                }
+            },
+            "additionalProperties": false
+        },
+        "title": {
+            "type": "string",
+            "description": "Contains a single text string that represents the title of this document."
+        },
+        "href": {
+            "type": "string",
+            "description": "Dereferenceable URL",
+            "format": "uri-reference"
+        },
+        "rt": {
+            "type": "string",
+            "description": "Indicates the resource type that will be returned when executing the specified network request. The 'rt' attribute SHOULD appear only on a 'descriptor' with a 'type' value of 'safe', 'unsafe', or 'idempotent.'"
+        },
+        "def": {
+            "type": "string",
+            "format": "uri",
+            "description": "Indicatesa the base-level defintiion of each descriptor (schema.org, GS1, IANA link rels, etc.)."
+        },
+        "id": {
+            "type": "string",
+            "description": "A document-wide unique identifier for the related element."
+        },
+        "format": {
+            "type": "string",
+            "description": "Indicates how the text content should be parsed and/or rendered.",
+            "enum": [
+                "text",
+                "html",
+                "asciidoc",
+                "markdown"
+            ]
+        },
+        "value": {
+            "type": "string",
+            "description": "A document text"
+        },
+        "ext": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "id"
+                ],
+                "properties": {
+                    "id": {
+                        "$ref": "#/definitions/id"
+                    },
+                    "href": {
+                        "$ref": "#/definitions/href"
+                    },
+                    "value": {
+                        "$ref": "#/definitions/value"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "type": {
+            "type": "string",
+            "description": "Indicates the type of hypermedia control to which the element is applied within the resulting representation.",
+            "enum": [
+                "semantic",
+                "safe",
+                "idempotent",
+                "unsafe"
+            ]
+        },
+        "name": {
+            "type": "string",
+            "description": "Indicates the name of the 'descriptor' as found in generic representations."
+        },
+        "rel": {
+            "type": "string",
+            "description": "Contains a RFC5988 approved value"
+        },
+        "link_item": {
+            "type": "object",
+            "description": "An element that identifies a link between the current ALPS element and some other (possibly external) resource.",
+            "properties": {
+                "rel": {
+                    "$ref": "#/definitions/rel"
+                },
+                "href": {
+                    "$ref": "#/definitions/href"
+                }
+            }
+        },
+        "link": {
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/link_item"
+                },
+                {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/link_item"
+                    }
+                }
+            ]
+        }
+    }
+}

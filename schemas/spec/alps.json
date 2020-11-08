@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["descriptor"],
+  "readOnly": true,
+  "properties": {
+    "version": {
+      "$ref": "definitions.json#/definitions/version"
+    },
+    "doc": {
+      "$ref": "definitions.json#/definitions/doc"
+    },
+    "ext": {
+      "$ref": "definitions.json#/definitions/ext"
+    },
+    "link": {
+      "$ref": "definitions.json#/definitions/link"
+    },
+    "title": {
+      "$ref": "definitions.json#/definitions/title"
+    }
+  }
+}

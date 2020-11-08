@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "readOnly": true,
+  "oneOf": [
+    {"required": ["id"]},
+    {"required": ["href"]}
+  ],
+  "properties": {
+    "id": {
+      "$ref": "definitions.json#/definitions/id"
+    },
+    "href": {
+      "$ref": "definitions.json#/definitions/href"
+    },
+    "doc": {
+      "$ref": "definitions.json#/definitions/doc"
+    },
+    "ext": {
+      "$ref": "definitions.json#/definitions/ext"
+    },
+    "name": {
+      "$ref": "definitions.json#/definitions/name"
+    },
+    "type": {
+      "$ref": "definitions.json#/definitions/type"
+    },
+    "rt": {
+      "$ref": "definitions.json#/definitions/rt"
+    },
+    "def": {
+      "$ref": "definitions.json#/definitions/def"
+    },
+    "rel": {
+      "$ref": "definitions.json#/definitions/rel"
+    },
+    "descriptor": {
+      "$ref": "descriptor.json"
+    }
+  }
+}
