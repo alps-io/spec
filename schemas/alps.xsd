@@ -100,6 +100,7 @@
         <xs:attribute name="text" type="xs:anyURI"/>
         <xs:attribute name="def" type="xs:anyURI"/>
         <xs:attribute name="tags" type="xs:anyURI"/>
+        <xs:attribute name="rel" type="xs:string"/>
         <xs:anyAttribute/>
     </xs:complexType>
     <xs:complexType name="extType">
