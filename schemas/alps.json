@@ -9,15 +9,14 @@
   "properties": {
     "alps": {
       "allOf": [
-        {"$ref": "ext_alps.json"},
+        {"$ref": "spec/alps.json"},
         {
           "properties": {
             "descriptor": {
               "type": "array",
               "items": {
                 "type": "object",
-                "allOf": [{"$ref": "ext_alps.json#/definitions/descriptor"}]
-                }
+                "allOf": [{"$ref": "spec/descriptor.json"}]
               }
             }
           }
