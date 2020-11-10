@@ -973,16 +973,17 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 2.2.13.  'title'
 
-   Contains a single text string that represents the title of this
-   document.  This element SHOULD appear only once in a document as a
-   child of the 'alps' element.
+   The 'title' can appear as a root element (as a child of 'alps') or as
+   a property of 'descriptor' or 'link'.
+
+   The value of `title` contains a single human-readable text string.
 
    <?xml version="1.0"?>
      <alps version="1.0">
      <title>Search Profile</title>
      <doc href="http://example.org/samples/full/doc.html" />
 
-     <descriptor id="search" type="safe">
+     <descriptor id="search" type="safe" title="Search for a profile.">
        ...
      </descriptor>
    </alps>
@@ -1000,8 +1001,7 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
    'safe'  A hypermedia control that triggers a safe, idempotent state
       transition (e.g.  HTTP.GET or HTTP.HEAD).
 
-   'idempotent'  A hypermedia control that triggers an unsafe,
-      idempotent state transition (e.g.  HTTP.PUT or HTTP.DELETE).
+
 
 
 
@@ -1009,6 +1009,9 @@ Amundsen, et al.          Expires May 13, 2021                 [Page 18]
 
 Internet-Draft     Application-Level Profile Semantics     November 2020
 
+
+   'idempotent'  A hypermedia control that triggers an unsafe,
+      idempotent state transition (e.g.  HTTP.PUT or HTTP.DELETE).
 
    'unsafe'  A hypermedia control that triggers an unsafe, non-
       idempotent state transition (e.g.  HTTP.POST).
@@ -1041,9 +1044,6 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
    descriptors and transition instructions.  This document was generated
    from the XML and JSON ALPS documents that follow.  Use this HTML
    document as a guide when evaluating the XML and JSON examples.
-
-
-
 
 
 

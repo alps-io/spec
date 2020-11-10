@@ -1046,9 +1046,13 @@
         </section>
         <section anchor="prop-title" title="'title'">
           <t>
-            Contains a single text string that represents the title of this document.
-            This element SHOULD appear only once in a document as a child of the 
-            <xref target="prop-alps" format="title" /> element.
+            The 'title' can appear as a root element (as a child of 
+            <xref target="prop-alps" format="title"/>) or as a property of 
+            <xref target="prop-descriptor" format="title" /> or
+            <xref target="prop-link" format="title"/>. 
+          </t>
+          <t>
+            The value of `title` contains a single human-readable text string.
           </t>
           <figure title="XML Example">
             <artwork><![CDATA[
@@ -1057,7 +1061,7 @@
   <title>Search Profile</title>
   <doc href="http://example.org/samples/full/doc.html" />
 
-  <descriptor id="search" type="safe">
+  <descriptor id="search" type="safe" title="Search for a profile.">
     ...
   </descriptor>
 </alps>

@@ -1077,14 +1077,15 @@
 <h1 id="rfc.section.2.2.13">
 <a href="#rfc.section.2.2.13">2.2.13.</a> <a href="#prop-title" id="prop-title">'title'</a>
 </h1>
-<p id="rfc.section.2.2.13.p.1">Contains a single text string that represents the title of this document.  This element SHOULD appear only once in a document as a child of the <a href="#prop-alps" class="xref">'alps'</a> element.  </p>
+<p id="rfc.section.2.2.13.p.1">The 'title' can appear as a root element (as a child of <a href="#prop-alps" class="xref">'alps'</a>) or as a property of <a href="#prop-descriptor" class="xref">'descriptor'</a> or <a href="#prop-link" class="xref">'link'</a>.  </p>
+<p id="rfc.section.2.2.13.p.2">The value of `title` contains a single human-readable text string.  </p>
 <pre>
 &lt;?xml version="1.0"?&gt;
   &lt;alps version="1.0"&gt;
   &lt;title&gt;Search Profile&lt;/title&gt;
   &lt;doc href="http://example.org/samples/full/doc.html" /&gt;
 
-  &lt;descriptor id="search" type="safe"&gt;
+  &lt;descriptor id="search" type="safe" title="Search for a profile."&gt;
     ...
   &lt;/descriptor&gt;
 &lt;/alps&gt;
