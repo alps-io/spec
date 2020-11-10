@@ -11,7 +11,7 @@ Expires: May 13, 2021
 
 
                Application-Level Profile Semantics (ALPS)
-                draft-amundsen-richardson-foster-alps-04
+                draft-amundsen-richardson-foster-alps-05
 
 Abstract
 
@@ -1496,8 +1496,8 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
    The authors gratefully acknowledge the following people who made
    contributions to this specification:
 
-   Glenn Block, Christopher Harrison, Steve Klabnik, Graham Klyne,
-   Dmitry Pavlov, Remon (Ray) Sinnema.
+   Glenn Block, Christopher Harrison, Steve Klabnik, Filip Kolarik,
+   Akihito Koriyama, Graham Klyne, Dmitry Pavlov, Remon (Ray) Sinnema.
 
 7.  References
 

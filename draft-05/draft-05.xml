@@ -22,7 +22,7 @@
 
 <!-- the actual document! -->
 <rfc 
-  docName="draft-amundsen-richardson-foster-alps-04" 
+  docName="draft-amundsen-richardson-foster-alps-05" 
   ipr="trust200902" 
   category="info"
   submissionType="IETF">
@@ -1617,6 +1617,8 @@
         Glenn Block,
         Christopher Harrison,
 	      Steve Klabnik,
+	      Filip Kolarik,
+	      Akihito Koriyama,
 	      Graham Klyne,
 	      Dmitry Pavlov,
         Rémon (Ray) Sinnema.
