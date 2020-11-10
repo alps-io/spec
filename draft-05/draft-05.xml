@@ -5,6 +5,7 @@
         <!ENTITY rfc1738 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1738.xml">
         <!ENTITY rfc2119 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
         <!ENTITY rfc3023 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3023.xml">
+        <!ENTITY rfc3987 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3987.xml">
         <!ENTITY rfc4627 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4627.xml">
         <!ENTITY rfc5988 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5988.xml">
         <!ENTITY rfc6906 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6906.xml">
@@ -494,6 +495,138 @@
             </list>
           </t>
         </section>
+        <section anchor="prop-def" title="'def'">
+          <t>
+            Contains an IRI (see <xref target="RFC3987"/>) value that 
+            idenfities the source definition of the descriptor. This is a 
+            property of the <xref target="prop-descriptor" format="title"/> 
+            element and it is OPTIONAL.
+          </t>
+          <t>
+            Examples:
+            <list style="hanging">
+              <t hangText="XML:">
+                &lt;descriptor id="title" def="http://schema.org/title" /&gt;
+              </t>
+              <t hangText="JSON:">
+                { "descriptor" : [
+                  {"id" : "title", "def":"http://schema.org/title" }
+                ]}
+              </t>
+            </list>
+          </t>
+        </section>
+        <section anchor="prop-descriptor" title="'descriptor'">
+          <t>
+            A 'descriptor' element defines the semantics of specific data elements or
+            state transitions that MAY exist in an associated representation.
+          </t>
+          <t>
+            One or more 'descriptor' elements
+            SHOULD appear as children of <xref target="prop-alps" format="title"/>. It may also appear
+            as a child of itself; that is, the 'descriptor'
+            property may be nested. 
+          </t>
+          <t>
+            The 'descriptor' element MAY be represented as a 
+            single element or it MAY be represented as an array of 
+            single elements.
+          </t>
+          <t>
+            The 'descriptor' property SHOULD have either an
+            <xref target="prop-id" format="title"/>
+            or
+            <xref target="prop-href" format="title"/>
+            attribute. It MAY
+            have both. Additionally, the 'descriptor' MAY have any
+            of the following attributes:
+            <list style="numbers">
+              <t>
+                <xref target="prop-def" format="title"/>
+              </t>
+              <t>
+                <xref target="prop-doc" format="title"/>
+              </t>
+              <t>
+                <xref target="prop-name" format="title"/>
+              </t>
+              <t>
+                <xref target="prop-type" format="title"/>
+              </t>
+              <t>
+                <xref target="prop-rel" format="title" />
+              </t>
+            </list>
+          </t>
+          <t>
+            If present, the 'def' property SHOULD be a
+            valid IRI (see <xref target="RFC3987"/>).
+          </t>
+          <t>
+            If present, the 'href' property MUST be a
+            dereferenceable URL, that
+            points to another 'descriptor' either within the
+            current ALPS document or in another ALPS document.
+          </t>
+          <t>
+            If 'descriptor' has an 'href' attribute, then
+            'descriptor' is inheriting all the attributes and
+            sub-properties of the descriptor pointed to by
+            'href'. When 'descriptor' has a property defined
+            locally, that property value takes precedence over
+            any inherited property value. Since there is no
+            limit to the nesting of elements -- even ones linked
+            remotely -- it is important to process 'all
+            descriptor' chains starting from the bottom to make
+            sure you have collected all the available properties
+            and have established the correct value for each of
+            them.
+          </t>
+          <t>
+            If 'descriptor' is declared at the top level of an ALPS document,
+            then a client SHOULD assume that 'descriptor' can appear anywhere
+            in a runtime message.
+          </t>
+          <t>If 'descriptor' is nested, i.e. declared
+            as a child of another descriptor, then:
+            <list style="numbers">
+              <t>A client SHOULD assume them to appear in any
+                sibling 'descriptor' element and recursively in their child descriptors.
+              </t>
+              <t>A client SHOULD NOT
+                assume that it can appear anywhere outside of parent descriptor,
+                unless it was explicitly referenced by another descriptor
+                in 'href' attribute. In that case the same rules are applied to
+                'descriptor' containing 'href' attribute.
+              </t>
+            </list>
+          </t>
+          <section  anchor="prop-descriptor-link-relations" title="'Descriptors and Link Relation Types'">
+            <t>
+              When a representation is generated that includes state transitions, valid values for link relation types are:
+            </t>
+            <t>
+              <list style="numbers">
+                <t>
+                  A registered IANA link relation type (e.g. rel="edit", a short string).
+                </t>
+                <t>
+                  An extension link relation type as defined by <xref target="RFC5988"/>
+                  whose value is the fully-qualified URI of an associated document describing the
+                  relation type. This includes URI fragment identifiers of ALPS descriptors
+                  (e.g. rel="http://alps.io/profiles/item#purchased-by", a URI)
+                  per the conventions of <xref target="prop-id-frag"/>.
+                </t>
+                <t>
+                  The 'id' property of a state transition descriptor of an associated
+                  ALPS document (e.g. rel="purchased-by", a short string) per the conventions
+                  of section <xref target="prop-id-name"/> and <xref target="prop-id-rels"/>
+                  if the representation includes an ALPS profile.
+                </t>
+              </list>
+            </t>
+          </section>
+        </section>
         <section anchor="prop-doc" title="'doc'">
           <t>
             A text field that contains free-form, usually
@@ -569,115 +702,6 @@
                         ]]></t>
             </list>
           </t>
-        </section>
-        <section anchor="prop-descriptor" title="'descriptor'">
-          <t>
-            A 'descriptor' element defines the semantics of specific data elements or
-            state transitions that MAY exist in an associated representation.
-          </t>
-          <t>
-            One or more 'descriptor' elements
-            SHOULD appear as children of <xref target="prop-alps" format="title"/>. It may also appear
-            as a child of itself; that is, the 'descriptor'
-            property may be nested. 
-          </t>
-          <t>
-            The 'descriptor' element MAY be represented as a 
-            single element or it MAY be represented as an array of 
-            single elements.
-          </t>
-          <t>
-            The 'descriptor' property SHOULD have either an
-            <xref target="prop-id" format="title"/>
-            or
-            <xref target="prop-href" format="title"/>
-            attribute. It MAY
-            have both. Additionally, the 'descriptor' MAY have any
-            of the following attributes:
-            <list style="numbers">
-              <t>
-                <xref target="prop-doc" format="title"/>
-              </t>
-              <!--
-              <t>
-                <xref target="prop-ext" format="title"/>
-              </t>
-              -->
-              <t>
-                <xref target="prop-name" format="title"/>
-              </t>
-              <t>
-                <xref target="prop-type" format="title"/>
-              </t>
-              <t>
-                <xref target="prop-rel" format="title" />
-              </t>
-            </list>
-          </t>
-          <t>
-            If present, the 'href' property MUST be a
-            dereferenceable URL, that
-            points to another 'descriptor' either within the
-            current ALPS document or in another ALPS document.
-          </t>
-          <t>
-            If 'descriptor' has an 'href' attribute, then
-            'descriptor' is inheriting all the attributes and
-            sub-properties of the descriptor pointed to by
-            'href'. When 'descriptor' has a property defined
-            locally, that property value takes precedence over
-            any inherited property value. Since there is no
-            limit to the nesting of elements -- even ones linked
-            remotely -- it is important to process 'all
-            descriptor' chains starting from the bottom to make
-            sure you have collected all the available properties
-            and have established the correct value for each of
-            them.
-          </t>
-          <t>
-            If 'descriptor' is declared at the top level of an ALPS document,
-            then a client SHOULD assume that 'descriptor' can appear anywhere
-            in a runtime message.
-          </t>
-          <t>If 'descriptor' is nested, i.e. declared
-            as a child of another descriptor, then:
-            <list style="numbers">
-              <t>A client SHOULD assume them to appear in any
-                sibling 'descriptor' element and recursively in their child descriptors.
-              </t>
-              <t>A client SHOULD NOT
-                assume that it can appear anywhere outside of parent descriptor,
-                unless it was explicitly referenced by another descriptor
-                in 'href' attribute. In that case the same rules are applied to
-                'descriptor' containing 'href' attribute.
-              </t>
-            </list>
-          </t>
-          <section  anchor="prop-descriptor-link-relations" title="'Descriptors and Link Relation Types'">
-            <t>
-              When a representation is generated that includes state transitions, valid values for link relation types are:
-            </t>
-            <t>
-              <list style="numbers">
-                <t>
-                  A registered IANA link relation type (e.g. rel="edit", a short string).
-                </t>
-                <t>
-                  An extension link relation type as defined by <xref target="RFC5988"/>
-                  whose value is the fully-qualified URI of an associated document describing the
-                  relation type. This includes URI fragment identifiers of ALPS descriptors
-                  (e.g. rel="http://alps.io/profiles/item#purchased-by", a URI)
-                  per the conventions of <xref target="prop-id-frag"/>.
-                </t>
-                <t>
-                  The 'id' property of a state transition descriptor of an associated
-                  ALPS document (e.g. rel="purchased-by", a short string) per the conventions
-                  of section <xref target="prop-id-name"/> and <xref target="prop-id-rels"/>
-                  if the representation includes an ALPS profile.
-                </t>
-              </list>
-            </t>
-          </section>
         </section>
         <section anchor="prop-ext" title="'ext'">
           <t>
@@ -1597,6 +1621,7 @@
       &rfc1738;
       &rfc2119;
       &rfc3023;
+      &rfc3987;
       &rfc4627;
       &rfc5988;
       &rfc6906;
