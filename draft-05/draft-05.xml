@@ -972,6 +972,9 @@
             and
             <xref target="prop-rel" format="title"/>.
           </t>
+          <t>
+            The 'link' element MAY have a <xref target="prop-title" format="title"/> attribute.
+          </t>
         </section>
         <section anchor="prop-name" title="'name'">
           <t>

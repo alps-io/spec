@@ -96,7 +96,7 @@ Table of Contents
        2.2.8.  'id'  . . . . . . . . . . . . . . . . . . . . . . . .  15
        2.2.9.  'link'  . . . . . . . . . . . . . . . . . . . . . . .  17
        2.2.10. 'name'  . . . . . . . . . . . . . . . . . . . . . . .  17
-       2.2.11. 'rel' . . . . . . . . . . . . . . . . . . . . . . . .  17
+       2.2.11. 'rel' . . . . . . . . . . . . . . . . . . . . . . . .  18
        2.2.12. 'rt'  . . . . . . . . . . . . . . . . . . . . . . . .  18
        2.2.13. 'title' . . . . . . . . . . . . . . . . . . . . . . .  18
        2.2.14. 'type'  . . . . . . . . . . . . . . . . . . . . . . .  18
@@ -923,6 +923,8 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
    The 'link' element MUST define the two attributes 'href' and 'rel'.
 
+   The 'link' element MAY have a 'title' attribute.
+
 2.2.10.  'name'
 
    Indicates the name of the 'descriptor' as found in generic
@@ -940,12 +942,10 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
    application semantics.  Thus, it SHOULD only be used when creating an
    ALPS profile that describes an existing design.
 
-2.2.11.  'rel'
 
-   Contains a [RFC5988] approved value: either an extension relation
-   type (a URI) or a registered relation type (a short string).
 
-   Appears as a property of 'link' and 'descriptor'.
+
+
 
 
 
@@ -953,6 +953,13 @@ Amundsen, et al.          Expires May 13, 2021                 [Page 17]
 
 Internet-Draft     Application-Level Profile Semantics     November 2020
 
+
+2.2.11.  'rel'
+
+   Contains a [RFC5988] approved value: either an extension relation
+   type (a URI) or a registered relation type (a short string).
+
+   Appears as a property of 'link' and 'descriptor'.
 
 2.2.12.  'rt'
 
@@ -996,19 +1003,17 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
    applied within the resulting representation.  This SHOULD appear for
    each 'descriptor' element.  The four valid values are:
 
-   'semantic'  A state element (e.g.  HTML.SPAN, HTML.INPUT, etc.).
-
-   'safe'  A hypermedia control that triggers a safe, idempotent state
-      transition (e.g.  HTTP.GET or HTTP.HEAD).
-
-
-
 
 
 Amundsen, et al.          Expires May 13, 2021                 [Page 18]
 
 Internet-Draft     Application-Level Profile Semantics     November 2020
 
+
+   'semantic'  A state element (e.g.  HTML.SPAN, HTML.INPUT, etc.).
+
+   'safe'  A hypermedia control that triggers a safe, idempotent state
+      transition (e.g.  HTTP.GET or HTTP.HEAD).
 
    'idempotent'  A hypermedia control that triggers an unsafe,
       idempotent state transition (e.g.  HTTP.PUT or HTTP.DELETE).
@@ -1044,11 +1049,6 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
    descriptors and transition instructions.  This document was generated
    from the XML and JSON ALPS documents that follow.  Use this HTML
    document as a guide when evaluating the XML and JSON examples.
-
-
-
-
-
 
 
 
