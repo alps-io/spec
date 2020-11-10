@@ -497,10 +497,10 @@
         </section>
         <section anchor="prop-def" title="'def'">
           <t>
-            Contains an IRI (see <xref target="RFC3987"/>) value that 
+            Contains a valid IRI (see <xref target="RFC3987"/>) value that 
             idenfities the source definition of the descriptor. This is a 
             property of the <xref target="prop-descriptor" format="title"/> 
-            element and it is OPTIONAL.
+            element and it is OPTIONAL. It MAY or MAY NOT be dereferencable.
           </t>
           <t>
             Examples:
@@ -560,7 +560,8 @@
           </t>
           <t>
             If present, the 'def' property SHOULD be a
-            valid IRI (see <xref target="RFC3987"/>).
+            valid IRI (see <xref target="RFC3987"/>) which MAY or MAY NOT be
+            dereferenceable.
           </t>
           <t>
             If present, the 'href' property MUST be a

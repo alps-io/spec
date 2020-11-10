@@ -837,7 +837,7 @@
 <h1 id="rfc.section.2.2.2">
 <a href="#rfc.section.2.2.2">2.2.2.</a> <a href="#prop-def" id="prop-def">'def'</a>
 </h1>
-<p id="rfc.section.2.2.2.p.1">Contains an IRI (see <a href="#RFC3987" class="xref">[RFC3987]</a>) value that idenfities the source definition of the descriptor. This is a property of the <a href="#prop-descriptor" class="xref">'descriptor'</a> element and it is OPTIONAL.  </p>
+<p id="rfc.section.2.2.2.p.1">Contains a valid IRI (see <a href="#RFC3987" class="xref">[RFC3987]</a>) value that idenfities the source definition of the descriptor. This is a property of the <a href="#prop-descriptor" class="xref">'descriptor'</a> element and it is OPTIONAL. It MAY or MAY NOT be dereferencable.  </p>
 <p id="rfc.section.2.2.2.p.2">Examples: </p>
 
 <dl>
@@ -870,7 +870,7 @@
 </ol>
 
 <p> </p>
-<p id="rfc.section.2.2.3.p.5">If present, the 'def' property SHOULD be a valid IRI (see <a href="#RFC3987" class="xref">[RFC3987]</a>).  </p>
+<p id="rfc.section.2.2.3.p.5">If present, the 'def' property SHOULD be a valid IRI (see <a href="#RFC3987" class="xref">[RFC3987]</a>) which MAY or MAY NOT be dereferenceable.  </p>
 <p id="rfc.section.2.2.3.p.6">If present, the 'href' property MUST be a dereferenceable URL, that points to another 'descriptor' either within the current ALPS document or in another ALPS document.  </p>
 <p id="rfc.section.2.2.3.p.7">If 'descriptor' has an 'href' attribute, then 'descriptor' is inheriting all the attributes and sub-properties of the descriptor pointed to by 'href'. When 'descriptor' has a property defined locally, that property value takes precedence over any inherited property value. Since there is no limit to the nesting of elements -- even ones linked remotely -- it is important to process 'all descriptor' chains starting from the bottom to make sure you have collected all the available properties and have established the correct value for each of them.  </p>
 <p id="rfc.section.2.2.3.p.8">If 'descriptor' is declared at the top level of an ALPS document, then a client SHOULD assume that 'descriptor' can appear anywhere in a runtime message.  </p>

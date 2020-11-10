@@ -550,9 +550,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 2.2.2.  'def'
 
-   Contains an IRI (see [RFC3987]) value that idenfities the source
+   Contains a valid IRI (see [RFC3987]) value that idenfities the source
    definition of the descriptor.  This is a property of the 'descriptor'
-   element and it is OPTIONAL.
+   element and it is OPTIONAL.  It MAY or MAY NOT be dereferencable.
 
 
 
@@ -596,7 +596,8 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
    5.  'rel'
 
-   If present, the 'def' property SHOULD be a valid IRI (see [RFC3987]).
+   If present, the 'def' property SHOULD be a valid IRI (see [RFC3987])
+   which MAY or MAY NOT be dereferenceable.
 
    If present, the 'href' property MUST be a dereferenceable URL, that
    points to another 'descriptor' either within the current ALPS
@@ -609,7 +610,6 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
    property value.  Since there is no limit to the nesting of elements
    -- even ones linked remotely -- it is important to process 'all
    descriptor' chains starting from the bottom to make sure you have
-
 
 
 
