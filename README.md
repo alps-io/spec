@@ -1,4 +1,4 @@
-spec
+Application-Level Profile Semantics (ALPS)
 ====
 
 ALPS Specification documents.
