@@ -5,9 +5,9 @@
 Network Working Group                                        M. Amundsen
 Internet-Draft
 Intended status: Informational                             L. Richardson
-Expires: May 13, 2021
+Expires: June 5, 2021
                                                                M. Foster
-                                                        November 9, 2020
+                                                        December 2, 2020
 
 
                Application-Level Profile Semantics (ALPS)
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 13, 2021.
+   This Internet-Draft will expire on June 5, 2021.
 
 
 
@@ -53,9 +53,9 @@ Status of This Memo
 
 
 
-Amundsen, et al.          Expires May 13, 2021                  [Page 1]
+Amundsen, et al.          Expires June 5, 2021                  [Page 1]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
 Copyright Notice
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Amundsen, et al.          Expires May 13, 2021                  [Page 2]
+Amundsen, et al.          Expires June 5, 2021                  [Page 2]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
    3.  Applying ALPS documents to Existing Media Types . . . . . . .  23
@@ -165,9 +165,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                  [Page 3]
+Amundsen, et al.          Expires June 5, 2021                  [Page 3]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
 1.2.  Motivation
@@ -221,9 +221,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                  [Page 4]
+Amundsen, et al.          Expires June 5, 2021                  [Page 4]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
 1.3.  A Simple ALPS Example
@@ -277,9 +277,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                  [Page 5]
+Amundsen, et al.          Expires June 5, 2021                  [Page 5]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
        <link href="http://alps.io/profiles/contact"
@@ -333,9 +333,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                  [Page 6]
+Amundsen, et al.          Expires June 5, 2021                  [Page 6]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
    </html>
@@ -389,9 +389,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                  [Page 7]
+Amundsen, et al.          Expires June 5, 2021                  [Page 7]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
    {
@@ -445,9 +445,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                  [Page 8]
+Amundsen, et al.          Expires June 5, 2021                  [Page 8]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
                "href" : "http://alps.io/profiles/contacts#contact"
@@ -501,9 +501,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                  [Page 9]
+Amundsen, et al.          Expires June 5, 2021                  [Page 9]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
    In order to reduce load on servers responding to ALPS document
@@ -557,9 +557,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                 [Page 10]
+Amundsen, et al.          Expires June 5, 2021                 [Page 10]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
    Examples:
@@ -613,9 +613,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                 [Page 11]
+Amundsen, et al.          Expires June 5, 2021                 [Page 11]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
    collected all the available properties and have established the
@@ -669,9 +669,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                 [Page 12]
+Amundsen, et al.          Expires June 5, 2021                 [Page 12]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
    'format' directive and parse/render the content appropriately.  If
@@ -725,9 +725,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                 [Page 13]
+Amundsen, et al.          Expires June 5, 2021                 [Page 13]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
    is undetermined; its meaning and use SHOULD be explained by the
@@ -781,9 +781,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                 [Page 14]
+Amundsen, et al.          Expires June 5, 2021                 [Page 14]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
    When it appears as an attribute of a 'descriptor', 'href' points to
@@ -837,9 +837,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                 [Page 15]
+Amundsen, et al.          Expires June 5, 2021                 [Page 15]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
    To avoid this, ALPS document designers can add the 'name' property to
@@ -893,9 +893,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                 [Page 16]
+Amundsen, et al.          Expires June 5, 2021                 [Page 16]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
    same as a registered relation type, the descriptor MUST not change
@@ -949,9 +949,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                 [Page 17]
+Amundsen, et al.          Expires June 5, 2021                 [Page 17]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
 2.2.11.  'rel'
@@ -1005,9 +1005,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                 [Page 18]
+Amundsen, et al.          Expires June 5, 2021                 [Page 18]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
    'semantic'  A state element (e.g.  HTML.SPAN, HTML.INPUT, etc.).
@@ -1061,9 +1061,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                 [Page 19]
+Amundsen, et al.          Expires June 5, 2021                 [Page 19]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
    <!-- sample HTML document -->
@@ -1117,9 +1117,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                 [Page 20]
+Amundsen, et al.          Expires June 5, 2021                 [Page 20]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
    <?xml version="1.0"?>
@@ -1173,9 +1173,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                 [Page 21]
+Amundsen, et al.          Expires June 5, 2021                 [Page 21]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
    For example:
@@ -1229,9 +1229,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                 [Page 22]
+Amundsen, et al.          Expires June 5, 2021                 [Page 22]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
    {
@@ -1285,9 +1285,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                 [Page 23]
+Amundsen, et al.          Expires June 5, 2021                 [Page 23]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
    (http://alps.io/docs/mapping).  [TK : this page does not yet exist.
@@ -1341,9 +1341,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                 [Page 24]
+Amundsen, et al.          Expires June 5, 2021                 [Page 24]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
       charset  This parameter has identical semantics to the charset
@@ -1397,9 +1397,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                 [Page 25]
+Amundsen, et al.          Expires June 5, 2021                 [Page 25]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
       object idenfiers:  none
@@ -1453,9 +1453,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                 [Page 26]
+Amundsen, et al.          Expires June 5, 2021                 [Page 26]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
       example, the fragment identifier "#user" refers to a descriptor in
@@ -1509,9 +1509,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                 [Page 27]
+Amundsen, et al.          Expires June 5, 2021                 [Page 27]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
@@ -1565,9 +1565,9 @@ Internet-Draft     Application-Level Profile Semantics     November 2020
 
 
 
-Amundsen, et al.          Expires May 13, 2021                 [Page 28]
+Amundsen, et al.          Expires June 5, 2021                 [Page 28]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
 Appendix A.  Frequently Asked Questions
@@ -1621,9 +1621,9 @@ A.3.  Why is there no way to indicate ranges for semantic descriptors?
 
 
 
-Amundsen, et al.          Expires May 13, 2021                 [Page 29]
+Amundsen, et al.          Expires June 5, 2021                 [Page 29]
 
-Internet-Draft     Application-Level Profile Semantics     November 2020
+Internet-Draft     Application-Level Profile Semantics     December 2020
 
 
    is considered over-constraining service implementations.  Services
@@ -1677,4 +1677,4 @@ Authors' Addresses
 
 
 
-Amundsen, et al.          Expires May 13, 2021                 [Page 30]
+Amundsen, et al.          Expires June 5, 2021                 [Page 30]
