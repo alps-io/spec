@@ -34,7 +34,11 @@
       "$ref": "definitions.json#/definitions/rel"
     },
     "descriptor": {
-      "$ref": "descriptor.json"
+      "type": "array",
+      "items": {
+        "type": "object",
+        "allOf": [{"$ref": "descriptor.json"}]
+      }
     }
   }
 }
