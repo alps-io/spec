@@ -556,6 +556,9 @@
               <t>
                 <xref target="prop-rel" format="title" />
               </t>
+              <t>
+                <xref target="prop-tag" format="title" />
+              </t>
             </list>
           </t>
           <t>
@@ -634,10 +637,12 @@
             human-readable, text. The 'doc' element MAY be represented as a 
             single element or it MAY be represented as an array of 
             single elements. 
-            The 'doc' element MAY have two properties:
-            <xref target="prop-href" format="title"/>
-            and
-            <xref target="prop-format" format="title"/>.
+            The 'doc' element MAY have the following properties:
+            <xref target="prop-href" format="title"/>, 
+            <xref target="prop-format" format="title"/>, and 
+            <xref target="prop-tag" format="title" />.
+          </t>
+          <t>  
             If the 'href' property appears it SHOULD contain a
             dereferencable URL that points to human-readable text. If
             the 'format' property appears it SHOULD contain one of the
@@ -728,6 +733,9 @@
               </t>
               <t>
                 <xref target="prop-value" format="title"/>
+              </t>
+              <t>
+                <xref target="prop-tag" format="title"/>
               </t>
             </list>
           </t>
@@ -973,7 +981,7 @@
             <xref target="prop-rel" format="title"/>.
           </t>
           <t>
-            The 'link' element MAY have a <xref target="prop-title" format="title"/> attribute.
+            The 'link' element MAY have <xref target="prop-title" format="title"/> and <xref target="prop-tag" format="title"/> attributes.
           </t>
         </section>
         <section anchor="prop-name" title="'name'">
@@ -1046,6 +1054,77 @@
               </t>
             </list>
           </t>
+        </section>
+        <section anchor="prop-tag" title="'tag'">
+          <t>
+            The 'tag' property is designed to hold a whitespace-separated list 
+            of non-unique private values. The values in this property are 
+            typically used by document authors to mark one or more elements of 
+            and ALPS document with a shared identity that parsers and other 
+            document consumers can use to group and/or process portions of 
+            the ALPS document.
+          </t>
+          <t>
+            The <xref target="prop-tag" format="title" /> can be a property of
+            the <xref target="prop-descriptor" format="title" />,
+            <xref target="prop-doc" format="title" />,
+            <xref target="prop-ext" format="title" />,
+            and <xref target="prop-link" format="title" /> elements.  
+            It is an OPTIONAL property and document readers MAY ignore it.
+          </t>
+          <figure title="XML Example">
+            <artwork><![CDATA[
+<?xml version="1.0"?>
+  <alps version="1.0">
+  <title>Search Profile</title>
+  <doc href="http://example.org/samples/full/doc.html" />
+  <doc href="http://example.org/samples/profile/doc.html" 
+    tag="profile"/>
+
+  <descriptor id="search" type="safe" 
+      rt="#profile-results"
+      title="Search for a profile." 
+      tag="profile">
+    ...
+  </descriptor>
+  <descriptor id="profile-results" 
+      type="semantic"
+      tag="profile">
+      ...
+  </descriptor>
+</alps>
+         ]]></artwork>
+          </figure>
+          <figure title="JSON Example">
+            <artwork><![CDATA[
+{
+  "alps" : {
+    "version" : "1.0",
+    "doc" : [
+      {"href" : "http://example.org/samples/full/doc.html"},
+      {"href" : "http://example.org/samples/profile/doc.html", 
+        "tag" : "profile"},
+    ],
+    "descriptor" : [
+      {
+        "id" : "search",
+        "type" : "safe",
+        "rt" : "#profile-results",
+        "title" : "Search for a profile.",
+        "tag" : "profile"
+        "descriptor" : [ ... ] 
+      },
+      {
+        "id" : "profile-results",
+        "type" : "semantic",
+        "tag" : "profile",
+        "descriptor" : [ ... ]
+      }
+    ]
+  }
+}
+         ]]></artwork>
+          </figure>
         </section>
         <section anchor="prop-title" title="'title'">
           <t>
