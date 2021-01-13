@@ -5,9 +5,9 @@
 Network Working Group                                        M. Amundsen
 Internet-Draft
 Intended status: Informational                             L. Richardson
-Expires: July 9, 2021
+Expires: July 17, 2021
                                                                M. Foster
-                                                         January 5, 2021
+                                                        January 13, 2021
 
 
                Application-Level Profile Semantics (ALPS)
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on July 9, 2021.
+   This Internet-Draft will expire on July 17, 2021.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Amundsen, et al.          Expires July 9, 2021                  [Page 1]
+Amundsen, et al.          Expires July 17, 2021                 [Page 1]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
@@ -92,45 +92,46 @@ Table of Contents
        2.2.4.  'doc' . . . . . . . . . . . . . . . . . . . . . . . .  12
        2.2.5.  'ext' . . . . . . . . . . . . . . . . . . . . . . . .  13
        2.2.6.  'format'  . . . . . . . . . . . . . . . . . . . . . .  14
-       2.2.7.  'href'  . . . . . . . . . . . . . . . . . . . . . . .  14
+       2.2.7.  'href'  . . . . . . . . . . . . . . . . . . . . . . .  15
        2.2.8.  'id'  . . . . . . . . . . . . . . . . . . . . . . . .  15
        2.2.9.  'link'  . . . . . . . . . . . . . . . . . . . . . . .  17
        2.2.10. 'name'  . . . . . . . . . . . . . . . . . . . . . . .  17
        2.2.11. 'rel' . . . . . . . . . . . . . . . . . . . . . . . .  18
        2.2.12. 'rt'  . . . . . . . . . . . . . . . . . . . . . . . .  18
-       2.2.13. 'title' . . . . . . . . . . . . . . . . . . . . . . .  18
-       2.2.14. 'type'  . . . . . . . . . . . . . . . . . . . . . . .  18
-       2.2.15. 'value' . . . . . . . . . . . . . . . . . . . . . . .  19
-       2.2.16. 'version' . . . . . . . . . . . . . . . . . . . . . .  19
-     2.3.  ALPS Representations  . . . . . . . . . . . . . . . . . .  19
-       2.3.1.  Sample HTML . . . . . . . . . . . . . . . . . . . . .  19
-       2.3.2.  XML Representation Example  . . . . . . . . . . . . .  20
-       2.3.3.  JSON Representation Example . . . . . . . . . . . . .  21
+       2.2.13. 'tag' . . . . . . . . . . . . . . . . . . . . . . . .  18
+       2.2.14. 'title' . . . . . . . . . . . . . . . . . . . . . . .  20
+       2.2.15. 'type'  . . . . . . . . . . . . . . . . . . . . . . .  21
+       2.2.16. 'value' . . . . . . . . . . . . . . . . . . . . . . .  21
+       2.2.17. 'version' . . . . . . . . . . . . . . . . . . . . . .  21
+     2.3.  ALPS Representations  . . . . . . . . . . . . . . . . . .  21
+       2.3.1.  Sample HTML . . . . . . . . . . . . . . . . . . . . .  21
+       2.3.2.  XML Representation Example  . . . . . . . . . . . . .  22
 
 
 
-Amundsen, et al.          Expires July 9, 2021                  [Page 2]
+Amundsen, et al.          Expires July 17, 2021                 [Page 2]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
-   3.  Applying ALPS documents to Existing Media Types . . . . . . .  23
-     3.1.  Linking to ALPS Documents . . . . . . . . . . . . . . . .  24
-   4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  24
-     4.1.  application/alps+xml  . . . . . . . . . . . . . . . . . .  24
-     4.2.  application/alps+json . . . . . . . . . . . . . . . . . .  26
-   5.  Internationalization Considerations . . . . . . . . . . . . .  27
-   6.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  27
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  27
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  27
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .  28
-   Appendix A.  Frequently Asked Questions . . . . . . . . . . . . .  29
-     A.1.  Why are there no URLs in ALPS?  . . . . . . . . . . . . .  29
+       2.3.3.  JSON Representation Example . . . . . . . . . . . . .  23
+   3.  Applying ALPS documents to Existing Media Types . . . . . . .  25
+     3.1.  Linking to ALPS Documents . . . . . . . . . . . . . . . .  26
+   4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  26
+     4.1.  application/alps+xml  . . . . . . . . . . . . . . . . . .  26
+     4.2.  application/alps+json . . . . . . . . . . . . . . . . . .  28
+   5.  Internationalization Considerations . . . . . . . . . . . . .  29
+   6.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  29
+   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  29
+     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  29
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .  30
+   Appendix A.  Frequently Asked Questions . . . . . . . . . . . . .  31
+     A.1.  Why are there no URLs in ALPS?  . . . . . . . . . . . . .  31
      A.2.  Why is there no workflow component in the ALPS
-           specification?  . . . . . . . . . . . . . . . . . . . . .  29
+           specification?  . . . . . . . . . . . . . . . . . . . . .  31
      A.3.  Why is there no way to indicate ranges for semantic
-           descriptors?  . . . . . . . . . . . . . . . . . . . . . .  29
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  30
+           descriptors?  . . . . . . . . . . . . . . . . . . . . . .  31
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  32
 
 1.  Introduction
 
@@ -164,8 +165,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
 
-
-Amundsen, et al.          Expires July 9, 2021                  [Page 3]
+Amundsen, et al.          Expires July 17, 2021                 [Page 3]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
@@ -221,7 +221,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
 
-Amundsen, et al.          Expires July 9, 2021                  [Page 4]
+Amundsen, et al.          Expires July 17, 2021                 [Page 4]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
@@ -277,7 +277,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
 
-Amundsen, et al.          Expires July 9, 2021                  [Page 5]
+Amundsen, et al.          Expires July 17, 2021                 [Page 5]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
@@ -333,7 +333,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
 
-Amundsen, et al.          Expires July 9, 2021                  [Page 6]
+Amundsen, et al.          Expires July 17, 2021                 [Page 6]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
@@ -389,7 +389,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
 
-Amundsen, et al.          Expires July 9, 2021                  [Page 7]
+Amundsen, et al.          Expires July 17, 2021                 [Page 7]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
@@ -445,7 +445,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
 
-Amundsen, et al.          Expires July 9, 2021                  [Page 8]
+Amundsen, et al.          Expires July 17, 2021                 [Page 8]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
@@ -501,7 +501,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
 
-Amundsen, et al.          Expires July 9, 2021                  [Page 9]
+Amundsen, et al.          Expires July 17, 2021                 [Page 9]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
@@ -557,7 +557,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
 
-Amundsen, et al.          Expires July 9, 2021                 [Page 10]
+Amundsen, et al.          Expires July 17, 2021                [Page 10]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
@@ -596,6 +596,8 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
    5.  'rel'
 
+   6.  'tag'
+
    If present, the 'def' property SHOULD be a valid IRI (see [RFC3987])
    which MAY or MAY NOT be dereferenceable.
 
@@ -608,16 +610,16 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    pointed to by 'href'.  When 'descriptor' has a property defined
    locally, that property value takes precedence over any inherited
    property value.  Since there is no limit to the nesting of elements
-   -- even ones linked remotely -- it is important to process 'all
-   descriptor' chains starting from the bottom to make sure you have
 
 
 
-Amundsen, et al.          Expires July 9, 2021                 [Page 11]
+Amundsen, et al.          Expires July 17, 2021                [Page 11]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
+   -- even ones linked remotely -- it is important to process 'all
+   descriptor' chains starting from the bottom to make sure you have
    collected all the available properties and have established the
    correct value for each of them.
 
@@ -661,24 +663,26 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    A text field that contains free-form, usually human-readable, text.
    The 'doc' element MAY be represented as a single element or it MAY be
    represented as an array of single elements.  The 'doc' element MAY
-   have two properties: 'href' and 'format'.  If the 'href' property
-   appears it SHOULD contain a dereferencable URL that points to human-
-   readable text.  If the 'format' property appears it SHOULD contain
-   one of the following values: 'text', 'html', 'asciidoc', or
-   'markdown'.  Any program processing 'doc' elements SHOULD honor the
+   have the following properties: 'href', 'format', and 'tag'.
 
 
 
-Amundsen, et al.          Expires July 9, 2021                 [Page 12]
+
+
+Amundsen, et al.          Expires July 17, 2021                [Page 12]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
-   'format' directive and parse/render the content appropriately.  If
-   the value in the 'format' property is not recognized and/or
-   supported, the processing program MUST treat the content as plain
-   text.  If no 'format' property is present, the content SHOULD be
-   treated as plain text.
+   If the 'href' property appears it SHOULD contain a dereferencable URL
+   that points to human-readable text.  If the 'format' property appears
+   it SHOULD contain one of the following values: 'text', 'html',
+   'asciidoc', or 'markdown'.  Any program processing 'doc' elements
+   SHOULD honor the 'format' directive and parse/render the content
+   appropriately.  If the value in the 'format' property is not
+   recognized and/or supported, the processing program MUST treat the
+   content as plain text.  If no 'format' property is present, the
+   content SHOULD be treated as plain text.
 
    XML:  <doc format="html"> <h1>Date of Birth</h1> <p>...</p> </doc>
 
@@ -718,18 +722,19 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
    3.  'value'
 
-   The 'id' property is REQUIRED.  The 'href' is RECOMMENDED and it
-   SHOULD point to documentation that explains the use and meaning of
-   this 'ext' element.  The 'value' property is OPTIONAL.  The content
 
 
 
-
-Amundsen, et al.          Expires July 9, 2021                 [Page 13]
+Amundsen, et al.          Expires July 17, 2021                [Page 13]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
+   4.  'tag'
+
+   The 'id' property is REQUIRED.  The 'href' is RECOMMENDED and it
+   SHOULD point to documentation that explains the use and meaning of
+   this 'ext' element.  The 'value' property is OPTIONAL.  The content
    is undetermined; its meaning and use SHOULD be explained by the
    document found by de-referencing the 'href' property.
 
@@ -773,18 +778,17 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
    This property MAY appear as an attribute of the 'doc' element.
 
-2.2.7.  'href'
-
-   Contains a resolvable URL.
 
 
 
-
-
-Amundsen, et al.          Expires July 9, 2021                 [Page 14]
+Amundsen, et al.          Expires July 17, 2021                [Page 14]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
+
+2.2.7.  'href'
+
+   Contains a resolvable URL.
 
    When it appears as an attribute of a 'descriptor', 'href' points to
    another 'descriptor' either within the existing ALPS document as a
@@ -830,17 +834,18 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    In some cases, media types support non-unique identifiers (e.g.
    HTML's 'name' property) or will allow the same identifier value for
    multiple elements in the same representation (e.g. <div id="search"
+
+
+
+Amundsen, et al.          Expires July 17, 2021                [Page 15]
+
+Internet-Draft     Application-Level Profile Semantics      January 2021
+
+
    ... /> and <input type="submit" class="search" .../> and <input
    name="search" ... />).  In those cases, translating that
    representation into ALPS documents could result in multiple 'id'
    properties with the same value.
-
-
-
-Amundsen, et al.          Expires July 9, 2021                 [Page 15]
-
-Internet-Draft     Application-Level Profile Semantics      January 2021
-
 
    To avoid this, ALPS document designers can add the 'name' property to
    a 'descriptor' to hold the common value ('search') while still using
@@ -885,19 +890,19 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    instance, it can be used as the value of the IANA-registered relation
    type 'type'.
 
+
+
+
+Amundsen, et al.          Expires July 17, 2021                [Page 16]
+
+Internet-Draft     Application-Level Profile Semantics      January 2021
+
+
 2.2.8.3.  Link Relation Values and 'id' or 'name'
 
    Since a state transition 'descriptor' may define a relation type
    value, it is important to avoid creating conflicts with existing
    IANA-registered values.  If the resulting link relation type is the
-
-
-
-Amundsen, et al.          Expires July 9, 2021                 [Page 16]
-
-Internet-Draft     Application-Level Profile Semantics      January 2021
-
-
    same as a registered relation type, the descriptor MUST not change
    the meaning of the IANA relation type.
 
@@ -923,7 +928,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
    The 'link' element MUST define the two attributes 'href' and 'rel'.
 
-   The 'link' element MAY have a 'title' attribute.
+   The 'link' element MAY have 'title' and 'tag' attributes.
 
 2.2.10.  'name'
 
@@ -944,12 +949,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
 
-
-
-
-
-
-Amundsen, et al.          Expires July 9, 2021                 [Page 17]
+Amundsen, et al.          Expires July 17, 2021                [Page 17]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
@@ -978,7 +978,124 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
        rt="http://example.org/profiles/people#friend") which points to
        the 'id' of an existing 'descriptor' in any valid ALPS document.
 
-2.2.13.  'title'
+2.2.13.  'tag'
+
+   The 'tag' property is designed to hold a whitespace-separated list of
+   non-unique private values.  The values in this property are typically
+   used by document authors to mark one or more elements of and ALPS
+   document with a shared identity that parsers and other document
+   consumers can use to group and/or process portions of the ALPS
+   document.
+
+   The 'tag' can be a property of the 'descriptor', 'doc', 'ext', and
+   'link' elements.  It is an OPTIONAL property and document readers MAY
+   ignore it.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Amundsen, et al.          Expires July 17, 2021                [Page 18]
+
+Internet-Draft     Application-Level Profile Semantics      January 2021
+
+
+   <?xml version="1.0"?>
+     <alps version="1.0">
+     <title>Search Profile</title>
+     <doc href="http://example.org/samples/full/doc.html" />
+     <doc href="http://example.org/samples/profile/doc.html"
+       tag="profile"/>
+
+     <descriptor id="search" type="safe"
+         rt="#profile-results"
+         title="Search for a profile."
+         tag="profile">
+       ...
+     </descriptor>
+     <descriptor id="profile-results"
+         type="semantic"
+         tag="profile">
+         ...
+     </descriptor>
+   </alps>
+
+                                XML Example
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Amundsen, et al.          Expires July 17, 2021                [Page 19]
+
+Internet-Draft     Application-Level Profile Semantics      January 2021
+
+
+   {
+     "alps" : {
+       "version" : "1.0",
+       "doc" : [
+         {"href" : "http://example.org/samples/full/doc.html"},
+         {"href" : "http://example.org/samples/profile/doc.html",
+           "tag" : "profile"},
+       ],
+       "descriptor" : [
+         {
+           "id" : "search",
+           "type" : "safe",
+           "rt" : "#profile-results",
+           "title" : "Search for a profile.",
+           "tag" : "profile"
+           "descriptor" : [ ... ]
+         },
+         {
+           "id" : "profile-results",
+           "type" : "semantic",
+           "tag" : "profile",
+           "descriptor" : [ ... ]
+         }
+       ]
+     }
+   }
+
+                               JSON Example
+
+2.2.14.  'title'
 
    The 'title' can appear as a root element (as a child of 'alps') or as
    a property of 'descriptor' or 'link'.
@@ -997,18 +1114,19 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
                                 XML Example
 
-2.2.14.  'type'
+
+
+
+Amundsen, et al.          Expires July 17, 2021                [Page 20]
+
+Internet-Draft     Application-Level Profile Semantics      January 2021
+
+
+2.2.15.  'type'
 
    Indicates the type of hypermedia control to which the element is
    applied within the resulting representation.  This SHOULD appear for
    each 'descriptor' element.  The four valid values are:
-
-
-
-Amundsen, et al.          Expires July 9, 2021                 [Page 18]
-
-Internet-Draft     Application-Level Profile Semantics      January 2021
-
 
    'semantic'  A state element (e.g.  HTML.SPAN, HTML.INPUT, etc.).
 
@@ -1024,12 +1142,12 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    If no 'type' attribute is associated with the element, then
    'type="semantic"' is implied.
 
-2.2.15.  'value'
+2.2.16.  'value'
 
    Contains a string value.  It MAY appear as an attribute of the 'doc'
    and the 'ext' elements.
 
-2.2.16.  'version'
+2.2.17.  'version'
 
    Indicates the version of the ALPS specification used in the document.
    This SHOULD appear as a property of the 'alps' element.  Currently
@@ -1055,13 +1173,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
 
-
-
-
-
-
-
-Amundsen, et al.          Expires July 9, 2021                 [Page 19]
+Amundsen, et al.          Expires July 17, 2021                [Page 21]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
@@ -1117,7 +1229,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
 
-Amundsen, et al.          Expires July 9, 2021                 [Page 20]
+Amundsen, et al.          Expires July 17, 2021                [Page 22]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
@@ -1173,7 +1285,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
 
-Amundsen, et al.          Expires July 9, 2021                 [Page 21]
+Amundsen, et al.          Expires July 17, 2021                [Page 23]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
@@ -1229,7 +1341,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
 
-Amundsen, et al.          Expires July 9, 2021                 [Page 22]
+Amundsen, et al.          Expires July 17, 2021                [Page 24]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
@@ -1285,7 +1397,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
 
-Amundsen, et al.          Expires July 9, 2021                 [Page 23]
+Amundsen, et al.          Expires July 17, 2021                [Page 25]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
@@ -1341,7 +1453,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
 
-Amundsen, et al.          Expires July 9, 2021                 [Page 24]
+Amundsen, et al.          Expires July 17, 2021                [Page 26]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
@@ -1397,7 +1509,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
 
-Amundsen, et al.          Expires July 9, 2021                 [Page 25]
+Amundsen, et al.          Expires July 17, 2021                [Page 27]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
@@ -1453,7 +1565,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
 
-Amundsen, et al.          Expires July 9, 2021                 [Page 26]
+Amundsen, et al.          Expires July 17, 2021                [Page 28]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
@@ -1509,7 +1621,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
 
-Amundsen, et al.          Expires July 9, 2021                 [Page 27]
+Amundsen, et al.          Expires July 17, 2021                [Page 29]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
@@ -1565,7 +1677,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
 
-Amundsen, et al.          Expires July 9, 2021                 [Page 28]
+Amundsen, et al.          Expires July 17, 2021                [Page 30]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
@@ -1621,7 +1733,7 @@ A.3.  Why is there no way to indicate ranges for semantic descriptors?
 
 
 
-Amundsen, et al.          Expires July 9, 2021                 [Page 29]
+Amundsen, et al.          Expires July 17, 2021                [Page 31]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
@@ -1677,4 +1789,4 @@ Authors' Addresses
 
 
 
-Amundsen, et al.          Expires July 9, 2021                 [Page 30]
+Amundsen, et al.          Expires July 17, 2021                [Page 32]
