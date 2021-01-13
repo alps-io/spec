@@ -1065,8 +1065,8 @@
             the ALPS document.
           </t>
           <t>
-            The <xref target="prop-tag" format="title" /> can be a property of
-            the <xref target="prop-descriptor" format="title" />,
+            The 'tag' can be a property of the 
+            <xref target="prop-descriptor" format="title" />,
             <xref target="prop-doc" format="title" />,
             <xref target="prop-ext" format="title" />,
             and <xref target="prop-link" format="title" /> elements.  
