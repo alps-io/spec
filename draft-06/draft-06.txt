@@ -124,7 +124,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    5.  Internationalization Considerations . . . . . . . . . . . . .  30
    6.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  30
    7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  30
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  30
+     7.1.  Normative References  . . . . . . . . . . . . . . . . . .  31
      7.2.  Informative References  . . . . . . . . . . . . . . . . .  31
    Appendix A.  Frequently Asked Questions . . . . . . . . . . . . .  32
      A.1.  Why are there no URLs in ALPS?  . . . . . . . . . . . . .  32
@@ -1665,15 +1665,15 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    contributions to this specification:
 
    Glenn Block, Christopher Harrison, Steve Klabnik, Filip Kolarik,
-   Akihito Koriyama, Graham Klyne, Dmitry Pavlov, Remon (Ray) Sinnema.
+   Akihito Koriyama, Graham Klyne, Stephen Mizell, Dmitry Pavlov, Remon
+   (Ray) Sinnema.
 
 7.  References
 
-7.1.  Normative References
 
-   [RFC1738]  Berners-Lee, T., Masinter, L., and M. McCahill, "Uniform
-              Resource Locators (URL)", RFC 1738, DOI 10.17487/RFC1738,
-              December 1994, <https://www.rfc-editor.org/info/rfc1738>.
+
+
+
 
 
 
@@ -1681,6 +1681,12 @@ Amundsen, et al.          Expires July 18, 2021                [Page 30]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
+
+7.1.  Normative References
+
+   [RFC1738]  Berners-Lee, T., Masinter, L., and M. McCahill, "Uniform
+              Resource Locators (URL)", RFC 1738, DOI 10.17487/RFC1738,
+              December 1994, <https://www.rfc-editor.org/info/rfc1738>.
 
    [RFC2045]  Freed, N. and N. Borenstein, "Multipurpose Internet Mail
               Extensions (MIME) Part One: Format of Internet Message
@@ -1722,12 +1728,6 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    [I-D.ietf-appsawg-text-markdown]
               Leonard, S., "The text/markdown Media Type", draft-ietf-
               appsawg-text-markdown-12 (work in progress), October 2015.
-
-
-
-
-
-
 
 
 
