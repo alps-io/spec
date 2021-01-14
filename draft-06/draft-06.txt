@@ -633,13 +633,17 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
    2.  'doc'
 
-   3.  'name'
+   3.  'href'
 
-   4.  'type'
+   4.  'name'
 
-   5.  'rel'
+   5.  'title'
 
-   6.  'tag'
+   6.  'type'
+
+   7.  'rel'
+
+   8.  'tag'
 
    If present, the 'def' property SHOULD be a valid IRI (see [RFC3987])
    which MAY or MAY NOT be dereferenceable.
@@ -662,10 +666,6 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    then a client SHOULD assume that 'descriptor' can appear anywhere in
    a runtime message.
 
-   If 'descriptor' is nested, i.e. declared as a child of another
-   descriptor, then:
-
-
 
 
 
@@ -673,6 +673,9 @@ Amundsen, et al.          Expires July 18, 2021                [Page 12]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
+
+   If 'descriptor' is nested, i.e. declared as a child of another
+   descriptor, then:
 
    1.  A client SHOULD assume them to appear in any sibling 'descriptor'
        element and recursively in their child descriptors.
@@ -718,9 +721,6 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    SHOULD honor the 'format' directive and parse/render the content
    appropriately.  If the value in the 'format' property is not
    recognized and/or supported, the processing program MUST treat the
-   content as plain text.  If no 'format' property is present, the
-   content SHOULD be treated as plain text.
-
 
 
 
@@ -729,6 +729,9 @@ Amundsen, et al.          Expires July 18, 2021                [Page 13]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
+
+   content as plain text.  If no 'format' property is present, the
+   content SHOULD be treated as plain text.
 
    NOTE:  In the XML representation of ALPS documents, the contents of
       the 'doc' element SHOULD be enclosed by <!CDATA[ and ]]>.  Even
@@ -776,9 +779,6 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
    4.  'tag'
 
-   The 'id' property is REQUIRED.  The 'href' is RECOMMENDED and it
-   SHOULD point to documentation that explains the use and meaning of
-
 
 
 Amundsen, et al.          Expires July 18, 2021                [Page 14]
@@ -786,6 +786,8 @@ Amundsen, et al.          Expires July 18, 2021                [Page 14]
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
+   The 'id' property is REQUIRED.  The 'href' is RECOMMENDED and it
+   SHOULD point to documentation that explains the use and meaning of
    this 'ext' element.  The 'value' property is OPTIONAL.  The content
    is undetermined; its meaning and use SHOULD be explained by the
    document found by de-referencing the 'href' property.
@@ -829,8 +831,6 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    content SHOULD be treated as plain text.
 
    This property MAY appear as an attribute of the 'doc' element.
-
-
 
 
 

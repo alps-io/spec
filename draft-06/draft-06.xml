@@ -604,7 +604,13 @@
                 <xref target="prop-doc" format="title"/>
               </t>
               <t>
+                <xref target="prop-href" format="title"/>
+              </t>
+              <t>
                 <xref target="prop-name" format="title"/>
+              </t>
+              <t>
+                <xref target="prop-title" format="title"/>
               </t>
               <t>
                 <xref target="prop-type" format="title"/>
