@@ -1124,7 +1124,14 @@
 </h1>
 <p id="rfc.section.2.2.14.p.1">The 'tag' property is designed to hold a whitespace-separated list of non-unique private values. The values in this property are typically used by document authors to mark one or more elements of and ALPS document with a shared identity that parsers and other document consumers can use to group and/or process portions of the ALPS document.  </p>
 <p id="rfc.section.2.2.14.p.2">The 'tag' can be a property of the <a href="#prop-descriptor" class="xref">'descriptor'</a>, <a href="#prop-doc" class="xref">'doc'</a>, <a href="#prop-ext" class="xref">'ext'</a>, and <a href="#prop-link" class="xref">'link'</a> elements.  It is an OPTIONAL property and document readers MAY ignore it.  </p>
-<p id="rfc.section.2.2.14.p.3">When 'tag' values are used in the ALPS document, authors SHOULD include one or more <a href="#prop-link" class="xref">'link'</a> elements at the root of the ALPS document that has the <a href="#prop-rel" class="xref">'rel'</a> value set to "tag-doc" and has an <a href="#prop-href" class="xref">'href'</a> that points a human-readable document which defines any 'tag' values used.  </p>
+<p></p>
+
+<dl>
+<dt>NOTE</dt>
+<dd style="margin-left: 8">When 'tag' values are used in the ALPS document, authors SHOULD include one or more <a href="#prop-link" class="xref">'link'</a> elements at the root of the ALPS document that has the <a href="#prop-rel" class="xref">'rel'</a> value set to "tag-doc" and has an <a href="#prop-href" class="xref">'href'</a> that points a human-readable document which defines any 'tag' values used.  </dd>
+</dl>
+
+<p> </p>
 <pre>
 &lt;?xml version="1.0"?&gt;
   &lt;alps version="1.0"&gt;

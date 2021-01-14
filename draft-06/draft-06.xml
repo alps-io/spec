@@ -1146,6 +1146,8 @@
             It is an OPTIONAL property and document readers MAY ignore it.
           </t>
           <t>
+          <list style="hanging">
+            <t hangText="NOTE">
             When 'tag' values are used in the ALPS document, authors SHOULD 
             include one or more <xref target="prop-link" format="title" /> 
             elements at the root of the ALPS document that has the 
@@ -1153,6 +1155,8 @@
             and has an <xref target="prop-href" format="title" />
             that points a human-readable document which defines any 'tag' values 
             used. 
+            </t>
+          </list>  
           </t>
           <figure title="XML Example">
             <artwork><![CDATA[

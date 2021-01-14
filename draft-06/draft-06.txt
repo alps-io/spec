@@ -1047,11 +1047,11 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    'link' elements.  It is an OPTIONAL property and document readers MAY
    ignore it.
 
-   When 'tag' values are used in the ALPS document, authors SHOULD
-   include one or more 'link' elements at the root of the ALPS document
-   that has the 'rel' value set to "tag-doc" and has an 'href' that
-   points a human-readable document which defines any 'tag' values used.
-
+   NOTE  When 'tag' values are used in the ALPS document, authors SHOULD
+      include one or more 'link' elements at the root of the ALPS
+      document that has the 'rel' value set to "tag-doc" and has an
+      'href' that points a human-readable document which defines any
+      'tag' values used.
 
 
 
