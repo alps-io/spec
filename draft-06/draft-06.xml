@@ -4,6 +4,7 @@
 <!DOCTYPE rfc SYSTEM "http://xml.resource.org/authoring/rfc2629.dtd" [
         <!ENTITY rfc1738 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1738.xml">
         <!ENTITY rfc2119 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
+        <!ENTITY rfc2045 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2045.xml">
         <!ENTITY rfc3023 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3023.xml">
         <!ENTITY rfc3987 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3987.xml">
         <!ENTITY rfc4627 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4627.xml">
@@ -493,6 +494,40 @@
                 { "alps" : ... }
               </t>
             </list>
+          </t>
+        </section>
+        <section anchor="prop-contentType" title="'contentType'">
+          <t>
+            This is a property of the <xref target="prop-doc" format="title" /> 
+            element. It indicates the media type of the content enclosed by the
+            <xref target="prop-doc" format="title" /> element. This is an
+            OPTIONAL property and it MAY be ignored by document parsers. 
+            It's value SHOULD be an Internet Media Type (see
+            <xref target="RFC2045"/>).
+          </t>
+          <t>
+            <list style="hanging">
+            <t hangText="NOTE:">
+            Media-type values are registered with the Internet Assigned Number 
+            Authority (see <xref target="RFC2045" />). The use of non-registered 
+            media types is discouraged.
+            </t>
+            </list>
+          </t>
+          <t>
+            The 'contentType' property and the <xref target="prop-format" 
+            format="title" /> property serve the same purpose. When the 'contentType'
+            property appears it SHOULD be used. If both the 
+            <xref target="prop-format" format="title" /> and the 'contentType'
+            property appears, the <xref target="prop-format" format="title" />
+            SHOULD be ignored. If the 'contentType' property does not appear
+            and the <xref target="prop-format" format="title" /> does not appear,
+            document parsers SHOULD assume the 'contentType' value is set to
+            text/plain. Since some ALPS document parsers MAY only understand the 
+            <xref target="prop-format" format="title" /> property, even when
+            document writers include the 'contentType' property, they should 
+            also be sure to any exsiting <xref target="prop-format" format="title" />
+            does not conflict with the supplied 'contentType' property.
           </t>
         </section>
         <section anchor="prop-def" title="'def'">
@@ -1726,6 +1761,7 @@
     <references title="Normative References">
       &rfc1738;
       &rfc2119;
+      &rfc2045;
       &rfc3023;
       &rfc3987;
       &rfc4627;
