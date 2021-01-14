@@ -662,10 +662,10 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
    A text field that contains free-form, usually human-readable, text.
    The 'doc' element MAY be represented as a single element or it MAY be
-   represented as an array of single elements.  The 'doc' element MAY
-   have the following properties: 'href', 'format', and 'tag'.
+   represented as an array of single elements.
 
-
+   The 'doc' element MAY have the following properties: 'href',
+   'format', and 'tag'.
 
 
 
@@ -684,7 +684,13 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    content as plain text.  If no 'format' property is present, the
    content SHOULD be treated as plain text.
 
-   XML:  <doc format="html"> <h1>Date of Birth</h1> <p>...</p> </doc>
+   NOTE:  In the XML representation of ALPS documents, the contents of
+      the 'doc' element SHOULD be enclosed by <!CDATA[ and ]]>.  Even
+      when not enclosed, the contents of the XML 'doc' element MUST be
+      treated as a string when parsing the ALPS document.
+
+   XML:  <doc format="html"> <![CDATA[ <h1>Date of Birth</h1> <p>...</p>
+      ]]> </doc>
 
    JSON:  { "doc" : { "format" : "text" , "value" : "Date of Birth ..."
       } }
@@ -693,14 +699,14 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    present, it describes the meaning and use of the related
    'descriptor'.
 
-   XML:  <descriptor ... > <doc>...</doc> </descriptor>
+   XML:  <descriptor ... > <doc><![CDATA[...]]></doc> </descriptor>
 
    JSON:  { "descriptor" : [ { "doc" : { "value" : "..." } ...  ] }
 
    The 'doc' element MAY appear as a child of 'alps'.  When present, it
    describes the purpose of the ALPS document as a whole.
 
-   XML:  <alps> <doc>...</doc> ...  </apls>
+   XML:  <alps> <doc><![CDATA[...]]></doc> ...  >/alps>
 
    JSON:  { "alps : { "doc" : { "value" : "..." } } ...  }
 
@@ -716,12 +722,6 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
    The 'ext' element has the following properties.
 
-   1.  'id'
-
-   2.  'href'
-
-   3.  'value'
-
 
 
 
@@ -729,6 +729,12 @@ Amundsen, et al.          Expires July 17, 2021                [Page 13]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
+
+   1.  'id'
+
+   2.  'href'
+
+   3.  'value'
 
    4.  'tag'
 
@@ -771,12 +777,6 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    o  'markdown', per The text/markdown Media Type
       [I-D.ietf-appsawg-text-markdown], MAY be supported.
 
-   Any other values for this attribute are undefined and SHOULD be
-   treated as plain text.  If the program does not recognize the value
-   of the 'format' property and/or the 'format' property is missing, the
-   content SHOULD be treated as plain text.
-
-   This property MAY appear as an attribute of the 'doc' element.
 
 
 
@@ -785,6 +785,13 @@ Amundsen, et al.          Expires July 17, 2021                [Page 14]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
+
+   Any other values for this attribute are undefined and SHOULD be
+   treated as plain text.  If the program does not recognize the value
+   of the 'format' property and/or the 'format' property is missing, the
+   content SHOULD be treated as plain text.
+
+   This property MAY appear as an attribute of the 'doc' element.
 
 2.2.7.  'href'
 
@@ -826,14 +833,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
    It should be noted that the exact mapping from ALPS elements (e.g.
    'id') to elements within a particular media type (HTML,
-   Collection+JSON, etc.) is covered in separate documents (to be
-   specified).
 
-2.2.8.1.  ALPS 'id' and 'name' Properties
-
-   In some cases, media types support non-unique identifiers (e.g.
-   HTML's 'name' property) or will allow the same identifier value for
-   multiple elements in the same representation (e.g. <div id="search"
 
 
 
@@ -842,6 +842,14 @@ Amundsen, et al.          Expires July 17, 2021                [Page 15]
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
+   Collection+JSON, etc.) is covered in separate documents (to be
+   specified).
+
+2.2.8.1.  ALPS 'id' and 'name' Properties
+
+   In some cases, media types support non-unique identifiers (e.g.
+   HTML's 'name' property) or will allow the same identifier value for
+   multiple elements in the same representation (e.g. <div id="search"
    ... /> and <input type="submit" class="search" .../> and <input
    name="search" ... />).  In those cases, translating that
    representation into ALPS documents could result in multiple 'id'
@@ -880,6 +888,16 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    unsafe characters per [RFC1738], the fragment referencing the 'id'
    MUST be URL escaped.
 
+
+
+
+
+
+Amundsen, et al.          Expires July 17, 2021                [Page 16]
+
+Internet-Draft     Application-Level Profile Semantics      January 2021
+
+
    A relative URL with a fragment identifier within an ALPS document
    (e.g. href="#customer") refers to a local 'descriptor' within the
    document containing the reference.
@@ -889,14 +907,6 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    URI (URL) that can be used to indicate the type of a resource; for
    instance, it can be used as the value of the IANA-registered relation
    type 'type'.
-
-
-
-
-Amundsen, et al.          Expires July 17, 2021                [Page 16]
-
-Internet-Draft     Application-Level Profile Semantics      January 2021
-
 
 2.2.8.3.  Link Relation Values and 'id' or 'name'
 
@@ -935,6 +945,15 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    Indicates the name of the 'descriptor' as found in generic
    representations.  It MAY appear as a property of 'descriptor'.
 
+
+
+
+
+Amundsen, et al.          Expires July 17, 2021                [Page 17]
+
+Internet-Draft     Application-Level Profile Semantics      January 2021
+
+
    This is used when the name of the 'descriptor' is used as an 'id'
    value elsewhere in the ALPS document.  For instance, if a single ALPS
    document defines a semantic descriptor (data element) called
@@ -946,13 +965,6 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    The use of the 'name' property usually indicates an ambiguity in the
    application semantics.  Thus, it SHOULD only be used when creating an
    ALPS profile that describes an existing design.
-
-
-
-Amundsen, et al.          Expires July 17, 2021                [Page 17]
-
-Internet-Draft     Application-Level Profile Semantics      January 2021
-
 
 2.2.11.  'rel'
 
@@ -990,18 +1002,6 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    The 'tag' can be a property of the 'descriptor', 'doc', 'ext', and
    'link' elements.  It is an OPTIONAL property and document readers MAY
    ignore it.
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

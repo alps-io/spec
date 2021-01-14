@@ -903,32 +903,42 @@
 <h1 id="rfc.section.2.2.4">
 <a href="#rfc.section.2.2.4">2.2.4.</a> <a href="#prop-doc" id="prop-doc">'doc'</a>
 </h1>
-<p id="rfc.section.2.2.4.p.1">A text field that contains free-form, usually human-readable, text. The 'doc' element MAY be represented as a single element or it MAY be represented as an array of single elements.  The 'doc' element MAY have the following properties: <a href="#prop-href" class="xref">'href'</a>, <a href="#prop-format" class="xref">'format'</a>, and <a href="#prop-tag" class="xref">'tag'</a>.  </p>
-<p id="rfc.section.2.2.4.p.2">If the 'href' property appears it SHOULD contain a dereferencable URL that points to human-readable text. If the 'format' property appears it SHOULD contain one of the following values: 'text', 'html', 'asciidoc', or 'markdown'.  Any program processing 'doc' elements SHOULD honor the 'format' directive and parse/render the content appropriately. If the value in the 'format' property is not recognized and/or supported, the processing program MUST treat the content as plain text. If no 'format' property is present, the content SHOULD be treated as plain text.  </p>
+<p id="rfc.section.2.2.4.p.1">A text field that contains free-form, usually human-readable, text. The 'doc' element MAY be represented as a single element or it MAY be represented as an array of single elements.  </p>
+<p id="rfc.section.2.2.4.p.2">The 'doc' element MAY have the following properties: <a href="#prop-href" class="xref">'href'</a>, <a href="#prop-format" class="xref">'format'</a>, and <a href="#prop-tag" class="xref">'tag'</a>.  </p>
+<p id="rfc.section.2.2.4.p.3">If the 'href' property appears it SHOULD contain a dereferencable URL that points to human-readable text. If the 'format' property appears it SHOULD contain one of the following values: 'text', 'html', 'asciidoc', or 'markdown'.  Any program processing 'doc' elements SHOULD honor the 'format' directive and parse/render the content appropriately. If the value in the 'format' property is not recognized and/or supported, the processing program MUST treat the content as plain text. If no 'format' property is present, the content SHOULD be treated as plain text.  </p>
+<p></p>
+
+<dl>
+<dt>NOTE:</dt>
+<dd style="margin-left: 8">In the XML representation of ALPS documents, the contents of the 'doc' element SHOULD be enclosed by &lt;!CDATA[ and ]]&gt;. Even when not enclosed, the contents of the XML 'doc' element MUST be treated as a string when parsing the ALPS document.  </dd>
+</dl>
+
+<p> </p>
+<p></p>
 
 <dl>
 <dt>XML:</dt>
-<dd style="margin-left: 8">&lt;doc format="html"&gt; &lt;h1&gt;Date of Birth&lt;/h1&gt; &lt;p&gt;...&lt;/p&gt; &lt;/doc&gt; </dd>
+<dd style="margin-left: 8">&lt;doc format="html"&gt; &lt;![CDATA[ &lt;h1&gt;Date of Birth&lt;/h1&gt; &lt;p&gt;...&lt;/p&gt; ]]&gt; &lt;/doc&gt; </dd>
 <dt>JSON:</dt>
 <dd style="margin-left: 8">{ "doc" : { "format" : "text" , "value" : "Date of Birth ..." } } </dd>
 </dl>
 
 <p> </p>
-<p id="rfc.section.2.2.4.p.3">A 'doc' element SHOULD appear as a child of <a href="#prop-descriptor" class="xref">'descriptor'</a>. When present, it describes the meaning and use of the related 'descriptor'.  </p>
+<p id="rfc.section.2.2.4.p.6">A 'doc' element SHOULD appear as a child of <a href="#prop-descriptor" class="xref">'descriptor'</a>. When present, it describes the meaning and use of the related 'descriptor'.  </p>
 
 <dl>
 <dt>XML:</dt>
-<dd style="margin-left: 8">&lt;descriptor ... &gt; &lt;doc&gt;...&lt;/doc&gt; &lt;/descriptor&gt; </dd>
+<dd style="margin-left: 8">&lt;descriptor ... &gt; &lt;doc&gt;&lt;![CDATA[...]]&gt;&lt;/doc&gt; &lt;/descriptor&gt; </dd>
 <dt>JSON:</dt>
 <dd style="margin-left: 8">{ "descriptor" : [ { "doc" : { "value" : "..." } ...  ] } </dd>
 </dl>
 
 <p> </p>
-<p id="rfc.section.2.2.4.p.4">The 'doc' element MAY appear as a child of <a href="#prop-alps" class="xref">'alps'</a>. When present, it describes the purpose of the ALPS document as a whole.  </p>
+<p id="rfc.section.2.2.4.p.7">The 'doc' element MAY appear as a child of <a href="#prop-alps" class="xref">'alps'</a>. When present, it describes the purpose of the ALPS document as a whole.  </p>
 
 <dl>
 <dt>XML:</dt>
-<dd style="margin-left: 8">&lt;alps&gt; &lt;doc&gt;...&lt;/doc&gt; ...  &lt;/apls&gt; </dd>
+<dd style="margin-left: 8">&lt;alps&gt; &lt;doc&gt;&lt;![CDATA[...]]&gt;&lt;/doc&gt; ...  &gt;/alps&gt; </dd>
 <dt>JSON:</dt>
 <dd style="margin-left: 8">{ "alps : { "doc" : { "value" : "..." } } ...  } </dd>
 </dl>
