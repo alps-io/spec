@@ -637,6 +637,8 @@
             human-readable, text. The 'doc' element MAY be represented as a 
             single element or it MAY be represented as an array of 
             single elements. 
+          </t>  
+          <t>  
             The 'doc' element MAY have the following properties:
             <xref target="prop-href" format="title"/>, 
             <xref target="prop-format" format="title"/>, and 
@@ -653,13 +655,28 @@
             recognized and/or supported, the processing program MUST
             treat the content as plain text. If no 'format' property is
             present, the content SHOULD be treated as plain text.
+          </t>
+          <t>
             <list style="hanging">
-              <t hangText="XML:"><![CDATA[
-<doc format="html">
-   <h1>Date of Birth</h1>
-   <p>...</p>
-</doc>
-                        ]]></t>
+              <t hangText="NOTE:">
+                In the XML representation of ALPS documents,
+                the contents of the 'doc' element SHOULD be enclosed by
+                &lt;!CDATA[ and ]]&gt;. Even when not enclosed, the 
+                contents of the XML 'doc' element MUST be treated as a 
+                string when parsing the ALPS document.
+              </t>  
+            </list>  
+          </t>
+          <t>  
+            <list style="hanging">
+              <t hangText="XML:">
+&lt;doc format="html"&gt;
+   &lt;![CDATA[
+   &lt;h1>Date of Birth&lt;/h1&gt;
+   &lt;p&gt;...&lt;/p&gt;
+   ]]&gt;
+&lt;/doc&gt;
+                        </t>
               <t hangText="JSON:"><![CDATA[
 { "doc" :
   { "format" : "text" , "value" : "Date of Birth ..." }
@@ -673,11 +690,11 @@
             present, it describes the meaning and use of the
             related 'descriptor'.
             <list style="hanging">
-              <t hangText="XML:"><![CDATA[
-<descriptor ... >
-  <doc>...</doc>
-</descriptor>
-                        ]]></t>
+              <t hangText="XML:">
+&lt;descriptor ... &gt;
+  &lt;doc&gt;&lt;![CDATA[...]]&gt;&lt;/doc&gt;
+&lt;/descriptor&gt;
+                        </t>
               <t hangText="JSON:"><![CDATA[
 { "descriptor" : [
   { "doc" : { "value" : "..." }
@@ -688,16 +705,16 @@
             </list>
           </t>
           <t>
-            The 'doc' element MAY appear as a child of <xref target="prop-alps" format="title"/>. When present, it
-            describes the purpose of the ALPS document as a
-            whole.
+            The 'doc' element MAY appear as a child of 
+            <xref target="prop-alps" format="title"/>. When present, 
+            it describes the purpose of the ALPS document as a whole.
             <list style="hanging">
-              <t hangText="XML:"><![CDATA[
-<alps>
-  <doc>...</doc>
+              <t hangText="XML:">
+&lt;alps&gt;
+  &lt;doc&gt;&lt;![CDATA[...]]&gt;&lt;/doc&gt;
   ...
-</apls>
-                        ]]></t>
+&gt;/alps&gt;
+                        </t>
               <t hangText="JSON:"><![CDATA[
 {
   "alps : {
