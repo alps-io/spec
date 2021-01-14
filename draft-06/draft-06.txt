@@ -832,8 +832,8 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
    This property MAY appear as an attribute of the 'doc' element.
 
-
-
+   NOTE:  The 'format' property contains the same information (in a
+      different form) as the 'contentType' property.  When both
 
 
 
@@ -841,6 +841,10 @@ Amundsen, et al.          Expires July 18, 2021                [Page 15]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
+
+      properties appear on the same 'doc', the value of the
+      'contentType' property overrides the value of the 'format'
+      property.
 
 2.2.8.  'href'
 
@@ -885,11 +889,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    Collection+JSON, etc.) is covered in separate documents (to be
    specified).
 
-2.2.9.1.  ALPS 'id' and 'name' Properties
 
-   In some cases, media types support non-unique identifiers (e.g.
-   HTML's 'name' property) or will allow the same identifier value for
-   multiple elements in the same representation (e.g. <div id="search"
 
 
 
@@ -898,6 +898,11 @@ Amundsen, et al.          Expires July 18, 2021                [Page 16]
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
+2.2.9.1.  ALPS 'id' and 'name' Properties
+
+   In some cases, media types support non-unique identifiers (e.g.
+   HTML's 'name' property) or will allow the same identifier value for
+   multiple elements in the same representation (e.g. <div id="search"
    ... /> and <input type="submit" class="search" .../> and <input
    name="search" ... />).  In those cases, translating that
    representation into ALPS documents could result in multiple 'id'
@@ -940,11 +945,6 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    (e.g. href="#customer") refers to a local 'descriptor' within the
    document containing the reference.
 
-   The complete URI to an ALPS 'descriptor' (including the fragment)
-   forms an 'abstract semantic type' identifier.  This is a resolvable
-   URI (URL) that can be used to indicate the type of a resource; for
-   instance, it can be used as the value of the IANA-registered relation
-   type 'type'.
 
 
 
@@ -953,6 +953,12 @@ Amundsen, et al.          Expires July 18, 2021                [Page 17]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
+
+   The complete URI to an ALPS 'descriptor' (including the fragment)
+   forms an 'abstract semantic type' identifier.  This is a resolvable
+   URI (URL) that can be used to indicate the type of a resource; for
+   instance, it can be used as the value of the IANA-registered relation
+   type 'type'.
 
 2.2.9.3.  Link Relation Values and 'id' or 'name'
 
@@ -996,12 +1002,6 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    document defines a semantic descriptor (data element) called
    'customer' and a safe descriptor (transition element) also called
    'customer', they cannot both have 'id="customer"' in the ALPS
-   document.  One of them needs to have some other 'id', and to set
-   'name="customer"'.
-
-   The use of the 'name' property usually indicates an ambiguity in the
-   application semantics.  Thus, it SHOULD only be used when creating an
-   ALPS profile that describes an existing design.
 
 
 
@@ -1009,6 +1009,13 @@ Amundsen, et al.          Expires July 18, 2021                [Page 18]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
+
+   document.  One of them needs to have some other 'id', and to set
+   'name="customer"'.
+
+   The use of the 'name' property usually indicates an ambiguity in the
+   application semantics.  Thus, it SHOULD only be used when creating an
+   ALPS profile that describes an existing design.
 
 2.2.12.  'rel'
 
@@ -1050,13 +1057,6 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    NOTE  When 'tag' values are used in the ALPS document, authors SHOULD
       include one or more 'link' elements at the root of the ALPS
       document that has the 'rel' value set to "tag-doc" and has an
-      'href' that points a human-readable document which defines any
-      'tag' values used.
-
-
-
-
-
 
 
 
@@ -1065,6 +1065,9 @@ Amundsen, et al.          Expires July 18, 2021                [Page 19]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
 
+
+      'href' that points a human-readable document which defines any
+      'tag' values used.
 
    <?xml version="1.0"?>
      <alps version="1.0">
@@ -1088,9 +1091,6 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    </alps>
 
                                 XML Example
-
-
-
 
 
 

@@ -892,6 +892,17 @@
             This property MAY appear as an attribute of the
             <xref target="prop-doc" format="title"/> element.
           </t>
+          <t>
+            <list style="hanging">
+              <t hangText="NOTE:">
+              The 'format' property contains the same information (in a different
+              form) as the <xref target="prop-contentType" format="title" />
+              property. When both properties appear on the same 
+              <xref target="prop-doc" format="title" />, the value of the 
+              'contentType' property overrides the value of the 'format' property.
+              </t>
+            </list>
+          </t>
         </section>
         <section anchor="prop-href" title="'href'">
           <t>

@@ -1029,6 +1029,14 @@
 
 <p> Any other values for this attribute are undefined and SHOULD be treated as plain text. If the program does not recognize the value of the 'format' property and/or the 'format' property is missing, the content SHOULD be treated as plain text.  </p>
 <p id="rfc.section.2.2.7.p.2">This property MAY appear as an attribute of the <a href="#prop-doc" class="xref">'doc'</a> element.  </p>
+<p></p>
+
+<dl>
+<dt>NOTE:</dt>
+<dd style="margin-left: 8">The 'format' property contains the same information (in a different form) as the <a href="#prop-contentType" class="xref">'contentType'</a> property. When both properties appear on the same <a href="#prop-doc" class="xref">'doc'</a>, the value of the 'contentType' property overrides the value of the 'format' property.  </dd>
+</dl>
+
+<p> </p>
 <h1 id="rfc.section.2.2.8">
 <a href="#rfc.section.2.2.8">2.2.8.</a> <a href="#prop-href" id="prop-href">'href'</a>
 </h1>
