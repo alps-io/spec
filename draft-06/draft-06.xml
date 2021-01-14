@@ -529,6 +529,27 @@
             also be sure to any exsiting <xref target="prop-format" format="title" />
             does not conflict with the supplied 'contentType' property.
           </t>
+          <t>
+            Examples:
+            <list style="hanging">
+              <t hangText="XML:">
+                &lt;doc contentType="text/html" &gt;
+                &lt;![CDATA[
+                  &lt;h1>Help File&lt;/h1>
+                  &lt;p>...&lt;/p>
+                ]]&gt;
+                &lt;/doc&gt;
+              </t>
+              <t hangText="JSON:">
+                { "doc" : {
+                  "contentType" : "text/html", 
+                  "value" : "&lt;h1>Help File&lt;/h1>&lt;p>...&lt;/p>"
+                  }
+                }
+              </t>
+            </list>
+          </t>
+
         </section>
         <section anchor="prop-def" title="'def'">
           <t>
@@ -1124,10 +1145,24 @@
             and <xref target="prop-link" format="title" /> elements.  
             It is an OPTIONAL property and document readers MAY ignore it.
           </t>
+          <t>
+          <list style="hanging">
+            <t hangText="NOTE">
+            When 'tag' values are used in the ALPS document, authors SHOULD 
+            include one or more <xref target="prop-link" format="title" /> 
+            elements at the root of the ALPS document that has the 
+            <xref target="prop-rel" format="title" /> value set to "tag-doc" 
+            and has an <xref target="prop-href" format="title" />
+            that points a human-readable document which defines any 'tag' values 
+            used. 
+            </t>
+          </list>  
+          </t>
           <figure title="XML Example">
             <artwork><![CDATA[
 <?xml version="1.0"?>
   <alps version="1.0">
+  <link rel="tag-doc" href="http://example.org/tags/index.html" />
   <title>Search Profile</title>
   <doc href="http://example.org/samples/full/doc.html" />
   <doc href="http://example.org/samples/profile/doc.html" 
@@ -1152,6 +1187,10 @@
 {
   "alps" : {
     "version" : "1.0",
+    "link" : { 
+      "rel" : "tag-doc", 
+      "href" : "http://example.org/tags/index.html"
+    },
     "doc" : [
       {"href" : "http://example.org/samples/full/doc.html"},
       {"href" : "http://example.org/samples/profile/doc.html", 

@@ -429,7 +429,7 @@
 
   <meta name="dct.creator" content="Amundsen, M., Richardson, L., and M. Foster" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-amundsen-richardson-foster-alps-06" />
-  <meta name="dct.issued" scheme="ISO8601" content="2021-13" />
+  <meta name="dct.issued" scheme="ISO8601" content="2021-14" />
   <meta name="dct.abstract" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.   " />
   <meta name="description" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.   " />
 
@@ -453,7 +453,7 @@
 <td class="right">L. Richardson</td>
 </tr>
 <tr>
-<td class="left">Expires: July 17, 2021</td>
+<td class="left">Expires: July 18, 2021</td>
 <td class="right"></td>
 </tr>
 <tr>
@@ -462,7 +462,7 @@
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">January 13, 2021</td>
+<td class="right">January 14, 2021</td>
 </tr>
 
     	
@@ -480,7 +480,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on July 17, 2021.</p>
+<p>This Internet-Draft will expire on July 18, 2021.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2021 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -853,6 +853,16 @@
 
 <p> </p>
 <p id="rfc.section.2.2.2.p.3">The 'contentType' property and the <a href="#prop-format" class="xref">'format'</a> property serve the same purpose. When the 'contentType' property appears it SHOULD be used. If both the <a href="#prop-format" class="xref">'format'</a> and the 'contentType' property appears, the <a href="#prop-format" class="xref">'format'</a> SHOULD be ignored. If the 'contentType' property does not appear and the <a href="#prop-format" class="xref">'format'</a> does not appear, document parsers SHOULD assume the 'contentType' value is set to text/plain. Since some ALPS document parsers MAY only understand the <a href="#prop-format" class="xref">'format'</a> property, even when document writers include the 'contentType' property, they should also be sure to any exsiting <a href="#prop-format" class="xref">'format'</a> does not conflict with the supplied 'contentType' property.  </p>
+<p id="rfc.section.2.2.2.p.4">Examples: </p>
+
+<dl>
+<dt>XML:</dt>
+<dd style="margin-left: 8">&lt;doc contentType="text/html" &gt; &lt;![CDATA[ &lt;h1&gt;Help File&lt;/h1&gt; &lt;p&gt;...&lt;/p&gt; ]]&gt; &lt;/doc&gt; </dd>
+<dt>JSON:</dt>
+<dd style="margin-left: 8">{ "doc" : { "contentType" : "text/html", "value" : "&lt;h1&gt;Help File&lt;/h1&gt;&lt;p&gt;...&lt;/p&gt;" } } </dd>
+</dl>
+
+<p> </p>
 <h1 id="rfc.section.2.2.3">
 <a href="#rfc.section.2.2.3">2.2.3.</a> <a href="#prop-def" id="prop-def">'def'</a>
 </h1>
@@ -1114,9 +1124,18 @@
 </h1>
 <p id="rfc.section.2.2.14.p.1">The 'tag' property is designed to hold a whitespace-separated list of non-unique private values. The values in this property are typically used by document authors to mark one or more elements of and ALPS document with a shared identity that parsers and other document consumers can use to group and/or process portions of the ALPS document.  </p>
 <p id="rfc.section.2.2.14.p.2">The 'tag' can be a property of the <a href="#prop-descriptor" class="xref">'descriptor'</a>, <a href="#prop-doc" class="xref">'doc'</a>, <a href="#prop-ext" class="xref">'ext'</a>, and <a href="#prop-link" class="xref">'link'</a> elements.  It is an OPTIONAL property and document readers MAY ignore it.  </p>
+<p></p>
+
+<dl>
+<dt>NOTE</dt>
+<dd style="margin-left: 8">When 'tag' values are used in the ALPS document, authors SHOULD include one or more <a href="#prop-link" class="xref">'link'</a> elements at the root of the ALPS document that has the <a href="#prop-rel" class="xref">'rel'</a> value set to "tag-doc" and has an <a href="#prop-href" class="xref">'href'</a> that points a human-readable document which defines any 'tag' values used.  </dd>
+</dl>
+
+<p> </p>
 <pre>
 &lt;?xml version="1.0"?&gt;
   &lt;alps version="1.0"&gt;
+  &lt;link rel="tag-doc" href="http://example.org/tags/index.html" /&gt;
   &lt;title&gt;Search Profile&lt;/title&gt;
   &lt;doc href="http://example.org/samples/full/doc.html" /&gt;
   &lt;doc href="http://example.org/samples/profile/doc.html" 
@@ -1140,6 +1159,10 @@
 {
   "alps" : {
     "version" : "1.0",
+    "link" : { 
+      "rel" : "tag-doc", 
+      "href" : "http://example.org/tags/index.html"
+    },
     "doc" : [
       {"href" : "http://example.org/samples/full/doc.html"},
       {"href" : "http://example.org/samples/profile/doc.html", 
