@@ -104,8 +104,8 @@ Table of Contents
        2.2.16. 'type'  . . . . . . . . . . . . . . . . . . . . . . .  22
        2.2.17. 'value' . . . . . . . . . . . . . . . . . . . . . . .  22
        2.2.18. 'version' . . . . . . . . . . . . . . . . . . . . . .  22
-     2.3.  ALPS Representations  . . . . . . . . . . . . . . . . . .  22
-       2.3.1.  Sample HTML . . . . . . . . . . . . . . . . . . . . .  22
+     2.3.  ALPS Representations  . . . . . . . . . . . . . . . . . .  23
+       2.3.1.  Sample HTML . . . . . . . . . . . . . . . . . . . . .  23
 
 
 
@@ -1047,10 +1047,10 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    'link' elements.  It is an OPTIONAL property and document readers MAY
    ignore it.
 
-
-
-
-
+   When 'tag' values are used in the ALPS document, authors SHOULD
+   include one or more 'link' elements at the root of the ALPS document
+   that has the 'rel' value set to "tag-doc" and has an 'href' that
+   points a human-readable document which defines any 'tag' values used.
 
 
 
@@ -1068,6 +1068,7 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
    <?xml version="1.0"?>
      <alps version="1.0">
+     <link rel="tag-doc" href="http://example.org/tags/index.html" />
      <title>Search Profile</title>
      <doc href="http://example.org/samples/full/doc.html" />
      <doc href="http://example.org/samples/profile/doc.html"
@@ -1116,7 +1117,6 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
 
 
-
 Amundsen, et al.          Expires July 18, 2021                [Page 20]
 
 Internet-Draft     Application-Level Profile Semantics      January 2021
@@ -1125,6 +1125,10 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    {
      "alps" : {
        "version" : "1.0",
+       "link" : {
+         "rel" : "tag-doc",
+         "href" : "http://example.org/tags/index.html"
+       },
        "doc" : [
          {"href" : "http://example.org/samples/full/doc.html"},
          {"href" : "http://example.org/samples/profile/doc.html",
@@ -1158,6 +1162,22 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 
    The value of `title` contains a single human-readable text string.
 
+
+
+
+
+
+
+
+
+
+
+
+Amundsen, et al.          Expires July 18, 2021                [Page 21]
+
+Internet-Draft     Application-Level Profile Semantics      January 2021
+
+
    <?xml version="1.0"?>
      <alps version="1.0">
      <title>Search Profile</title>
@@ -1169,14 +1189,6 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    </alps>
 
                                 XML Example
-
-
-
-
-Amundsen, et al.          Expires July 18, 2021                [Page 21]
-
-Internet-Draft     Application-Level Profile Semantics      January 2021
-
 
 2.2.16.  'type'
 
@@ -1210,6 +1222,18 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    the only valid value is '1.0'.  If no value appears, then '1.0' is
    implied.
 
+
+
+
+
+
+
+
+Amundsen, et al.          Expires July 18, 2021                [Page 22]
+
+Internet-Draft     Application-Level Profile Semantics      January 2021
+
+
 2.3.  ALPS Representations
 
    An ALPS document may be represented in either XML or JSON format.
@@ -1223,16 +1247,6 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    descriptors and transition instructions.  This document was generated
    from the XML and JSON ALPS documents that follow.  Use this HTML
    document as a guide when evaluating the XML and JSON examples.
-
-
-
-
-
-
-Amundsen, et al.          Expires July 18, 2021                [Page 22]
-
-Internet-Draft     Application-Level Profile Semantics      January 2021
-
 
    <!-- sample HTML document -->
    <html>
@@ -1262,20 +1276,6 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
 2.3.2.1.  Complete XML Representation
 
    Below is an example of an application/alps+xml representation.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1145,10 +1145,20 @@
             and <xref target="prop-link" format="title" /> elements.  
             It is an OPTIONAL property and document readers MAY ignore it.
           </t>
+          <t>
+            When 'tag' values are used in the ALPS document, authors SHOULD 
+            include one or more <xref target="prop-link" format="title" /> 
+            elements at the root of the ALPS document that has the 
+            <xref target="prop-rel" format="title" /> value set to "tag-doc" 
+            and has an <xref target="prop-href" format="title" />
+            that points a human-readable document which defines any 'tag' values 
+            used. 
+          </t>
           <figure title="XML Example">
             <artwork><![CDATA[
 <?xml version="1.0"?>
   <alps version="1.0">
+  <link rel="tag-doc" href="http://example.org/tags/index.html" />
   <title>Search Profile</title>
   <doc href="http://example.org/samples/full/doc.html" />
   <doc href="http://example.org/samples/profile/doc.html" 
@@ -1173,6 +1183,10 @@
 {
   "alps" : {
     "version" : "1.0",
+    "link" : { 
+      "rel" : "tag-doc", 
+      "href" : "http://example.org/tags/index.html"
+    },
     "doc" : [
       {"href" : "http://example.org/samples/full/doc.html"},
       {"href" : "http://example.org/samples/profile/doc.html", 
