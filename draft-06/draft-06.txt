@@ -1665,8 +1665,8 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    contributions to this specification:
 
    Glenn Block, Christopher Harrison, Steve Klabnik, Filip Kolarik,
-   Akihito Koriyama, Graham Klyne, Stephen Mizell, Dmitry Pavlov, Remon
-   (Ray) Sinnema.
+   Akihito Koriyama, Graham Klyne, Mike Levy, Stephen Mizell, Dmitry
+   Pavlov, Remon (Ray) Sinnema.
 
 7.  References
 
