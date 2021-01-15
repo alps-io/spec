@@ -526,7 +526,7 @@
             text/plain. Since some ALPS document parsers MAY only understand the 
             <xref target="prop-format" format="title" /> property, even when
             document writers include the 'contentType' property, they should 
-            also be sure to any exsiting <xref target="prop-format" format="title" />
+            also be sure that any exsiting <xref target="prop-format" format="title" />
             does not conflict with the supplied 'contentType' property.
           </t>
           <t>

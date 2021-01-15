@@ -581,8 +581,8 @@ Internet-Draft     Application-Level Profile Semantics      January 2021
    assume the 'contentType' value is set to text/plain.  Since some ALPS
    document parsers MAY only understand the 'format' property, even when
    document writers include the 'contentType' property, they should also
-   be sure to any exsiting 'format' does not conflict with the supplied
-   'contentType' property.
+   be sure that any exsiting 'format' does not conflict with the
+   supplied 'contentType' property.
 
    Examples:
 
