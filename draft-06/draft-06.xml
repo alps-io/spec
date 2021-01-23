@@ -11,6 +11,7 @@
         <!ENTITY rfc5988 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5988.xml">
         <!ENTITY rfc6906 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6906.xml">
         <!ENTITY rfc7320 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7320.xml">
+        <!ENTITY rfc7763 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7763.xml">
         ]>
 <!-- ref commands -->
 <?rfc comments="yes"?>
@@ -880,8 +881,10 @@
               <t>'text', for plain text, MUST be supported.</t>
               <t>'html', for HTML, SHOULD be supported.</t>
               <t>'asciidoc', for AsciiDoc, MAY be supported.</t>
-              <t>'markdown', per
+              <t>'markdown', per <xref target="RFC7763" />,
+              <!--
               <xref target="I-D.ietf-appsawg-text-markdown">The text/markdown Media Type</xref>,
+              -->
               MAY be supported.</t>
             </list>
             Any other values for this attribute are undefined and SHOULD
@@ -1830,10 +1833,13 @@
       &rfc5988;
       &rfc6906;
       &rfc7320;
+      &rfc7763;
     </references>
+    <!--
     <references title="Informative References">
       <?rfc include="reference.I-D.ietf-appsawg-text-markdown.xml"?>
     </references>
+    -->
     <section title="Frequently Asked Questions">
       <section title="Why are there no URLs in ALPS?">
         <t>

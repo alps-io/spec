@@ -414,9 +414,7 @@
 <link href="#rfc.section.4.2" rel="Chapter" title="4.2 application/alps+json">
 <link href="#rfc.section.5" rel="Chapter" title="5 Internationalization Considerations">
 <link href="#rfc.section.6" rel="Chapter" title="6 Acknowledgements">
-<link href="#rfc.references" rel="Chapter" title="7 References">
-<link href="#rfc.references.1" rel="Chapter" title="7.1 Normative References">
-<link href="#rfc.references.2" rel="Chapter" title="7.2 Informative References">
+<link href="#rfc.references" rel="Chapter" title="7 Normative References">
 <link href="#rfc.appendix.A" rel="Chapter" title="A Frequently Asked Questions">
 <link href="#rfc.appendix.A.1" rel="Chapter" title="A.1 Why are there no URLs in ALPS?">
 <link href="#rfc.appendix.A.2" rel="Chapter" title="A.2 Why is there no workflow component in the ALPS specification?">
@@ -429,7 +427,7 @@
 
   <meta name="dct.creator" content="Amundsen, M., Richardson, L., and M. Foster" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-amundsen-richardson-foster-alps-06" />
-  <meta name="dct.issued" scheme="ISO8601" content="2021-14" />
+  <meta name="dct.issued" scheme="ISO8601" content="2021-23" />
   <meta name="dct.abstract" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.   " />
   <meta name="description" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.   " />
 
@@ -453,7 +451,7 @@
 <td class="right">L. Richardson</td>
 </tr>
 <tr>
-<td class="left">Expires: July 18, 2021</td>
+<td class="left">Expires: July 27, 2021</td>
 <td class="right"></td>
 </tr>
 <tr>
@@ -462,7 +460,7 @@
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">January 14, 2021</td>
+<td class="right">January 23, 2021</td>
 </tr>
 
     	
@@ -480,7 +478,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on July 18, 2021.</p>
+<p>This Internet-Draft will expire on July 27, 2021.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2021 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -570,13 +568,9 @@
 </li>
 <li>6.   <a href="#rfc.section.6">Acknowledgements</a>
 </li>
-<li>7.   <a href="#rfc.references">References</a>
+<li>7.   <a href="#rfc.references">Normative References</a>
 </li>
-<ul><li>7.1.   <a href="#rfc.references.1">Normative References</a>
-</li>
-<li>7.2.   <a href="#rfc.references.2">Informative References</a>
-</li>
-</ul><li>Appendix A.   <a href="#rfc.appendix.A">Frequently Asked Questions</a>
+<li>Appendix A.   <a href="#rfc.appendix.A">Frequently Asked Questions</a>
 </li>
 <ul><li>A.1.   <a href="#rfc.appendix.A.1">Why are there no URLs in ALPS?</a>
 </li>
@@ -1024,7 +1018,7 @@
 <li>'text', for plain text, MUST be supported.</li>
 <li>'html', for HTML, SHOULD be supported.</li>
 <li>'asciidoc', for AsciiDoc, MAY be supported.</li>
-<li>'markdown', per <a href="#I-D.ietf-appsawg-text-markdown" class="xref">The text/markdown Media Type</a>, MAY be supported.</li>
+<li>'markdown', per <a href="#RFC7763" class="xref">[RFC7763]</a>, MAY be supported.</li>
 </ul>
 
 <p> Any other values for this attribute are undefined and SHOULD be treated as plain text. If the program does not recognize the value of the 'format' property and/or the 'format' property is missing, the content SHOULD be treated as plain text.  </p>
@@ -1531,9 +1525,7 @@
 <p id="rfc.section.6.p.1">The authors gratefully acknowledge the following people who made contributions to this specification: </p>
 <p id="rfc.section.6.p.2">Glenn Block, Christopher Harrison, Steve Klabnik, Filip Kolarik, Akihito Koriyama, Graham Klyne, Mike Levy, Stephen Mizell, Dmitry Pavlov, R&#233;mon (Ray) Sinnema.  </p>
 <h1 id="rfc.references">
-<a href="#rfc.references">7.</a> References</h1>
-<h1 id="rfc.references.1">
-<a href="#rfc.references.1">7.1.</a> Normative References</h1>
+<a href="#rfc.references">7.</a> Normative References</h1>
 <table><tbody>
 <tr>
 <td class="reference"><b id="RFC1738">[RFC1738]</b></td>
@@ -1580,14 +1572,12 @@
 <td class="top">
 <a>Nottingham, M.</a>, "<a href="https://tools.ietf.org/html/rfc7320">URI Design and Ownership</a>", RFC 7320, DOI 10.17487/RFC7320, July 2014.</td>
 </tr>
-</tbody></table>
-<h1 id="rfc.references.2">
-<a href="#rfc.references.2">7.2.</a> Informative References</h1>
-<table><tbody><tr>
-<td class="reference"><b id="I-D.ietf-appsawg-text-markdown">[I-D.ietf-appsawg-text-markdown]</b></td>
+<tr>
+<td class="reference"><b id="RFC7763">[RFC7763]</b></td>
 <td class="top">
-<a>Leonard, S.</a>, "<a href="https://tools.ietf.org/html/draft-ietf-appsawg-text-markdown-12">The text/markdown Media Type</a>", Internet-Draft draft-ietf-appsawg-text-markdown-12, October 2015.</td>
-</tr></tbody></table>
+<a>Leonard, S.</a>, "<a href="https://tools.ietf.org/html/rfc7763">The text/markdown Media Type</a>", RFC 7763, DOI 10.17487/RFC7763, March 2016.</td>
+</tr>
+</tbody></table>
 <h1 id="rfc.appendix.A">
 <a href="#rfc.appendix.A">Appendix A.</a> Frequently Asked Questions</h1>
 <h1 id="rfc.appendix.A.1">
