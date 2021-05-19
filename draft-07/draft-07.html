@@ -427,7 +427,7 @@
 
   <meta name="dct.creator" content="Amundsen, M., Richardson, L., and M. Foster" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-amundsen-richardson-foster-alps-07" />
-  <meta name="dct.issued" scheme="ISO8601" content="2021-23" />
+  <meta name="dct.issued" scheme="ISO8601" content="2021-19" />
   <meta name="dct.abstract" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.   " />
   <meta name="description" content="This document describes ALPS, a data format for defining simple descriptions of application-level semantics, similar in complexity to HTML microformats. An ALPS document can be used as a profile to explain the application semantics of a document with an application-agnostic media type (such as HTML, HAL, Collection+JSON, Siren, etc.). This increases the reusability of profile documents across media types.   " />
 
@@ -451,7 +451,7 @@
 <td class="right">L. Richardson</td>
 </tr>
 <tr>
-<td class="left">Expires: July 27, 2021</td>
+<td class="left">Expires: November 20, 2021</td>
 <td class="right"></td>
 </tr>
 <tr>
@@ -460,7 +460,7 @@
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">January 23, 2021</td>
+<td class="right">May 19, 2021</td>
 </tr>
 
     	
@@ -478,7 +478,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on July 27, 2021.</p>
+<p>This Internet-Draft will expire on November 20, 2021.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2021 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -918,8 +918,8 @@
 <p></p>
 
 <ol>
-<li>A registered IANA link relation type (e.g. rel="edit", a short string).  </li>
-<li>An extension link relation type as defined by <a href="#RFC5988" class="xref">[RFC5988]</a> whose value is the fully-qualified URI of an associated document describing the relation type. This includes URI fragment identifiers of ALPS descriptors (e.g. rel="http://alps.io/profiles/item#purchased-by", a URI) per the conventions of <a href="#prop-id-frag" class="xref">Section 2.2.9.2</a>.  </li>
+<li>A registered link relation type (e.g. rel="edit", a short string) from from IANA, Microformats.org or other registries.  </li>
+<li>An extension link relation type as defined by <a href="#RFC8288" class="xref">[RFC8288]</a> whose value is the fully-qualified URI of an associated document describing the relation type. This includes URI fragment identifiers of ALPS descriptors (e.g. rel="http://alps.io/profiles/item#purchased-by", a URI) per the conventions of <a href="#prop-id-frag" class="xref">Section 2.2.9.2</a>.  </li>
 <li>The 'id' property of a state transition descriptor of an associated ALPS document (e.g. rel="purchased-by", a short string) per the conventions of section <a href="#prop-id-name" class="xref">Section 2.2.9.1</a> and <a href="#prop-id-rels" class="xref">Section 2.2.9.3</a> if the representation includes an ALPS profile.  </li>
 </ol>
 
@@ -1111,8 +1111,9 @@
 <h1 id="rfc.section.2.2.12">
 <a href="#rfc.section.2.2.12">2.2.12.</a> <a href="#prop-rel" id="prop-rel">'rel'</a>
 </h1>
-<p id="rfc.section.2.2.12.p.1">Contains a <a href="#RFC5988" class="xref">[RFC5988]</a> approved value: either an extension relation type (a URI) or a registered relation type (a short string).  </p>
-<p id="rfc.section.2.2.12.p.2">Appears as a property of <a href="#prop-link" class="xref">'link'</a> and <a href="#prop-descriptor" class="xref">'descriptor'</a>.  </p>
+<p id="rfc.section.2.2.12.p.1">SHOULD contain a valid link relation value (per <a href="#RFC8288" class="xref">[RFC8288]</a>) which is either: a) an extension relation type (a URI) or b) a registered relation type (a short string).  </p>
+<p id="rfc.section.2.2.12.p.2">Link relation values may be registered at various locations including IANA, Microformats.org, or other sources.  </p>
+<p id="rfc.section.2.2.12.p.3">Appears as a property of <a href="#prop-link" class="xref">'link'</a> and <a href="#prop-descriptor" class="xref">'descriptor'</a>.  </p>
 <h1 id="rfc.section.2.2.13">
 <a href="#rfc.section.2.2.13">2.2.13.</a> <a href="#prop-rt" id="prop-rt">'rt'</a>
 </h1>
@@ -1375,7 +1376,7 @@
 <h1 id="rfc.section.3.1">
 <a href="#rfc.section.3.1">3.1.</a> <a href="#linking-to-alps-documents" id="linking-to-alps-documents">Linking to ALPS Documents</a>
 </h1>
-<p id="rfc.section.3.1.p.1">To indicate that an ALPS profile describes the semantics of some representation document, the representation document SHOULD be linked to the ALPS document. The 'profile' link relation <a href="#RFC6906" class="xref">[RFC6906]</a> MUST be used when creating this link.  If the media type of the representation document has no native ability to link to other resources, or no ability to express link relations, the HTTP header 'Link' <a href="#RFC5988" class="xref">[RFC5988]</a> MAY be used to connect the representation document and the ALPS profile. If the media type of the representation document defines a parameter for linking the document to a profile, that parameter MAY be used to connect the representation document and the ALPS profile.  </p>
+<p id="rfc.section.3.1.p.1">To indicate that an ALPS profile describes the semantics of some representation document, the representation document SHOULD be linked to the ALPS document. The 'profile' link relation <a href="#RFC6906" class="xref">[RFC6906]</a> MUST be used when creating this link.  If the media type of the representation document has no native ability to link to other resources, or no ability to express link relations, the HTTP header 'Link' <a href="#RFC8288" class="xref">[RFC8288]</a> MAY be used to connect the representation document and the ALPS profile. If the media type of the representation document defines a parameter for linking the document to a profile, that parameter MAY be used to connect the representation document and the ALPS profile.  </p>
 <p id="rfc.section.3.1.p.2">A single representation document may be described by more than one ALPS profile. If two ALPS profiles give conflicting semantics for the same element, the document linked to earlier in the representation SHOULD take precedence. A profile linked to using the 'Link' header takes precedence over a profile linked to within the representation document itself. A profile linked to using a media type parameter takes precedence over a profile linked to using the 'Link' header and a profile linked to within the representation document itself.  </p>
 <h1 id="rfc.section.4">
 <a href="#rfc.section.4">4.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a>
@@ -1558,11 +1559,6 @@
 <a>Crockford, D.</a>, "<a href="https://tools.ietf.org/html/rfc4627">The application/json Media Type for JavaScript Object Notation (JSON)</a>", RFC 4627, DOI 10.17487/RFC4627, July 2006.</td>
 </tr>
 <tr>
-<td class="reference"><b id="RFC5988">[RFC5988]</b></td>
-<td class="top">
-<a>Nottingham, M.</a>, "<a href="https://tools.ietf.org/html/rfc5988">Web Linking</a>", RFC 5988, DOI 10.17487/RFC5988, October 2010.</td>
-</tr>
-<tr>
 <td class="reference"><b id="RFC6906">[RFC6906]</b></td>
 <td class="top">
 <a>Wilde, E.</a>, "<a href="https://tools.ietf.org/html/rfc6906">The 'profile' Link Relation Type</a>", RFC 6906, DOI 10.17487/RFC6906, March 2013.</td>
@@ -1576,6 +1572,11 @@
 <td class="reference"><b id="RFC7763">[RFC7763]</b></td>
 <td class="top">
 <a>Leonard, S.</a>, "<a href="https://tools.ietf.org/html/rfc7763">The text/markdown Media Type</a>", RFC 7763, DOI 10.17487/RFC7763, March 2016.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC8288">[RFC8288]</b></td>
+<td class="top">
+<a>Nottingham, M.</a>, "<a href="https://tools.ietf.org/html/rfc8288">Web Linking</a>", RFC 8288, DOI 10.17487/RFC8288, October 2017.</td>
 </tr>
 </tbody></table>
 <h1 id="rfc.appendix.A">

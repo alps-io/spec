@@ -8,7 +8,7 @@
         <!ENTITY rfc3023 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3023.xml">
         <!ENTITY rfc3987 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3987.xml">
         <!ENTITY rfc4627 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4627.xml">
-        <!ENTITY rfc5988 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5988.xml">
+        <!ENTITY rfc8288 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8288.xml">
         <!ENTITY rfc6906 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6906.xml">
         <!ENTITY rfc7320 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7320.xml">
         <!ENTITY rfc7763 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7763.xml">
@@ -676,10 +676,11 @@
             <t>
               <list style="numbers">
                 <t>
-                  A registered IANA link relation type (e.g. rel="edit", a short string).
+                  A registered link relation type (e.g. rel="edit", a short string) from
+                  from IANA, Microformats.org or other registries.
                 </t>
                 <t>
-                  An extension link relation type as defined by <xref target="RFC5988"/>
+                  An extension link relation type as defined by <xref target="RFC8288"/>
                   whose value is the fully-qualified URI of an associated document describing the
                   relation type. This includes URI fragment identifiers of ALPS descriptors
                   (e.g. rel="http://alps.io/profiles/item#purchased-by", a URI)
@@ -1108,11 +1109,14 @@
         </section>
         <section anchor="prop-rel" title="'rel'">
           <t>
-            Contains a
-            <xref target="RFC5988"/>
-            approved
-            value: either an extension relation type (a URI)
-            or a registered relation type (a short string).
+            SHOULD contain a valid link relation value (per 
+            <xref target="RFC8288"/>) which is either: a)
+            an extension relation type (a URI) or b) a registered relation 
+            type (a short string).  
+          </t>
+          <t>
+            Link relation values may be registered at various locations 
+            including IANA, Microformats.org, or other sources.
           </t>
           <t>
               Appears as a property of <xref target="prop-link" format="title"/> and 
@@ -1573,7 +1577,7 @@
           document has no native ability to link to other resources,
           or no ability to express link relations, the HTTP header
           'Link'
-          <xref target="RFC5988"/>
+          <xref target="RFC8288"/>
           MAY be used to connect the
           representation document and the ALPS profile. If the media
           type of the representation document defines a parameter for
@@ -1830,7 +1834,7 @@
       &rfc3023;
       &rfc3987;
       &rfc4627;
-      &rfc5988;
+      &rfc8288;
       &rfc6906;
       &rfc7320;
       &rfc7763;
